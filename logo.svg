@@ -1,0 +1,13 @@
+<svg width="220" height="60" viewBox="0 0 220 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="5" y="5" width="50" height="50" rx="12" fill="url(#grad)" />
+  <path d="M30 15L15 27H20V42H40V27H45L30 15Z" fill="white" />
+  <path d="M25 32L35 32M30 28V38" stroke="#d35400" stroke-width="2.5" stroke-linecap="round" />
+  <text x="65" y="28" fill="#ffffff" font-family="'Plus Jakarta Sans', sans-serif" font-weight="800" font-size="18">PHIL'S</text>
+  <text x="65" y="44" fill="#d35400" font-family="'Plus Jakarta Sans', sans-serif" font-weight="700" font-size="11" letter-spacing="1">HOME IMPROVEMENT</text>
+  <defs>
+    <linearGradient id="grad" x1="0" y1="0" x2="50" y2="50" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#d35400" />
+      <stop offset="1" stop-color="#ff7920" />
+    </linearGradient>
+  </defs>
+</svg>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WHX Insights | AI Automation &amp; Agent Engineering</title>
+    <link>https://whxdigital.com/insights/</link>
+    <description>Practical guidance, workflow architecture, and engineering notes on AI agents, RAG systems, API integrations, and enterprise automation.</description>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 17 Sep 2026 12:00:00 GMT</lastBuildDate>
+    <atom:link href="https://whxdigital.com/insights/feed.xml" rel="self" type="application/rss+xml" />
+
+    <item>
+      <title>What Is AI Automation for Business?</title>
+      <link>https://whxdigital.com/insights/ai-automation-for-business/</link>
+      <guid>https://whxdigital.com/insights/ai-automation-for-business/</guid>
+      <pubDate>Thu, 17 Sep 2026 10:00:00 GMT</pubDate>
+      <description>An executive and technical guide to moving from rigid IF/THEN triggers to context-aware AI workflows that reason and execute.</description>
+    </item>
+    <item>
+      <title>How AI Agents Automate Business Workflows</title>
+      <link>https://whxdigital.com/insights/ai-agents-business-workflows/</link>
+      <guid>https://whxdigital.com/insights/ai-agents-business-workflows/</guid>
+      <pubDate>Thu, 17 Sep 2026 10:00:00 GMT</pubDate>
+      <description>Learn how autonomous digital workers plan, execute tool calls, verify outcomes, and handle complex multi-step operations.</description>
+    </item>
+    <item>
+      <title>Google Gemini Provider Instability: Telemetry Report &amp; WHX Response</title>
+      <link>https://whxdigital.com/insights/gemini-incident-september-2026/</link>
+      <guid>https://whxdigital.com/insights/gemini-incident-september-2026/</guid>
+      <pubDate>Tue, 15 Sep 2026 12:00:00 GMT</pubDate>
+      <description>Archived Incident Report: Analysis of upstream API error spikes and how WHX automated fallback models and retry logic protected tasks.</description>
+    </item>
+  </channel>
+</rss>

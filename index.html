@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="WHX Digital is an AI automation company building custom AI agents, voice AI, RAG knowledge systems, CRM workflows and multi-agent systems." />
+    <link rel="canonical" href="https://whxdigital.com/" />
+    <meta property="og:title" content="AI Automation &amp; AI Agent Development | WHX Digital" />
+    <meta property="og:description" content="Production-ready AI agents, intelligent workflows, voice AI, RAG knowledge systems and CRM automation." />
+    <meta property="og:url" content="https://whxdigital.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://whxdigital.com/whx-logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AI Automation &amp; AI Agent Development | WHX Digital" />
+    <meta name="twitter:description" content="Production-ready AI agents, intelligent workflows, voice AI, RAG knowledge systems and CRM automation." />
+    <meta name="twitter:image" content="https://whxdigital.com/whx-logo.png" />
+    <title>AI Automation &amp; AI Agent Development | WHX Digital</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://whxdigital.com/#organization",
+            "name": "WHX Digital",
+            "url": "https://whxdigital.com/",
+            "email": "mailto:info@whxdigital.com"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://whxdigital.com/#website",
+            "url": "https://whxdigital.com/",
+            "name": "WHX Digital",
+            "publisher": { "@id": "https://whxdigital.com/#organization" }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://whxdigital.com/#webpage",
+            "url": "https://whxdigital.com/",
+            "name": "AI Automation & AI Agent Development",
+            "isPartOf": { "@id": "https://whxdigital.com/#website" },
+            "about": { "@id": "https://whxdigital.com/#organization" }
+          }
+        ]
+      }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+      <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does WHX Digital build?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WHX Digital designs and builds production-ready AI automation systems for business operations. This includes custom AI agents, automated CRM workflows, RAG knowledge platforms, voice AI agents, and multi-agent orchestration systems that coordinate real work across your existing software."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can WHX connect AI to our existing CRM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We integrate directly with your existing tech stack, including HubSpot, Salesforce, GoHighLevel, and custom databases."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you integrate OpenAI or Gemini APIs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We build using industry-leading AI models, integrating the OpenAI API, Google Gemini API, and Anthropic Claude depending on the specific reasoning or speed requirements of your workflow."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do we need to replace our existing software?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. WHX AI agents act as digital workforce overlays on top of your current tools. They read signals from your existing databases, process logic via approved APIs, and update your current CRM seamlessly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can AI workflows require human approval?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. We build Human-in-the-Loop (HITL) checkpoints into high-impact workflows. The AI pauses execution and notifies your team for one-click approval before proceeding with sensitive actions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can WHX work with n8n and GoHighLevel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we are highly experienced in building custom integrations and agentic workflows using n8n and GoHighLevel to automate lead routing, follow-ups, and operational tasks."
+          }
+        }
+      ]
+    }
+    </script>
+</head>
+  <body class="homepage">
+    <div id="whxBoot" class="boot-screen whx-boot" aria-hidden="true" style="opacity:1; transition: opacity 0.15s ease, visibility 0.15s ease;">
+      <div class="cyber-boot-panel" id="whxBootPanel" style="transition: transform 0.15s ease;">
+        <div class="cyber-header">
+          <span class="cyber-dot red"></span>
+          <span class="cyber-dot yellow"></span>
+          <span class="cyber-dot green"></span>
+          <span class="cyber-title">WHX_CORE // INITIALIZING</span>
+        </div>
+        <div class="cyber-code-stream" id="cyberCodeStream">
+          <div class="code-line" id="bootLine1" style="opacity:0;">&gt; INITIALIZING AI AGENT WORKFORCE...</div>
+          <div class="code-line" id="bootLine2" style="opacity:0;">&gt; LOAD MODULE: agent_orchestrator <span style="color:#22c55e;">[OK]</span></div>
+          <div class="code-line" id="bootLine3" style="opacity:0;">&gt; SYNC MEMORY: context_layer <span style="color:#22c55e;">[OK]</span></div>
+          <div class="code-line" id="bootLine4" style="opacity:0;">&gt; CONNECT TOOLS: crm_api / webhooks <span style="color:#22c55e;">[OK]</span></div>
+          <div class="code-line" id="bootLine5" style="opacity:0;">&gt; VERIFY SYSTEM STATE <span style="color:#22c55e;">[OK]</span></div>
+          <div class="code-line status-ok" id="bootLine6" style="opacity:0; color:#22c55e; margin-top:8px;">&gt; WHX CORE ONLINE</div>
+        </div>
+        <div class="cyber-progress-bar">
+          <div class="cyber-progress-fill" id="whxBootProgress" style="width:0%; transition: width 0.1s ease-out;"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      try {
+        if (sessionStorage.getItem('whxBootShown')) {
+          document.getElementById('whxBoot').style.display = 'none';
+        }
+      } catch(e) {}
+      setTimeout(function() {
+        var b = document.getElementById('whxBoot');
+        if (b && b.style.display !== 'none') {
+          b.style.opacity = '0';
+          b.style.pointerEvents = 'none';
+          setTimeout(function(){ b.style.display = 'none'; }, 150);
+        }
+      }, 750);
+    </script>
+    <div class="page-glow glow-one"></div>
+    <div class="page-glow glow-two"></div>
+    <div class="neural-background" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+
+            <header class="site-header" id="top">
+      <div class="logo">
+        <a href="index.html#top" class="logo-link" aria-label="Apex AI home">
+          <svg class="logo-icon-svg" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+            <rect x="6" y="8" width="14" height="18" rx="2" fill="currentColor" opacity="0.9"></rect>
+            <rect x="9" y="6" width="14" height="18" rx="2" fill="currentColor" opacity="0.7"></rect>
+            <rect x="12" y="4" width="14" height="18" rx="2" fill="currentColor" opacity="0.5"></rect>
+            <path d="M19 12 L20 15 L23 15 L20.5 17 L21.5 20 L19 18 L16.5 20 L17.5 17 L15 15 L18 15 Z" fill="currentColor" opacity="0.3"></path>
+          </svg>
+        </a>
+      </div>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="architecture.html">AI Agents</a></li>
+          <li><a href="insights/index.html">Insights</a></li>
+          <li><a href="reviews.html">Reviews</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      
+      <section class="hero section">
+        <div class="hero-copy">
+          <p class="eyebrow"><span>NEXT-GEN AI SYSTEMS / AUTONOMOUS AUTOMATION</span><strong class="system-online-indicator"><i></i>SYSTEMS ONLINE</strong></p>
+          <h1>AI automation systems that<br /><span>think, act &amp; scale.</span></h1>
+          <div class="whx-rotating-services" data-rotate-prefix="BUILT FOR" data-rotate-items="AI Agents|CRM Automation|RAG Systems|API Integrations|Voice AI|n8n Workflows|Multi-Agent Systems"></div>
+          <p class="lead">WHX Digital designs and builds custom AI agents, intelligent workflows, voice AI systems and connected business automation that can understand context, use tools and complete real work across your operations.</p>
+        </div>
+        <div class="hero-visual">
+          <div class="ai-core-visual" aria-label="WHX AI Core architecture">
+            <div class="ai-core-lines"><i></i><i></i><i></i><i></i></div>
+            <div class="core-particles" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <div class="core-node core-memory"><strong>MEMORY</strong><span>Context + History</span></div>
+            <div class="core-node core-reasoning"><strong>REASONING</strong><span>Planning + Decisions</span></div>
+            <div class="core-node core-tools"><strong>TOOLS</strong><span>APIs + Actions</span></div>
+            <div class="core-node core-data"><strong>DATA</strong><span>Knowledge + Signals</span></div>
+            <div class="ai-core-center"><strong>WHX AI CORE</strong><span>AUTONOMOUS SYSTEM</span><small><i></i> <em class="core-status">IDLE</em></small></div>
+            <div class="core-caption">LIVE SYSTEM ARCHITECTURE / DEMO VIEW</div>
+          </div>
+        </div>
+        <div class="hero-micro-stats" aria-label="WHX AI system capabilities">
+          <div><i></i><strong>AUTONOMOUS AGENTS</strong><span>Digital workers</span></div>
+          <div><i></i><strong>INTELLIGENT WORKFLOWS</strong><span>Automated operations</span></div>
+          <div><i></i><strong>AI KNOWLEDGE</strong><span>Connected business intelligence</span></div>
+          <div><i></i><strong>VOICE SYSTEMS</strong><span>Real-time AI conversations</span></div>
+        </div>
+      </section>
+      <section class="answer-first section reveal" aria-labelledby="answer-first-title">
+        <div>
+          <p class="kicker">AI AUTOMATION COMPANY / AI AGENT DEVELOPMENT</p>
+          <h2 id="answer-first-title">What does WHX Digital build?</h2>
+        </div>
+        <p>WHX Digital builds AI automation systems for businesses, including custom AI agents, workflow automation, CRM automation, voice AI, RAG knowledge systems and multi-agent orchestration.</p>
+      </section>
+      <section class="intelligent-layer section reveal" id="intelligent-layer">
+        <div class="section-head">
+          <p class="kicker">THE INTELLIGENT LAYER</p>
+          <h2>From software you use<br /><span>to systems that work.</span></h2>
+        </div>
+        <div class="intelligent-pipeline" aria-label="Intelligent operating pipeline">
+          <span><b>01</b><strong>INTENT</strong><small>capture the objective</small></span><i class="pipeline-arrow">&#8594;</i><span><b>02</b><strong>CONTEXT</strong><small>retain the signal</small></span><i class="pipeline-arrow">&#8594;</i><span><b>03</b><strong>REASON</strong><small>understand what matters</small></span><i class="pipeline-arrow">&#8594;</i><span><b>04</b><strong>ACT</strong><small>make the next move</small></span><i class="pipeline-arrow">&#8594;</i><span><b>05</b><strong>VERIFY</strong><small>check the result</small></span><i class="pipeline-arrow">&#8594;</i><strong class="pipeline-outcome"><b>06</b>OUTCOME<small>work that compounds</small></strong>
+        </div>
+      </section>
+      
+      <section class="agent-section AgentLoop loop-section reveal" id="agent-loop"><div class="section-intro"><p class="kicker">03 / AGENT LOOP</p><h2>Progress is a<br /><span>continuous decision.</span></h2></div><div class="loop-visual ExecutionCycle"><div class="loop-orbit"><span class="loop-particle"></span><span class="loop-label loop-goal">GOAL</span><span class="loop-label loop-context">CONTEXT</span><span class="loop-label loop-reason">REASON</span><span class="loop-label loop-plan">PLAN</span><span class="loop-label loop-tool">TOOL</span><span class="loop-label loop-action">ACTION</span><span class="loop-label loop-observe">OBSERVE</span><span class="loop-label loop-verify">VERIFY</span><span class="loop-label loop-complete">COMPLETE</span></div><p class="loop-note">THE AGENT LEARNS FROM EVERY PASS <span>&#8594;&#187;</span></p></div></section>
+
+      <section class="build-systems section reveal" id="build-systems">
+        <div class="section-head">
+          <p class="kicker">AI SYSTEMS</p>
+          <h2>Intelligence designed around <span>your business.</span></h2>
+        </div>
+        <div class="build-systems-grid">
+          <article><span>01 / AI AGENT DEVELOPMENT</span><h3>Custom AI agents that reason, use approved tools and complete multi-step work.</h3><a href="architecture.html">Explore AI agents &#8594;</a></article>
+          <article><span>02 / AI AUTOMATION</span><h3>Intelligent workflows connecting your CRM, email, databases, APIs and operations.</h3><a href="services.html">Explore AI automation &#8594;</a></article>
+          <article><span>03 / RAG &amp; KNOWLEDGE AI</span><h3>Connect documents, databases and business systems to AI that retrieves relevant context, produces grounded responses and keeps answers tied to approved knowledge.</h3><a href="knowledge.html">Explore RAG systems &#8594;</a></article>
+          <article><span>04 / VOICE AI AGENTS</span><h3>Real-time voice agents that qualify, schedule, update systems and hand off.</h3><a href="voice.html">Explore voice AI &#8594;</a></article>
+          <article><span>05 / MULTI-AGENT SYSTEMS</span><h3>Specialized agents coordinated around one business objective and shared context.</h3><a href="multi-agent.html">Explore multi-agent systems &#8594;</a></article>
+          <article><span>06 / AI CRM AUTOMATION</span><h3>Lead routing, qualification, follow-up and CRM updates with human control.</h3><a href="ai-crm-automation.html">Explore CRM automation &#8594;</a></article>
+        </div>
+        <div class="integration-preview"><div><p class="kicker">INTEGRATIONS / CONNECTED SYSTEMS</p><h3>Connect the tools your operation already uses.</h3><p>Explore the automation, CRM, voice, API and database connectors that sit behind a working AI system.</p></div><a class="button button-secondary" href="technology.html">View integrations &#8594;</a></div>
+      </section>
+      <section class="system-process section reveal" id="system-process">
+        <div class="section-head">
+          <p class="kicker">SYSTEM FLOW</p>
+          <h2>From objective to verified result.</h2>
+        </div>
+        <div class="system-process-diagram" aria-label="AI system operating flow diagram">
+          <div class="process-node process-goal"><span>01</span><strong>Goal</strong><small>new lead objective</small></div>
+          <div class="process-arrow" aria-hidden="true">&#8594;</div>
+          <div class="process-node process-context"><span>02</span><strong>Context</strong><small>research signals</small></div>
+          <div class="process-arrow" aria-hidden="true">&#8594;</div>
+          <div class="process-node process-memory"><span>03</span><strong>Memory</strong><small>CRM history</small></div>
+          <div class="process-arrow" aria-hidden="true">&#8594;</div>
+          <div class="process-node process-reasoning"><span>04</span><strong>Reasoning</strong><small>lead qualification</small></div>
+          <div class="process-arrow" aria-hidden="true">&#8594;</div>
+          <div class="process-node process-tools"><span>05</span><strong>Tools</strong><small>sales agent tools</small></div>
+          <div class="process-arrow" aria-hidden="true">&#8594;</div>
+          <div class="process-node process-action"><span>06</span><strong>Action</strong><small>CRM update</small></div>
+          <div class="process-arrow" aria-hidden="true">&#8594;</div>
+          <div class="process-node process-verification"><span>07</span><strong>Verification</strong><small>human approval</small></div>
+          <div class="process-arrow" aria-hidden="true">&#8594;</div>
+          <div class="process-node process-result"><span>08</span><strong>Result</strong><small>follow-up verified</small></div>
+        </div>
+        <div class="system-process-demo">
+          <p class="kicker">LIVE CRM WORKFLOW</p>
+          <h3>Lead in. Decision out.</h3>
+        </div>
+      </section>
+      <section class="multi-agent section reveal" id="multi-agent">
+        <div class="multi-agent-intro">
+          <p class="kicker">MULTI-AGENT</p>
+          <h2>Why build one AI<br /><span>when you can build a team?</span></h2>
+          <p>Specialized AI agents work together under one orchestrator, sharing memory and business data to move complex work forward.</p>
+        </div>
+
+        <div class="multi-agent-architecture">
+          <p class="architecture-label">AI WORKFORCE ARCHITECTURE</p>
+          <div class="workforce-architecture-network" aria-label="Multi-agent AI workforce architecture">
+            <div class="workforce-human-node"><small>OBJECTIVE OWNER</small><strong>CEO / HUMAN</strong></div>
+            <i class="workforce-flow-arrow">&#8595;</i>
+            <div class="workforce-orchestrator-node"><small>COORDINATION CORE</small><strong>AI ORCHESTRATOR</strong><span><b></b> DELEGATING TASKS</span></div>
+            <i class="workforce-flow-arrow">&#8595;</i>
+            <div class="workforce-agent-row"><article><b>01</b><strong>RESEARCH</strong><small>AGENT</small></article><article><b>02</b><strong>SALES</strong><small>AGENT</small></article><article><b>03</b><strong>SUPPORT</strong><small>AGENT</small></article></div>
+            <div class="workforce-branch-lines" aria-hidden="true"><i></i><i></i><i></i></div>
+            <div class="workforce-agent-row workforce-capability-row"><article><b>&#8594;�</b><strong>DATA</strong><small>AGENT</small></article><article><b>&#8594;�</b><strong>CRM</strong><small>AGENT</small></article><article><b>&#8594;�</b><strong>VOICE</strong><small>AGENT</small></article></div>
+            <i class="workforce-flow-arrow">&#8595;</i>
+            <div class="workforce-memory-node"><strong>SHARED MEMORY</strong><small>context / decisions / results</small></div>
+            <i class="workforce-flow-arrow">&#8595;</i>
+            <div class="workforce-business-node">BUSINESS SYSTEMS <span>CONNECTED</span></div>
+          </div>
+        </div>
+
+        <div class="agent-collaboration">
+          <p class="architecture-label">AGENT-TO-AGENT COLLABORATION</p>
+          <div class="collaboration-list">
+            <div class="collaboration-step">
+              <span>Agent A</span>
+              <p>&#8594; need customer information.&#8594;</p>
+            </div>
+            <div class="collaboration-step">
+              <span>Agent B</span>
+              <p>I&#39;ll retrieve it from CRM.</p>
+            </div>
+            <div class="collaboration-step">
+              <span>Agent C</span>
+              <p>I&#39;ll analyze the customer&#39;s history.</p>
+            </div>
+            <div class="collaboration-step collaboration-step-active">
+              <span>Agent A</span>
+              <p>I&#39;ll use that information to complete the task.</p>
+            </div>
+          </div>
+          <p class="collaboration-note">An AI organization, rather than a single chatbot.</p>
+          <div class="agent-handoff" aria-label="Multi-agent handoff animation">
+            <div><span>NEW TASK</span><strong>Research Agent</strong><b>PROCESSING</b></div>
+            <i>&#8595;</i>
+            <div><span>HANDOFF</span><strong>Sales Agent</strong><b>RECEIVED</b></div>
+            <i>&#8595;</i>
+            <div><span>HANDOFF</span><strong>CRM Agent</strong><b>UPDATING</b></div>
+            <i>&#8595;</i>
+            <div class="handoff-verified"><span>ORCHESTRATOR</span><strong>System</strong><b>VERIFIED</b></div>
+          </div>
+        </div>
+      </section>
+      <section class="section reveal" id="tech-capabilities">
+        <div class="section-head">
+          <p class="kicker">ENTERPRISE AI CAPABILITIES</p>
+          <h2>The operating primitives of <span>reliable autonomy.</span></h2>
+        </div>
+
+        <div class="process-grid" style="margin-top: 2rem;">
+          <article class="process-card">
+            <span style="color: #8b7cff; font-weight: 700;">RESILIENCE</span>
+            <h3>Self-healing execution</h3>
+            <p>Automatic retries, fallback routes, and human escalation keep critical workflows observable and recoverable.</p>
+          </article>
+          <article class="process-card">
+            <span style="color: #8b7cff; font-weight: 700;">ENTITY INTELLIGENCE</span>
+            <h3>Structured digital authority</h3>
+            <p>Enrich business entities with structured context so search systems and AI models can understand what you do and where you operate.</p>
+          </article>
+          <article class="process-card">
+            <span style="color: #8b7cff; font-weight: 700;">CONVERSATIONAL SYSTEMS</span>
+            <h3>Voice agents that take action</h3>
+            <p>Real-time voice agents understand intent, use tools, book appointments, update records, and escalate with context.</p>
+          </article>
+          <article class="process-card">
+            <span style="color: #8b7cff; font-weight: 700;">KNOWLEDGE RETRIEVAL</span>
+            <h3>Grounded answers at scale</h3>
+            <p>Retrieve evidence from contracts, SOPs, PDFs, and records so every answer is contextual, permission-aware, and traceable.</p>
+          </article>
+        </div>
+
+        <div class="capability-list" aria-label="AI capabilities list">
+          <span class="capability-pill">AI Agents</span>
+          <span class="capability-pill">Multi-Agent Systems</span>
+          <span class="capability-pill">AI Automation</span>
+          <span class="capability-pill">Voice AI</span>
+          <span class="capability-pill">Computer Use</span>
+          <span class="capability-pill">Enterprise RAG</span>
+          <span class="capability-pill">AI Evaluation</span>
+          <span class="capability-pill">AI Infrastructure</span>
+        </div>
+      </section>
+      <section class="advanced-concepts section reveal" id="advanced-concepts">
+        <div class="section-head">
+          <p class="kicker">2026 AI SYSTEMS</p>
+          <h2>Advanced concepts behind <span>reliable AI.</span></h2>
+        </div>
+
+        <div class="advanced-concepts-grid">
+          <article><span>01</span><h3>Agentic AI</h3><p>AI systems that can pursue objectives rather than only respond.</p></article>
+          <article><span>02</span><h3>Multi-Agent Orchestration</h3><p>Multiple specialized agents working together.</p></article>
+          <article><span>03</span><h3>Long-Running Agents</h3><p>Agents that can maintain state across extended workflows.</p></article>
+          <article><span>04</span><h3>Agent Memory</h3><p>Short-term and long-term contextual memory.</p></article>
+          <article><span>05</span><h3>RAG</h3><p>AI grounded in proprietary business information.</p></article>
+          <article><span>06</span><h3>Knowledge Graphs</h3><p>Relationships between customers, products, documents, and business entities.</p></article>
+          <article><span>07</span><h3>Computer Use</h3><p>AI interacting with software interfaces.</p></article>
+          <article><span>08</span><h3>Multimodal AI</h3><p>Text, image, audio, video, and documents.</p></article>
+          <article><span>09</span><h3>AI Voice</h3><p>Real-time conversational systems.</p></article>
+          <article><span>10</span><h3>Model Routing</h3><p>Different AI models selected according to task complexity.</p></article>
+          <article><span>11</span><h3>AI Evaluation</h3><p>Measure whether AI actually performs correctly.</p></article>
+          <article><span>12</span><h3>AI Observability</h3><p>Monitor agent decisions, tools, latency, and failures.</p></article>
+          <article><span>13</span><h3>Guardrails</h3><p>Define what AI can and cannot do.</p></article>
+          <article><span>14</span><h3>Human-in-the-Loop</h3><p>Critical decisions remain reviewable.</p></article>
+          <article><span>15</span><h3>Self-Healing Workflows</h3><p>Failures can trigger retries, alternate paths, or human escalation.</p></article>
+        </div>
+      </section>
+
+                  <section class="reviews section reveal" id="reviews" style="padding: 4rem 0;">
+        <div class="section-head">
+          <p class="kicker">CLIENT REVIEWS &amp; ENTERPRISE PARTNERS</p>
+          <h2>Trusted by <span>real operations &amp; search leaders.</span></h2>
+        </div>
+        <div class="reviews-grid">
+          
+          <article class="review-card" data-source="seobenchmark">
+            <div class="review-header">
+              <div class="review-source-logo seobenchmark-logo" style="background:#0f172a; color:#22c55e; width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center;">
+                <i class="fa-solid fa-chart-line" style="color:#22c55e; font-size:1.1rem;"></i>
+              </div>
+              <div class="review-meta">
+                <strong>SEO Benchmark Engineering Team</strong>
+                <small>Search Intelligence â€¢ <a href="https://seobenchmark.com/" target="_blank" rel="noopener noreferrer" style="color:#7c3aed; text-decoration:none;">seobenchmark.com</a></small>
+              </div>
+            </div>
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-excerpt">"WHX Digital engineered autonomous AI search benchmarking and data extraction pipelines for SEO Benchmark. Their RAG knowledge systems gave our team 10x operational efficiency."</p>
+            <a href="knowledge.html" class="review-work-badge"><i class="fa-solid fa-brain"></i> Relevant Work: RAG &amp; Knowledge AI &#8594;</a>
+            <div class="review-footer">
+              <span class="review-date">Verified Partner</span>
+              <a href="https://seobenchmark.com/" target="_blank" rel="noopener noreferrer" class="review-link">Visit Client Site <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </article>
+
+        </div>
+        <div class="reviews-action" style="text-align: center; margin-top: 3rem;">
+           <a class="button button-secondary" href="reviews.html">View verified client review &#8594;</a>
+        </div>
+      </section>
+
+      <section class="section reveal" style="padding: 20px 0 60px; text-align: center;">
+        <p class="kicker" style="margin-bottom:20px;">BUILT WITH HUMAN CONTROL</p>
+        <div style="display:flex; justify-content:center; gap:30px; flex-wrap:wrap; margin-bottom:30px;">
+          <span style="font-family:'Space Grotesk', sans-serif; font-weight:700; color:#1f2430; display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-check-circle" style="color:#00b67a;"></i> Verified Actions</span>
+          <span style="font-family:'Space Grotesk', sans-serif; font-weight:700; color:#1f2430; display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-hand-paper" style="color:#7c3aed;"></i> Human Approval</span>
+          <span style="font-family:'Space Grotesk', sans-serif; font-weight:700; color:#1f2430; display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-network-wired" style="color:#2f68ff;"></i> Connected Systems</span>
+        </div>
+        <a class="button button-secondary" href="trust-center.html">Explore WHX Trust Center &#8594;</a>
+      </section>
+
+      <section class="section reveal" id="latest-insights">
+        <div class="section-head">
+          <p class="kicker">LATEST INSIGHTS</p>
+          <h2>Engineering notes on <span>AI automation.</span></h2>
+        </div>
+        <div class="insights-grid" style="padding:0; margin-bottom: 2rem;">
+          <a href="insights/ai-automation-for-business/index.html" class="insights-card">
+            <div>
+              <span class="insights-card-category">AI Automation</span>
+              <h3 class="insights-card-title">What Is AI Automation for Business?</h3>
+              <p class="insights-card-desc">An executive and technical guide to moving from rigid IF/THEN triggers to context-aware AI workflows that reason and execute.</p>
+            </div>
+            <div class="insights-card-footer">
+              <span>Sep 17, 2026 ? 6 min read</span>
+              <span class="insights-card-readmore">Read insight &#8594;</span>
+            </div>
+          </a>
+
+          <a href="insights/ai-agents-business-workflows/index.html" class="insights-card">
+            <div>
+              <span class="insights-card-category">AI Agents</span>
+              <h3 class="insights-card-title">How AI Agents Automate Business Workflows</h3>
+              <p class="insights-card-desc">Learn how autonomous digital workers plan, execute tool calls, verify outcomes, and handle complex multi-step operations.</p>
+            </div>
+            <div class="insights-card-footer">
+              <span>Sep 17, 2026 ? 7 min read</span>
+              <span class="insights-card-readmore">Read insight &#8594;</span>
+            </div>
+          </a>
+
+          <a href="insights/ai-agents-api-tool-calling/index.html" class="insights-card">
+            <div>
+              <span class="insights-card-category">API &amp; Integrations</span>
+              <h3 class="insights-card-title">How AI Agents Use APIs to Take Real Business Actions</h3>
+              <p class="insights-card-desc">Understanding function calling, OpenAPI schemas, sandboxed execution, and structured output parsing in agent design.</p>
+            </div>
+            <div class="insights-card-footer">
+              <span>Sep 17, 2026 ? 7 min read</span>
+              <span class="insights-card-readmore">Read insight &#8594;</span>
+            </div>
+          </a>
+        </div>
+        <div style="text-align: center;">
+          <a class="button button-secondary" href="insights/index.html">Explore All Insights &#8594;</a>
+        </div>
+      </section>
+
+      <section class="faq-section section reveal" id="faq">
+        <div class="faq-container">
+          <div class="section-head">
+            <p class="kicker">FREQUENTLY ASKED QUESTIONS</p>
+            <h2>Clear answers on <span>building AI systems.</span></h2>
+          </div>
+                      <div class="faq-grid">
+              <article class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false">
+                  <span>What does WHX Digital build?</span>
+                  <span class="faq-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                  <p>WHX Digital designs and builds production-ready AI automation systems for business operations. This includes custom AI agents, automated CRM workflows, RAG knowledge platforms, voice AI agents, and multi-agent orchestration systems that coordinate real work across your existing software.</p>
+                </div>
+              </article>
+              <article class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false">
+                  <span>Can WHX connect AI to our existing CRM?</span>
+                  <span class="faq-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                  <p>Yes. We integrate directly with your existing tech stack, including HubSpot, Salesforce, GoHighLevel, and custom databases.</p>
+                </div>
+              </article>
+              <article class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false">
+                  <span>Can you integrate OpenAI or Gemini APIs?</span>
+                  <span class="faq-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                  <p>Yes. We build using industry-leading AI models, integrating the OpenAI API, Google Gemini API, and Anthropic Claude depending on the specific reasoning or speed requirements of your workflow.</p>
+                </div>
+              </article>
+              <article class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false">
+                  <span>Do we need to replace our existing software?</span>
+                  <span class="faq-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                  <p>No. WHX AI agents act as digital workforce overlays on top of your current tools. They read signals from your existing databases, process logic via approved APIs, and update your current CRM seamlessly.</p>
+                </div>
+              </article>
+              <article class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false">
+                  <span>Can AI workflows require human approval?</span>
+                  <span class="faq-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                  <p>Absolutely. We build Human-in-the-Loop (HITL) checkpoints into high-impact workflows. The AI pauses execution and notifies your team for one-click approval before proceeding with sensitive actions.</p>
+                </div>
+              </article>
+              <article class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false">
+                  <span>Can WHX work with n8n and GoHighLevel?</span>
+                  <span class="faq-icon" aria-hidden="true"><i class="fa-solid fa-plus"></i></span>
+                </button>
+                <div class="faq-answer">
+                  <p>Yes, we are highly experienced in building custom integrations and agentic workflows using n8n and GoHighLevel to automate lead routing, follow-ups, and operational tasks.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+      <section class="cta-panel section reveal" id="connect">
+        <div class="final-cta final-cta-primary">
+          <div class="final-cta-copy">
+            <p class="kicker">AI STRATEGY / CONTACT</p>
+            <h3>Ready to build your AI workforce?</h3>
+            <p>Bring us one workflow. We?ll map the opportunity, architect the system, and show you the next practical step.</p>
+            <div class="support-sla-banner"><i class="fa-solid fa-clock-rotate-left"></i> Guaranteed &lt;24hr Response ? Direct AI Architect Support</div>
+          </div>
+          <div class="final-cta-actions-wrapper" style="display:flex; flex-direction:column; gap:16px;">
+            <div class="final-cta-actions">
+              <a class="button button-primary" href="https://www.linkedin.com/in/whxdigital/" target="_blank" rel="noopener noreferrer">LinkedIn &#8594;</a>
+              <a class="button button-secondary" href="https://www.upwork.com/freelancers/~0187ee99ef01623869?mp_source=share" target="_blank" rel="noopener noreferrer">Upwork &#8594;</a>
+            </div>
+            <div class="contact-emails" style="display:flex; flex-direction:column; gap:10px; margin-top:8px;">
+              <a href="mailto:info@whxdigital.com" style="color:#cbd5e1; text-decoration:none; font-size:15px; display:inline-flex; align-items:center; transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#cbd5e1'"><i class="fa-solid fa-envelope" style="margin-right:8px; color:#a78bfa;"></i>info@whxdigital.com</a>
+              <a href="mailto:whxdigital@gmail.com" style="color:#cbd5e1; text-decoration:none; font-size:15px; display:inline-flex; align-items:center; transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#cbd5e1'"><i class="fa-solid fa-envelope" style="margin-right:8px; color:#a78bfa;"></i>whxdigital@gmail.com</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+            
+                                <footer class="site-footer">
+      <div class="site-footer-inner">
+        <div class="site-footer-grid">
+          <div class="site-footer-col footer-brand-col">
+            <strong class="footer-name">WHX Digital</strong>
+            <p class="footer-tagline">Autonomous AI systems &amp; multi-agent workforce engineering for business operations.</p>
+            <div class="footer-badges">
+              <span class="footer-badge"><i class="fa-solid fa-shield-halved"></i> 99.9% SLA Verified</span>
+              <span class="footer-badge"><i class="fa-solid fa-hand-paper"></i> HITL Guardrails</span>
+            </div>
+          </div>
+          <div class="site-footer-col">
+            <h4>AI Systems</h4>
+            <ul>
+              <li><a href="/architecture.html">AI Agent Systems</a></li>
+              <li><a href="/multi-agent.html">Multi-Agent Workforce</a></li>
+              <li><a href="/ai-crm-automation.html">AI CRM Automation</a></li>
+              <li><a href="/n8n-automation.html">n8n Workflow Engines</a></li>
+              <li><a href="/voice.html">Real-Time Voice AI</a></li>
+              <li><a href="/knowledge.html">RAG Knowledge Systems</a></li>
+              <li><a href="/gohighlevel-automation.html">GoHighLevel Pipelines</a></li>
+            </ul>
+          </div>
+          <div class="site-footer-col">
+            <h4>Company &amp; Resources</h4>
+            <ul>
+              <li><a href="/about.html">About WHX Digital</a></li>
+              <li><a href="/services.html">Services Overview</a></li>
+              <li><a href="/insights/index.html">Engineering Insights</a></li>
+              <li><a href="/reviews.html">Client Reviews</a></li>
+              <li><a href="/technology.html">Integrations &amp; Stack</a></li>
+              <li><a href="/trust-center.html">Security &amp; Trust Center</a></li>
+              <li><a href="/insights/feed.xml">RSS Feed</a></li>
+            </ul>
+          </div>
+          <div class="site-footer-col footer-contact-col">
+            <h4>Connect &amp; Support</h4>
+            <ul class="footer-contact-links">
+              <li><a href="https://www.upwork.com/freelancers/~0187ee99ef01623869?mp_source=share" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-upwork brand-icon brand-upwork" style="color:#14a800 !important;"></i> Verified Upwork Profile</a></li>
+              <li><a href="https://www.linkedin.com/in/whxdigital/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin brand-icon brand-linkedin" style="color:#0a66c2 !important;"></i> LinkedIn Profile</a></li>
+              <li><a href="/contact.html"><i class="fa-solid fa-calendar-check"></i> Book Strategy Session</a></li>
+              <li><a href="mailto:info@whxdigital.com"><i class="fa-solid fa-envelope"></i> info@whxdigital.com</a></li>
+              <li><a href="mailto:whxdigital@gmail.com"><svg class="brand-icon brand-gmail" width="18" height="18" viewBox="0 0 24 24" fill="none" style="vertical-align: middle; margin-right:6px; transform:translateY(-1px);">
+  <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.818V11.729L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L12 10.684l8.073-7.191C21.691 2.279 24 3.434 24 5.457z" fill="#4285f4"/>
+  <path d="M12 16.64l6.545-4.91v9.273h3.818c.904 0 1.636-.732 1.636-1.636V5.457c0-2.023-2.309-3.178-3.927-1.964L12 10.684l-8.073-7.191C2.309 2.279 0 3.434 0 5.457v13.909c0 .904.732 1.636 1.636 1.636h3.818V11.729l6.545 4.91z" fill="#34a853"/>
+  <path d="M1.636 21.002h3.818V11.729L12 16.64l6.545-4.91v9.273h3.818c.904 0 1.636-.732 1.636-1.636V5.457c0-2.023-2.309-3.178-3.927-1.964L12 10.684l-8.073-7.191C2.309 2.279 0 3.434 0 5.457v13.909c0 .904.732 1.636 1.636 1.636z" fill="#ea4335"/>
+  <path d="M0 5.457v13.909c0 .904.732 1.636 1.636 1.636h3.818V11.729l-5.455-4.09z" fill="#c5221f"/>
+  <path d="M18.545 11.729v9.273h3.818c.904 0 1.636-.732 1.636-1.636V5.457z" fill="#fbbc04"/>
+  <path d="M12 16.64l6.545-4.91V5.457c0-2.023-2.309-3.178-3.927-1.964L12 10.684z" fill="#ea4335"/>
+</svg> whxdigital@gmail.com</a></li>
+            </ul>
+          </div>
+        </div>
+                <div class="site-footer-bottom" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.05); margin-top:40px;">
+          <div class="footer-copyright" style="color:#64748b; font-size:0.85rem;">&copy; 2026 WHX Digital. All rights reserved.</div>
+          <div class="footer-legal-links" style="display:flex; gap:16px; align-items:center;">
+            <a href="/privacy.html" style="color:#94a3b8; text-decoration:none; font-size:0.85rem; transition:color 0.2s;">Privacy Policy</a>
+            <span class="divider" style="color:#334155; font-size:0.8rem;">|</span>
+            <a href="/terms.html" style="color:#94a3b8; text-decoration:none; font-size:0.85rem; transition:color 0.2s;">Terms of Service</a>
+            <span class="divider" style="color:#334155; font-size:0.8rem;">|</span>
+            <a href="/trust-center.html" style="color:#94a3b8; text-decoration:none; font-size:0.85rem; transition:color 0.2s;">Security Audit</a>
+          </div>
+          <div class="footer-status-indicator" style="display:flex; align-items:center; gap:8px;">
+            <span class="status-dot" style="width:8px; height:8px; border-radius:50%; background:#10b981; box-shadow:0 0 8px rgba(16,185,129,0.5); display:inline-block; animation: pulseGreen 2s infinite;"></span>
+            <span class="status-text" style="color:#94a3b8; font-size:0.85rem; font-weight:600; letter-spacing:0.5px;">AI Systems Operational</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  
+    <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6ab59fae50fc24ace6f7fff6"></script>
+  
+<!-- Code Vibe Modal -->
+<div id="codeVibeModal" class="code-vibe-modal" style="display:none;">
+  <div class="code-vibe-window">
+    <div class="code-vibe-header">
+      
+      <div class="code-vibe-title">whx-systems-core.js</div>
+      <button class="code-vibe-close">&times;</button>
+    </div>
+    <div class="code-vibe-body">
+      <pre><code id="codeVibeContent"></code></pre>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
