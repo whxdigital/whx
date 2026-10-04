@@ -318,20 +318,55 @@
           <p class="section-subtitle">Before you automate, you need traffic and qualified inbound calls. WHX Digital executes data-backed local SEO, Google Maps 3-Pack optimization, authority citation building, and white-hat link acquisition to put your brand at the very top of Google.</p>
         </div>
 
+        <!-- Dual-Engine Quick Navigation Tabs -->
+        <div class="dual-engine-nav-bar" role="navigation" aria-label="Dual-Engine Services Switcher">
+          <a href="#search-services" class="engine-nav-tab is-active">
+            <span class="engine-indicator-dot green"></span>
+            <div class="engine-nav-text">
+              <strong>PRIORITY 01: SEARCH DOMINANCE</strong>
+              <span>Local SEO · Google Maps 3-Pack · Citations · Link Building</span>
+            </div>
+          </a>
+          <a href="#intelligent-layer" class="engine-nav-tab">
+            <span class="engine-indicator-dot blue"></span>
+            <div class="engine-nav-text">
+              <strong>PRIORITY 02: AI AUTOMATION</strong>
+              <span>Custom Agents · CRM Workflows · RAG · Autonomous Ops</span>
+            </div>
+          </a>
+        </div>
+
         <div class="search-services-grid">
-          <article class="search-service-card card-local-seo">
+          <!-- Service 1: Local SEO -->
+          <article class="search-service-card card-local-seo" id="local-seo">
             <div class="search-card-header">
-              <div class="search-icon-box"><i class="fa-solid fa-magnifying-glass-location"></i></div>
-              <span class="search-service-badge">HIGH INTENT TRAFFIC</span>
+              <div class="search-icon-box local-seo-accent" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none" class="saas-svg-icon" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="24" cy="24" r="20" stroke="url(#seo-grad-1)" stroke-width="2" stroke-dasharray="4 3" opacity="0.6"/>
+                  <circle cx="24" cy="24" r="12" stroke="url(#seo-grad-1)" stroke-width="2.5" opacity="0.9"/>
+                  <circle cx="24" cy="24" r="4" fill="#3b82f6"/>
+                  <line x1="24" y1="4" x2="24" y2="12" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="24" y1="36" x2="24" y2="44" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="4" y1="24" x2="12" y2="24" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="36" y1="24" x2="44" y2="24" stroke="#60a5fa" stroke-width="2.5" stroke-linecap="round"/>
+                  <defs>
+                    <linearGradient id="seo-grad-1" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#3b82f6"/>
+                      <stop offset="1" stop-color="#60a5fa"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <span class="search-service-badge badge-blue">HIGH INTENT TRAFFIC</span>
             </div>
             <span class="search-service-num">SERVICE 01</span>
             <h3>Local SEO Domination</h3>
-            <p class="search-service-desc">Target high-intent buyers searching in your city, district, and service areas. We architect localized on-page content, technical SEO, and schema markup that Google trusts.</p>
+            <p class="search-service-desc">Target buyers actively searching in your city, district, and surrounding radius. We architect localized on-page content, technical SEO architecture, and schema markup that Google trusts.</p>
             <ul class="search-feature-list">
-              <li><i class="fa-solid fa-check"></i> Geo-targeted keyword research &amp; localized page hierarchy</li>
-              <li><i class="fa-solid fa-check"></i> Hyper-local business schema &amp; JSON-LD entity markup</li>
-              <li><i class="fa-solid fa-check"></i> On-page technical SEO &amp; Core Web Vitals speed optimization</li>
-              <li><i class="fa-solid fa-check"></i> Zip-code &amp; city-level localized ranking tracking</li>
+              <li><i class="fa-solid fa-check"></i> Geo-targeted keyword research &amp; localized service-area pages</li>
+              <li><i class="fa-solid fa-check"></i> Hyper-local business schema &amp; JSON-LD entity graph markup</li>
+              <li><i class="fa-solid fa-check"></i> Core Web Vitals, speed engineering &amp; technical health audits</li>
+              <li><i class="fa-solid fa-check"></i> Zip-code &amp; neighborhood-level rank tracking telemetry</li>
             </ul>
             <div class="search-card-footer">
               <span class="search-impact-tag"><i class="fa-solid fa-chart-line"></i> Top Organic Search Positions</span>
@@ -339,19 +374,33 @@
             </div>
           </article>
 
-          <article class="search-service-card card-gmp">
+          <!-- Service 2: GMP / Google 3-Pack -->
+          <article class="search-service-card card-gmp" id="gmp-optimization">
             <div class="search-card-header">
-              <div class="search-icon-box gmp-accent"><i class="fa-solid fa-map-location-dot"></i></div>
+              <div class="search-icon-box gmp-accent" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none" class="saas-svg-icon" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M24 4C15.163 4 8 11.163 8 20C8 31.25 24 44 24 44C24 44 40 31.25 40 20C40 11.163 32.837 4 24 4Z" fill="url(#gmp-grad-1)" opacity="0.18"/>
+                  <path d="M24 4C15.163 4 8 11.163 8 20C8 31.25 24 44 24 44C24 44 40 31.25 40 20C40 11.163 32.837 4 24 4Z" stroke="url(#gmp-grad-1)" stroke-width="2.5" stroke-linejoin="round"/>
+                  <circle cx="24" cy="19" r="6" fill="#10b981"/>
+                  <path d="M21 19L23 21L27 17" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <defs>
+                    <linearGradient id="gmp-grad-1" x1="8" y1="4" x2="40" y2="44" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#10b981"/>
+                      <stop offset="1" stop-color="#34d399"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
               <span class="search-service-badge badge-cyan">TOP 3 MAP PACK</span>
             </div>
             <span class="search-service-num">SERVICE 02</span>
             <h3>GMP &amp; Google Business Profile Optimization</h3>
-            <p class="search-service-desc">70%+ of mobile local clicks go straight to the Google Maps 3-Pack. We optimize your Google Business Profile (GBP) to expand your ranking radius across every surrounding neighborhood.</p>
+            <p class="search-service-desc">Over 70% of high-intent mobile calls go straight to the Google Maps 3-Pack. We optimize your Google Business Profile (GBP) to expand your ranking radius across every surrounding neighborhood.</p>
             <ul class="search-feature-list">
-              <li><i class="fa-solid fa-check"></i> Complete GBP category, secondary category &amp; attribute audit</li>
+              <li><i class="fa-solid fa-check"></i> Complete GBP category, secondary category &amp; attribute optimization</li>
               <li><i class="fa-solid fa-check"></i> Geo-grid radius expansion &amp; localized ranking audits</li>
-              <li><i class="fa-solid fa-check"></i> Geo-tagged image asset syndication &amp; weekly GBP posting</li>
-              <li><i class="fa-solid fa-check"></i> Automated 5-star review velocity funnels &amp; spam fighting</li>
+              <li><i class="fa-solid fa-check"></i> Geo-tagged image syndication &amp; weekly algorithm-favored updates</li>
+              <li><i class="fa-solid fa-check"></i> Automated 5-star review velocity funnels &amp; competitor spam takedowns</li>
             </ul>
             <div class="search-card-footer">
               <span class="search-impact-tag"><i class="fa-solid fa-phone-volume"></i> 3x Inbound Calls &amp; Directions</span>
@@ -359,19 +408,37 @@
             </div>
           </article>
 
-          <article class="search-service-card card-citations">
+          <!-- Service 3: Citation Building -->
+          <article class="search-service-card card-citations" id="citations">
             <div class="search-card-header">
-              <div class="search-icon-box citations-accent"><i class="fa-solid fa-address-card"></i></div>
+              <div class="search-icon-box citations-accent" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none" class="saas-svg-icon" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="6" y="8" width="36" height="32" rx="6" stroke="url(#cit-grad-1)" stroke-width="2.5"/>
+                  <path d="M6 18H42" stroke="url(#cit-grad-1)" stroke-width="2"/>
+                  <circle cx="13" cy="13" r="2" fill="#06b6d4"/>
+                  <circle cx="19" cy="13" r="2" fill="#22d3ee"/>
+                  <path d="M14 26H28" stroke="#cbd5e1" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M14 32H22" stroke="#94a3b8" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="34" cy="29" r="5" fill="#06b6d4" opacity="0.3"/>
+                  <circle cx="34" cy="29" r="3" fill="#06b6d4"/>
+                  <defs>
+                    <linearGradient id="cit-grad-1" x1="6" y1="8" x2="42" y2="40" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#06b6d4"/>
+                      <stop offset="1" stop-color="#38bdf8"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
               <span class="search-service-badge badge-emerald">TRUST &amp; CONSISTENCY</span>
             </div>
             <span class="search-service-num">SERVICE 03</span>
             <h3>High-Authority Citation Building</h3>
-            <p class="search-service-desc">Inconsistent NAP (Name, Address, Phone) information is the #1 reason businesses drop in local maps. We build and clean up 100% manual, verified citations across top directories.</p>
+            <p class="search-service-desc">Inconsistent NAP (Name, Address, Phone) information is the #1 reason businesses drop in local maps. We build and clean up 100% manual, verified citations across top global and local directories.</p>
             <ul class="search-feature-list">
-              <li><i class="fa-solid fa-check"></i> 100% manual submission on tier-1 platforms (Yelp, Apple Maps, Bing, YellowPages)</li>
-              <li><i class="fa-solid fa-check"></i> Deep niche-specific &amp; city chamber directory placements</li>
-              <li><i class="fa-solid fa-check"></i> Inconsistent &amp; duplicate citation audit, suppression &amp; cleanup</li>
-              <li><i class="fa-solid fa-check"></i> Full login credentials &amp; live indexed link audit reports</li>
+              <li><i class="fa-solid fa-check"></i> 100% manual submission on tier-1 platforms (Apple Maps, Bing, Yelp, BBB)</li>
+              <li><i class="fa-solid fa-check"></i> Niche-specific industry portals &amp; local chamber directories</li>
+              <li><i class="fa-solid fa-check"></i> Duplicate listing audit, cleanup &amp; NAP conflict suppression</li>
+              <li><i class="fa-solid fa-check"></i> Full login credentials, live verification links &amp; indexing guarantee</li>
             </ul>
             <div class="search-card-footer">
               <span class="search-impact-tag"><i class="fa-solid fa-shield-halved"></i> 100% NAP Consistency &amp; Algorithm Trust</span>
@@ -379,19 +446,32 @@
             </div>
           </article>
 
-          <article class="search-service-card card-links">
+          <!-- Service 4: Link Building -->
+          <article class="search-service-card card-links" id="link-building">
             <div class="search-card-header">
-              <div class="search-icon-box links-accent"><i class="fa-solid fa-link"></i></div>
+              <div class="search-icon-box links-accent" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none" class="saas-svg-icon" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 16L24 12C28.418 7.582 35.582 7.582 40 12C44.418 16.418 44.418 23.582 40 28L36 32" stroke="url(#link-grad-1)" stroke-width="2.8" stroke-linecap="round"/>
+                  <path d="M28 32L24 36C19.582 40.418 12.418 40.418 8 36C3.582 31.582 3.582 24.418 8 20L12 16" stroke="url(#link-grad-1)" stroke-width="2.8" stroke-linecap="round"/>
+                  <line x1="18" y1="30" x2="30" y2="18" stroke="#a855f7" stroke-width="3" stroke-linecap="round"/>
+                  <defs>
+                    <linearGradient id="link-grad-1" x1="8" y1="8" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#a855f7"/>
+                      <stop offset="1" stop-color="#c084fc"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
               <span class="search-service-badge badge-purple">DOMAIN POWER</span>
             </div>
             <span class="search-service-num">SERVICE 04</span>
             <h3>Strategic Authority Link Building</h3>
-            <p class="search-service-desc">Outrank stubborn competitors with high-authority editorial backlinks. We secure white-hat, contextual links from real websites with genuine organic traffic and high Domain Authority (DA/DR).</p>
+            <p class="search-service-desc">Outrank competitors with high-authority editorial backlinks. We secure white-hat, contextual links from real websites with genuine organic traffic and high Domain Authority (DA/DR 40+ to 80+).</p>
             <ul class="search-feature-list">
-              <li><i class="fa-solid fa-check"></i> High DA/DR contextual editorial backlinks (DR 50+)</li>
-              <li><i class="fa-solid fa-check"></i> Niche-relevant guest article outreach &amp; authoritative editorial placements</li>
+              <li><i class="fa-solid fa-check"></i> High DA/DR contextual editorial backlinks (DR 40+ to 80+)</li>
+              <li><i class="fa-solid fa-check"></i> Niche-relevant guest editorial placements &amp; authentic outreach</li>
               <li><i class="fa-solid fa-check"></i> Digital PR, brand mentions &amp; competitive backlink gap closure</li>
-              <li><i class="fa-solid fa-check"></i> 100% white-hat, spam-free link profile protecting against Google updates</li>
+              <li><i class="fa-solid fa-check"></i> 100% white-hat, spam-free link profile protecting against Google core updates</li>
             </ul>
             <div class="search-card-footer">
               <span class="search-impact-tag"><i class="fa-solid fa-bolt"></i> Compounding Domain Authority</span>
@@ -400,7 +480,7 @@
           </article>
         </div>
 
-        <!-- Google Maps 3-Pack & Geo-Grid Radar Mockup -->
+        <!-- Google Maps 3-Pack & Geo-Grid Radar Interactive Mockup -->
         <div class="gmp-interactive-mockup-wrapper">
           <div class="mockup-header-strip">
             <div class="mockup-title">
@@ -409,67 +489,78 @@
               <span class="mockup-dot green"></span>
               <strong>WHX LOCAL SEARCH RADAR // REAL-TIME GEO-GRID SIMULATION</strong>
             </div>
-            <div class="mockup-status-tag"><i class="fa-solid fa-satellite-dish"></i> LIVE PROXIMITY AUDIT: 100% DOMINANCE</div>
+            <div class="mockup-status-tag" id="radar-live-status"><i class="fa-solid fa-satellite-dish"></i> LIVE PROXIMITY AUDIT: 100% DOMINANCE</div>
           </div>
           <div class="mockup-body-grid">
             <!-- Simulated Google Search & 3-Pack -->
             <div class="mockup-serp-col">
               <div class="mockup-search-bar">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <span>"best local services near me"</span>
-                <span class="search-tag-local">📍 Detected Location</span>
+                <span id="mockup-query-text">"best local services near me"</span>
+                <span class="search-tag-local" id="mockup-loc-tag">📍 Central District (0.0 km)</span>
               </div>
               <div class="mockup-3pack-list">
-                <div class="pack-item pack-item-winner">
-                  <div class="pack-rank-badge">#1</div>
+                <div class="pack-item pack-item-winner" id="winner-pack-item">
+                  <div class="pack-rank-badge" id="winner-rank-badge">#1</div>
                   <div class="pack-info">
-                    <strong>Your Business (WHX Optimized)</strong>
-                    <div class="pack-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span>5.0 (240+ Reviews)</span></div>
-                    <p>Verified Google Business Profile · Open 24/7</p>
-                    <span class="pack-action-chip"><i class="fa-solid fa-phone"></i> Inbound Calls Flowing</span>
+                    <strong id="winner-biz-name">Your Business (WHX Optimized)</strong>
+                    <div class="pack-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span id="winner-reviews-text">5.0 (240+ Verified Reviews)</span></div>
+                    <p id="winner-desc-text">Verified Google Business Profile · Open 24/7 · Instant AI Booking</p>
+                    <span class="pack-action-chip"><i class="fa-solid fa-phone"></i> Inbound Calls Flowing Automatically</span>
                   </div>
                 </div>
                 <div class="pack-item pack-item-competitor">
                   <div class="pack-rank-badge">#2</div>
                   <div class="pack-info">
                     <span>Competitor A</span>
-                    <small>4.2 (38 reviews) · Closes 5 PM</small>
+                    <small>4.2 (38 reviews) · Missing secondary categories · Closes 5 PM</small>
                   </div>
                 </div>
                 <div class="pack-item pack-item-competitor">
                   <div class="pack-rank-badge">#3</div>
                   <div class="pack-info">
                     <span>Competitor B</span>
-                    <small>3.9 (14 reviews) · Inconsistent citations</small>
+                    <small>3.9 (14 reviews) · Inconsistent citations · No schema markup</small>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Simulated Geo-Grid 3x3 Radar -->
+            <!-- Simulated Geo-Grid 3x3 Radar with Real-Time Interactivity -->
             <div class="mockup-radar-col">
               <div class="radar-header">
                 <strong>25KM GEO-GRID PROXIMITY MAPPING</strong>
-                <small>Average Rank Across All Local Nodes: <span>1.0</span></small>
+                <small>Click any node to inspect localized ranking:</small>
               </div>
-              <div class="geogrid-radar-map">
-                <div class="grid-node-dot" title="Node 1: Rank #1"><span>1</span><small>North</small></div>
-                <div class="grid-node-dot" title="Node 2: Rank #1"><span>1</span><small>NW</small></div>
-                <div class="grid-node-dot" title="Node 3: Rank #1"><span>1</span><small>NE</small></div>
-                <div class="grid-node-dot center-pin" title="Business Location: Rank #1"><span>★</span><small>Center</small></div>
-                <div class="grid-node-dot" title="Node 5: Rank #1"><span>1</span><small>West</small></div>
-                <div class="grid-node-dot" title="Node 6: Rank #1"><span>1</span><small>East</small></div>
-                <div class="grid-node-dot" title="Node 7: Rank #1"><span>1</span><small>SW</small></div>
-                <div class="grid-node-dot" title="Node 8: Rank #1"><span>1</span><small>South</small></div>
-                <div class="grid-node-dot" title="Node 9: Rank #1"><span>1</span><small>SE</small></div>
+              <div class="geogrid-radar-map" id="whx-radar-map" role="region" aria-label="Interactive 25km Geo-Grid Radar">
+                <button type="button" class="grid-node-dot" data-node="nw" data-dist="7.8 km" data-name="Northwest Suburb" data-searches="1,840" data-calls="+290%" aria-label="Northwest Node: Rank 1"><span>1</span><small>NW</small></button>
+                <button type="button" class="grid-node-dot" data-node="n" data-dist="6.2 km" data-name="North Corridor" data-searches="2,400" data-calls="+310%" aria-label="North Node: Rank 1"><span>1</span><small>North</small></button>
+                <button type="button" class="grid-node-dot" data-node="ne" data-dist="8.5 km" data-name="Northeast Tech Hub" data-searches="1,650" data-calls="+275%" aria-label="Northeast Node: Rank 1"><span>1</span><small>NE</small></button>
+                <button type="button" class="grid-node-dot" data-node="w" data-dist="5.1 km" data-name="West District" data-searches="2,900" data-calls="+330%" aria-label="West Node: Rank 1"><span>1</span><small>West</small></button>
+                <button type="button" class="grid-node-dot center-pin is-active" data-node="c" data-dist="0.0 km" data-name="Metro Downtown Center" data-searches="5,200" data-calls="+420%" aria-label="Downtown Center Node: Rank 1"><span>★</span><small>Center</small></button>
+                <button type="button" class="grid-node-dot" data-node="e" data-dist="5.4 km" data-name="East Commercial Zone" data-searches="2,750" data-calls="+320%" aria-label="East Node: Rank 1"><span>1</span><small>East</small></button>
+                <button type="button" class="grid-node-dot" data-node="sw" data-dist="9.1 km" data-name="Southwest Heights" data-searches="1,420" data-calls="+260%" aria-label="Southwest Node: Rank 1"><span>1</span><small>SW</small></button>
+                <button type="button" class="grid-node-dot" data-node="s" data-dist="6.8 km" data-name="South Industrial Hub" data-searches="2,100" data-calls="+295%" aria-label="South Node: Rank 1"><span>1</span><small>South</small></button>
+                <button type="button" class="grid-node-dot" data-node="se" data-dist="8.9 km" data-name="Southeast Gateway" data-searches="1,580" data-calls="+280%" aria-label="Southeast Node: Rank 1"><span>1</span><small>SE</small></button>
               </div>
-              <p class="radar-caption"><i class="fa-solid fa-circle-check" style="color:#10b981;"></i> All 9 Local Radar Nodes Ranked #1 in Google Maps</p>
+              <div class="radar-node-telemetry" id="radar-telemetry-box">
+                <div class="telemetry-item">
+                  <span class="tele-label">ACTIVE NODE:</span>
+                  <strong class="tele-val" id="tele-node-name">Metro Downtown Center (0.0 km)</strong>
+                </div>
+                <div class="telemetry-pills">
+                  <span class="tele-pill"><i class="fa-solid fa-crown" style="color:#f59e0b;"></i> Rank: <strong id="tele-rank">#1 Position</strong></span>
+                  <span class="tele-pill"><i class="fa-solid fa-magnifying-glass"></i> Volume: <strong id="tele-vol">5,200/mo</strong></span>
+                  <span class="tele-pill"><i class="fa-solid fa-phone"></i> Inbound Calls: <strong id="tele-calls">+420%</strong></span>
+                </div>
+              </div>
+              <p class="radar-caption"><i class="fa-solid fa-circle-check" style="color:#10b981;"></i> 100% Green Geo-Grid Across 25KM Territory</p>
             </div>
           </div>
         </div>
 
-        <!-- GEO & AIO Optimization Feature Block -->
-        <div class="aio-geo-block">
+        <!-- Generative Engine Optimization (GEO) & AIO Interactive Simulator Block -->
+        <div class="aio-geo-block" id="geo-aio">
           <div class="aio-geo-copy">
             <span class="aio-badge"><i class="fa-solid fa-wand-magic-sparkles"></i> NEXT-GEN AI SEARCH ENGINE VISIBILITY</span>
             <h3>Generative Engine Optimization (GEO) &amp; AIO</h3>
@@ -478,21 +569,115 @@
               <span><i class="fa-brands fa-google"></i> Google AI Overviews</span>
               <span><i class="fa-solid fa-robot"></i> ChatGPT Search</span>
               <span><i class="fa-solid fa-compass"></i> Perplexity AI</span>
-              <span><i class="fa-solid fa-map-pin"></i> Apple &amp; Bing Maps</span>
+              <span><i class="fa-solid fa-brain"></i> Claude 3.7 &amp; Gemini</span>
+            </div>
+            <div class="aio-stats-summary-row">
+              <div class="aio-mini-metric">
+                <strong>+340%</strong>
+                <small>AI Citation Frequency</small>
+              </div>
+              <div class="aio-mini-metric">
+                <strong>100%</strong>
+                <small>Entity Resolution Match</small>
+              </div>
+              <div class="aio-mini-metric">
+                <strong>#1</strong>
+                <small>Recommended Authority</small>
+              </div>
             </div>
           </div>
-          <div class="aio-geo-stats">
-            <div class="aio-stat-card">
-              <strong>+340%</strong>
-              <span>AI Citation Frequency</span>
+
+          <!-- Interactive AI Search Engine Simulator -->
+          <div class="aio-terminal-simulator" aria-label="Interactive AI Engine Citation Simulator">
+            <div class="aio-terminal-header">
+              <div class="aio-terminal-tabs">
+                <button type="button" class="aio-tab is-active" data-engine="chatgpt"><i class="fa-solid fa-robot"></i> ChatGPT Search</button>
+                <button type="button" class="aio-tab" data-engine="perplexity"><i class="fa-solid fa-compass"></i> Perplexity AI</button>
+                <button type="button" class="aio-tab" data-engine="google-ai"><i class="fa-brands fa-google"></i> Google AI Overview</button>
+              </div>
+              <span class="aio-live-indicator"><i class="fa-solid fa-circle"></i> GEO SYNTHESIS</span>
             </div>
-            <div class="aio-stat-card">
-              <strong>100%</strong>
-              <span>Entity Resolution Match</span>
+            
+            <div class="aio-terminal-content">
+              <div class="aio-prompt-bubble">
+                <i class="fa-solid fa-user user-query-icon"></i>
+                <div class="prompt-text">
+                  <span class="prompt-label">USER PROMPT</span>
+                  <p id="aio-prompt-query">"Who is the top-rated local specialist for urgent high-end services in this city?"</p>
+                </div>
+              </div>
+
+              <div class="aio-reasoning-stream">
+                <div class="reasoning-pill">
+                  <i class="fa-solid fa-microchip"></i>
+                  <span>Reasoning: Evaluating 140+ verified citations, NAP consistency &amp; Google 3-Pack authority...</span>
+                </div>
+              </div>
+
+              <div class="aio-response-box" id="aio-response-body">
+                <div class="ai-answer-header">
+                  <span class="ai-bot-avatar" id="aio-engine-avatar"><i class="fa-solid fa-robot"></i></span>
+                  <strong id="aio-engine-title">ChatGPT Search (GPT-4o Web Reasoning)</strong>
+                </div>
+                <p id="aio-answer-text">
+                  Based on verified local citations, continuous 5.0-star Google reviews, and unblemished directory consistency across Apple Maps, Yelp, and official chambers of commerce, <strong>Your Business (WHX Partner)</strong> is recognized as the top-rated provider. They feature 24/7 immediate response times, automated scheduling, and full licensed territory coverage.
+                </p>
+                <div class="aio-citations-row" id="aio-citations-container">
+                  <span class="cite-chip"><i class="fa-brands fa-google"></i> [1] Google Maps 3-Pack (5.0 ★)</span>
+                  <span class="cite-chip"><i class="fa-solid fa-building-columns"></i> [2] Chamber Directory (Verified)</span>
+                  <span class="cite-chip"><i class="fa-solid fa-shield"></i> [3] BBB Accredited A+</span>
+                </div>
+              </div>
             </div>
-            <div class="aio-stat-card">
-              <strong>#1</strong>
-              <span>Recommended Authority</span>
+          </div>
+        </div>
+
+        <!-- Interactive Local Search & AI Growth ROI Calculator -->
+        <div class="saas-roi-calculator-block" id="roi-calculator">
+          <div class="roi-calc-header">
+            <span class="growth-pill"><i class="fa-solid fa-calculator"></i> REAL-TIME REVENUE SIMULATOR</span>
+            <h3>Calculate Your Growth Potential from Google Maps &amp; AI</h3>
+            <p>See the compounding revenue impact when your business dominates the Google Maps 3-Pack and uses autonomous AI agents to respond to every incoming lead in under 15 seconds.</p>
+          </div>
+
+          <div class="roi-calc-grid">
+            <div class="roi-inputs-col">
+              <div class="roi-input-group">
+                <div class="roi-label-row">
+                  <label for="avg-deal-value">Average Customer / Project Value:</label>
+                  <strong id="val-deal-display">$1,500</strong>
+                </div>
+                <input type="range" id="avg-deal-value" min="200" max="10000" step="100" value="1500" class="roi-slider" />
+                <div class="slider-marks"><span>$200</span><span>$5,000</span><span>$10,000+</span></div>
+              </div>
+
+              <div class="roi-input-group">
+                <div class="roi-label-row">
+                  <label for="monthly-searches">Monthly Local Searches in Your Area:</label>
+                  <strong id="val-searches-display">3,000</strong>
+                </div>
+                <input type="range" id="monthly-searches" min="500" max="15000" step="250" value="3000" class="roi-slider" />
+                <div class="slider-marks"><span>500</span><span>7,500</span><span>15,000+</span></div>
+              </div>
+            </div>
+
+            <div class="roi-outputs-col">
+              <div class="roi-metric-card highlight">
+                <span class="roi-metric-label">Projected New Monthly Revenue</span>
+                <strong class="roi-metric-val" id="roi-total-revenue">$46,200<small>/mo</small></strong>
+                <span class="roi-metric-sub">From #1 Google Maps 3-Pack + 24/7 AI Follow-Up</span>
+              </div>
+              <div class="roi-sub-metrics">
+                <div class="roi-mini-card">
+                  <strong id="roi-calls-count">660</strong>
+                  <span>Inbound Calls &amp; Leads</span>
+                </div>
+                <div class="roi-mini-card">
+                  <strong id="roi-deals-count">31</strong>
+                  <span>Closed Clients / Mo</span>
+                </div>
+              </div>
+              <a href="#connect" class="button button-primary roi-cta-button">Claim Your Territory Dominance Audit &#8594;</a>
             </div>
           </div>
         </div>

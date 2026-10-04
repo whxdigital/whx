@@ -2868,4 +2868,140 @@ runHealthDiagnostic();`;
       if (typingTimeout) clearTimeout(typingTimeout);
     });
   }
+
+  // ==============================================================
+  // WHX SAAS INTERACTIVE SYSTEMS: RADAR, GEO SIMULATOR & ROI CALC
+  // ==============================================================
+
+  // 1. Interactive 25km Geo-Grid Radar
+  const radarMap = document.getElementById("whx-radar-map");
+  if (radarMap) {
+    const radarNodes = radarMap.querySelectorAll(".grid-node-dot");
+    const teleNodeName = document.getElementById("tele-node-name");
+    const teleRank = document.getElementById("tele-rank");
+    const teleVol = document.getElementById("tele-vol");
+    const teleCalls = document.getElementById("tele-calls");
+    const mockupLocTag = document.getElementById("mockup-loc-tag");
+    const winnerPack = document.getElementById("winner-pack-item");
+
+    radarNodes.forEach((node) => {
+      node.addEventListener("click", () => {
+        radarNodes.forEach((n) => n.classList.remove("is-active"));
+        node.classList.add("is-active");
+
+        const name = node.getAttribute("data-name") || "Downtown Center";
+        const dist = node.getAttribute("data-dist") || "0.0 km";
+        const searches = node.getAttribute("data-searches") || "3,000";
+        const calls = node.getAttribute("data-calls") || "+350%";
+
+        if (teleNodeName) teleNodeName.textContent = `${name} (${dist})`;
+        if (teleVol) teleVol.textContent = `${searches}/mo`;
+        if (teleCalls) teleCalls.textContent = calls;
+        if (mockupLocTag) mockupLocTag.textContent = `📍 ${name} (${dist})`;
+
+        if (winnerPack) {
+          winnerPack.style.transition = "transform 0.2s ease, box-shadow 0.2s ease";
+          winnerPack.style.transform = "scale(1.02)";
+          winnerPack.style.boxShadow = "0 0 25px rgba(16, 185, 129, 0.4)";
+          setTimeout(() => {
+            winnerPack.style.transform = "scale(1)";
+            winnerPack.style.boxShadow = "";
+          }, 350);
+        }
+      });
+    });
+  }
+
+  // 2. Interactive GEO & AIO AI Engine Simulator
+  const aioTabs = document.querySelectorAll(".aio-tab");
+  if (aioTabs.length) {
+    const aioEngineAvatar = document.getElementById("aio-engine-avatar");
+    const aioEngineTitle = document.getElementById("aio-engine-title");
+    const aioAnswerText = document.getElementById("aio-answer-text");
+    const aioCitationsContainer = document.getElementById("aio-citations-container");
+
+    const engineData = {
+      chatgpt: {
+        avatar: '<i class="fa-solid fa-robot"></i>',
+        title: "ChatGPT Search (GPT-4o Web Reasoning)",
+        answer: "Based on verified local citations, continuous 5.0-star Google reviews, and unblemished directory consistency across Apple Maps, Yelp, and official chambers of commerce, <strong>Your Business (WHX Partner)</strong> is recognized as the top-rated provider. They feature 24/7 immediate response times, automated scheduling, and full licensed territory coverage.",
+        citations: [
+          '<span class="cite-chip"><i class="fa-brands fa-google"></i> [1] Google Maps 3-Pack (5.0 ★)</span>',
+          '<span class="cite-chip"><i class="fa-solid fa-building-columns"></i> [2] Chamber Directory (Verified)</span>',
+          '<span class="cite-chip"><i class="fa-solid fa-shield"></i> [3] BBB Accredited A+</span>'
+        ]
+      },
+      perplexity: {
+        avatar: '<i class="fa-solid fa-compass"></i>',
+        title: "Perplexity AI Pro (Sonar Online Citation Graph)",
+        answer: "The consensus choice for top local services across independent web directories is <strong>Your Business (WHX Partner)</strong> [1]. Key ranking signals include high-authority local backlinks [2], 100% NAP consistency across 60+ directories [3], and automated instant booking workflows that eliminate lead drop-off.",
+        citations: [
+          '<span class="cite-chip"><i class="fa-solid fa-link"></i> [1] perplexity.ai/search/sources</span>',
+          '<span class="cite-chip"><i class="fa-solid fa-globe"></i> [2] Local News Editorial Backlinks</span>',
+          '<span class="cite-chip"><i class="fa-solid fa-check-double"></i> [3] Synced NAP Schema Graph</span>'
+        ]
+      },
+      "google-ai": {
+        avatar: '<i class="fa-brands fa-google"></i>',
+        title: "Google AI Overviews (Gemini Multi-Modal Engine)",
+        answer: "Google AI Overview synthesizes that <strong>Your Business (WHX Partner)</strong> holds the #1 verified position in the local Maps 3-Pack with a 5.0-star rating over 240+ reviews. They maintain active geo-tagged photos, complete entity schema, and instant 24/7 AI-assisted customer communication.",
+        citations: [
+          '<span class="cite-chip"><i class="fa-brands fa-google"></i> [1] Google Business Profile (Primary)</span>',
+          '<span class="cite-chip"><i class="fa-solid fa-map-location-dot"></i> [2] Local 3-Pack Geo-Grid #1</span>',
+          '<span class="cite-chip"><i class="fa-solid fa-star"></i> [3] Verified Customer Sentiment 100%</span>'
+        ]
+      }
+    };
+
+    aioTabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        aioTabs.forEach((t) => t.classList.remove("is-active"));
+        tab.classList.add("is-active");
+
+        const engine = tab.getAttribute("data-engine") || "chatgpt";
+        const data = engineData[engine];
+        if (data) {
+          if (aioEngineAvatar) aioEngineAvatar.innerHTML = data.avatar;
+          if (aioEngineTitle) aioEngineTitle.textContent = data.title;
+          if (aioAnswerText) aioAnswerText.innerHTML = data.answer;
+          if (aioCitationsContainer) aioCitationsContainer.innerHTML = data.citations.join("");
+        }
+      });
+    });
+  }
+
+  // 3. Interactive Local Search & AI Growth ROI Calculator
+  const dealSlider = document.getElementById("avg-deal-value");
+  const searchesSlider = document.getElementById("monthly-searches");
+
+  if (dealSlider && searchesSlider) {
+    const valDealDisplay = document.getElementById("val-deal-display");
+    const valSearchesDisplay = document.getElementById("val-searches-display");
+    const roiTotalRev = document.getElementById("roi-total-revenue");
+    const roiCallsCount = document.getElementById("roi-calls-count");
+    const roiDealsCount = document.getElementById("roi-deals-count");
+
+    const updateRoiCalculation = () => {
+      const dealVal = parseInt(dealSlider.value, 10) || 1500;
+      const searches = parseInt(searchesSlider.value, 10) || 3000;
+
+      if (valDealDisplay) valDealDisplay.textContent = `$${dealVal.toLocaleString()}`;
+      if (valSearchesDisplay) valSearchesDisplay.textContent = `${searches.toLocaleString()}`;
+
+      // In Google 3-Pack, ~22% click or call directly
+      const estCalls = Math.round(searches * 0.22);
+      // AI response under 15s converts at ~4.8% of search volume into closed clients
+      const estDeals = Math.max(1, Math.round(estCalls * 0.048));
+      const projectedRevenue = estDeals * dealVal;
+
+      if (roiCallsCount) roiCallsCount.textContent = estCalls.toLocaleString();
+      if (roiDealsCount) roiDealsCount.textContent = estDeals.toLocaleString();
+      if (roiTotalRev) roiTotalRev.innerHTML = `$${projectedRevenue.toLocaleString()}<small>/mo</small>`;
+    };
+
+    dealSlider.addEventListener("input", updateRoiCalculation);
+    searchesSlider.addEventListener("input", updateRoiCalculation);
+    updateRoiCalculation();
+  }
 });
+

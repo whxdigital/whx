@@ -25243,33 +25243,596 @@ input.invalid, textarea.invalid {
   color: var(--accent-purple, #7c3aed);
 }
 
-.aio-geo-stats {
+/* Dual-Engine Navigation Switcher */
+.dual-engine-nav-bar {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 32px 0 40px;
 }
 
-.aio-stat-card {
-  background: rgba(255, 255, 255, 0.03);
+.engine-nav-tab {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(15, 23, 42, 0.65);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 16px 22px;
   border-radius: 14px;
-  padding: 16px 20px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+}
+
+.engine-nav-tab:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+.engine-nav-tab.is-active {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(16, 185, 129, 0.08));
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.12);
+}
+
+.engine-indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px currentColor;
+}
+.engine-indicator-dot.green { background: #10b981; color: #10b981; }
+.engine-indicator-dot.blue { background: #3b82f6; color: #3b82f6; }
+
+.engine-nav-text strong {
+  display: block;
+  font-size: 0.86rem;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+  font-family: var(--font-display, "Space Grotesk", sans-serif);
+}
+
+.engine-nav-text span {
+  display: block;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+/* SaaS Vector SVGs */
+.saas-svg-icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.search-service-card:hover .saas-svg-icon {
+  transform: scale(1.1) rotate(2deg);
+}
+
+.search-icon-box.local-seo-accent {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.22) 0%, rgba(59, 130, 246, 0.04) 70%);
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+/* Interactive Radar Improvements */
+.geogrid-radar-map button.grid-node-dot {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  cursor: pointer;
+  outline: none;
+  font-family: inherit;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  border-radius: 8px;
+}
+
+.geogrid-radar-map button.grid-node-dot:hover,
+.geogrid-radar-map button.grid-node-dot.is-active {
+  background: rgba(16, 185, 129, 0.35);
+  border-color: #34d399;
+  transform: scale(1.12);
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.6);
+}
+
+.geogrid-radar-map button.grid-node-dot.is-active::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 12px;
+  border: 2px solid #34d399;
+  animation: radar-pulse 1.8s infinite;
+}
+
+@keyframes radar-pulse {
+  0% { transform: scale(0.95); opacity: 0.9; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+
+.radar-node-telemetry {
+  margin-top: 14px;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.8rem;
+}
+
+.telemetry-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 6px;
 }
 
-.aio-stat-card strong {
+.tele-label {
+  color: #64748b;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.tele-val {
+  color: #38bdf8;
+  font-size: 0.82rem;
+}
+
+.telemetry-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tele-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 0.74rem;
+  color: #cbd5e1;
+}
+
+.tele-pill strong {
+  color: #ffffff;
+}
+
+/* GEO/AIO Interactive Terminal Simulator */
+.aio-terminal-simulator {
+  background: #090d16;
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(124, 58, 237, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.aio-terminal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 10px 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.aio-terminal-tabs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.aio-tab {
+  background: transparent;
+  border: 1px solid transparent;
+  color: #94a3b8;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: all 0.2s ease;
+}
+
+.aio-tab:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.aio-tab.is-active {
+  background: rgba(124, 58, 237, 0.2);
+  border-color: rgba(124, 58, 237, 0.45);
+  color: #c084fc;
+}
+
+.aio-live-indicator {
+  font-size: 0.72rem;
+  color: #10b981;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.aio-live-indicator i {
+  font-size: 0.5rem;
+  animation: pulse-dot 1.4s infinite;
+}
+
+.aio-terminal-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.aio-prompt-bubble {
+  display: flex;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+
+.user-query-icon {
+  color: #38bdf8;
+  margin-top: 3px;
+  font-size: 0.95rem;
+}
+
+.prompt-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.prompt-text p {
+  margin: 4px 0 0;
+  font-size: 0.9rem;
+  color: #f1f5f9;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.aio-reasoning-stream {
+  display: flex;
+  align-items: center;
+}
+
+.reasoning-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 0.76rem;
+  color: #d8b4fe;
+  line-height: 1.4;
+}
+
+.reasoning-pill i {
+  color: #a855f7;
+}
+
+.aio-response-box {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.ai-answer-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.ai-bot-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #7c3aed, #3b82f6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 0.82rem;
+}
+
+.ai-answer-header strong {
+  font-size: 0.88rem;
+  color: #ffffff;
   font-family: var(--font-display, "Space Grotesk", sans-serif);
-  font-size: 1.6rem;
-  font-weight: 800;
+}
+
+.aio-response-box p {
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin: 0 0 14px;
+}
+
+.aio-response-box p strong {
   color: #38bdf8;
 }
 
-.aio-stat-card span {
-  font-size: 0.86rem;
+.aio-citations-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cite-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.74rem;
+  color: #94a3b8;
+}
+
+.aio-stats-summary-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.aio-mini-metric {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+}
+
+.aio-mini-metric strong {
+  display: block;
+  font-size: 1.35rem;
+  color: #38bdf8;
+  font-family: var(--font-display, "Space Grotesk", sans-serif);
+}
+
+.aio-mini-metric small {
+  display: block;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+/* SaaS ROI Calculator Block */
+.saas-roi-calculator-block {
+  margin-top: 48px;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.6));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 40px 36px;
+  backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+}
+
+.saas-roi-calculator-block::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #10b981, #7c3aed);
+}
+
+.roi-calc-header {
+  max-width: 680px;
+  margin-bottom: 32px;
+}
+
+.roi-calc-header h3 {
+  font-family: var(--font-display, "Space Grotesk", sans-serif);
+  font-size: 1.75rem;
+  color: #ffffff;
+  margin: 10px 0 8px;
+}
+
+.roi-calc-header p {
+  color: #94a3b8;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.roi-calc-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.roi-inputs-col {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.roi-input-group {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 20px 22px;
+}
+
+.roi-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.roi-label-row label {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  font-weight: 500;
+}
+
+.roi-label-row strong {
+  font-size: 1.25rem;
+  color: #38bdf8;
+  font-family: var(--font-display, "Space Grotesk", sans-serif);
+}
+
+.roi-slider {
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: #1e293b;
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.roi-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #3b82f6;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.roi-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.slider-marks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+.roi-outputs-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.roi-metric-card.highlight {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.18), rgba(16, 185, 129, 0.15));
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  border-radius: 20px;
+  padding: 28px 24px;
+  text-align: center;
+  box-shadow: 0 12px 36px rgba(59, 130, 246, 0.12);
+}
+
+.roi-metric-label {
+  display: block;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+.roi-metric-val {
+  display: block;
+  font-family: var(--font-display, "Space Grotesk", sans-serif);
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 6px 0;
+  text-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+}
+
+.roi-metric-val small {
+  font-size: 1.2rem;
   color: #94a3b8;
   font-weight: 500;
+}
+
+.roi-metric-sub {
+  display: block;
+  font-size: 0.8rem;
+  color: #34d399;
+  font-weight: 500;
+}
+
+.roi-sub-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.roi-mini-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 14px 18px;
+  text-align: center;
+}
+
+.roi-mini-card strong {
+  display: block;
+  font-size: 1.5rem;
+  color: #f1f5f9;
+  font-family: var(--font-display, "Space Grotesk", sans-serif);
+}
+
+.roi-mini-card span {
+  display: block;
+  font-size: 0.76rem;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.roi-cta-button {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  padding: 14px 20px;
+}
+
+@media (max-width: 900px) {
+  .dual-engine-nav-bar {
+    grid-template-columns: 1fr;
+  }
+  .roi-calc-grid {
+    grid-template-columns: 1fr;
+  }
+  .saas-roi-calculator-block {
+    padding: 24px 20px;
+  }
+  .aio-terminal-simulator {
+    margin-top: 20px;
+  }
 }
 
 
