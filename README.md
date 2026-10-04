@@ -1,5 +1,8 @@
 # WHX Digital (`whxdigital.com`)
 
+[![Deploy to GitHub Pages](https://github.com/whxdigital/whx/actions/workflows/deploy.yml/badge.svg)](https://github.com/whxdigital/whx/actions/workflows/deploy.yml)
+[![Website Status](https://img.shields.io/website?url=https%3A%2F%2Fwhxdigital.com)](https://whxdigital.com)
+
 Production-ready digital growth agency specializing in **Local SEO, Google Maps (GMP) Optimization, Citation Building, Authority Link Building**, and **AI Business Automation**.
 
 ## Core Capabilities
