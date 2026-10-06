@@ -1,0 +1,1134 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <base href="/" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WHX Dashboard | Self-Serve Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="advanced_styles.css" />
+    <link rel="stylesheet" href="premium_dashboard.css" />
+  
+    <link rel="alternate" hreflang="x-default" href="https://whxdigital.com/" />
+    <link rel="alternate" hreflang="en" href="https://whxdigital.com/" />
+    <link rel="alternate" hreflang="es" href="https://whxdigital.com/es/" />
+    <link rel="alternate" hreflang="pt" href="https://whxdigital.com/pt/" />
+    <link rel="alternate" hreflang="ar" href="https://whxdigital.com/ar/" />
+    <link rel="alternate" hreflang="fr" href="https://whxdigital.com/fr/" />
+    <link rel="alternate" hreflang="de" href="https://whxdigital.com/de/" />
+    <link rel="alternate" hreflang="it" href="https://whxdigital.com/it/" />
+    <link rel="alternate" hreflang="nl" href="https://whxdigital.com/nl/" />
+  </head>
+  <body class="dashboard-body">
+    <div class="dashboard-container">
+      <!-- Sidebar Navigation -->
+      <aside class="dashboard-sidebar">
+        <div class="sidebar-header">
+          <div class="logo">
+            <a href="index.html" class="logo-link">
+              <svg class="logo-icon-svg" viewBox="0 0 32 32" fill="currentColor">
+                <rect x="6" y="8" width="14" height="18" rx="2" fill="currentColor" opacity="0.9"></rect>
+                <rect x="9" y="6" width="14" height="18" rx="2" fill="currentColor" opacity="0.7"></rect>
+                <rect x="12" y="4" width="14" height="18" rx="2" fill="currentColor" opacity="0.5"></rect>
+              </svg>
+              <span>WHX Hub</span>
+            </a>
+          </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+          <ul>
+            <li class="active"><a href="#" data-tab="tab-overview"><i class="fa-solid fa-chart-pie"></i> Overview</a></li>
+            <li><a href="#" data-tab="tab-seo"><i class="fa-solid fa-map-location-dot"></i> Local SEO & Maps</a></li>
+            <li><a href="#" data-tab="tab-automation"><i class="fa-solid fa-robot"></i> AI Automation (Multi-Agent)</a></li>
+            <li><a href="#" data-tab="tab-citations"><i class="fa-solid fa-link"></i> Citation Building</a></li>
+            <li><a href="#" data-tab="tab-analytics"><i class="fa-solid fa-chart-line"></i> Analytics</a></li>
+            <li><a href="#" data-tab="tab-billing"><i class="fa-solid fa-credit-card"></i> Billing & Subscriptions</a></li>
+            <li><a href="#" data-tab="tab-settings"><i class="fa-solid fa-gear"></i> Settings</a></li>
+          </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+          <div class="user-profile">
+            <div class="avatar">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="user-info">
+              <span class="user-name">WHX Admin</span>
+              <span class="user-role">Superuser</span>
+            </div>
+          </div>
+          <a href="index.html" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="dashboard-main">
+        <header class="dashboard-header">
+          <div class="header-search">
+            <i class="fa-solid fa-search"></i>
+            <input type="text" placeholder="Search services, reports, or help..." />
+          </div>
+          <div class="header-actions">
+            <!-- Notification Dropdown -->
+            <div class="dropdown-wrapper" style="position: relative;">
+              <button class="notification-btn" aria-label="Notifications" onclick="toggleDropdown('notif-dropdown')">
+                <i class="fa-regular fa-bell"></i>
+                <span class="badge">3</span>
+              </button>
+              <div id="notif-dropdown" class="cyber-dropdown" style="display: none; position: absolute; right: 0; top: 120%; background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; width: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 100; padding: 10px;">
+                <div style="padding: 10px; border-bottom: 1px solid #1e293b; color: #fff; font-weight: bold;">Notifications</div>
+                <div style="padding: 10px; border-bottom: 1px solid #1e293b; color: #94a3b8; font-size: 0.85rem;"><i class="fa-solid fa-circle-check" style="color: #10b981; margin-right: 5px;"></i> Agent Deployment Success</div>
+                <div style="padding: 10px; border-bottom: 1px solid #1e293b; color: #94a3b8; font-size: 0.85rem;"><i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b; margin-right: 5px;"></i> API Rate Limit Warning</div>
+                <div style="padding: 10px; color: #94a3b8; font-size: 0.85rem;"><i class="fa-solid fa-bell" style="color: #00f0ff; margin-right: 5px;"></i> 12 New Leads Processed</div>
+              </div>
+            </div>
+            
+            <!-- Launch Service Dropdown -->
+            <div class="dropdown-wrapper" style="position: relative;">
+              <button class="button button-primary new-task-btn" onclick="toggleDropdown('launch-dropdown')">
+                <i class="fa-solid fa-plus"></i> Launch Service
+              </button>
+              <div id="launch-dropdown" class="cyber-dropdown" style="display: none; position: absolute; right: 0; top: 120%; background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; width: 220px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 100; padding: 10px;">
+                <a href="#" onclick="switchTab('tab-automation'); toggleDropdown('launch-dropdown'); return false;" style="display: block; padding: 10px; color: #cbd5e1; text-decoration: none; border-bottom: 1px solid #1e293b; transition: 0.2s;"><i class="fa-solid fa-robot" style="width: 20px; color: #ffb340;"></i> New AI Agent</a>
+                <a href="#" onclick="switchTab('tab-citations'); toggleDropdown('launch-dropdown'); return false;" style="display: block; padding: 10px; color: #cbd5e1; text-decoration: none; border-bottom: 1px solid #1e293b; transition: 0.2s;"><i class="fa-solid fa-link" style="width: 20px; color: #10b981;"></i> Sync Citations</a>
+                <a href="#" onclick="switchTab('tab-seo'); toggleDropdown('launch-dropdown'); return false;" style="display: block; padding: 10px; color: #cbd5e1; text-decoration: none; transition: 0.2s;"><i class="fa-solid fa-envelope" style="width: 20px; color: #3b82f6;"></i> Campaign Blast</a>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div class="dashboard-content" id="mainContentArea">
+          <!-- Overview Tab -->
+          <div id="tab-overview" class="tab-pane active">
+            <div class="welcome-section">
+            <h1>Dashboard Overview</h1>
+            <p>Manage your services, track performance, and deploy new automation agents autonomously.</p>
+          </div>
+
+          <!-- AI Integration Banner -->
+          <div class="integration-banner">
+            <div class="integration-node ghl-node">
+              <div class="icon-wrapper ghl-icon">
+                <svg viewBox="0 0 200 200" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Custom GoHighLevel representation -->
+                  <path d="M100 0 C44.8 0 0 44.8 0 100 s44.8 100 100 100 100-44.8 100-100 S155.2 0 100 0 z" fill="#0055ff" />
+                  <path d="M60 140 L90 90 L115 110 L145 60" fill="none" stroke="white" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" />
+                  <circle cx="145" cy="60" r="10" fill="white" />
+                </svg>
+              </div>
+              <div class="node-info">
+                <h4>GoHighLevel CRM</h4>
+                <span>Data Source</span>
+              </div>
+            </div>
+            
+            <div class="integration-connection">
+              <div class="connection-line">
+                <div class="connection-pulse"></div>
+              </div>
+              <span class="connection-status"><i class="fa-solid fa-circle-check"></i> Real-time Sync Active</span>
+            </div>
+
+            <div class="integration-node gpt-node">
+              <div class="icon-wrapper gpt-icon" style="background: linear-gradient(135deg, #10a37f, #0d8a6a); color: white; display:flex; align-items:center; justify-content:center; border-radius:12px; width:48px; height:48px;">
+                <svg viewBox="0 0 24 24" width="28" height="28" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+                  <!-- OpenAI / GPT style icon -->
+                  <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2057 5.9847 5.9847 0 0 0 3.998-2.9002 6.0462 6.0462 0 0 0-.7478-7.073zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.0993 3.8558L12.5973 8.3829l2.0202-1.1685a.0804.0804 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6756 8.1042v-5.6772a.79.79 0 0 0-.3927-.6813zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L8.8071 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.4592a.7948.7948 0 0 0-.3927.6813v6.7225zM10.8536 8.9972l1.4066-.8133 1.4066.8133v1.6267l-1.4066.8133-1.4066-.8133V8.9972z"/>
+                </svg>
+              </div>
+              <div class="node-info">
+                <h4>GPT Astro</h4>
+                <span>AI Brain</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Stats -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon" style="background: rgba(34, 197, 94, 0.1); color: #22c55e;">
+                <i class="fa-solid fa-robot"></i>
+              </div>
+              <div class="stat-details">
+                <h3>Active AI Agents</h3>
+                <div class="stat-value">3 Online</div>
+                <div class="stat-trend positive"><i class="fa-solid fa-arrow-up"></i> All systems operational</div>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon" style="background: rgba(99, 102, 241, 0.1); color: #6366f1;">
+                <i class="fa-solid fa-map-pin"></i>
+              </div>
+              <div class="stat-details">
+                <h3>Google Maps Rank</h3>
+                <div class="stat-value">Top 3-Pack</div>
+                <div class="stat-trend positive"><i class="fa-solid fa-arrow-up"></i> +12% visibility this week</div>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon" style="background: rgba(234, 179, 8, 0.1); color: #eab308;">
+                <i class="fa-solid fa-link"></i>
+              </div>
+              <div class="stat-details">
+                <h3>Citations Built</h3>
+                <div class="stat-value">142</div>
+                <div class="stat-trend neutral"><i class="fa-solid fa-minus"></i> Next batch scheduled</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Self-Serve Actions -->
+          <div class="actions-section">
+            <div class="section-header">
+              <h2>Deploy & Manage Services</h2>
+              <a href="#" class="view-all" style="color: #00f0ff; text-shadow: 0 0 10px #00f0ff;">System Architecture</a>
+            </div>
+            
+            <div class="deployment-pipeline" style="display: flex; flex-direction: column; gap: 20px; background: rgba(10, 15, 30, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);">
+              
+              <!-- Background grid effect -->
+              <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px); background-size: 20px 20px; pointer-events: none; z-index: 0;"></div>
+
+              <div class="pipeline-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; z-index: 1;">
+                
+                <!-- Service Node 1 -->
+                <div class="service-node active-node" style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 20px; box-shadow: 0 0 20px rgba(16, 185, 129, 0.1); position: relative; transition: all 0.3s ease; display: flex; flex-direction: column; gap: 15px;">
+                  <div class="node-header" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                      <div class="icon-box" style="width: 40px; height: 40px; border-radius: 8px; background: rgba(16, 185, 129, 0.1); display: flex; align-items: center; justify-content: center; color: #10b981; font-size: 1.2rem; border: 1px solid rgba(16, 185, 129, 0.4); box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                      </div>
+                      <h3 style="margin: 0; font-size: 1.1rem; color: #fff;">Local SEO Optimization</h3>
+                    </div>
+                    <span class="status-badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3); display: flex; align-items: center; gap: 6px;">
+                      <span style="display: block; width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981; animation: blink 1.5s infinite;"></span> RUNNING
+                    </span>
+                  </div>
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--dash-text-muted);">Ongoing optimization for your Google Business Profile and local keywords.</p>
+                  <div class="node-metrics" style="display: flex; gap: 10px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+                    <div style="flex: 1;"><div style="font-size: 0.7rem; color: #888;">UPTIME</div><div style="font-size: 0.9rem; color: #00f0ff; font-family: monospace;">99.9%</div></div>
+                    <div style="flex: 1;"><div style="font-size: 0.7rem; color: #888;">SYNC</div><div style="font-size: 0.9rem; color: #10b981; font-family: monospace;">LIVE</div></div>
+                  </div>
+                  <div class="node-actions" style="display: flex; gap: 10px; margin-top: auto;">
+                    <button class="button" style="flex: 1; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; transition: 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">Metrics</button>
+                    <button class="button" style="flex: 1; background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; color: #10b981; padding: 8px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; transition: 0.3s; box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);" onmouseover="this.style.background='rgba(16, 185, 129, 0.2)'" onmouseout="this.style.background='rgba(16, 185, 129, 0.1)'">Configure</button>
+                  </div>
+                </div>
+
+                <!-- Service Node 2 -->
+                <div class="service-node active-node" style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(124, 58, 237, 0.3); border-radius: 12px; padding: 20px; box-shadow: 0 0 20px rgba(124, 58, 237, 0.1); position: relative; transition: all 0.3s ease; display: flex; flex-direction: column; gap: 15px;">
+                  <div class="node-header" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                      <div class="icon-box" style="width: 40px; height: 40px; border-radius: 8px; background: rgba(124, 58, 237, 0.1); display: flex; align-items: center; justify-content: center; color: #7c3aed; font-size: 1.2rem; border: 1px solid rgba(124, 58, 237, 0.4); box-shadow: 0 0 10px rgba(124, 58, 237, 0.3);">
+                        <i class="fa-solid fa-microchip"></i>
+                      </div>
+                      <h3 style="margin: 0; font-size: 1.1rem; color: #fff;">CRM Lead Automation</h3>
+                    </div>
+                    <span class="status-badge" style="background: rgba(124, 58, 237, 0.15); color: #7c3aed; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; border: 1px solid rgba(124, 58, 237, 0.3); display: flex; align-items: center; gap: 6px;">
+                      <span style="display: block; width: 6px; height: 6px; background: #7c3aed; border-radius: 50%; box-shadow: 0 0 8px #7c3aed; animation: blink 1.5s infinite;"></span> ACTIVE
+                    </span>
+                  </div>
+                  <p style="margin: 0; font-size: 0.9rem; color: var(--dash-text-muted);">Your AI agent is currently routing and qualifying incoming leads automatically.</p>
+                  <div class="node-metrics" style="display: flex; gap: 10px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+                    <div style="flex: 1;"><div style="font-size: 0.7rem; color: #888;">ROUTED</div><div style="font-size: 0.9rem; color: #00f0ff; font-family: monospace;">1,042</div></div>
+                    <div style="flex: 1;"><div style="font-size: 0.7rem; color: #888;">LATENCY</div><div style="font-size: 0.9rem; color: #10b981; font-family: monospace;">24ms</div></div>
+                  </div>
+                  <div class="node-actions" style="display: flex; gap: 10px; margin-top: auto;">
+                    <button class="button" style="flex: 1; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; transition: 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">Pipeline</button>
+                    <button class="button" style="flex: 1; background: rgba(124, 58, 237, 0.1); border: 1px solid #7c3aed; color: #7c3aed; padding: 8px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; transition: 0.3s; box-shadow: 0 0 10px rgba(124, 58, 237, 0.2);" onmouseover="this.style.background='rgba(124, 58, 237, 0.2)'" onmouseout="this.style.background='rgba(124, 58, 237, 0.1)'">Settings</button>
+                  </div>
+                </div>
+
+                <!-- Service Node 3 -->
+                <div class="service-node available-node" style="background: rgba(0, 0, 0, 0.2); border: 1px dashed rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 20px; position: relative; transition: all 0.3s ease; display: flex; flex-direction: column; gap: 15px;">
+                  <div class="node-header" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                      <div class="icon-box" style="width: 40px; height: 40px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 1.2rem; border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <i class="fa-solid fa-link"></i>
+                      </div>
+                      <h3 style="margin: 0; font-size: 1.1rem; color: #ccc;">Authority Link Building</h3>
+                    </div>
+                    <span class="status-badge" style="background: rgba(255, 255, 255, 0.05); color: #aaa; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.1);">
+                      IDLE
+                    </span>
+                  </div>
+                  <p style="margin: 0; font-size: 0.9rem; color: #666;">Boost your domain authority with high-quality contextual backlinks.</p>
+                  
+                  <div class="node-actions" style="display: flex; gap: 10px; margin-top: auto;">
+                    <button class="button" style="width: 100%; background: linear-gradient(90deg, rgba(234, 179, 8, 0.1), rgba(234, 179, 8, 0.2)); border: 1px solid #eab308; color: #eab308; padding: 10px; border-radius: 6px; font-size: 0.9rem; cursor: pointer; transition: 0.3s; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;" onmouseover="this.style.boxShadow='0 0 15px rgba(234,179,8,0.3)'" onmouseout="this.style.boxShadow='none'">Deploy Instance</button>
+                  </div>
+                </div>
+
+              </div>
+              
+              <!-- Deployment Terminal -->
+              <div class="deployment-terminal" id="deployment-terminal" style="margin-top: 10px; background: #000; border: 1px solid #333; border-radius: 8px; padding: 15px; font-family: 'Fira Code', monospace; font-size: 0.8rem; color: #0f0; height: 160px; overflow-y: hidden; position: relative; box-shadow: inset 0 0 20px rgba(0,0,0,0.8); z-index: 1;">
+                <div class="terminal-header" style="border-bottom: 1px solid #333; padding-bottom: 5px; margin-bottom: 10px; color: #666; display: flex; justify-content: space-between;">
+                  <span>SYSTEM_LOGS > DEPLOYMENT_DAEMON</span>
+                  <span style="color: #0f0; animation: blink 1s infinite;">[_]</span>
+                </div>
+                <div class="terminal-stream" id="terminal-stream" style="display: flex; flex-direction: column; gap: 5px; opacity: 0.8; height: 100px; overflow: hidden;">
+                  <div><span style="color: #666;">[${new Date().toLocaleTimeString()}]</span> <span style="color: #00f0ff;">[INFO]</span> Local SEO sync check completed... OK</div>
+                  <div><span style="color: #666;">[${new Date().toLocaleTimeString()}]</span> <span style="color: #10b981;">[SUCCESS]</span> CRM Automation node ping response: 24ms</div>
+                  <div><span style="color: #666;">[${new Date().toLocaleTimeString()}]</span> <span style="color: #00f0ff;">[INFO]</span> Fetching latest metrics from GHL instance...</div>
+                  <div><span style="color: #666;">[${new Date().toLocaleTimeString()}]</span> <span style="color: #10b981;">[SUCCESS]</span> Metric aggregation complete. Dashboard up to date.</div>
+                  <div><span style="color: #666;">[${new Date().toLocaleTimeString()}]</span> <span style="color: #00f0ff;">[INFO]</span> Waiting for next job trigger...</div>
+                </div>
+                <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 30px; background: linear-gradient(transparent, #000);"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="activity-section">
+            <h2>System Activity Log</h2>
+            <div class="activity-list">
+              <div class="activity-item">
+                <div class="activity-icon bg-green"><i class="fa-solid fa-check"></i></div>
+                <div class="activity-content">
+                  <h4>Lead #1042 successfully processed and routed to CRM</h4>
+                  <span class="time">10 minutes ago via AI Automation</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon bg-blue"><i class="fa-solid fa-pen"></i></div>
+                <div class="activity-content">
+                  <h4>Google Business Profile Weekly Post Published</h4>
+                  <span class="time">2 hours ago via Local SEO</span>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon bg-yellow"><i class="fa-solid fa-sync"></i></div>
+                <div class="activity-content">
+                  <h4>Citation scan complete - 4 inconsistencies found & queued for fix</h4>
+                  <span class="time">Yesterday via Citation Builder</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div> <!-- End Overview Tab -->
+
+          <!-- AI Automation Tab -->
+          <div id="tab-automation" class="tab-pane" style="display: none;">
+            <div class="welcome-section">
+              <h1>Multi-Agent Orchestration</h1>
+              <p>Configure advanced AI workflows using industry-leading foundational models.</p>
+            </div>
+
+            <!-- Advanced AI Engine Visual -->
+              <!-- Massive AI Pipeline Visual -->
+              <div class="ai-engine-container" style="flex-direction: column; gap: 30px; margin-bottom: 2rem;">
+                
+                <!-- Top Row: Triggers & Middleware with SVG Connections -->
+                <div style="display: flex; width: 100%; justify-content: space-between; align-items: center; position: relative; min-height: 420px; padding: 20px 40px; box-sizing: border-box;">
+                  
+                  <style>
+                    @keyframes dash-flow {
+                      to { stroke-dashoffset: -20; }
+                    }
+                    .svg-connection {
+                      fill: none;
+                      stroke-width: 2;
+                      stroke: rgba(255, 255, 255, 0.1);
+                    }
+                    .svg-flow-in {
+                      fill: none;
+                      stroke-width: 2;
+                      stroke: #ff3366;
+                      stroke-dasharray: 8 12;
+                      animation: dash-flow 1s linear infinite;
+                      filter: drop-shadow(0 0 5px #ff3366);
+                    }
+                    .svg-flow-out {
+                      fill: none;
+                      stroke-width: 2;
+                      stroke: #00f0ff;
+                      stroke-dasharray: 8 12;
+                      animation: dash-flow 1s linear infinite;
+                      filter: drop-shadow(0 0 5px #00f0ff);
+                    }
+                    .node-container {
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: space-between;
+                      height: 350px;
+                      z-index: 2;
+                    }
+                    .engine-core-wrapper {
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      z-index: 2;
+                    }
+                  </style>
+
+                  <!-- SVG Connection Layer -->
+                  <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none;" preserveAspectRatio="none">
+                    <!-- Left to Center Paths (Base) -->
+                    <path d="M 15% 15% C 30% 15%, 35% 50%, 50% 50%" class="svg-connection" />
+                    <path d="M 15% 50% C 30% 50%, 35% 50%, 50% 50%" class="svg-connection" />
+                    <path d="M 15% 85% C 30% 85%, 35% 50%, 50% 50%" class="svg-connection" />
+                    
+                    <!-- Left to Center Paths (Flow) -->
+                    <path d="M 15% 15% C 30% 15%, 35% 50%, 50% 50%" class="svg-flow-in" />
+                    <path d="M 15% 50% C 30% 50%, 35% 50%, 50% 50%" class="svg-flow-in" style="animation-delay: -0.3s;" />
+                    <path d="M 15% 85% C 30% 85%, 35% 50%, 50% 50%" class="svg-flow-in" style="animation-delay: -0.7s;" />
+                    
+                    <!-- Center to Right Paths (Base) -->
+                    <path d="M 50% 50% C 65% 50%, 70% 15%, 85% 15%" class="svg-connection" />
+                    <path d="M 50% 50% C 65% 50%, 70% 50%, 85% 50%" class="svg-connection" />
+                    <path d="M 50% 50% C 65% 50%, 70% 85%, 85% 85%" class="svg-connection" />
+
+                    <!-- Center to Right Paths (Flow) -->
+                    <path d="M 50% 50% C 65% 50%, 70% 15%, 85% 15%" class="svg-flow-out" />
+                    <path d="M 50% 50% C 65% 50%, 70% 50%, 85% 50%" class="svg-flow-out" style="animation-delay: -0.2s;" />
+                    <path d="M 50% 50% C 65% 50%, 70% 85%, 85% 85%" class="svg-flow-out" style="animation-delay: -0.5s;" />
+                  </svg>
+
+                  <!-- Ingestion Layer -->
+                  <div class="node-container" style="align-items: flex-start; width: 220px;">
+                    <div class="engine-node node-trigger" style="width: 100%; position: relative;">
+                      <div style="position: absolute; right: -8px; top: 50%; transform: translateY(-50%); width: 8px; height: 8px; background: #ff3366; border-radius: 50%; box-shadow: 0 0 10px #ff3366;"></div>
+                      <i class="fa-solid fa-envelope"></i>
+                      <span>Inbound Leads</span>
+                      <small>Webhooks / API</small>
+                    </div>
+                    <div class="engine-node node-trigger" style="width: 100%; position: relative;">
+                      <div style="position: absolute; right: -8px; top: 50%; transform: translateY(-50%); width: 8px; height: 8px; background: #ff3366; border-radius: 50%; box-shadow: 0 0 10px #ff3366;"></div>
+                      <i class="fa-solid fa-comment-sms"></i>
+                      <span>SMS & WhatsApp</span>
+                      <small>Twilio / Meta</small>
+                    </div>
+                    <div class="engine-node node-trigger" style="width: 100%; position: relative;">
+                      <div style="position: absolute; right: -8px; top: 50%; transform: translateY(-50%); width: 8px; height: 8px; background: #ff3366; border-radius: 50%; box-shadow: 0 0 10px #ff3366;"></div>
+                      <i class="fa-solid fa-phone"></i>
+                      <span>Voice Agents</span>
+                      <small>VAPI / Bland AI</small>
+                    </div>
+                  </div>
+
+                  </div>
+
+                  <div class="engine-connector" style="z-index:0; position: relative;">
+                    <div class="beam beam-1" style="background: linear-gradient(90deg, transparent, #ff3366, transparent);"></div>
+                    <div class="beam beam-2" style="background: linear-gradient(90deg, transparent, #ff3366, transparent);"></div>
+                    <div class="beam beam-3" style="background: linear-gradient(90deg, transparent, #ff3366, transparent);"></div>
+                  </div>
+
+                  <!-- Central AI Brain Core -->
+                  <div class="engine-core-wrapper">
+                    <div class="engine-core" style="position: relative;">
+                      <!-- Core IO Ports -->
+                      <div style="position: absolute; left: -15px; top: 50%; transform: translateY(-50%); width: 12px; height: 12px; background: #ff3366; border-radius: 50%; box-shadow: 0 0 15px #ff3366; z-index: 10;"></div>
+                      <div style="position: absolute; right: -15px; top: 50%; transform: translateY(-50%); width: 12px; height: 12px; background: #00f0ff; border-radius: 50%; box-shadow: 0 0 15px #00f0ff; z-index: 10;"></div>
+                      
+                      <div class="core-ring" style="width: 250px; height: 250px; border-color: rgba(99,102,241,0.2);">
+                        <div class="core-pulse-bg"></div>
+                        
+                        <div class="ai-model-node model-claude" title="Claude 3.5 Sonnet">
+                          <i class="fa-solid fa-brain" style="color: #cc8866;"></i>
+                          <span>Claude</span>
+                        </div>
+                        
+                        <div class="ai-model-node model-gpt" title="OpenAI GPT-4o">
+                          <i class="fa-solid fa-certificate"></i>
+                          <span>GPT-4o</span>
+                        </div>
+                        
+                        <div class="ai-model-node model-deepseek" title="DeepSeek Coder">
+                          <i class="fa-solid fa-code"></i>
+                          <span>DeepSeek</span>
+                        </div>
+                        
+                        <div class="ai-model-node model-grok" title="xAI Grok">
+                          <i class="fa-solid fa-bolt"></i>
+                          <span>Grok</span>
+                        </div>
+
+                        <div class="ai-model-node model-gemini active-node" style="bottom: -15px; right: 0; border-color: rgba(255,179,64,0.5);" title="GPT Astro">
+                          <i class="fa-solid fa-star" style="color: #ffb340;"></i>
+                          <span>Astro</span>
+                        </div>
+
+                        <!-- Central Router -->
+                        <div class="ai-router">
+                          <i class="fa-solid fa-network-wired"></i>
+                          <strong>AI Router</strong>
+                          <small>Auto-Select</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  </div>
+
+                  <div class="engine-connector" style="z-index:0; position: relative;">
+                    <div class="beam beam-out" style="width: 100%; top: 20%; background: linear-gradient(90deg, transparent, #00f0ff, transparent); animation-delay: 0.1s;"></div>
+                    <div class="beam beam-out" style="width: 100%; top: 50%; background: linear-gradient(90deg, transparent, #00f0ff, transparent); animation-delay: 0.5s;"></div>
+                    <div class="beam beam-out" style="width: 100%; top: 80%; background: linear-gradient(90deg, transparent, #00f0ff, transparent); animation-delay: 0.9s;"></div>
+                  </div>
+
+                  <!-- Delivery & Logic Layer -->
+                  <div class="node-container" style="align-items: flex-end; width: 220px;">
+                    <div class="engine-node node-middleware n8n" style="width: 100%; position: relative; border-color: #ff6e6e;">
+                      <div style="position: absolute; left: -8px; top: 50%; transform: translateY(-50%); width: 8px; height: 8px; background: #00f0ff; border-radius: 50%; box-shadow: 0 0 10px #00f0ff;"></div>
+                      <i class="fa-solid fa-code-branch" style="color: #ff6e6e;"></i>
+                      <span>n8n Core</span>
+                      <small>Self-Hosted</small>
+                    </div>
+                    <div class="engine-node node-action ghl" style="width: 100%; position: relative; border-color: #0055ff;">
+                      <div style="position: absolute; left: -8px; top: 50%; transform: translateY(-50%); width: 8px; height: 8px; background: #00f0ff; border-radius: 50%; box-shadow: 0 0 10px #00f0ff;"></div>
+                      <i class="fa-solid fa-bullseye" style="color: #0055ff;"></i>
+                      <span>GoHighLevel</span>
+                      <small>CRM Pipeline</small>
+                    </div>
+                    <div class="engine-node node-middleware zapier" style="width: 100%; position: relative; border-color: #ff4a00;">
+                      <div style="position: absolute; left: -8px; top: 50%; transform: translateY(-50%); width: 8px; height: 8px; background: #00f0ff; border-radius: 50%; box-shadow: 0 0 10px #00f0ff;"></div>
+                      <i class="fa-solid fa-bolt" style="color: #ff4a00;"></i>
+                      <span>Zapier</span>
+                      <small>Fallback Hooks</small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bottom Row: Multi-Agent Live Terminal Log -->
+                <div class="api-terminal" style="width: 100%; background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 1rem; font-family: monospace; overflow: hidden; position: relative;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 0.5rem; margin-bottom: 1rem;">
+                    <span style="color: #64748b; font-size: 0.85rem;"><i class="fa-solid fa-terminal"></i> AI Orchestration Stream</span>
+                    <span style="color: #10b981; font-size: 0.85rem; display: flex; align-items: center; gap: 5px;"><div class="connection-pulse" style="position:static;"></div> Neural Net Active</span>
+                  </div>
+                  <div class="terminal-logs" style="font-size: 0.85rem; line-height: 1.6; color: #94a3b8; height: 160px; overflow-y: hidden; display: flex; flex-direction: column; gap: 4px;">
+                    <div><span style="color: #ff3366;">[INBOUND]</span> Webhook received from FB Lead Form: <span style="color: #e2e8f0;">User "John D."</span></div>
+                    <div><span style="color: #6366f1;">[ROUTER]</span> Analyzing intent... detected high priority. Routing to <span style="color: #ffb340;">GPT Astro</span>.</div>
+                    <div><span style="color: #ffb340;">[ASTRO]</span> Generated tailored SMS response (Confidence: 98.4%)</div>
+                    <div><span style="color: #00f0ff;">[EXECUTE]</span> Triggering n8n workflow ID #8492</div>
+                    <div><span style="color: #00f0ff;">[EXECUTE]</span> Updating GoHighLevel Contact & Opportunity Stage -> <span style="color: #10b981;">SUCCESS</span></div>
+                    <div><span style="color: #ff3366;">[INBOUND]</span> Missed Call from +1 (555) 019-284...</div>
+                    <div><span style="color: #6366f1;">[ROUTER]</span> Dispatching Voice Agent to return call...</div>
+                    <div style="color: #fff; font-weight: bold;">> Listening for events... <span class="blink">_</span></div>
+                  </div>
+                </div>
+              </div>
+
+
+            </div> <!-- End AI Automation Tab -->
+
+          <!-- Local SEO Tab -->
+          <div id="tab-seo" class="tab-pane" style="display: none;">
+            <div class="welcome-section">
+              <h1>Local SEO & Maps Dominance</h1>
+              <p>Real-time Google Maps grid tracking and local visibility metrics.</p>
+            </div>
+            
+            <div class="advanced-grid-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+              
+              <!-- Left side: Geogrid visual -->
+              <div class="geo-grid-scanner" style="background: rgba(13, 19, 30, 0.8); border: 1px solid var(--dash-border); border-radius: 16px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative; overflow: hidden;">
+                <div class="scanner-header" style="display: flex; justify-content: space-between; margin-bottom: 1.5rem; z-index: 2; position: relative;">
+                  <h3 style="color: #fff;"><i class="fa-solid fa-satellite-dish" style="color: #00f0ff;"></i> Live Geogrid Scan</h3>
+                  <button class="button button-primary outline btn-small" style="box-shadow: 0 0 15px rgba(0,240,255,0.3);">Initiate Scan</button>
+                </div>
+                <div class="geo-map-visual" style="height: 300px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden;">
+                  <div class="map-overlay" style="position: absolute; inset: 0; background: url('https://upload.wikimedia.org/wikipedia/commons/e/e0/Night_map_of_the_world_with_city_lights.png') center/cover; opacity: 0.15; filter: grayscale(1) contrast(1.5);"></div>
+                  
+                  <div class="radar-coords" style="position: absolute; top: 10px; left: 10px; font-family: monospace; font-size: 0.7rem; color: #00f0ff; background: rgba(0,0,0,0.6); padding: 4px 8px; border-radius: 4px; z-index: 3;">LAT: 34.0522 N | LNG: 118.2437 W</div>
+                  <div class="radar-target-lock" style="position: absolute; top: 10px; right: 10px; font-family: monospace; font-size: 0.7rem; color: #10b981; background: rgba(0,0,0,0.6); padding: 4px 8px; border-radius: 4px; z-index: 3; animation: pulse 2s infinite;"><i class="fa-solid fa-crosshairs"></i> TARGET LOCKED</div>
+                  
+                  <div class="grid-nodes large-matrix" style="position: absolute; inset: 0; display: flex; flex-direction: column; padding: 40px; z-index: 2;">
+                    <!-- 5x5 Advanced Grid -->
+                    <div class="grid-row" style="display: flex; flex: 1; justify-content: space-between;">
+                      <div class="grid-cell rank-1" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 10px rgba(16,185,129,0.5);">1</div>
+                      <div class="grid-cell rank-1" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 10px rgba(16,185,129,0.5);">1</div>
+                      <div class="grid-cell rank-2" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">2</div>
+                      <div class="grid-cell rank-3" style="background: rgba(234,179,8,0.2); border: 1px solid #eab308; color: #eab308; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">3</div>
+                      <div class="grid-cell rank-5" style="background: rgba(239,68,68,0.2); border: 1px solid #ef4444; color: #ef4444; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">5+</div>
+                    </div>
+                    <div class="grid-row" style="display: flex; flex: 1; justify-content: space-between;">
+                      <div class="grid-cell rank-1" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 10px rgba(16,185,129,0.5);">1</div>
+                      <div class="grid-cell rank-1" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 10px rgba(16,185,129,0.5);">1</div>
+                      <div class="grid-cell rank-1" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 10px rgba(16,185,129,0.5);">1</div>
+                      <div class="grid-cell rank-2" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">2</div>
+                      <div class="grid-cell rank-4" style="background: rgba(234,179,8,0.2); border: 1px solid #eab308; color: #eab308; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">4</div>
+                    </div>
+                    <div class="grid-row" style="display: flex; flex: 1; justify-content: space-between;">
+                      <div class="grid-cell rank-1" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 10px rgba(16,185,129,0.5);">1</div>
+                      <div class="grid-cell rank-1" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 10px rgba(16,185,129,0.5);">1</div>
+                      <div class="grid-cell rank-center pulse-node" style="background: #00f0ff; color: #000; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 20px #00f0ff;"><i class="fa-solid fa-location-dot"></i></div>
+                      <div class="grid-cell rank-1" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 10px rgba(16,185,129,0.5);">1</div>
+                      <div class="grid-cell rank-3" style="background: rgba(234,179,8,0.2); border: 1px solid #eab308; color: #eab308; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">3</div>
+                    </div>
+                    <div class="grid-row" style="display: flex; flex: 1; justify-content: space-between;">
+                      <div class="grid-cell rank-2" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">2</div>
+                      <div class="grid-cell rank-1" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 10px rgba(16,185,129,0.5);">1</div>
+                      <div class="grid-cell rank-1" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 10px rgba(16,185,129,0.5);">1</div>
+                      <div class="grid-cell rank-2" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">2</div>
+                      <div class="grid-cell rank-4" style="background: rgba(234,179,8,0.2); border: 1px solid #eab308; color: #eab308; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">4</div>
+                    </div>
+                    <div class="grid-row" style="display: flex; flex: 1; justify-content: space-between;">
+                      <div class="grid-cell rank-3" style="background: rgba(234,179,8,0.2); border: 1px solid #eab308; color: #eab308; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">3</div>
+                      <div class="grid-cell rank-2" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">2</div>
+                      <div class="grid-cell rank-3" style="background: rgba(234,179,8,0.2); border: 1px solid #eab308; color: #eab308; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">3</div>
+                      <div class="grid-cell rank-4" style="background: rgba(234,179,8,0.2); border: 1px solid #eab308; color: #eab308; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">4</div>
+                      <div class="grid-cell rank-5" style="background: rgba(239,68,68,0.2); border: 1px solid #ef4444; color: #ef4444; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">10+</div>
+                    </div>
+                  </div>
+                  <!-- CSS Scanner beam simulation -->
+                  <div class="scanning-line" style="position: absolute; width: 100%; height: 2px; background: #00f0ff; box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff; opacity: 0.5; z-index: 4; animation: scan 3s infinite linear;"></div>
+                </div>
+              </div>
+              
+              <!-- Right side: Metrics and live tracking -->
+              <div class="seo-metrics" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div class="metric-box" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px;">
+                  <h4 style="color: #cbd5e1; margin-bottom: 0.5rem;"><i class="fa-solid fa-eye" style="color: #00f0ff;"></i> Map Visibility Score</h4>
+                  <div class="glow-value" style="font-size: 2.5rem; font-weight: bold; color: #00f0ff; text-shadow: 0 0 15px rgba(0,240,255,0.5); margin-bottom: 0.5rem;">94%</div>
+                  <div class="progress-bar" style="background: rgba(255,255,255,0.1); height: 6px; border-radius: 3px; overflow: hidden;"><div class="fill" style="width: 94%; height: 100%; background: #00f0ff; box-shadow: 0 0 10px #00f0ff;"></div></div>
+                </div>
+
+                <div class="metric-box" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px;">
+                  <h4 style="color: #cbd5e1; margin-bottom: 0.5rem;"><i class="fa-solid fa-chart-line" style="color: #ff3366;"></i> Profile Interactions</h4>
+                  <div class="glow-value" style="font-size: 2.5rem; font-weight: bold; color: #ff3366; text-shadow: 0 0 15px rgba(255,51,102,0.5); margin-bottom: 0.5rem;">1,492</div>
+                  <div class="progress-bar" style="background: rgba(255,255,255,0.1); height: 6px; border-radius: 3px; overflow: hidden;"><div class="fill" style="width: 76%; height: 100%; background: #ff3366; box-shadow: 0 0 10px #ff3366;"></div></div>
+                </div>
+
+                <!-- Live Updates Stream -->
+                <div class="api-terminal" style="flex: 1; background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 1rem; font-family: monospace; overflow: hidden; position: relative;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 0.5rem; margin-bottom: 1rem;">
+                    <span style="color: #64748b; font-size: 0.75rem;"><i class="fa-brands fa-google"></i> GBP API Sync</span>
+                    <span style="color: #10b981; font-size: 0.75rem; display: flex; align-items: center; gap: 5px;"><div class="connection-pulse" style="position:static;"></div> Tracking Active</span>
+                  </div>
+                  <div class="terminal-logs" style="font-size: 0.75rem; line-height: 1.6; color: #94a3b8; display: flex; flex-direction: column; gap: 4px;">
+                    <div><span style="color: #00f0ff;">[08:12:04]</span> Syncing Review Data... <span style="color: #10b981;">OK</span></div>
+                    <div><span style="color: #00f0ff;">[08:14:22]</span> Post "Fall Special" published.</div>
+                    <div><span style="color: #00f0ff;">[08:15:00]</span> Recalculating Matrix... Rank +1 (N)</div>
+                    <div style="color: #fff; font-weight: bold;">> Polling updates... <span class="blink">_</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Citation Building Tab -->
+          <div id="tab-citations" class="tab-pane" style="display: none;">
+            <div class="welcome-section">
+              <h1>Citation Sync Engine</h1>
+              <p>Automated NAP consistency across 100+ global data aggregators.</p>
+            </div>
+            
+            <div class="sync-dashboard heavy-workflow">
+              
+              <!-- Enterprise Citation Engine - Node Flow Layout -->
+              <div class="ai-engine-container" style="flex-direction: column; gap: 30px; margin-bottom: 2rem;">
+                
+                <div style="display: flex; width: 100%; justify-content: space-between; align-items: center; position: relative; min-height: 420px; padding: 20px 40px; box-sizing: border-box;">
+                  
+                  <!-- SVG Connection Layer -->
+                  <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none;" preserveAspectRatio="none">
+                    <!-- Left to Center Paths (Base) -->
+                    <path d="M 15% 45% C 30% 30%, 35% 30%, 50% 40%" class="svg-connection" />
+                    <path d="M 15% 50% C 30% 50%, 35% 50%, 50% 50%" class="svg-connection" />
+                    <path d="M 15% 55% C 30% 70%, 35% 70%, 50% 60%" class="svg-connection" />
+                    
+                    <!-- Left to Center Paths (Flow) -->
+                    <path d="M 15% 45% C 30% 30%, 35% 30%, 50% 40%" class="svg-flow-out" />
+                    <path d="M 15% 50% C 30% 50%, 35% 50%, 50% 50%" class="svg-flow-out" style="animation-delay: -0.3s;" />
+                    <path d="M 15% 55% C 30% 70%, 35% 70%, 50% 60%" class="svg-flow-out" style="animation-delay: -0.7s;" />
+                    
+                    <!-- Center to Right Paths (Base) -->
+                    <path d="M 50% 40% C 65% 30%, 70% 30%, 85% 40%" class="svg-connection" />
+                    <path d="M 50% 50% C 65% 50%, 70% 50%, 85% 50%" class="svg-connection" />
+                    <path d="M 50% 60% C 65% 70%, 70% 70%, 85% 60%" class="svg-connection" />
+
+                    <!-- Center to Right Paths (Flow) -->
+                    <path d="M 50% 40% C 65% 30%, 70% 30%, 85% 40%" class="svg-flow-out" style="stroke: #10b981; filter: drop-shadow(0 0 5px #10b981);" />
+                    <path d="M 50% 50% C 65% 50%, 70% 50%, 85% 50%" class="svg-flow-out" style="stroke: #10b981; filter: drop-shadow(0 0 5px #10b981); animation-delay: -0.2s;" />
+                    <path d="M 50% 60% C 65% 70%, 70% 70%, 85% 60%" class="svg-flow-out" style="stroke: #10b981; filter: drop-shadow(0 0 5px #10b981); animation-delay: -0.5s;" />
+                  </svg>
+
+                  <!-- Left: Master NAP DB Layer -->
+                  <div class="node-container" style="align-items: flex-start; width: 220px; justify-content: center;">
+                    <div class="engine-node node-action" style="width: 100%; position: relative; background: rgba(16, 185, 129, 0.1); border-color: #10b981; box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);">
+                      <div style="position: absolute; right: -8px; top: 25%; width: 8px; height: 8px; background: #00f0ff; border-radius: 50%; box-shadow: 0 0 10px #00f0ff;"></div>
+                      <div style="position: absolute; right: -8px; top: 50%; width: 8px; height: 8px; background: #00f0ff; border-radius: 50%; box-shadow: 0 0 10px #00f0ff;"></div>
+                      <div style="position: absolute; right: -8px; top: 75%; width: 8px; height: 8px; background: #00f0ff; border-radius: 50%; box-shadow: 0 0 10px #00f0ff;"></div>
+                      <i class="fa-solid fa-database" style="color: #10b981;"></i>
+                      <span>Master NAP DB</span>
+                      <small>Source of Truth</small>
+                    </div>
+                  </div>
+
+                  <!-- Central Sync Health Core -->
+                  <div class="engine-core-wrapper">
+                    <div class="sync-status-main" style="position: relative; background: rgba(31, 41, 55, 0.4); border: 1px solid rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; box-shadow: 0 0 30px rgba(0,0,0,0.5);">
+                      
+                      <!-- Core IO Ports Left -->
+                      <div style="position: absolute; left: -8px; top: 25%; width: 8px; height: 8px; background: #00f0ff; border-radius: 50%; box-shadow: 0 0 10px #00f0ff;"></div>
+                      <div style="position: absolute; left: -8px; top: 50%; width: 8px; height: 8px; background: #00f0ff; border-radius: 50%; box-shadow: 0 0 10px #00f0ff;"></div>
+                      <div style="position: absolute; left: -8px; top: 75%; width: 8px; height: 8px; background: #00f0ff; border-radius: 50%; box-shadow: 0 0 10px #00f0ff;"></div>
+
+                      <!-- Core IO Ports Right -->
+                      <div style="position: absolute; right: -8px; top: 25%; width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981;"></div>
+                      <div style="position: absolute; right: -8px; top: 50%; width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981;"></div>
+                      <div style="position: absolute; right: -8px; top: 75%; width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981;"></div>
+
+                      <div class="sync-ring" style="margin-bottom: 1.5rem; position: relative;">
+                        <!-- Animated Scanner Beam -->
+                        <div style="position: absolute; width: 100%; height: 2px; background: #00f0ff; top: 50%; left: 0; box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff; opacity: 0.5; z-index: 4; animation: scan 3s infinite linear;"></div>
+
+                        <div class="ring-inner">
+                          <span class="sync-score" style="font-size: 2.2rem; color: #fff; text-shadow: 0 0 15px rgba(255,255,255,0.5);">99.8%</span>
+                          <span class="sync-label" style="color: #00f0ff;">Consistency</span>
+                        </div>
+                        <svg class="circular-chart" viewBox="0 0 36 36">
+                          <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="rgba(255,255,255,0.05)" />
+                          <path class="circle" stroke-dasharray="99.8, 100" stroke="#00f0ff" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" style="filter: drop-shadow(0 0 10px #00f0ff);" />
+                        </svg>
+                      </div>
+                      <button class="button button-primary sync-btn" style="width: 100%; box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); background: rgba(0, 240, 255, 0.1); border: 1px solid #00f0ff; color: #00f0ff;">
+                        <i class="fa-solid fa-arrows-rotate fa-spin"></i> Active Syncing
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Right: Live API Terminal -->
+                  <div class="node-container" style="align-items: flex-end; width: 350px; justify-content: center;">
+                    <div class="api-terminal" style="width: 100%; position: relative; background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 1rem; font-family: monospace; overflow: hidden; box-shadow: 0 0 30px rgba(0,0,0,0.5);">
+                      
+                      <!-- Core IO Ports Left -->
+                      <div style="position: absolute; left: -8px; top: 25%; width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981;"></div>
+                      <div style="position: absolute; left: -8px; top: 50%; width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981;"></div>
+                      <div style="position: absolute; left: -8px; top: 75%; width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981;"></div>
+
+                      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 0.5rem; margin-bottom: 1rem;">
+                        <span style="color: #64748b; font-size: 0.85rem;"><i class="fa-solid fa-terminal"></i> WHX_CORE API Stream</span>
+                        <span style="color: #10b981; font-size: 0.85rem; display: flex; align-items: center; gap: 5px;"><div class="connection-pulse" style="position:static; background:#10b981; box-shadow: 0 0 10px #10b981;"></div> Connected</span>
+                      </div>
+                      <div class="terminal-logs" style="font-size: 0.85rem; line-height: 1.6; color: #94a3b8; height: 160px; overflow-y: hidden; display: flex; flex-direction: column; gap: 4px;">
+                        <div><span style="color: #00f0ff;">[00:05:12]</span> <span style="color: #e2e8f0;">POST</span> /api/v1/sync/data-axle - <span style="color: #10b981;">200 OK</span></div>
+                        <div><span style="color: #00f0ff;">[00:05:14]</span> <span style="color: #e2e8f0;">PUT</span> /api/v1/sync/foursquare - <span style="color: #10b981;">202 ACCEPTED</span></div>
+                        <div><span style="color: #00f0ff;">[00:05:15]</span> <span style="color: #ff3366;">WARN</span> /api/v1/sync/bing - Rate limit (85%)</div>
+                        <div><span style="color: #00f0ff;">[00:05:18]</span> <span style="color: #e2e8f0;">POST</span> /api/v1/sync/yelp/graphql - <span style="color: #10b981;">200 OK</span></div>
+                        <div><span style="color: #00f0ff;">[00:05:22]</span> <span style="color: #e2e8f0;">SYS</span> Aggregating Tier 2...</div>
+                        <div><span style="color: #00f0ff;">[00:05:24]</span> <span style="color: #e2e8f0;">POST</span> /api/v1/sync/apple-maps - <span style="color: #10b981;">200 OK</span></div>
+                        <div style="color: #fff; font-weight: bold;">> Awaiting sync cycle... <span class="blink">_</span></div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Analytics Tab -->
+          <div id="tab-analytics" class="tab-pane" style="display: none;">
+            <div class="welcome-section">
+              <h1>Advanced Analytics</h1>
+              <p>Deep-dive telemetry into your marketing ROI and lead conversions.</p>
+            </div>
+            
+            <div class="analytics-hologram">
+              <div class="chart-container">
+                <!-- CSS Based Bar Chart -->
+                <div class="cyber-chart">
+                  <div class="bar-group">
+                    <div class="bar" style="height: 40%;"></div>
+                    <span>Mon</span>
+                  </div>
+                  <div class="bar-group">
+                    <div class="bar" style="height: 65%;"></div>
+                    <span>Tue</span>
+                  </div>
+                  <div class="bar-group">
+                    <div class="bar" style="height: 30%;"></div>
+                    <span>Wed</span>
+                  </div>
+                  <div class="bar-group">
+                    <div class="bar" style="height: 90%; background: #00f0ff; box-shadow: 0 0 20px rgba(0,240,255,0.6);"></div>
+                    <span>Thu</span>
+                  </div>
+                  <div class="bar-group">
+                    <div class="bar" style="height: 55%;"></div>
+                    <span>Fri</span>
+                  </div>
+                  <div class="bar-group">
+                    <div class="bar" style="height: 80%;"></div>
+                    <span>Sat</span>
+                  </div>
+                  <div class="bar-group">
+                    <div class="bar" style="height: 100%;"></div>
+                    <span>Sun</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="analytics-hud">
+                <div class="hud-box">
+                  <h5>Total Leads</h5>
+                  <strong>3,204</strong>
+                </div>
+                <div class="hud-box">
+                  <h5>Conversion Rate</h5>
+                  <strong>18.4%</strong>
+                </div>
+                <div class="hud-box">
+                  <h5>Cost per Acq.</h5>
+                  <strong>$12.50</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Billing Tab -->
+          <div id="tab-billing" class="tab-pane" style="display: none;">
+            <div class="welcome-section">
+              <h1>Billing & Subscriptions</h1>
+              <p>Manage your enterprise plan and payment methods.</p>
+            </div>
+            
+            <div class="billing-container">
+              <div class="credit-card-holo">
+                <div class="card-chip"></div>
+                <div class="card-number">**** **** **** 4242</div>
+                <div class="card-footer">
+                  <div class="card-name" style="filter: blur(8px) opacity(0.5); user-select: none; background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px; display: inline-block;">*** *****</div>
+                  <div class="card-exp">12/28</div>
+                </div>
+                <div class="card-glare"></div>
+              </div>
+              
+              <div class="plan-details">
+                <h3>Current Plan: <span class="neon-text">Enterprise Tier</span></h3>
+                <p>Next billing date: <strong>Nov 1, 2026</strong></p>
+                <div class="usage-stats">
+                  <div class="usage-bar">
+                    <span>API Usage (85%)</span>
+                    <div class="progress"><div class="fill warning" style="width: 85%;"></div></div>
+                  </div>
+                  <div class="usage-bar">
+                    <span>Storage (40%)</span>
+                    <div class="progress"><div class="fill" style="width: 40%;"></div></div>
+                  </div>
+                </div>
+                <button class="button button-secondary outline mt-20">Manage Billing on Stripe</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Settings Tab -->
+          <div id="tab-settings" class="tab-pane" style="display: none;">
+            <div class="welcome-section">
+              <h1>Global Settings</h1>
+              <p>Configure system preferences, integrations, and security.</p>
+            </div>
+            
+            <div class="settings-grid">
+              <div class="settings-card">
+                <h3>Security & Access</h3>
+                <div class="toggle-group">
+                  <span>Two-Factor Authentication (2FA)</span>
+                  <label class="cyber-switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                  </label>
+                </div>
+                <div class="toggle-group">
+                  <span>Login Anomalies Alert</span>
+                  <label class="cyber-switch">
+                    <input type="checkbox" checked>
+                    <span class="slider"></span>
+                  </label>
+                </div>
+              </div>
+              
+              <div class="settings-card">
+                <h3>API Keys</h3>
+                <div class="form-group">
+                  <label>OpenAI API Key</label>
+                  <div class="input-with-icon">
+                    <input type="password" class="cyber-input" value="sk-1234567890abcdef" readonly>
+                    <i class="fa-solid fa-eye action-icon"></i>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>GHL Location ID</label>
+                  <input type="text" class="cyber-input" value="Whx194Jk8Dns">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+
+    <!-- Optional JS for interactivity -->
+    <script>
+      // Randomize User Profile and Plan on load
+      const userNames = ["Ethan Wright", "Sarah Jenkins", "Michael Chen", "Aisha Patel", "David Ross", "Emma Vance"];
+      const plans = ["Basic Tier", "Pro Plan", "Enterprise Tier", "Starter Plan"];
+      const avatarColors = ["linear-gradient(135deg, #6366f1, #8b5cf6)", "linear-gradient(135deg, #ef4444, #f97316)", "linear-gradient(135deg, #10b981, #3b82f6)", "linear-gradient(135deg, #f59e0b, #ef4444)"];
+
+      const randomName = userNames[Math.floor(Math.random() * userNames.length)];
+      const randomPlan = plans[Math.floor(Math.random() * plans.length)];
+      const randomAvatarColor = avatarColors[Math.floor(Math.random() * avatarColors.length)];
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const userNameEl = document.querySelector('.user-name');
+        const userRoleEl = document.querySelector('.user-role');
+        const planTextEl = document.querySelector('.plan-details h3 .neon-text');
+        const avatarEl = document.querySelector('.user-profile .avatar');
+        
+        if(userNameEl) userNameEl.textContent = randomName;
+        if(userRoleEl) userRoleEl.textContent = randomPlan;
+        if(planTextEl) planTextEl.textContent = randomPlan;
+        if(avatarEl) {
+          avatarEl.style.background = randomAvatarColor;
+          avatarEl.innerHTML = randomName.charAt(0);
+        }
+      });
+
+      // Dropdown toggle function
+      window.toggleDropdown = function(id) {
+        const d = document.getElementById(id);
+        const wasVisible = d.style.display === 'block';
+        document.querySelectorAll('.cyber-dropdown').forEach(el => el.style.display = 'none');
+        d.style.display = wasVisible ? 'none' : 'block';
+      };
+
+      // Close dropdowns if clicked outside
+      window.addEventListener('click', function(e) {
+        if (!e.target.closest('.dropdown-wrapper')) {
+          document.querySelectorAll('.cyber-dropdown').forEach(el => el.style.display = 'none');
+        }
+      });
+
+      // WHX Admin - Advanced SaaS Tab & Animation Logic
+      const navLinks = document.querySelectorAll('.sidebar-nav a[data-tab]');
+      const tabPanes = document.querySelectorAll('.tab-pane');
+
+      // Initialize Analytics Bars to 0
+      const analyticsBars = document.querySelectorAll('.bar');
+      analyticsBars.forEach(bar => bar.style.height = '0%');
+
+      // Initialize Citation Ring
+      const citationRing = document.querySelector('.circle');
+      if(citationRing) citationRing.style.strokeDasharray = '0, 100';
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetTabId = e.currentTarget.getAttribute('data-tab');
+          switchTab(targetTabId);
+        });
+      });
+
+      window.switchTab = function(tabId) {
+        document.querySelectorAll('.sidebar-nav li').forEach(li => li.classList.remove('active'));
+        tabPanes.forEach(pane => pane.style.display = 'none');
+        
+        const targetLink = document.querySelector(`.sidebar-nav a[data-tab="${tabId}"]`);
+        if (targetLink) {
+          targetLink.parentElement.classList.add('active');
+        }
+        
+        const targetTab = document.getElementById(tabId);
+        if (targetTab) {
+          targetTab.style.display = 'block';
+          window.dispatchEvent(new Event('resize'));
+          
+          // Core fade/slide animation
+          targetTab.style.opacity = '0';
+          targetTab.style.transform = 'translateY(10px)';
+          setTimeout(() => {
+            targetTab.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            targetTab.style.opacity = '1';
+            targetTab.style.transform = 'translateY(0)';
+          }, 10);
+
+          // Trigger Module-Specific Animations
+          triggerModuleAnimation(tabId);
+        }
+      };
+
+
+      // Search Bar Functionality
+      const searchInput = document.querySelector('.header-search input');
+      searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          const query = searchInput.value.toLowerCase();
+          
+          // Show SaaS style notification
+          const notif = document.createElement('div');
+          notif.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i> Searching core modules for "${query}"...`;
+          notif.style.position = 'fixed';
+          notif.style.bottom = '20px';
+          notif.style.right = '20px';
+          notif.style.background = '#0f172a';
+          notif.style.color = '#00f0ff';
+          notif.style.padding = '15px 25px';
+          notif.style.borderRadius = '8px';
+          notif.style.border = '1px solid #1e293b';
+          notif.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+          notif.style.zIndex = '9999';
+          document.body.appendChild(notif);
+          
+          setTimeout(() => {
+            notif.innerHTML = `<i class="fa-solid fa-triangle-exclamation" style="color:#f59e0b;"></i> No results found for "${query}".`;
+            notif.style.color = '#f59e0b';
+            setTimeout(() => {
+              notif.style.opacity = '0';
+              notif.style.transition = 'opacity 0.5s ease';
+              setTimeout(() => notif.remove(), 500);
+            }, 2500);
+          }, 1500);
+          
+          searchInput.value = '';
+        }
+      });
+
+      function triggerModuleAnimation(tabId) {
+        if (tabId === 'tab-seo') {
+          // Animate Grid Cells popping in
+          const cells = document.querySelectorAll('.grid-cell');
+          cells.forEach((cell, i) => {
+            cell.style.transform = 'scale(0)';
+            cell.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            setTimeout(() => {
+              cell.style.transform = 'scale(1)';
+            }, 300 + (i * 100));
+          });
+        } 
+        else if (tabId === 'tab-citations') {
+          // Animate the Sync Ring
+          if(citationRing) {
+            citationRing.style.transition = 'none';
+            citationRing.style.strokeDasharray = '0, 100';
+            setTimeout(() => {
+              citationRing.style.transition = 'stroke-dasharray 2s ease-out';
+              citationRing.style.strokeDasharray = '85, 100'; // Target 85%
+            }, 100);
+          }
+        }
+        else if (tabId === 'tab-analytics') {
+          // Animate Holographic Bars
+          analyticsBars.forEach((bar, i) => {
+            bar.style.height = '0%';
+            const randomHeight = Math.floor(Math.random() * 60) + 40; // 40% to 100%
+            setTimeout(() => {
+              bar.style.height = `${randomHeight}%`;
+            }, 200 + (i * 150));
+          });
+        }
+      }
+
+      // Settings toggles functionality (UI only)
+      const passwordIcons = document.querySelectorAll('.action-icon.fa-eye');
+      passwordIcons.forEach(icon => {
+        icon.addEventListener('click', (e) => {
+          const input = e.target.previousElementSibling;
+          if (input.type === 'password') {
+            input.type = 'text';
+            e.target.classList.replace('fa-eye', 'fa-eye-slash');
+          } else {
+            input.type = 'password';
+            e.target.classList.replace('fa-eye-slash', 'fa-eye');
+          }
+        });
+      });
+      // Make Terminal Logs look active
+      const terminals = document.querySelectorAll('.terminal-logs');
+      const logLines = [
+        '<span style="color: #6366f1;">[ROUTER]</span> Processing incoming payload...',
+        '<span style="color: #ffb340;">[ASTRO]</span> Analyzing contextual semantics...',
+        '<span style="color: #10b981;">[SYS]</span> Checking API rate limits: OK',
+        '<span style="color: #00f0ff;">[EXECUTE]</span> Syncing with GoHighLevel CRM.',
+        '<span style="color: #ff3366;">[NETWORK]</span> Fetching localized map data...',
+        '<span style="color: #ffb340;">[ASTRO]</span> Generating strategic response (99.1%).',
+        '<span style="color: #94a3b8;">[SYS]</span> Waiting for next event trigger...'
+      ];
+      
+      setInterval(() => {
+        terminals.forEach(term => {
+          const newLine = document.createElement('div');
+          newLine.innerHTML = logLines[Math.floor(Math.random() * logLines.length)];
+          term.insertBefore(newLine, term.lastElementChild);
+          
+          if(term.children.length > 8) {
+            term.removeChild(term.firstElementChild);
+          }
+        });
+      }, 2000);
+
+      // Deployment Workflow Script
+      const deployButtons = document.querySelectorAll('.service-node .button');
+      const termStream = document.getElementById('terminal-stream');
+      
+      deployButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          if(btn.innerText.includes('Deploy Instance')) {
+            const nodeName = e.target.closest('.service-node').querySelector('h3').innerText;
+            const time = new Date().toLocaleTimeString();
+            
+            // Initial log
+            const log1 = document.createElement('div');
+            log1.innerHTML = `<span style="color: #666;">[${time}]</span> <span style="color: #eab308;">[DEPLOY]</span> Initiating deployment sequence for ${nodeName}...`;
+            termStream.appendChild(log1);
+            if(termStream.children.length > 5) termStream.removeChild(termStream.firstElementChild);
+
+            // Change button state
+            btn.innerText = 'Deploying...';
+            btn.style.opacity = '0.7';
+            btn.style.pointerEvents = 'none';
+            
+            setTimeout(() => {
+              const log2 = document.createElement('div');
+              log2.innerHTML = `<span style="color: #666;">[${new Date().toLocaleTimeString()}]</span> <span style="color: #00f0ff;">[BUILD]</span> Provisioning node resources... OK`;
+              termStream.appendChild(log2);
+              if(termStream.children.length > 5) termStream.removeChild(termStream.firstElementChild);
+            }, 1500);
+
+            setTimeout(() => {
+              const log3 = document.createElement('div');
+              log3.innerHTML = `<span style="color: #666;">[${new Date().toLocaleTimeString()}]</span> <span style="color: #10b981;">[SUCCESS]</span> ${nodeName} is now ACTIVE and running.`;
+              termStream.appendChild(log3);
+              if(termStream.children.length > 5) termStream.removeChild(termStream.firstElementChild);
+              
+              btn.innerText = 'Configure';
+              btn.style.opacity = '1';
+              btn.style.pointerEvents = 'auto';
+              btn.style.background = 'rgba(16, 185, 129, 0.1)';
+              btn.style.borderColor = '#10b981';
+              btn.style.color = '#10b981';
+              btn.style.boxShadow = '0 0 10px rgba(16, 185, 129, 0.2)';
+              
+              // Change node badge
+              const badge = e.target.closest('.service-node').querySelector('.status-badge');
+              if(badge) {
+                badge.style.background = 'rgba(16, 185, 129, 0.15)';
+                badge.style.color = '#10b981';
+                badge.style.borderColor = 'rgba(16, 185, 129, 0.3)';
+                badge.innerHTML = '<span style="display: block; width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981; animation: blink 1.5s infinite;"></span> ACTIVE';
+              }
+            }, 3500);
+          } else {
+            const time = new Date().toLocaleTimeString();
+            const log1 = document.createElement('div');
+            const nodeName = e.target.closest('.service-node').querySelector('h3').innerText;
+            log1.innerHTML = `<span style="color: #666;">[${time}]</span> <span style="color: #00f0ff;">[INFO]</span> Accessing configuration for ${nodeName}...`;
+            termStream.appendChild(log1);
+            if(termStream.children.length > 5) termStream.removeChild(termStream.firstElementChild);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

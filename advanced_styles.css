@@ -1,0 +1,110 @@
+
+/* Advanced Glow and Heavy SaaS Vibe for Multi-Agent Orchestration */
+.ai-engine-container {
+  background: radial-gradient(circle at center, rgba(124, 58, 237, 0.05) 0%, transparent 70%);
+  border-radius: 20px;
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  box-shadow: 0 0 40px rgba(124, 58, 237, 0.1) inset;
+  position: relative;
+  overflow: hidden;
+}
+
+.ai-engine-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(124, 58, 237, 0.03) 2px, rgba(124, 58, 237, 0.03) 4px);
+  pointer-events: none;
+}
+
+.core-pulse-bg {
+  animation: corePulse 3s infinite ease-in-out;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.4) 0%, transparent 60%);
+  filter: blur(20px);
+}
+
+@keyframes corePulse {
+  0% { transform: scale(0.9); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 0.9; box-shadow: 0 0 60px rgba(124,58,237,0.5); }
+  100% { transform: scale(0.9); opacity: 0.5; }
+}
+
+.ai-model-node {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.ai-model-node:hover {
+  transform: scale(1.15) translateY(-5px);
+  box-shadow: 0 0 25px var(--glow-color, rgba(124, 58, 237, 0.6));
+  border-color: var(--glow-color, rgba(124, 58, 237, 0.8));
+  z-index: 10;
+}
+
+.model-gemini { --glow-color: #3b82f6; background: linear-gradient(135deg, #1d4ed8, #3b82f6); color: white; border-color: #60a5fa; }
+.model-gemini i { color: #bfdbfe; }
+.model-gemini.active-node {
+  box-shadow: 0 0 20px #3b82f6;
+  animation: activeNodePulse 2s infinite;
+}
+
+.model-claude { --glow-color: #d97757; }
+.model-gpt { --glow-color: #10a37f; }
+.model-deepseek { --glow-color: #4f46e5; }
+.model-grok { --glow-color: #eab308; }
+
+@keyframes activeNodePulse {
+  0% { box-shadow: 0 0 15px var(--glow-color); }
+  50% { box-shadow: 0 0 35px var(--glow-color); }
+  100% { box-shadow: 0 0 15px var(--glow-color); }
+}
+
+.beam {
+  background: linear-gradient(90deg, transparent, rgba(124,58,237,0.8), transparent);
+  animation: beamFlow 2s linear infinite;
+  box-shadow: 0 0 10px rgba(124,58,237,0.5);
+}
+
+@keyframes beamFlow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Local SEO Advanced Styling */
+.geo-map-visual {
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.15) inset, 0 0 20px rgba(0,0,0,0.5);
+  background: 
+    linear-gradient(rgba(16, 185, 129, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 185, 129, 0.1) 1px, transparent 1px),
+    #050b14;
+  background-size: 20px 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.geo-map-visual::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 100px; height: 100px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  animation: radarPulse 3s infinite;
+}
+
+@keyframes radarPulse {
+  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+}
+
+.grid-point {
+  box-shadow: 0 0 10px currentColor;
+  transition: all 0.5s ease;
+}
+.grid-point:hover {
+  transform: scale(1.5);
+  z-index: 10;
+}
