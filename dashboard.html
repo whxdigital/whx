@@ -1,17 +1,20 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WHX Dashboard | Self-Serve Portal</title>
+    <title>WHX Digital | Command Core & Autonomous Growth Engine</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" /></noscript>
+    <link rel="stylesheet" href="style.min.css" />
     <link rel="stylesheet" href="dashboard.css" />
     <link rel="stylesheet" href="advanced_styles.css" />
     <link rel="stylesheet" href="premium_dashboard.css" />
+    <link rel="stylesheet" href="seobenchmark_dashboard.css" />
+    <script src="dashboard_client_data.js"></script>
   
     <link rel="alternate" hreflang="x-default" href="https://whxdigital.com/" />
     <link rel="alternate" hreflang="en" href="https://whxdigital.com/" />
@@ -24,1109 +27,1731 @@
     <link rel="alternate" hreflang="nl" href="https://whxdigital.com/nl/" />
   </head>
   <body class="dashboard-body">
+    
     <div class="dashboard-container">
-      <!-- Sidebar Navigation -->
+      
+      <!-- 1. Left Icon Rail -->
+      <aside class="benchmark-icon-rail">
+        <a href="index.html" class="benchmark-rail-logo" title="WHX Digital Home">
+          W
+        </a>
+
+        <div class="benchmark-rail-item is-selected" onclick="switchTab('tab-overview')" title="Overview">
+          <i class="fa-solid fa-compass" style="color: #f5a623;"></i>
+        </div>
+        <div class="benchmark-rail-item" onclick="switchTab('tab-seo')" title="Local SEO & Maps">
+          <i class="fa-solid fa-map-location-dot" style="color: #10b981;"></i>
+        </div>
+        <div class="benchmark-rail-item" onclick="switchTab('tab-automation')" title="AI Multi-Agent">
+          <i class="fa-solid fa-robot" style="color: #ec4899;"></i>
+        </div>
+        <div class="benchmark-rail-item" onclick="switchTab('tab-citations')" title="Citation Building">
+          <i class="fa-solid fa-link" style="color: #06b6d4;"></i>
+        </div>
+        <div class="benchmark-rail-item" onclick="switchTab('tab-analytics')" title="Analytics & ROI">
+          <i class="fa-solid fa-chart-line" style="color: #3b82f6;"></i>
+        </div>
+        <div class="benchmark-rail-item" onclick="switchTab('tab-billing')" title="Billing & Plans">
+          <i class="fa-solid fa-credit-card" style="color: #f0b65a;"></i>
+        </div>
+        <div class="benchmark-rail-item" onclick="switchTab('tab-settings')" title="Workspace Settings">
+          <i class="fa-solid fa-gear" style="color: #94a3b8;"></i>
+        </div>
+
+        <div class="benchmark-rail-bottom">
+          <div class="benchmark-rail-item" onclick="openZipScanModal()" title="Run 50 Zip Code Rapid Scan">
+            <i class="fa-solid fa-bolt" style="font-size: 0.95rem; color: #f5a623;"></i>
+          </div>
+          <div style="width: 32px; height: 32px; border-radius: 8px; background: var(--card); border: 1px solid var(--border); color: #f5a623; font-weight: 700; font-family: var(--mono); display: flex; align-items: center; justify-content: center; font-size: 0.78rem;">
+            W
+          </div>
+        </div>
+      </aside>
+
+      <!-- 2. Context Sidebar -->
       <aside class="dashboard-sidebar">
         <div class="sidebar-header">
-          <div class="logo">
-            <a href="index.html" class="logo-link">
-              <svg class="logo-icon-svg" viewBox="0 0 32 32" fill="currentColor">
-                <rect x="6" y="8" width="14" height="18" rx="2" fill="currentColor" opacity="0.9"></rect>
-                <rect x="9" y="6" width="14" height="18" rx="2" fill="currentColor" opacity="0.7"></rect>
-                <rect x="12" y="4" width="14" height="18" rx="2" fill="currentColor" opacity="0.5"></rect>
-              </svg>
-              <span>WHX Hub</span>
-            </a>
+          <strong>Command Core</strong>
+          <div class="live-green-badge" style="font-size: 0.68rem; padding: 2px 8px; flex-shrink: 0;">
+            <span class="dot"></span> LIVE 24/7
           </div>
         </div>
         
         <nav class="sidebar-nav">
           <ul>
-            <li class="active"><a href="#" data-tab="tab-overview"><i class="fa-solid fa-chart-pie"></i> Overview</a></li>
-            <li><a href="#" data-tab="tab-seo"><i class="fa-solid fa-map-location-dot"></i> Local SEO & Maps</a></li>
-            <li><a href="#" data-tab="tab-automation"><i class="fa-solid fa-robot"></i> AI Automation (Multi-Agent)</a></li>
-            <li><a href="#" data-tab="tab-citations"><i class="fa-solid fa-link"></i> Citation Building</a></li>
-            <li><a href="#" data-tab="tab-analytics"><i class="fa-solid fa-chart-line"></i> Analytics</a></li>
-            <li><a href="#" data-tab="tab-billing"><i class="fa-solid fa-credit-card"></i> Billing & Subscriptions</a></li>
-            <li><a href="#" data-tab="tab-settings"><i class="fa-solid fa-gear"></i> Settings</a></li>
+            <li class="active"><a href="#" data-tab="tab-overview">Overview</a></li>
+            <li><a href="#" data-tab="tab-seo">Local SEO & Maps</a></li>
+            <li><a href="#" data-tab="tab-automation">AI Multi-Agent</a></li>
+            <li><a href="#" data-tab="tab-citations">Citation Building</a></li>`n            <li><a href="#" data-tab="tab-docs">Product Manual</a></li>
+            <li><a href="#" data-tab="tab-analytics">Analytics & ROI</a></li>
+            <li><a href="#" data-tab="tab-billing">Billing & Quotas</a></li>
+            <li><a href="#" data-tab="tab-settings">Workspace Settings</a></li>
+          </ul>
+
+          <!-- Active 24/7 Automations Section -->
+          <div style="padding: 16px 10px 6px 10px; font-size: 0.7rem; font-weight: 700; font-family: var(--mono); color: var(--subtle-ink); text-transform: uppercase; letter-spacing: 0.08em; display: flex; justify-content: space-between; align-items: center;">
+            <span>AUTONOMOUS ENGINES</span>
+            <i class="fa-solid fa-circle-nodes" style="color: var(--amber);"></i>
+          </div>
+          <ul style="padding-top: 0;">
+            <li>
+              <a href="#" onclick="switchTab('tab-seo'); return false;" style="font-size: 0.8rem; padding: 6px 10px !important;">
+                <span class="dot" style="width: 5px; height: 5px;"></span> Geo-Grid 3-Pack Sweeper
+              </a>
+            </li>
+            <li>
+              <a href="#" onclick="switchTab('tab-automation'); return false;" style="font-size: 0.8rem; padding: 6px 10px !important;">
+                <span class="dot" style="width: 5px; height: 5px;"></span> Claude 3.7 Intake Triage
+              </a>
+            </li>
+            <li>
+              <a href="#" onclick="switchTab('tab-citations'); return false;" style="font-size: 0.8rem; padding: 6px 10px !important;">
+                <span class="dot" style="width: 5px; height: 5px;"></span> Canonical NAP Auto-Healer
+              </a>
+            </li>
           </ul>
         </nav>
         
-        <div class="sidebar-footer">
-          <div class="user-profile">
-            <div class="avatar">
-              <i class="fa-solid fa-user"></i>
+        <div class="sidebar-footer" style="padding: 14px 16px; margin-top: auto; border-top: 1px solid var(--border); background: #0b0b0d; display: flex; flex-direction: column; gap: 10px;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <div style="width: 30px; height: 30px; border-radius: 8px; background: var(--card); border: 1px solid var(--amber); color: #f5a623; font-weight: 700; font-family: var(--mono); display: flex; align-items: center; justify-content: center; font-size: 0.78rem; box-shadow: 0 0 10px rgba(245, 166, 35, 0.2);">
+                W
+              </div>
+              <div style="display: flex; flex-direction: column;">
+                <span style="font-size: 0.84rem; font-weight: 700; color: #fff;">WHX Core Admin</span>
+                <span style="font-size: 0.68rem; color: #10b981; font-family: var(--mono); font-weight: 600;"><i class="fa-solid fa-circle-check"></i> SuperAdmin Verified</span>
+              </div>
             </div>
-            <div class="user-info">
-              <span class="user-name">WHX Admin</span>
-              <span class="user-role">Superuser</span>
+            <a href="index.html" class="btn-light" style="padding: 4px 8px; font-size: 0.74rem;" title="View Live Website"><i class="fa-solid fa-house"></i></a>
+          </div>
+
+          <!-- Multi-Location Hubs Bar -->
+          <div style="background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 6px 8px; display: flex; flex-direction: column; gap: 4px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.66rem; font-family: var(--mono); color: var(--subtle-ink); text-transform: uppercase;">
+              <span>DEPLOYED HUBS</span>
+              <span style="color: var(--amber); font-weight: 700;">3 Online</span>
+            </div>
+            <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+              <span class="benchmark-badge green" style="font-size: 0.65rem; padding: 2px 6px;"><i class="fa-solid fa-location-dot"></i> Dallas, TX</span>
+              <span class="benchmark-badge blue" style="font-size: 0.65rem; padding: 2px 6px;"><i class="fa-solid fa-location-dot"></i> Casper, WY</span>
+              <span class="benchmark-badge amber" style="font-size: 0.65rem; padding: 2px 6px;"><i class="fa-solid fa-globe"></i> Global</span>
             </div>
           </div>
-          <a href="index.html" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
         </div>
       </aside>
 
-      <!-- Main Content -->
+      <!-- 3. Main Viewport -->
       <main class="dashboard-main">
+        
+        <!-- Header Bar -->
         <header class="dashboard-header">
-          <div class="header-search">
-            <i class="fa-solid fa-search"></i>
-            <input type="text" placeholder="Search services, reports, or help..." />
+          <div style="display: flex; align-items: center; gap: 14px; min-width: 0; flex: 1;">
+            <div class="header-search" style="width: 320px; flex-shrink: 0;">
+              <i class="fa-solid fa-magnifying-glass" style="color: var(--subtle-ink); font-size: 0.82rem;"></i>
+              <input type="text" id="global-search" placeholder="Search keywords, citations, leads, 200 clients..." oninput="handleGlobalSearch(this.value)" />
+            </div>
+            <div id="benchmark-client-badge" style="font-size: 0.78rem; font-family: var(--sans); color: var(--fg); display: flex; align-items: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></div>
           </div>
-          <div class="header-actions">
-            <!-- Notification Dropdown -->
+
+          <div style="display: flex; align-items: center; gap: 14px; flex-shrink: 0;">
+            <div class="live-green-badge">
+              <span class="dot"></span> LIVE &bull; 24/7 AUTONOMOUS
+            </div>
+
+            <!-- Notifications Dropdown -->
             <div class="dropdown-wrapper" style="position: relative;">
-              <button class="notification-btn" aria-label="Notifications" onclick="toggleDropdown('notif-dropdown')">
-                <i class="fa-regular fa-bell"></i>
-                <span class="badge">3</span>
+              <button class="notification-btn btn-light" aria-label="Notifications" onclick="toggleDropdown('notif-dropdown')" style="width: 36px; height: 36px; padding: 0; justify-content: center;">
+                <i class="fa-regular fa-bell" style="font-size: 0.88rem;"></i>
               </button>
-              <div id="notif-dropdown" class="cyber-dropdown" style="display: none; position: absolute; right: 0; top: 120%; background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; width: 280px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 100; padding: 10px;">
-                <div style="padding: 10px; border-bottom: 1px solid #1e293b; color: #fff; font-weight: bold;">Notifications</div>
-                <div style="padding: 10px; border-bottom: 1px solid #1e293b; color: #94a3b8; font-size: 0.85rem;"><i class="fa-solid fa-circle-check" style="color: #10b981; margin-right: 5px;"></i> Agent Deployment Success</div>
-                <div style="padding: 10px; border-bottom: 1px solid #1e293b; color: #94a3b8; font-size: 0.85rem;"><i class="fa-solid fa-triangle-exclamation" style="color: #f59e0b; margin-right: 5px;"></i> API Rate Limit Warning</div>
-                <div style="padding: 10px; color: #94a3b8; font-size: 0.85rem;"><i class="fa-solid fa-bell" style="color: #00f0ff; margin-right: 5px;"></i> 12 New Leads Processed</div>
+              <div id="notif-dropdown" class="cyber-dropdown" style="display: none; position: absolute; right: 0; top: 120%; background: #17171c; border: 1px solid var(--border); border-radius: var(--radius-md); width: 330px; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.8); z-index: 100; padding: 12px;">
+                <div style="padding: 6px 8px; border-bottom: 1px solid var(--border); color: #fff; font-weight: 700; font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-family: var(--mono); font-size: 0.75rem; text-transform: uppercase;">Real-Time Feed</span>
+                  <small style="color: var(--amber); cursor: pointer; font-size: 0.72rem;" onclick="clearNotifs()">Clear Log</small>
+                </div>
+                <div style="padding: 8px; border-bottom: 1px solid var(--border); color: #cbd5e1; font-size: 0.8rem;">
+                  <i class="fa-solid fa-circle-check" style="color: #10b981; margin-right: 6px;"></i> Claude 3.7 auto-qualified Dallas medical lead ($4.8k package)
+                </div>
+                <div style="padding: 8px; border-bottom: 1px solid var(--border); color: #cbd5e1; font-size: 0.8rem;">
+                  <i class="fa-solid fa-map-pin" style="color: #ea4335; margin-right: 6px;"></i> Map Pack rank moved #4 &rarr; #1 for "AI Agency Near Me"
+                </div>
+                <div style="padding: 8px; color: #94a3b8; font-size: 0.8rem;">
+                  <i class="fa-solid fa-link" style="color: #f5a623; margin-right: 6px;"></i> Apple Maps & Bing Places verified (100% NAP canonical)
+                </div>
               </div>
             </div>
-            
-            <!-- Launch Service Dropdown -->
-            <div class="dropdown-wrapper" style="position: relative;">
-              <button class="button button-primary new-task-btn" onclick="toggleDropdown('launch-dropdown')">
-                <i class="fa-solid fa-plus"></i> Launch Service
-              </button>
-              <div id="launch-dropdown" class="cyber-dropdown" style="display: none; position: absolute; right: 0; top: 120%; background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; width: 220px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 100; padding: 10px;">
-                <a href="#" onclick="switchTab('tab-automation'); toggleDropdown('launch-dropdown'); return false;" style="display: block; padding: 10px; color: #cbd5e1; text-decoration: none; border-bottom: 1px solid #1e293b; transition: 0.2s;"><i class="fa-solid fa-robot" style="width: 20px; color: #ffb340;"></i> New AI Agent</a>
-                <a href="#" onclick="switchTab('tab-citations'); toggleDropdown('launch-dropdown'); return false;" style="display: block; padding: 10px; color: #cbd5e1; text-decoration: none; border-bottom: 1px solid #1e293b; transition: 0.2s;"><i class="fa-solid fa-link" style="width: 20px; color: #10b981;"></i> Sync Citations</a>
-                <a href="#" onclick="switchTab('tab-seo'); toggleDropdown('launch-dropdown'); return false;" style="display: block; padding: 10px; color: #cbd5e1; text-decoration: none; transition: 0.2s;"><i class="fa-solid fa-envelope" style="width: 20px; color: #3b82f6;"></i> Campaign Blast</a>
-              </div>
-            </div>
+
+            <!-- Primary Amber Action Button -->
+            <button class="btn-amber" onclick="triggerQuickSprint()">
+              <i class="fa-solid fa-bolt"></i> Run Scan Sprint <i class="fa-solid fa-arrow-right" style="font-size: 0.72rem; margin-left: 2px;"></i>
+            </button>
           </div>
         </header>
 
-        <div class="dashboard-content" id="mainContentArea">
-          <!-- Overview Tab -->
-          <div id="tab-overview" class="tab-pane active">
-            <div class="welcome-section">
-            <h1>Dashboard Overview</h1>
-            <p>Manage your services, track performance, and deploy new automation agents autonomously.</p>
-          </div>
-
-          <!-- AI Integration Banner -->
-          <div class="integration-banner">
-            <div class="integration-node ghl-node">
-              <div class="icon-wrapper ghl-icon">
-                <svg viewBox="0 0 200 200" width="36" height="36" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Custom GoHighLevel representation -->
-                  <path d="M100 0 C44.8 0 0 44.8 0 100 s44.8 100 100 100 100-44.8 100-100 S155.2 0 100 0 z" fill="#0055ff" />
-                  <path d="M60 140 L90 90 L115 110 L145 60" fill="none" stroke="white" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" />
-                  <circle cx="145" cy="60" r="10" fill="white" />
-                </svg>
-              </div>
-              <div class="node-info">
-                <h4>GoHighLevel CRM</h4>
-                <span>Data Source</span>
-              </div>
+        <!-- Ticker Bar (Clean Drag & Scroll) -->
+        <div class="benchmark-ticker-wrapper">
+          <div class="benchmark-ticker" id="main-ticker-bar">
+            <div class="benchmark-ticker-item">
+              <span class="benchmark-mono-tag">MAP PACK:</span> <b>#1 Dominant (Dallas Metroplex)</b>
             </div>
-            
-            <div class="integration-connection">
-              <div class="connection-line">
-                <div class="connection-pulse"></div>
-              </div>
-              <span class="connection-status"><i class="fa-solid fa-circle-check"></i> Real-time Sync Active</span>
+            <div class="benchmark-ticker-item">
+              <span class="benchmark-mono-tag">AI SEARCH VISIBILITY:</span> <b>94.2% in ChatGPT, Claude & Perplexity</b>
             </div>
-
-            <div class="integration-node gpt-node">
-              <div class="icon-wrapper gpt-icon" style="background: linear-gradient(135deg, #10a37f, #0d8a6a); color: white; display:flex; align-items:center; justify-content:center; border-radius:12px; width:48px; height:48px;">
-                <svg viewBox="0 0 24 24" width="28" height="28" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-                  <!-- OpenAI / GPT style icon -->
-                  <path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2057 5.9847 5.9847 0 0 0 3.998-2.9002 6.0462 6.0462 0 0 0-.7478-7.073zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.8956zm16.0993 3.8558L12.5973 8.3829l2.0202-1.1685a.0804.0804 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6756 8.1042v-5.6772a.79.79 0 0 0-.3927-.6813zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L8.8071 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.4592a.7948.7948 0 0 0-.3927.6813v6.7225zM10.8536 8.9972l1.4066-.8133 1.4066.8133v1.6267l-1.4066.8133-1.4066-.8133V8.9972z"/>
-                </svg>
-              </div>
-              <div class="node-info">
-                <h4>GPT Astro</h4>
-                <span>AI Brain</span>
-              </div>
+            <div class="benchmark-ticker-item">
+              <span class="benchmark-mono-tag">INTAKE LATENCY:</span> <b>1.2s via Claude 3.7 Triage</b>
+            </div>
+            <div class="benchmark-ticker-item">
+              <span class="benchmark-mono-tag">NAP ACCURACY:</span> <b>99.4% Across 85 Directories</b>
+            </div>
+            <div class="benchmark-ticker-item">
+              <span class="benchmark-mono-tag">GROWTH ROI:</span> <b>+420% Inbound Phone Calls</b>
+            </div>
+            <div class="benchmark-ticker-item">
+              <span class="benchmark-mono-tag">AGENT RUNTIME:</span> <b>5 Models Active 24/7</b>
             </div>
           </div>
-
-          <!-- Quick Stats -->
-          <div class="stats-grid">
-            <div class="stat-card">
-              <div class="stat-icon" style="background: rgba(34, 197, 94, 0.1); color: #22c55e;">
-                <i class="fa-solid fa-robot"></i>
-              </div>
-              <div class="stat-details">
-                <h3>Active AI Agents</h3>
-                <div class="stat-value">3 Online</div>
-                <div class="stat-trend positive"><i class="fa-solid fa-arrow-up"></i> All systems operational</div>
-              </div>
-            </div>
-            
-            <div class="stat-card">
-              <div class="stat-icon" style="background: rgba(99, 102, 241, 0.1); color: #6366f1;">
-                <i class="fa-solid fa-map-pin"></i>
-              </div>
-              <div class="stat-details">
-                <h3>Google Maps Rank</h3>
-                <div class="stat-value">Top 3-Pack</div>
-                <div class="stat-trend positive"><i class="fa-solid fa-arrow-up"></i> +12% visibility this week</div>
-              </div>
-            </div>
-            
-            <div class="stat-card">
-              <div class="stat-icon" style="background: rgba(234, 179, 8, 0.1); color: #eab308;">
-                <i class="fa-solid fa-link"></i>
-              </div>
-              <div class="stat-details">
-                <h3>Citations Built</h3>
-                <div class="stat-value">142</div>
-                <div class="stat-trend neutral"><i class="fa-solid fa-minus"></i> Next batch scheduled</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Self-Serve Actions -->
-          <div class="actions-section">
-            <div class="section-header">
-              <h2>Deploy & Manage Services</h2>
-              <a href="#" class="view-all" style="color: #00f0ff; text-shadow: 0 0 10px #00f0ff;">System Architecture</a>
-            </div>
-            
-            <div class="deployment-pipeline" style="display: flex; flex-direction: column; gap: 20px; background: rgba(10, 15, 30, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);">
-              
-              <!-- Background grid effect -->
-              <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px); background-size: 20px 20px; pointer-events: none; z-index: 0;"></div>
-
-              <div class="pipeline-row" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; z-index: 1;">
-                
-                <!-- Service Node 1 -->
-                <div class="service-node active-node" style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 20px; box-shadow: 0 0 20px rgba(16, 185, 129, 0.1); position: relative; transition: all 0.3s ease; display: flex; flex-direction: column; gap: 15px;">
-                  <div class="node-header" style="display: flex; justify-content: space-between; align-items: center;">
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                      <div class="icon-box" style="width: 40px; height: 40px; border-radius: 8px; background: rgba(16, 185, 129, 0.1); display: flex; align-items: center; justify-content: center; color: #10b981; font-size: 1.2rem; border: 1px solid rgba(16, 185, 129, 0.4); box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);">
-                        <i class="fa-solid fa-map-location-dot"></i>
-                      </div>
-                      <h3 style="margin: 0; font-size: 1.1rem; color: #fff;">Local SEO Optimization</h3>
-                    </div>
-                    <span class="status-badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; border: 1px solid rgba(16, 185, 129, 0.3); display: flex; align-items: center; gap: 6px;">
-                      <span style="display: block; width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981; animation: blink 1.5s infinite;"></span> RUNNING
-                    </span>
-                  </div>
-                  <p style="margin: 0; font-size: 0.9rem; color: var(--dash-text-muted);">Ongoing optimization for your Google Business Profile and local keywords.</p>
-                  <div class="node-metrics" style="display: flex; gap: 10px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-                    <div style="flex: 1;"><div style="font-size: 0.7rem; color: #888;">UPTIME</div><div style="font-size: 0.9rem; color: #00f0ff; font-family: monospace;">99.9%</div></div>
-                    <div style="flex: 1;"><div style="font-size: 0.7rem; color: #888;">SYNC</div><div style="font-size: 0.9rem; color: #10b981; font-family: monospace;">LIVE</div></div>
-                  </div>
-                  <div class="node-actions" style="display: flex; gap: 10px; margin-top: auto;">
-                    <button class="button" style="flex: 1; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; transition: 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">Metrics</button>
-                    <button class="button" style="flex: 1; background: rgba(16, 185, 129, 0.1); border: 1px solid #10b981; color: #10b981; padding: 8px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; transition: 0.3s; box-shadow: 0 0 10px rgba(16, 185, 129, 0.2);" onmouseover="this.style.background='rgba(16, 185, 129, 0.2)'" onmouseout="this.style.background='rgba(16, 185, 129, 0.1)'">Configure</button>
-                  </div>
-                </div>
-
-                <!-- Service Node 2 -->
-                <div class="service-node active-node" style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(124, 58, 237, 0.3); border-radius: 12px; padding: 20px; box-shadow: 0 0 20px rgba(124, 58, 237, 0.1); position: relative; transition: all 0.3s ease; display: flex; flex-direction: column; gap: 15px;">
-                  <div class="node-header" style="display: flex; justify-content: space-between; align-items: center;">
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                      <div class="icon-box" style="width: 40px; height: 40px; border-radius: 8px; background: rgba(124, 58, 237, 0.1); display: flex; align-items: center; justify-content: center; color: #7c3aed; font-size: 1.2rem; border: 1px solid rgba(124, 58, 237, 0.4); box-shadow: 0 0 10px rgba(124, 58, 237, 0.3);">
-                        <i class="fa-solid fa-microchip"></i>
-                      </div>
-                      <h3 style="margin: 0; font-size: 1.1rem; color: #fff;">CRM Lead Automation</h3>
-                    </div>
-                    <span class="status-badge" style="background: rgba(124, 58, 237, 0.15); color: #7c3aed; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; border: 1px solid rgba(124, 58, 237, 0.3); display: flex; align-items: center; gap: 6px;">
-                      <span style="display: block; width: 6px; height: 6px; background: #7c3aed; border-radius: 50%; box-shadow: 0 0 8px #7c3aed; animation: blink 1.5s infinite;"></span> ACTIVE
-                    </span>
-                  </div>
-                  <p style="margin: 0; font-size: 0.9rem; color: var(--dash-text-muted);">Your AI agent is currently routing and qualifying incoming leads automatically.</p>
-                  <div class="node-metrics" style="display: flex; gap: 10px; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-                    <div style="flex: 1;"><div style="font-size: 0.7rem; color: #888;">ROUTED</div><div style="font-size: 0.9rem; color: #00f0ff; font-family: monospace;">1,042</div></div>
-                    <div style="flex: 1;"><div style="font-size: 0.7rem; color: #888;">LATENCY</div><div style="font-size: 0.9rem; color: #10b981; font-family: monospace;">24ms</div></div>
-                  </div>
-                  <div class="node-actions" style="display: flex; gap: 10px; margin-top: auto;">
-                    <button class="button" style="flex: 1; background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 8px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; transition: 0.3s;" onmouseover="this.style.background='rgba(255,255,255,0.1)'" onmouseout="this.style.background='transparent'">Pipeline</button>
-                    <button class="button" style="flex: 1; background: rgba(124, 58, 237, 0.1); border: 1px solid #7c3aed; color: #7c3aed; padding: 8px; border-radius: 6px; font-size: 0.85rem; cursor: pointer; transition: 0.3s; box-shadow: 0 0 10px rgba(124, 58, 237, 0.2);" onmouseover="this.style.background='rgba(124, 58, 237, 0.2)'" onmouseout="this.style.background='rgba(124, 58, 237, 0.1)'">Settings</button>
-                  </div>
-                </div>
-
-                <!-- Service Node 3 -->
-                <div class="service-node available-node" style="background: rgba(0, 0, 0, 0.2); border: 1px dashed rgba(255, 255, 255, 0.2); border-radius: 12px; padding: 20px; position: relative; transition: all 0.3s ease; display: flex; flex-direction: column; gap: 15px;">
-                  <div class="node-header" style="display: flex; justify-content: space-between; align-items: center;">
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                      <div class="icon-box" style="width: 40px; height: 40px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 1.2rem; border: 1px solid rgba(255, 255, 255, 0.1);">
-                        <i class="fa-solid fa-link"></i>
-                      </div>
-                      <h3 style="margin: 0; font-size: 1.1rem; color: #ccc;">Authority Link Building</h3>
-                    </div>
-                    <span class="status-badge" style="background: rgba(255, 255, 255, 0.05); color: #aaa; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.1);">
-                      IDLE
-                    </span>
-                  </div>
-                  <p style="margin: 0; font-size: 0.9rem; color: #666;">Boost your domain authority with high-quality contextual backlinks.</p>
-                  
-                  <div class="node-actions" style="display: flex; gap: 10px; margin-top: auto;">
-                    <button class="button" style="width: 100%; background: linear-gradient(90deg, rgba(234, 179, 8, 0.1), rgba(234, 179, 8, 0.2)); border: 1px solid #eab308; color: #eab308; padding: 10px; border-radius: 6px; font-size: 0.9rem; cursor: pointer; transition: 0.3s; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;" onmouseover="this.style.boxShadow='0 0 15px rgba(234,179,8,0.3)'" onmouseout="this.style.boxShadow='none'">Deploy Instance</button>
-                  </div>
-                </div>
-
-              </div>
-              
-              <!-- Deployment Terminal -->
-              <div class="deployment-terminal" id="deployment-terminal" style="margin-top: 10px; background: #000; border: 1px solid #333; border-radius: 8px; padding: 15px; font-family: 'Fira Code', monospace; font-size: 0.8rem; color: #0f0; height: 160px; overflow-y: hidden; position: relative; box-shadow: inset 0 0 20px rgba(0,0,0,0.8); z-index: 1;">
-                <div class="terminal-header" style="border-bottom: 1px solid #333; padding-bottom: 5px; margin-bottom: 10px; color: #666; display: flex; justify-content: space-between;">
-                  <span>SYSTEM_LOGS > DEPLOYMENT_DAEMON</span>
-                  <span style="color: #0f0; animation: blink 1s infinite;">[_]</span>
-                </div>
-                <div class="terminal-stream" id="terminal-stream" style="display: flex; flex-direction: column; gap: 5px; opacity: 0.8; height: 100px; overflow: hidden;">
-                  <div><span style="color: #666;">[${new Date().toLocaleTimeString()}]</span> <span style="color: #00f0ff;">[INFO]</span> Local SEO sync check completed... OK</div>
-                  <div><span style="color: #666;">[${new Date().toLocaleTimeString()}]</span> <span style="color: #10b981;">[SUCCESS]</span> CRM Automation node ping response: 24ms</div>
-                  <div><span style="color: #666;">[${new Date().toLocaleTimeString()}]</span> <span style="color: #00f0ff;">[INFO]</span> Fetching latest metrics from GHL instance...</div>
-                  <div><span style="color: #666;">[${new Date().toLocaleTimeString()}]</span> <span style="color: #10b981;">[SUCCESS]</span> Metric aggregation complete. Dashboard up to date.</div>
-                  <div><span style="color: #666;">[${new Date().toLocaleTimeString()}]</span> <span style="color: #00f0ff;">[INFO]</span> Waiting for next job trigger...</div>
-                </div>
-                <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 30px; background: linear-gradient(transparent, #000);"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Recent Activity -->
-          <div class="activity-section">
-            <h2>System Activity Log</h2>
-            <div class="activity-list">
-              <div class="activity-item">
-                <div class="activity-icon bg-green"><i class="fa-solid fa-check"></i></div>
-                <div class="activity-content">
-                  <h4>Lead #1042 successfully processed and routed to CRM</h4>
-                  <span class="time">10 minutes ago via AI Automation</span>
-                </div>
-              </div>
-              <div class="activity-item">
-                <div class="activity-icon bg-blue"><i class="fa-solid fa-pen"></i></div>
-                <div class="activity-content">
-                  <h4>Google Business Profile Weekly Post Published</h4>
-                  <span class="time">2 hours ago via Local SEO</span>
-                </div>
-              </div>
-              <div class="activity-item">
-                <div class="activity-icon bg-yellow"><i class="fa-solid fa-sync"></i></div>
-                <div class="activity-content">
-                  <h4>Citation scan complete - 4 inconsistencies found & queued for fix</h4>
-                  <span class="time">Yesterday via Citation Builder</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div> <!-- End Overview Tab -->
-
-          <!-- AI Automation Tab -->
-          <div id="tab-automation" class="tab-pane" style="display: none;">
-            <div class="welcome-section">
-              <h1>Multi-Agent Orchestration</h1>
-              <p>Configure advanced AI workflows using industry-leading foundational models.</p>
-            </div>
-
-            <!-- Advanced AI Engine Visual -->
-              <!-- Massive AI Pipeline Visual -->
-              <div class="ai-engine-container" style="flex-direction: column; gap: 30px; margin-bottom: 2rem;">
-                
-                <!-- Top Row: Triggers & Middleware with SVG Connections -->
-                <div style="display: flex; width: 100%; justify-content: space-between; align-items: center; position: relative; min-height: 420px; padding: 20px 40px; box-sizing: border-box;">
-                  
-                  <style>
-                    @keyframes dash-flow {
-                      to { stroke-dashoffset: -20; }
-                    }
-                    .svg-connection {
-                      fill: none;
-                      stroke-width: 2;
-                      stroke: rgba(255, 255, 255, 0.1);
-                    }
-                    .svg-flow-in {
-                      fill: none;
-                      stroke-width: 2;
-                      stroke: #ff3366;
-                      stroke-dasharray: 8 12;
-                      animation: dash-flow 1s linear infinite;
-                      filter: drop-shadow(0 0 5px #ff3366);
-                    }
-                    .svg-flow-out {
-                      fill: none;
-                      stroke-width: 2;
-                      stroke: #00f0ff;
-                      stroke-dasharray: 8 12;
-                      animation: dash-flow 1s linear infinite;
-                      filter: drop-shadow(0 0 5px #00f0ff);
-                    }
-                    .node-container {
-                      display: flex;
-                      flex-direction: column;
-                      justify-content: space-between;
-                      height: 350px;
-                      z-index: 2;
-                    }
-                    .engine-core-wrapper {
-                      display: flex;
-                      align-items: center;
-                      justify-content: center;
-                      z-index: 2;
-                    }
-                  </style>
-
-                  <!-- SVG Connection Layer -->
-                  <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none;" preserveAspectRatio="none">
-                    <!-- Left to Center Paths (Base) -->
-                    <path d="M 15% 15% C 30% 15%, 35% 50%, 50% 50%" class="svg-connection" />
-                    <path d="M 15% 50% C 30% 50%, 35% 50%, 50% 50%" class="svg-connection" />
-                    <path d="M 15% 85% C 30% 85%, 35% 50%, 50% 50%" class="svg-connection" />
-                    
-                    <!-- Left to Center Paths (Flow) -->
-                    <path d="M 15% 15% C 30% 15%, 35% 50%, 50% 50%" class="svg-flow-in" />
-                    <path d="M 15% 50% C 30% 50%, 35% 50%, 50% 50%" class="svg-flow-in" style="animation-delay: -0.3s;" />
-                    <path d="M 15% 85% C 30% 85%, 35% 50%, 50% 50%" class="svg-flow-in" style="animation-delay: -0.7s;" />
-                    
-                    <!-- Center to Right Paths (Base) -->
-                    <path d="M 50% 50% C 65% 50%, 70% 15%, 85% 15%" class="svg-connection" />
-                    <path d="M 50% 50% C 65% 50%, 70% 50%, 85% 50%" class="svg-connection" />
-                    <path d="M 50% 50% C 65% 50%, 70% 85%, 85% 85%" class="svg-connection" />
-
-                    <!-- Center to Right Paths (Flow) -->
-                    <path d="M 50% 50% C 65% 50%, 70% 15%, 85% 15%" class="svg-flow-out" />
-                    <path d="M 50% 50% C 65% 50%, 70% 50%, 85% 50%" class="svg-flow-out" style="animation-delay: -0.2s;" />
-                    <path d="M 50% 50% C 65% 50%, 70% 85%, 85% 85%" class="svg-flow-out" style="animation-delay: -0.5s;" />
-                  </svg>
-
-                  <!-- Ingestion Layer -->
-                  <div class="node-container" style="align-items: flex-start; width: 220px;">
-                    <div class="engine-node node-trigger" style="width: 100%; position: relative;">
-                      <div style="position: absolute; right: -8px; top: 50%; transform: translateY(-50%); width: 8px; height: 8px; background: #ff3366; border-radius: 50%; box-shadow: 0 0 10px #ff3366;"></div>
-                      <i class="fa-solid fa-envelope"></i>
-                      <span>Inbound Leads</span>
-                      <small>Webhooks / API</small>
-                    </div>
-                    <div class="engine-node node-trigger" style="width: 100%; position: relative;">
-                      <div style="position: absolute; right: -8px; top: 50%; transform: translateY(-50%); width: 8px; height: 8px; background: #ff3366; border-radius: 50%; box-shadow: 0 0 10px #ff3366;"></div>
-                      <i class="fa-solid fa-comment-sms"></i>
-                      <span>SMS & WhatsApp</span>
-                      <small>Twilio / Meta</small>
-                    </div>
-                    <div class="engine-node node-trigger" style="width: 100%; position: relative;">
-                      <div style="position: absolute; right: -8px; top: 50%; transform: translateY(-50%); width: 8px; height: 8px; background: #ff3366; border-radius: 50%; box-shadow: 0 0 10px #ff3366;"></div>
-                      <i class="fa-solid fa-phone"></i>
-                      <span>Voice Agents</span>
-                      <small>VAPI / Bland AI</small>
-                    </div>
-                  </div>
-
-                  </div>
-
-                  <div class="engine-connector" style="z-index:0; position: relative;">
-                    <div class="beam beam-1" style="background: linear-gradient(90deg, transparent, #ff3366, transparent);"></div>
-                    <div class="beam beam-2" style="background: linear-gradient(90deg, transparent, #ff3366, transparent);"></div>
-                    <div class="beam beam-3" style="background: linear-gradient(90deg, transparent, #ff3366, transparent);"></div>
-                  </div>
-
-                  <!-- Central AI Brain Core -->
-                  <div class="engine-core-wrapper">
-                    <div class="engine-core" style="position: relative;">
-                      <!-- Core IO Ports -->
-                      <div style="position: absolute; left: -15px; top: 50%; transform: translateY(-50%); width: 12px; height: 12px; background: #ff3366; border-radius: 50%; box-shadow: 0 0 15px #ff3366; z-index: 10;"></div>
-                      <div style="position: absolute; right: -15px; top: 50%; transform: translateY(-50%); width: 12px; height: 12px; background: #00f0ff; border-radius: 50%; box-shadow: 0 0 15px #00f0ff; z-index: 10;"></div>
-                      
-                      <div class="core-ring" style="width: 250px; height: 250px; border-color: rgba(99,102,241,0.2);">
-                        <div class="core-pulse-bg"></div>
-                        
-                        <div class="ai-model-node model-claude" title="Claude 3.5 Sonnet">
-                          <i class="fa-solid fa-brain" style="color: #cc8866;"></i>
-                          <span>Claude</span>
-                        </div>
-                        
-                        <div class="ai-model-node model-gpt" title="OpenAI GPT-4o">
-                          <i class="fa-solid fa-certificate"></i>
-                          <span>GPT-4o</span>
-                        </div>
-                        
-                        <div class="ai-model-node model-deepseek" title="DeepSeek Coder">
-                          <i class="fa-solid fa-code"></i>
-                          <span>DeepSeek</span>
-                        </div>
-                        
-                        <div class="ai-model-node model-grok" title="xAI Grok">
-                          <i class="fa-solid fa-bolt"></i>
-                          <span>Grok</span>
-                        </div>
-
-                        <div class="ai-model-node model-gemini active-node" style="bottom: -15px; right: 0; border-color: rgba(255,179,64,0.5);" title="GPT Astro">
-                          <i class="fa-solid fa-star" style="color: #ffb340;"></i>
-                          <span>Astro</span>
-                        </div>
-
-                        <!-- Central Router -->
-                        <div class="ai-router">
-                          <i class="fa-solid fa-network-wired"></i>
-                          <strong>AI Router</strong>
-                          <small>Auto-Select</small>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  </div>
-
-                  <div class="engine-connector" style="z-index:0; position: relative;">
-                    <div class="beam beam-out" style="width: 100%; top: 20%; background: linear-gradient(90deg, transparent, #00f0ff, transparent); animation-delay: 0.1s;"></div>
-                    <div class="beam beam-out" style="width: 100%; top: 50%; background: linear-gradient(90deg, transparent, #00f0ff, transparent); animation-delay: 0.5s;"></div>
-                    <div class="beam beam-out" style="width: 100%; top: 80%; background: linear-gradient(90deg, transparent, #00f0ff, transparent); animation-delay: 0.9s;"></div>
-                  </div>
-
-                  <!-- Delivery & Logic Layer -->
-                  <div class="node-container" style="align-items: flex-end; width: 220px;">
-                    <div class="engine-node node-middleware n8n" style="width: 100%; position: relative; border-color: #ff6e6e;">
-                      <div style="position: absolute; left: -8px; top: 50%; transform: translateY(-50%); width: 8px; height: 8px; background: #00f0ff; border-radius: 50%; box-shadow: 0 0 10px #00f0ff;"></div>
-                      <i class="fa-solid fa-code-branch" style="color: #ff6e6e;"></i>
-                      <span>n8n Core</span>
-                      <small>Self-Hosted</small>
-                    </div>
-                    <div class="engine-node node-action ghl" style="width: 100%; position: relative; border-color: #0055ff;">
-                      <div style="position: absolute; left: -8px; top: 50%; transform: translateY(-50%); width: 8px; height: 8px; background: #00f0ff; border-radius: 50%; box-shadow: 0 0 10px #00f0ff;"></div>
-                      <i class="fa-solid fa-bullseye" style="color: #0055ff;"></i>
-                      <span>GoHighLevel</span>
-                      <small>CRM Pipeline</small>
-                    </div>
-                    <div class="engine-node node-middleware zapier" style="width: 100%; position: relative; border-color: #ff4a00;">
-                      <div style="position: absolute; left: -8px; top: 50%; transform: translateY(-50%); width: 8px; height: 8px; background: #00f0ff; border-radius: 50%; box-shadow: 0 0 10px #00f0ff;"></div>
-                      <i class="fa-solid fa-bolt" style="color: #ff4a00;"></i>
-                      <span>Zapier</span>
-                      <small>Fallback Hooks</small>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Bottom Row: Multi-Agent Live Terminal Log -->
-                <div class="api-terminal" style="width: 100%; background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 1rem; font-family: monospace; overflow: hidden; position: relative;">
-                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 0.5rem; margin-bottom: 1rem;">
-                    <span style="color: #64748b; font-size: 0.85rem;"><i class="fa-solid fa-terminal"></i> AI Orchestration Stream</span>
-                    <span style="color: #10b981; font-size: 0.85rem; display: flex; align-items: center; gap: 5px;"><div class="connection-pulse" style="position:static;"></div> Neural Net Active</span>
-                  </div>
-                  <div class="terminal-logs" style="font-size: 0.85rem; line-height: 1.6; color: #94a3b8; height: 160px; overflow-y: hidden; display: flex; flex-direction: column; gap: 4px;">
-                    <div><span style="color: #ff3366;">[INBOUND]</span> Webhook received from FB Lead Form: <span style="color: #e2e8f0;">User "John D."</span></div>
-                    <div><span style="color: #6366f1;">[ROUTER]</span> Analyzing intent... detected high priority. Routing to <span style="color: #ffb340;">GPT Astro</span>.</div>
-                    <div><span style="color: #ffb340;">[ASTRO]</span> Generated tailored SMS response (Confidence: 98.4%)</div>
-                    <div><span style="color: #00f0ff;">[EXECUTE]</span> Triggering n8n workflow ID #8492</div>
-                    <div><span style="color: #00f0ff;">[EXECUTE]</span> Updating GoHighLevel Contact & Opportunity Stage -> <span style="color: #10b981;">SUCCESS</span></div>
-                    <div><span style="color: #ff3366;">[INBOUND]</span> Missed Call from +1 (555) 019-284...</div>
-                    <div><span style="color: #6366f1;">[ROUTER]</span> Dispatching Voice Agent to return call...</div>
-                    <div style="color: #fff; font-weight: bold;">> Listening for events... <span class="blink">_</span></div>
-                  </div>
-                </div>
-              </div>
-
-
-            </div> <!-- End AI Automation Tab -->
-
-          <!-- Local SEO Tab -->
-          <div id="tab-seo" class="tab-pane" style="display: none;">
-            <div class="welcome-section">
-              <h1>Local SEO & Maps Dominance</h1>
-              <p>Real-time Google Maps grid tracking and local visibility metrics.</p>
-            </div>
-            
-            <div class="advanced-grid-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-              
-              <!-- Left side: Geogrid visual -->
-              <div class="geo-grid-scanner" style="background: rgba(13, 19, 30, 0.8); border: 1px solid var(--dash-border); border-radius: 16px; padding: 2rem; box-shadow: 0 10px 30px rgba(0,0,0,0.3); position: relative; overflow: hidden;">
-                <div class="scanner-header" style="display: flex; justify-content: space-between; margin-bottom: 1.5rem; z-index: 2; position: relative;">
-                  <h3 style="color: #fff;"><i class="fa-solid fa-satellite-dish" style="color: #00f0ff;"></i> Live Geogrid Scan</h3>
-                  <button class="button button-primary outline btn-small" style="box-shadow: 0 0 15px rgba(0,240,255,0.3);">Initiate Scan</button>
-                </div>
-                <div class="geo-map-visual" style="height: 300px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); position: relative; overflow: hidden;">
-                  <div class="map-overlay" style="position: absolute; inset: 0; background: url('https://upload.wikimedia.org/wikipedia/commons/e/e0/Night_map_of_the_world_with_city_lights.png') center/cover; opacity: 0.15; filter: grayscale(1) contrast(1.5);"></div>
-                  
-                  <div class="radar-coords" style="position: absolute; top: 10px; left: 10px; font-family: monospace; font-size: 0.7rem; color: #00f0ff; background: rgba(0,0,0,0.6); padding: 4px 8px; border-radius: 4px; z-index: 3;">LAT: 34.0522 N | LNG: 118.2437 W</div>
-                  <div class="radar-target-lock" style="position: absolute; top: 10px; right: 10px; font-family: monospace; font-size: 0.7rem; color: #10b981; background: rgba(0,0,0,0.6); padding: 4px 8px; border-radius: 4px; z-index: 3; animation: pulse 2s infinite;"><i class="fa-solid fa-crosshairs"></i> TARGET LOCKED</div>
-                  
-                  <div class="grid-nodes large-matrix" style="position: absolute; inset: 0; display: flex; flex-direction: column; padding: 40px; z-index: 2;">
-                    <!-- 5x5 Advanced Grid -->
-                    <div class="grid-row" style="display: flex; flex: 1; justify-content: space-between;">
-                      <div class="grid-cell rank-1" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 10px rgba(16,185,129,0.5);">1</div>
-                      <div class="grid-cell rank-1" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 10px rgba(16,185,129,0.5);">1</div>
-                      <div class="grid-cell rank-2" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">2</div>
-                      <div class="grid-cell rank-3" style="background: rgba(234,179,8,0.2); border: 1px solid #eab308; color: #eab308; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">3</div>
-                      <div class="grid-cell rank-5" style="background: rgba(239,68,68,0.2); border: 1px solid #ef4444; color: #ef4444; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">5+</div>
-                    </div>
-                    <div class="grid-row" style="display: flex; flex: 1; justify-content: space-between;">
-                      <div class="grid-cell rank-1" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 10px rgba(16,185,129,0.5);">1</div>
-                      <div class="grid-cell rank-1" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 10px rgba(16,185,129,0.5);">1</div>
-                      <div class="grid-cell rank-1" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 10px rgba(16,185,129,0.5);">1</div>
-                      <div class="grid-cell rank-2" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">2</div>
-                      <div class="grid-cell rank-4" style="background: rgba(234,179,8,0.2); border: 1px solid #eab308; color: #eab308; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">4</div>
-                    </div>
-                    <div class="grid-row" style="display: flex; flex: 1; justify-content: space-between;">
-                      <div class="grid-cell rank-1" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 10px rgba(16,185,129,0.5);">1</div>
-                      <div class="grid-cell rank-1" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 10px rgba(16,185,129,0.5);">1</div>
-                      <div class="grid-cell rank-center pulse-node" style="background: #00f0ff; color: #000; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 20px #00f0ff;"><i class="fa-solid fa-location-dot"></i></div>
-                      <div class="grid-cell rank-1" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 10px rgba(16,185,129,0.5);">1</div>
-                      <div class="grid-cell rank-3" style="background: rgba(234,179,8,0.2); border: 1px solid #eab308; color: #eab308; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">3</div>
-                    </div>
-                    <div class="grid-row" style="display: flex; flex: 1; justify-content: space-between;">
-                      <div class="grid-cell rank-2" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">2</div>
-                      <div class="grid-cell rank-1" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 10px rgba(16,185,129,0.5);">1</div>
-                      <div class="grid-cell rank-1" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; box-shadow: 0 0 10px rgba(16,185,129,0.5);">1</div>
-                      <div class="grid-cell rank-2" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">2</div>
-                      <div class="grid-cell rank-4" style="background: rgba(234,179,8,0.2); border: 1px solid #eab308; color: #eab308; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">4</div>
-                    </div>
-                    <div class="grid-row" style="display: flex; flex: 1; justify-content: space-between;">
-                      <div class="grid-cell rank-3" style="background: rgba(234,179,8,0.2); border: 1px solid #eab308; color: #eab308; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">3</div>
-                      <div class="grid-cell rank-2" style="background: rgba(16,185,129,0.2); border: 1px solid #10b981; color: #10b981; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">2</div>
-                      <div class="grid-cell rank-3" style="background: rgba(234,179,8,0.2); border: 1px solid #eab308; color: #eab308; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">3</div>
-                      <div class="grid-cell rank-4" style="background: rgba(234,179,8,0.2); border: 1px solid #eab308; color: #eab308; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">4</div>
-                      <div class="grid-cell rank-5" style="background: rgba(239,68,68,0.2); border: 1px solid #ef4444; color: #ef4444; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%;">10+</div>
-                    </div>
-                  </div>
-                  <!-- CSS Scanner beam simulation -->
-                  <div class="scanning-line" style="position: absolute; width: 100%; height: 2px; background: #00f0ff; box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff; opacity: 0.5; z-index: 4; animation: scan 3s infinite linear;"></div>
-                </div>
-              </div>
-              
-              <!-- Right side: Metrics and live tracking -->
-              <div class="seo-metrics" style="display: flex; flex-direction: column; gap: 1.5rem;">
-                <div class="metric-box" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px;">
-                  <h4 style="color: #cbd5e1; margin-bottom: 0.5rem;"><i class="fa-solid fa-eye" style="color: #00f0ff;"></i> Map Visibility Score</h4>
-                  <div class="glow-value" style="font-size: 2.5rem; font-weight: bold; color: #00f0ff; text-shadow: 0 0 15px rgba(0,240,255,0.5); margin-bottom: 0.5rem;">94%</div>
-                  <div class="progress-bar" style="background: rgba(255,255,255,0.1); height: 6px; border-radius: 3px; overflow: hidden;"><div class="fill" style="width: 94%; height: 100%; background: #00f0ff; box-shadow: 0 0 10px #00f0ff;"></div></div>
-                </div>
-
-                <div class="metric-box" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px;">
-                  <h4 style="color: #cbd5e1; margin-bottom: 0.5rem;"><i class="fa-solid fa-chart-line" style="color: #ff3366;"></i> Profile Interactions</h4>
-                  <div class="glow-value" style="font-size: 2.5rem; font-weight: bold; color: #ff3366; text-shadow: 0 0 15px rgba(255,51,102,0.5); margin-bottom: 0.5rem;">1,492</div>
-                  <div class="progress-bar" style="background: rgba(255,255,255,0.1); height: 6px; border-radius: 3px; overflow: hidden;"><div class="fill" style="width: 76%; height: 100%; background: #ff3366; box-shadow: 0 0 10px #ff3366;"></div></div>
-                </div>
-
-                <!-- Live Updates Stream -->
-                <div class="api-terminal" style="flex: 1; background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 1rem; font-family: monospace; overflow: hidden; position: relative;">
-                  <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 0.5rem; margin-bottom: 1rem;">
-                    <span style="color: #64748b; font-size: 0.75rem;"><i class="fa-brands fa-google"></i> GBP API Sync</span>
-                    <span style="color: #10b981; font-size: 0.75rem; display: flex; align-items: center; gap: 5px;"><div class="connection-pulse" style="position:static;"></div> Tracking Active</span>
-                  </div>
-                  <div class="terminal-logs" style="font-size: 0.75rem; line-height: 1.6; color: #94a3b8; display: flex; flex-direction: column; gap: 4px;">
-                    <div><span style="color: #00f0ff;">[08:12:04]</span> Syncing Review Data... <span style="color: #10b981;">OK</span></div>
-                    <div><span style="color: #00f0ff;">[08:14:22]</span> Post "Fall Special" published.</div>
-                    <div><span style="color: #00f0ff;">[08:15:00]</span> Recalculating Matrix... Rank +1 (N)</div>
-                    <div style="color: #fff; font-weight: bold;">> Polling updates... <span class="blink">_</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Citation Building Tab -->
-          <div id="tab-citations" class="tab-pane" style="display: none;">
-            <div class="welcome-section">
-              <h1>Citation Sync Engine</h1>
-              <p>Automated NAP consistency across 100+ global data aggregators.</p>
-            </div>
-            
-            <div class="sync-dashboard heavy-workflow">
-              
-              <!-- Enterprise Citation Engine - Node Flow Layout -->
-              <div class="ai-engine-container" style="flex-direction: column; gap: 30px; margin-bottom: 2rem;">
-                
-                <div style="display: flex; width: 100%; justify-content: space-between; align-items: center; position: relative; min-height: 420px; padding: 20px 40px; box-sizing: border-box;">
-                  
-                  <!-- SVG Connection Layer -->
-                  <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none;" preserveAspectRatio="none">
-                    <!-- Left to Center Paths (Base) -->
-                    <path d="M 15% 45% C 30% 30%, 35% 30%, 50% 40%" class="svg-connection" />
-                    <path d="M 15% 50% C 30% 50%, 35% 50%, 50% 50%" class="svg-connection" />
-                    <path d="M 15% 55% C 30% 70%, 35% 70%, 50% 60%" class="svg-connection" />
-                    
-                    <!-- Left to Center Paths (Flow) -->
-                    <path d="M 15% 45% C 30% 30%, 35% 30%, 50% 40%" class="svg-flow-out" />
-                    <path d="M 15% 50% C 30% 50%, 35% 50%, 50% 50%" class="svg-flow-out" style="animation-delay: -0.3s;" />
-                    <path d="M 15% 55% C 30% 70%, 35% 70%, 50% 60%" class="svg-flow-out" style="animation-delay: -0.7s;" />
-                    
-                    <!-- Center to Right Paths (Base) -->
-                    <path d="M 50% 40% C 65% 30%, 70% 30%, 85% 40%" class="svg-connection" />
-                    <path d="M 50% 50% C 65% 50%, 70% 50%, 85% 50%" class="svg-connection" />
-                    <path d="M 50% 60% C 65% 70%, 70% 70%, 85% 60%" class="svg-connection" />
-
-                    <!-- Center to Right Paths (Flow) -->
-                    <path d="M 50% 40% C 65% 30%, 70% 30%, 85% 40%" class="svg-flow-out" style="stroke: #10b981; filter: drop-shadow(0 0 5px #10b981);" />
-                    <path d="M 50% 50% C 65% 50%, 70% 50%, 85% 50%" class="svg-flow-out" style="stroke: #10b981; filter: drop-shadow(0 0 5px #10b981); animation-delay: -0.2s;" />
-                    <path d="M 50% 60% C 65% 70%, 70% 70%, 85% 60%" class="svg-flow-out" style="stroke: #10b981; filter: drop-shadow(0 0 5px #10b981); animation-delay: -0.5s;" />
-                  </svg>
-
-                  <!-- Left: Master NAP DB Layer -->
-                  <div class="node-container" style="align-items: flex-start; width: 220px; justify-content: center;">
-                    <div class="engine-node node-action" style="width: 100%; position: relative; background: rgba(16, 185, 129, 0.1); border-color: #10b981; box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);">
-                      <div style="position: absolute; right: -8px; top: 25%; width: 8px; height: 8px; background: #00f0ff; border-radius: 50%; box-shadow: 0 0 10px #00f0ff;"></div>
-                      <div style="position: absolute; right: -8px; top: 50%; width: 8px; height: 8px; background: #00f0ff; border-radius: 50%; box-shadow: 0 0 10px #00f0ff;"></div>
-                      <div style="position: absolute; right: -8px; top: 75%; width: 8px; height: 8px; background: #00f0ff; border-radius: 50%; box-shadow: 0 0 10px #00f0ff;"></div>
-                      <i class="fa-solid fa-database" style="color: #10b981;"></i>
-                      <span>Master NAP DB</span>
-                      <small>Source of Truth</small>
-                    </div>
-                  </div>
-
-                  <!-- Central Sync Health Core -->
-                  <div class="engine-core-wrapper">
-                    <div class="sync-status-main" style="position: relative; background: rgba(31, 41, 55, 0.4); border: 1px solid rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 10; box-shadow: 0 0 30px rgba(0,0,0,0.5);">
-                      
-                      <!-- Core IO Ports Left -->
-                      <div style="position: absolute; left: -8px; top: 25%; width: 8px; height: 8px; background: #00f0ff; border-radius: 50%; box-shadow: 0 0 10px #00f0ff;"></div>
-                      <div style="position: absolute; left: -8px; top: 50%; width: 8px; height: 8px; background: #00f0ff; border-radius: 50%; box-shadow: 0 0 10px #00f0ff;"></div>
-                      <div style="position: absolute; left: -8px; top: 75%; width: 8px; height: 8px; background: #00f0ff; border-radius: 50%; box-shadow: 0 0 10px #00f0ff;"></div>
-
-                      <!-- Core IO Ports Right -->
-                      <div style="position: absolute; right: -8px; top: 25%; width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981;"></div>
-                      <div style="position: absolute; right: -8px; top: 50%; width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981;"></div>
-                      <div style="position: absolute; right: -8px; top: 75%; width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981;"></div>
-
-                      <div class="sync-ring" style="margin-bottom: 1.5rem; position: relative;">
-                        <!-- Animated Scanner Beam -->
-                        <div style="position: absolute; width: 100%; height: 2px; background: #00f0ff; top: 50%; left: 0; box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff; opacity: 0.5; z-index: 4; animation: scan 3s infinite linear;"></div>
-
-                        <div class="ring-inner">
-                          <span class="sync-score" style="font-size: 2.2rem; color: #fff; text-shadow: 0 0 15px rgba(255,255,255,0.5);">99.8%</span>
-                          <span class="sync-label" style="color: #00f0ff;">Consistency</span>
-                        </div>
-                        <svg class="circular-chart" viewBox="0 0 36 36">
-                          <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="rgba(255,255,255,0.05)" />
-                          <path class="circle" stroke-dasharray="99.8, 100" stroke="#00f0ff" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" style="filter: drop-shadow(0 0 10px #00f0ff);" />
-                        </svg>
-                      </div>
-                      <button class="button button-primary sync-btn" style="width: 100%; box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); background: rgba(0, 240, 255, 0.1); border: 1px solid #00f0ff; color: #00f0ff;">
-                        <i class="fa-solid fa-arrows-rotate fa-spin"></i> Active Syncing
-                      </button>
-                    </div>
-                  </div>
-
-                  <!-- Right: Live API Terminal -->
-                  <div class="node-container" style="align-items: flex-end; width: 350px; justify-content: center;">
-                    <div class="api-terminal" style="width: 100%; position: relative; background: #0f172a; border: 1px solid #1e293b; border-radius: 12px; padding: 1rem; font-family: monospace; overflow: hidden; box-shadow: 0 0 30px rgba(0,0,0,0.5);">
-                      
-                      <!-- Core IO Ports Left -->
-                      <div style="position: absolute; left: -8px; top: 25%; width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981;"></div>
-                      <div style="position: absolute; left: -8px; top: 50%; width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981;"></div>
-                      <div style="position: absolute; left: -8px; top: 75%; width: 8px; height: 8px; background: #10b981; border-radius: 50%; box-shadow: 0 0 10px #10b981;"></div>
-
-                      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 0.5rem; margin-bottom: 1rem;">
-                        <span style="color: #64748b; font-size: 0.85rem;"><i class="fa-solid fa-terminal"></i> WHX_CORE API Stream</span>
-                        <span style="color: #10b981; font-size: 0.85rem; display: flex; align-items: center; gap: 5px;"><div class="connection-pulse" style="position:static; background:#10b981; box-shadow: 0 0 10px #10b981;"></div> Connected</span>
-                      </div>
-                      <div class="terminal-logs" style="font-size: 0.85rem; line-height: 1.6; color: #94a3b8; height: 160px; overflow-y: hidden; display: flex; flex-direction: column; gap: 4px;">
-                        <div><span style="color: #00f0ff;">[00:05:12]</span> <span style="color: #e2e8f0;">POST</span> /api/v1/sync/data-axle - <span style="color: #10b981;">200 OK</span></div>
-                        <div><span style="color: #00f0ff;">[00:05:14]</span> <span style="color: #e2e8f0;">PUT</span> /api/v1/sync/foursquare - <span style="color: #10b981;">202 ACCEPTED</span></div>
-                        <div><span style="color: #00f0ff;">[00:05:15]</span> <span style="color: #ff3366;">WARN</span> /api/v1/sync/bing - Rate limit (85%)</div>
-                        <div><span style="color: #00f0ff;">[00:05:18]</span> <span style="color: #e2e8f0;">POST</span> /api/v1/sync/yelp/graphql - <span style="color: #10b981;">200 OK</span></div>
-                        <div><span style="color: #00f0ff;">[00:05:22]</span> <span style="color: #e2e8f0;">SYS</span> Aggregating Tier 2...</div>
-                        <div><span style="color: #00f0ff;">[00:05:24]</span> <span style="color: #e2e8f0;">POST</span> /api/v1/sync/apple-maps - <span style="color: #10b981;">200 OK</span></div>
-                        <div style="color: #fff; font-weight: bold;">> Awaiting sync cycle... <span class="blink">_</span></div>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Analytics Tab -->
-          <div id="tab-analytics" class="tab-pane" style="display: none;">
-            <div class="welcome-section">
-              <h1>Advanced Analytics</h1>
-              <p>Deep-dive telemetry into your marketing ROI and lead conversions.</p>
-            </div>
-            
-            <div class="analytics-hologram">
-              <div class="chart-container">
-                <!-- CSS Based Bar Chart -->
-                <div class="cyber-chart">
-                  <div class="bar-group">
-                    <div class="bar" style="height: 40%;"></div>
-                    <span>Mon</span>
-                  </div>
-                  <div class="bar-group">
-                    <div class="bar" style="height: 65%;"></div>
-                    <span>Tue</span>
-                  </div>
-                  <div class="bar-group">
-                    <div class="bar" style="height: 30%;"></div>
-                    <span>Wed</span>
-                  </div>
-                  <div class="bar-group">
-                    <div class="bar" style="height: 90%; background: #00f0ff; box-shadow: 0 0 20px rgba(0,240,255,0.6);"></div>
-                    <span>Thu</span>
-                  </div>
-                  <div class="bar-group">
-                    <div class="bar" style="height: 55%;"></div>
-                    <span>Fri</span>
-                  </div>
-                  <div class="bar-group">
-                    <div class="bar" style="height: 80%;"></div>
-                    <span>Sat</span>
-                  </div>
-                  <div class="bar-group">
-                    <div class="bar" style="height: 100%;"></div>
-                    <span>Sun</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="analytics-hud">
-                <div class="hud-box">
-                  <h5>Total Leads</h5>
-                  <strong>3,204</strong>
-                </div>
-                <div class="hud-box">
-                  <h5>Conversion Rate</h5>
-                  <strong>18.4%</strong>
-                </div>
-                <div class="hud-box">
-                  <h5>Cost per Acq.</h5>
-                  <strong>$12.50</strong>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Billing Tab -->
-          <div id="tab-billing" class="tab-pane" style="display: none;">
-            <div class="welcome-section">
-              <h1>Billing & Subscriptions</h1>
-              <p>Manage your enterprise plan and payment methods.</p>
-            </div>
-            
-            <div class="billing-container">
-              <div class="credit-card-holo">
-                <div class="card-chip"></div>
-                <div class="card-number">**** **** **** 4242</div>
-                <div class="card-footer">
-                  <div class="card-name" style="filter: blur(8px) opacity(0.5); user-select: none; background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px; display: inline-block;">*** *****</div>
-                  <div class="card-exp">12/28</div>
-                </div>
-                <div class="card-glare"></div>
-              </div>
-              
-              <div class="plan-details">
-                <h3>Current Plan: <span class="neon-text">Enterprise Tier</span></h3>
-                <p>Next billing date: <strong>Nov 1, 2026</strong></p>
-                <div class="usage-stats">
-                  <div class="usage-bar">
-                    <span>API Usage (85%)</span>
-                    <div class="progress"><div class="fill warning" style="width: 85%;"></div></div>
-                  </div>
-                  <div class="usage-bar">
-                    <span>Storage (40%)</span>
-                    <div class="progress"><div class="fill" style="width: 40%;"></div></div>
-                  </div>
-                </div>
-                <button class="button button-secondary outline mt-20">Manage Billing on Stripe</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- Settings Tab -->
-          <div id="tab-settings" class="tab-pane" style="display: none;">
-            <div class="welcome-section">
-              <h1>Global Settings</h1>
-              <p>Configure system preferences, integrations, and security.</p>
-            </div>
-            
-            <div class="settings-grid">
-              <div class="settings-card">
-                <h3>Security & Access</h3>
-                <div class="toggle-group">
-                  <span>Two-Factor Authentication (2FA)</span>
-                  <label class="cyber-switch">
-                    <input type="checkbox" checked>
-                    <span class="slider"></span>
-                  </label>
-                </div>
-                <div class="toggle-group">
-                  <span>Login Anomalies Alert</span>
-                  <label class="cyber-switch">
-                    <input type="checkbox" checked>
-                    <span class="slider"></span>
-                  </label>
-                </div>
-              </div>
-              
-              <div class="settings-card">
-                <h3>API Keys</h3>
-                <div class="form-group">
-                  <label>OpenAI API Key</label>
-                  <div class="input-with-icon">
-                    <input type="password" class="cyber-input" value="sk-1234567890abcdef" readonly>
-                    <i class="fa-solid fa-eye action-icon"></i>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label>GHL Location ID</label>
-                  <input type="text" class="cyber-input" value="Whx194Jk8Dns">
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
+
+        <!-- Main Body Content -->
+        <div class="dashboard-content" style="padding: 1.5rem 2rem; overflow-y: auto;">
+          
+          <!-- Telemetry Cyber HUD Strip -->
+          <div class="telemetry-hud-strip">
+            <div class="telemetry-hud-item">
+              <span class="dot" style="width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 6px #10b981;"></span>
+              <span>ENGINE:</span> <b class="hud-metric-green">WHX Autonomous v4.2</b>
+            </div>
+            <div class="telemetry-hud-item">
+              <i class="fa-solid fa-bolt" style="color: #f5a623;"></i>
+              <span>THROUGHPUT:</span> <b class="hud-metric-amber">4,850 tok/sec</b>
+            </div>
+            <div class="telemetry-hud-item">
+              <i class="fa-solid fa-microchip" style="color: #3b82f6;"></i>
+              <span>SWARM:</span> <b class="hud-metric-blue">5 Models Active</b>
+            </div>
+            <div class="telemetry-hud-item">
+              <i class="fa-solid fa-link" style="color: #06b6d4;"></i>
+              <span>NAP CANONICAL:</span> <b class="hud-metric-purple">99.4% Verified</b>
+            </div>
+            <div class="telemetry-hud-item">
+              <i class="fa-solid fa-server" style="color: #10b981;"></i>
+              <span>LATENCY:</span> <b class="hud-metric-green">14ms Global</b>
+            </div>
+          </div>
+
+          <!-- Capability Pill Switcher with Smooth Hover Arrows -->
+          <div class="capabilities-scroll-container">
+            <button class="scroll-arrow-btn left" onclick="scrollTabs(-180)" title="Scroll Left"><i class="fa-solid fa-chevron-left"></i></button>
+            <div class="tasklet-capabilities-track" id="capabilities-tab-track" role="tablist">
+              <button class="benchmark-btn-secondary active" data-tab-target="tab-overview" style="border-radius: var(--radius-pill); font-size: 0.82rem; padding: 6px 14px; flex-shrink: 0;">
+                <i class="fa-solid fa-compass" style="color: #f5a623;"></i> Overview
+              </button>
+              <button class="benchmark-btn-secondary" data-tab-target="tab-seo" style="border-radius: var(--radius-pill); font-size: 0.82rem; padding: 6px 14px; flex-shrink: 0;">
+                <i class="fa-solid fa-map-location-dot" style="color: #10b981;"></i> Local SEO & Maps
+              </button>
+              <button class="benchmark-btn-secondary" data-tab-target="tab-automation" style="border-radius: var(--radius-pill); font-size: 0.82rem; padding: 6px 14px; flex-shrink: 0;">
+                <i class="fa-solid fa-robot" style="color: #ec4899;"></i> AI Multi-Agent
+              </button>
+              <button class="benchmark-btn-secondary" data-tab-target="tab-citations" style="border-radius: var(--radius-pill); font-size: 0.82rem; padding: 6px 14px; flex-shrink: 0;">
+                <i class="fa-solid fa-link" style="color: #06b6d4;"></i> Citation Building
+              </button>
+              <button class="benchmark-btn-secondary" data-tab-target="tab-analytics" style="border-radius: var(--radius-pill); font-size: 0.82rem; padding: 6px 14px; flex-shrink: 0;">
+                <i class="fa-solid fa-chart-line" style="color: #3b82f6;"></i> Analytics & ROI
+              </button>
+              <button class="benchmark-btn-secondary" data-tab-target="tab-billing" style="border-radius: var(--radius-pill); font-size: 0.82rem; padding: 6px 14px; flex-shrink: 0;">
+                <i class="fa-solid fa-credit-card" style="color: #f0b65a;"></i> Billing & Plans
+              </button>
+              <button class="benchmark-btn-secondary" data-tab-target="tab-settings" style="border-radius: var(--radius-pill); font-size: 0.82rem; padding: 6px 14px; flex-shrink: 0;">
+                <i class="fa-solid fa-gear" style="color: #94a3b8;"></i> Settings
+              </button>
+            </div>
+            <button class="scroll-arrow-btn right" onclick="scrollTabs(180)" title="Scroll Right"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+
+          <!-- ===================================================================
+               TAB 1: OVERVIEW (WHX MISSION CONTROL)
+               =================================================================== -->
+          <div id="tab-overview" class="tab-pane active">
+            
+            <!-- Hero Banner -->
+            <div class="benchmark-card" style="background: linear-gradient(135deg, #17171c 0%, #1f1f28 100%); border-color: rgba(245, 166, 35, 0.35); margin-bottom: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+                <div>
+                  <div style="display: flex; gap: 8px; align-items: center; margin-bottom: 10px;">
+                    <span class="benchmark-badge amber"><i class="fa-solid fa-shield-halved"></i> WHX GROWTH ENGINE</span>
+                    <span class="benchmark-badge green"><i class="fa-solid fa-circle-check"></i> 5 AGENTS OPERATIONAL</span>
+                  </div>
+                  <h1 style="font-family: var(--sans); font-size: 1.9rem; font-weight: 800; margin: 0 0 8px 0; color: #fff; letter-spacing: -0.03em;">
+                    Dominate Google Search & AI Engine Packs with <span class="hl">Autonomous Intelligence</span>
+                  </h1>
+                  <p id="overview-hero-sub" style="color: var(--muted); font-size: 0.94rem; margin: 0; max-width: 680px; line-height: 1.6;">
+                    We get local businesses into the Google Map Pack and AI search (ChatGPT, Claude, Perplexity), so your phone rings. Month-to-month flexibility, zero long-term lock-in.
+                  </p>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 10px;">
+                  <div id="stat-auth-rank" style="font-family: var(--mono); font-size: 0.8rem; color: var(--amber-ink);">
+                    <i class="fa-solid fa-trophy"></i> Authority Rank: <strong>98.4 / 100</strong>
+                  </div>
+                  <button class="btn-amber" onclick="switchTab('tab-automation');">
+                    <i class="fa-solid fa-play"></i> Delegate Work to Agents <i class="fa-solid fa-arrow-right" style="font-size: 0.72rem;"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Bento 4-Metric Grid -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-bottom: 1.5rem;">
+              
+              <div class="benchmark-card" onclick="switchTab('tab-seo')" style="cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                  <span class="benchmark-mono-tag">GOOGLE MAP PACK</span>
+                  <i class="fa-solid fa-map-pin" style="color: #ea4335; font-size: 1.1rem;"></i>
+                </div>
+                <div class="benchmark-big-stat" id="stat-grids-count">
+                  8 <em>#1 Grids</em>
+                </div>
+                <div style="margin-top: 10px; display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: #10b981; font-weight: 600;">
+                  <i class="fa-solid fa-arrow-trend-up"></i> +14.2% local inbound phone calls
+                </div>
+              </div>
+
+              <div class="benchmark-card" onclick="switchTab('tab-automation')" style="cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                  <span class="benchmark-mono-tag">AUTONOMOUS ACTIONS</span>
+                  <i class="fa-solid fa-robot" style="color: #d97706; font-size: 1.1rem;"></i>
+                </div>
+                <div class="benchmark-big-stat" id="stat-actions-count">
+                  1,842
+                </div>
+                <div style="margin-top: 10px; display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: #f5a623; font-weight: 600;">
+                  <i class="fa-solid fa-bolt"></i> 1.2s avg intake triage latency
+                </div>
+              </div>
+
+              <div class="benchmark-card" onclick="switchTab('tab-citations')" style="cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                  <span class="benchmark-mono-tag">NAP ACCURACY</span>
+                  <i class="fa-solid fa-link" style="color: #06b6d4; font-size: 1.1rem;"></i>
+                </div>
+                <div class="benchmark-big-stat" id="stat-nap-score">
+                  99.4<em>%</em>
+                </div>
+                <div style="margin-top: 10px; display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: #10b981; font-weight: 600;">
+                  <i class="fa-solid fa-circle-check"></i> 81 of 85 directory listings verified
+                </div>
+              </div>
+
+              <div class="benchmark-card" onclick="switchTab('tab-analytics')" style="cursor: pointer;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                  <span class="benchmark-mono-tag">QUALIFIED PIPELINE</span>
+                  <i class="fa-solid fa-chart-pie" style="color: #3b82f6; font-size: 1.1rem;"></i>
+                </div>
+                <div class="benchmark-big-stat" id="stat-pipeline-val">
+                  $34,800
+                </div>
+                <div style="margin-top: 10px; display: flex; align-items: center; gap: 6px; font-size: 0.78rem; color: #10b981; font-weight: 600;">
+                  <i class="fa-solid fa-arrow-trend-up"></i> 12 new high-intent client deals
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Multi-Agent Execution Runway Visualizer -->
+            <div class="benchmark-card" style="margin-bottom: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 10px;">
+                <div>
+                  <h3 style="font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0 0 4px 0; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-diagram-project" style="color: var(--amber);"></i> Active Multi-Agent Execution Runway
+                  </h3>
+                  <span style="font-size: 0.8rem; color: var(--muted);">Click any node to inspect parameters, models, and real-time execution JSON logs</span>
+                </div>
+                <div class="verified">
+                  <span class="dot"></span> 24ms Latency
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin-bottom: 1.2rem;">
+                
+                <div class="benchmark-card" style="padding: 1.1rem; cursor: pointer; border-color: var(--amber); background: #1f1f26;" onclick="selectRunwayNode(1, 'Inbound Webhook Listener', 'Receives inbound SMS, webhooks, voice inquiries from Twilio, GBP, and Meta Lead Ads.', '200 OK', '14ms', 'Claude 3.7')">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 6px;">
+                    <span style="font-family: var(--mono); font-weight: 700; color: var(--amber);">#01</span>
+                    <i class="fa-solid fa-envelope-open-text brand-twilio"></i>
+                  </div>
+                  <strong style="font-size: 0.9rem; color: #fff; display: block; margin-bottom: 2px;">Inbound Intake</strong>
+                  <span style="font-size: 0.74rem; color: var(--muted);">Twilio / Webhook</span>
+                </div>
+
+                <div class="benchmark-card" style="padding: 1.1rem; cursor: pointer;" onclick="selectRunwayNode(2, 'Context Enrichment & AI Triage', 'Extracts intent, budget, and business urgency using Claude 3.7 Sonnet with reasoning tokens.', 'Classified', '28ms', 'Claude 3.7')">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 6px;">
+                    <span style="font-family: var(--mono); font-weight: 700; color: var(--amber);">#02</span>
+                    <i class="fa-solid fa-brain brand-claude"></i>
+                  </div>
+                  <strong style="font-size: 0.9rem; color: #fff; display: block; margin-bottom: 2px;">AI Triage</strong>
+                  <span style="font-size: 0.74rem; color: var(--muted);">Claude 3.7 Reasoning</span>
+                </div>
+
+                <div class="benchmark-card" style="padding: 1.1rem; cursor: pointer;" onclick="selectRunwayNode(3, 'CRM Pipeline Sync (GoHighLevel)', 'Creates deal record, sets opportunity value, and maps custom contact attributes.', 'Synced', '42ms', 'REST API v2')">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 6px;">
+                    <span style="font-family: var(--mono); font-weight: 700; color: var(--amber);">#03</span>
+                    <i class="fa-solid fa-database brand-ghl"></i>
+                  </div>
+                  <strong style="font-size: 0.9rem; color: #fff; display: block; margin-bottom: 2px;">GHL CRM Sync</strong>
+                  <span style="font-size: 0.74rem; color: var(--muted);">Deal creation & tags</span>
+                </div>
+
+                <div class="benchmark-card" style="padding: 1.1rem; cursor: pointer;" onclick="selectRunwayNode(4, 'Local Geo & Citation Trigger', 'Triggers geo-targeted GBP update post & citation cross-reference for maximum local rank boost.', 'Active', '110ms', 'Google API')">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 6px;">
+                    <span style="font-family: var(--mono); font-weight: 700; color: var(--amber);">#04</span>
+                    <i class="fa-solid fa-location-dot brand-gemini"></i>
+                  </div>
+                  <strong style="font-size: 0.9rem; color: #fff; display: block; margin-bottom: 2px;">Geo Blast</strong>
+                  <span style="font-size: 0.74rem; color: var(--muted);">GBP reinforcement</span>
+                </div>
+
+                <div class="benchmark-card" style="padding: 1.1rem; cursor: pointer;" onclick="selectRunwayNode(5, 'Autonomous Dispatch & Follow-Up', 'Sends personalized calendar link and automated voice intro to the prospective client.', 'Dispatched', '18ms', 'Twilio Voice')">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 6px;">
+                    <span style="font-family: var(--mono); font-weight: 700; color: var(--amber);">#05</span>
+                    <i class="fa-solid fa-paper-plane brand-manus"></i>
+                  </div>
+                  <strong style="font-size: 0.9rem; color: #fff; display: block; margin-bottom: 2px;">Client Dispatch</strong>
+                  <span style="font-size: 0.74rem; color: var(--muted);">SMS & Cal.com link</span>
+                </div>
+
+              </div>
+
+              <!-- Live Inspector Box -->
+              <div style="background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px 18px; font-family: var(--mono); font-size: 0.78rem;" id="runway-inspector">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--border);">
+                  <span id="inspector-node-title" style="color: var(--amber); font-weight: 700;"><i class="fa-solid fa-terminal"></i> Node 1: Inbound Webhook Listener</span>
+                  <span style="color: var(--subtle-ink);" id="inspector-node-meta">Latency: 14ms | Status: Active</span>
+                </div>
+                <div id="inspector-node-content" style="line-height: 1.6; color: #e2e8f0;">
+                  Payload Sample: <span style="color: var(--amber);">{"event": "lead_inbound", "source": "google_maps_3pack", "city": "Dallas, TX", "service": "enterprise_seo", "verified": true}</span><br />
+                  Execution Trace: Inbound request verified with SHA-256 HMAC signature. Routed to Claude 3.7 triage engine.
+                </div>
+              </div>
+            </div>
+
+            <!-- Real-Time Event Stream -->
+            <div class="benchmark-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 10px;">
+                <h3 style="font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;">
+                  <i class="fa-solid fa-clock-rotate-left" style="color: var(--amber);"></i> Real-Time Autonomous Event Stream
+                </h3>
+                <div style="display: flex; gap: 6px;">
+                  <button class="btn-light" style="padding: 4px 12px; font-size: 0.76rem;" onclick="filterEvents('all')">All</button>
+                  <button class="btn-light" style="padding: 4px 12px; font-size: 0.76rem;" onclick="filterEvents('agents')">Agents</button>
+                  <button class="btn-light" style="padding: 4px 12px; font-size: 0.76rem;" onclick="filterEvents('seo')">Local SEO</button>
+                </div>
+              </div>
+
+              <div style="overflow-x: auto;">
+                <table class="benchmark-table" id="event-feed-table">
+                  <thead>
+                    <tr>
+                      <th>Timestamp</th>
+                      <th>Engine / Tool</th>
+                      <th>Event Summary</th>
+                      <th>Channel</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-type="agents">
+                      <td style="font-family: var(--mono); font-size: 0.76rem; color: var(--subtle-ink);">Just now</td>
+                      <td><span class="benchmark-badge amber"><i class="fa-solid fa-brain brand-claude" style="margin-right: 4px;"></i> Claude 3.7</span></td>
+                      <td style="font-weight: 500; color: #fff;">Autonomous lead response sent to Dr. Aris (Dental clinic automation)</td>
+                      <td style="color: var(--muted);">SMS + Cal.com</td>
+                      <td><span style="color: #10b981; font-weight: 700; font-family: var(--mono);"><i class="fa-solid fa-check"></i> Delivered</span></td>
+                    </tr>
+                    <tr data-type="seo">
+                      <td style="font-family: var(--mono); font-size: 0.76rem; color: var(--subtle-ink);">14 mins ago</td>
+                      <td><span class="benchmark-badge green"><i class="fa-solid fa-map-pin" style="color: #ea4335; margin-right: 4px;"></i> Geo-Grid</span></td>
+                      <td style="font-weight: 500; color: #fff;">Geo-Grid scan executed for 25 coordinates around Central Dallas</td>
+                      <td style="color: var(--muted);">GBP API</td>
+                      <td><span style="color: #10b981; font-weight: 700; font-family: var(--mono);"><i class="fa-solid fa-check"></i> 8 Grids #1</span></td>
+                    </tr>
+                    <tr data-type="citations">
+                      <td style="font-family: var(--mono); font-size: 0.76rem; color: var(--subtle-ink);">48 mins ago</td>
+                      <td><span class="benchmark-badge blue"><i class="fa-solid fa-link" style="color: #06b6d4; margin-right: 4px;"></i> Citations</span></td>
+                      <td style="font-weight: 500; color: #fff;">Apple Maps & Bing Places NAP consistency verified (100% Match)</td>
+                      <td style="color: var(--muted);">Aggregators</td>
+                      <td><span style="color: #06b6d4; font-weight: 700; font-family: var(--mono);"><i class="fa-solid fa-rotate"></i> Synced</span></td>
+                    </tr>
+                    <tr data-type="agents">
+                      <td style="font-family: var(--mono); font-size: 0.76rem; color: var(--subtle-ink);">2 hrs ago</td>
+                      <td><span class="benchmark-badge amber"><i class="fa-solid fa-database brand-ghl" style="margin-right: 4px;"></i> GHL CRM</span></td>
+                      <td style="font-weight: 500; color: #fff;">GoHighLevel deal opportunity updated: HVAC Group Dallas ($4,200)</td>
+                      <td style="color: var(--muted);">REST v2</td>
+                      <td><span style="color: #10b981; font-weight: 700; font-family: var(--mono);"><i class="fa-solid fa-check"></i> Updated</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div> <!-- End Tab 1 -->
+
+
+          <!-- ===================================================================
+               TAB 2: LOCAL SEO & MAPS (GEO-RANK & MAP PACK ENGINE)
+               =================================================================== -->
+          <div id="tab-seo" class="tab-pane" style="display: none;">
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem;">
+              
+              <!-- Geo Grid Live Scanner -->
+              <div class="benchmark-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                  <div>
+                    <h3 style="font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0 0 4px 0;"><i class="fa-solid fa-border-all" style="color: #ea4335;"></i> Interactive 5x5 Geo-Grid Scanner</h3>
+                    <span style="font-size: 0.8rem; color: var(--muted);">Target Keyword: <strong>"AI Automation Agency Near Me"</strong></span>
+                  </div>
+                  <button class="btn-amber" style="padding: 6px 14px; font-size: 0.78rem;" id="scan-grid-btn" onclick="runLiveGeoScan()">
+                    <i class="fa-solid fa-radar"></i> Run Live Scan
+                  </button>
+                </div>
+
+                <p style="font-size: 0.84rem; color: var(--muted); margin-bottom: 1.2rem;">
+                  Click any coordinate pin to view radius performance, dominant competitor, and targeted geo-tagging actions.
+                </p>
+
+                <!-- 5x5 Matrix -->
+                <div class="geo-grid-matrix" id="geo-grid-container" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 1.2rem;">
+                  <div class="geo-grid-pin rank-1" onclick="showPinDetails(1, '32.7767° N, 96.7970° W', '#1 (Dominant)', 'Your business leads here', '+42 calls/mo')">1</div>
+                  <div class="geo-grid-pin rank-1" onclick="showPinDetails(2, '32.7820° N, 96.7910° W', '#1 (Dominant)', 'Your business leads here', '+38 calls/mo')">1</div>
+                  <div class="geo-grid-pin rank-1" onclick="showPinDetails(3, '32.7890° N, 96.7850° W', '#1 (Dominant)', 'Your business leads here', '+45 calls/mo')">1</div>
+                  <div class="geo-grid-pin rank-2-3" onclick="showPinDetails(4, '32.7950° N, 96.7800° W', '#2 (Map 3-Pack)', 'Apex Tech Agency holds #1', '+22 calls/mo')">2</div>
+                  <div class="geo-grid-pin rank-2-3" onclick="showPinDetails(5, '32.8010° N, 96.7750° W', '#3 (Map 3-Pack)', 'Omni Digital holds #1', '+18 calls/mo')">3</div>
+                  
+                  <div class="geo-grid-pin rank-1" onclick="showPinDetails(6, '32.7710° N, 96.8020° W', '#1 (Dominant)', 'Your business leads here', '+39 calls/mo')">1</div>
+                  <div class="geo-grid-pin rank-1" onclick="showPinDetails(7, '32.7780° N, 96.7960° W', '#1 (Dominant)', 'Your business leads here', '+44 calls/mo')">1</div>
+                  <div class="geo-grid-pin rank-1" onclick="showPinDetails(8, '32.7850° N, 96.7900° W', '#1 (Dominant)', 'Your business leads here', '+49 calls/mo')">1</div>
+                  <div class="geo-grid-pin rank-1" onclick="showPinDetails(9, '32.7920° N, 96.7840° W', '#1 (Dominant)', 'Your business leads here', '+41 calls/mo')">1</div>
+                  <div class="geo-grid-pin rank-2-3" onclick="showPinDetails(10, '32.7990° N, 96.7780° W', '#2 (Map 3-Pack)', 'Apex Tech Agency holds #1', '+25 calls/mo')">2</div>
+
+                  <div class="geo-grid-pin rank-1" onclick="showPinDetails(11, '32.7650° N, 96.8070° W', '#1 (Dominant)', 'Your business leads here', '+35 calls/mo')">1</div>
+                  <div class="geo-grid-pin rank-1" onclick="showPinDetails(12, '32.7720° N, 96.8010° W', '#1 (Dominant)', 'Your business leads here', '+40 calls/mo')">1</div>
+                  <div class="geo-grid-pin rank-1" onclick="showPinDetails(13, '32.7790° N, 96.7950° W', '#1 (Dominant)', 'Center of Gravity (HQ)', '+55 calls/mo')">1</div>
+                  <div class="geo-grid-pin rank-1" onclick="showPinDetails(14, '32.7860° N, 96.7890° W', '#1 (Dominant)', 'Your business leads here', '+43 calls/mo')">1</div>
+                  <div class="geo-grid-pin rank-2-3" onclick="showPinDetails(15, '32.7930° N, 96.7830° W', '#3 (Map 3-Pack)', 'Dallas Local SEO Pro', '+19 calls/mo')">3</div>
+
+                  <div class="geo-grid-pin rank-2-3" onclick="showPinDetails(16, '32.7590° N, 96.8120° W', '#2 (Map 3-Pack)', 'Vortex Marketing', '+21 calls/mo')">2</div>
+                  <div class="geo-grid-pin rank-1" onclick="showPinDetails(17, '32.7660° N, 96.8060° W', '#1 (Dominant)', 'Your business leads here', '+37 calls/mo')">1</div>
+                  <div class="geo-grid-pin rank-1" onclick="showPinDetails(18, '32.7730° N, 96.8000° W', '#1 (Dominant)', 'Your business leads here', '+46 calls/mo')">1</div>
+                  <div class="geo-grid-pin rank-2-3" onclick="showPinDetails(19, '32.7800° N, 96.7940° W', '#2 (Map 3-Pack)', 'Nexus Digital', '+24 calls/mo')">2</div>
+                  <div class="geo-grid-pin rank-4-plus" onclick="showPinDetails(20, '32.7870° N, 96.7880° W', '#4 (Outside 3-Pack)', 'Horizon Media', '+11 calls/mo')">4</div>
+
+                  <div class="geo-grid-pin rank-4-plus" onclick="showPinDetails(21, '32.7530° N, 96.8170° W', '#4 (Outside 3-Pack)', 'LoneStar Leads', '+9 calls/mo')">4</div>
+                  <div class="geo-grid-pin rank-2-3" onclick="showPinDetails(22, '32.7600° N, 96.8110° W', '#3 (Map 3-Pack)', 'LoneStar Leads', '+16 calls/mo')">3</div>
+                  <div class="geo-grid-pin rank-1" onclick="showPinDetails(23, '32.7670° N, 96.8050° W', '#1 (Dominant)', 'Your business leads here', '+36 calls/mo')">1</div>
+                  <div class="geo-grid-pin rank-2-3" onclick="showPinDetails(24, '32.7740° N, 96.7990° W', '#2 (Map 3-Pack)', 'Horizon Media', '+20 calls/mo')">2</div>
+                  <div class="geo-grid-pin rank-4-plus" onclick="showPinDetails(25, '32.7810° N, 96.7930° W', '#5 (Outside 3-Pack)', 'Big D SEO Experts', '+7 calls/mo')">5</div>
+                </div>
+
+                <!-- Selected Pin Detail -->
+                <div style="background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 12px 16px; font-family: var(--mono); font-size: 0.78rem;" id="pin-detail-box">
+                  <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                    <span style="color: var(--amber); font-weight: 700;" id="pin-coords">Coordinates: 32.7790° N, 96.7950° W (Pin #13)</span>
+                    <span style="color: #10b981; font-weight: 700;" id="pin-rank">Rank: #1 (Dominant)</span>
+                  </div>
+                  <div style="color: var(--muted);" id="pin-desc">
+                    Status: Center of Gravity (HQ). Dominating 100% of organic map pack search traffic within 3.5 mile radius.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Reputation & Review Manager with AI Generator -->
+              <div class="benchmark-card">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                  <h3 style="font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0;"><i class="fa-solid fa-star" style="color: #f59e0b;"></i> Reputation & Review Engine</h3>
+                  <span class="benchmark-badge amber">4.9 ★ (128 Reviews)</span>
+                </div>
+
+                <div style="background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px; margin-bottom: 1.2rem;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <strong style="color: #fff; font-size: 0.88rem;">Dr. Marcus Vance</strong>
+                    <span style="color: #f59e0b; font-size: 0.78rem;">★★★★★</span>
+                  </div>
+                  <p style="font-size: 0.82rem; color: #cbd5e1; margin: 0 0 10px 0; line-height: 1.5;">
+                    "WHX completely transformed our local booking pipeline. We went from being invisible to #1 across the entire metroplex. Our phones haven't stopped ringing."
+                  </p>
+                  <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <button class="btn-light" style="padding: 4px 10px; font-size: 0.74rem;" onclick="generateReviewReply('professional')">Generate Professional Reply</button>
+                    <button class="btn-light" style="padding: 4px 10px; font-size: 0.74rem;" onclick="generateReviewReply('warm')">Warm / Grateful</button>
+                    <button class="btn-light" style="padding: 4px 10px; font-size: 0.74rem;" onclick="generateReviewReply('seo')">SEO Keyword Rich</button>
+                  </div>
+                </div>
+
+                <!-- AI Response Draft Box -->
+                <div style="background: #17171c; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 12px; margin-bottom: 1rem;">
+                  <span class="benchmark-mono-tag" style="margin-bottom: 6px; display: block;">CLAUDE 3.7 AI RESPONSE DRAFT:</span>
+                  <textarea id="ai-review-draft" style="width: 100%; height: 75px; background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-sm); color: #fff; font-size: 0.82rem; padding: 8px; resize: none; font-family: var(--sans);" readonly>Thank you so much, Dr. Vance! We are thrilled to hear how our autonomous local ranking engine has scaled patient intake for your practice. Looking forward to expanding your geo-grid reach even further!</textarea>
+                  <div style="display: flex; justify-content: flex-end; margin-top: 8px;">
+                    <button class="btn-amber" style="padding: 5px 12px; font-size: 0.76rem;" onclick="postAiReviewReply()"><i class="fa-solid fa-paper-plane"></i> Post Reply to Google</button>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- AI Search Engine Visibility Matrix -->
+            <div class="benchmark-card" style="margin-top: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 10px;">
+                <div>
+                  <h3 style="font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0 0 4px 0;"><i class="fa-solid fa-brain" style="color: var(--amber);"></i> Live AI Search Engine Visibility Matrix</h3>
+                  <span style="font-size: 0.8rem; color: var(--muted);">Real-time grounding and brand recommendation rank across top Generative AI engines</span>
+                </div>
+                <div class="live-green-badge">
+                  <span class="dot"></span> 94.2% AI Model Share
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
+                <div class="benchmark-card" style="background: #121217; padding: 14px; border-left: 3px solid #10a37f;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <span style="font-weight: 700; color: #fff; font-size: 0.86rem;"><i class="fa-solid fa-bolt brand-chatgpt"></i> ChatGPT Search</span>
+                    <span class="benchmark-badge green">#1 Recommended</span>
+                  </div>
+                  <span style="font-size: 0.76rem; color: var(--muted); display: block;">Top Citation: GMB & Official Domain</span>
+                </div>
+
+                <div class="benchmark-card" style="background: #121217; padding: 14px; border-left: 3px solid #d97706;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <span style="font-weight: 700; color: #fff; font-size: 0.86rem;"><i class="fa-solid fa-brain brand-claude"></i> Claude 3.7</span>
+                    <span class="benchmark-badge green">#1 Primary Source</span>
+                  </div>
+                  <span style="font-size: 0.76rem; color: var(--muted); display: block;">Reasoning Verification: 99.4%</span>
+                </div>
+
+                <div class="benchmark-card" style="background: #121217; padding: 14px; border-left: 3px solid #06b6d4;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <span style="font-weight: 700; color: #fff; font-size: 0.86rem;"><i class="fa-solid fa-magnifying-glass brand-perplexity"></i> Perplexity AI</span>
+                    <span class="benchmark-badge green">#1 Grounding Link</span>
+                  </div>
+                  <span style="font-size: 0.76rem; color: var(--muted); display: block;">Direct Map Pack Anchor</span>
+                </div>
+
+                <div class="benchmark-card" style="background: #121217; padding: 14px; border-left: 3px solid #4285f4;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <span style="font-weight: 700; color: #fff; font-size: 0.86rem;"><i class="fa-solid fa-gem brand-gemini"></i> Google Gemini</span>
+                    <span class="benchmark-badge green">#1 Local Pack</span>
+                  </div>
+                  <span style="font-size: 0.76rem; color: var(--muted); display: block;">Verified Knowledge Graph Entity</span>
+                </div>
+              </div>
+            </div>
+
+          </div> <!-- End Tab 2 -->
+
+
+          <!-- ===================================================================
+               TAB 3: AI MULTI-AGENT (ORCHESTRATION TERMINAL)
+               =================================================================== -->
+          <div id="tab-automation" class="tab-pane" style="display: none;">
+            
+            <div class="benchmark-card" style="margin-bottom: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 10px;">
+                <div>
+                  <h3 style="font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0 0 4px 0;"><i class="fa-solid fa-microchip" style="color: var(--amber);"></i> Multi-Agent Autonomous Pipeline Simulator</h3>
+                  <span style="font-size: 0.8rem; color: var(--muted);">Test multi-agent handoffs between Claude 3.7 Sonnet, ChatGPT 4.5, Astra, and Grok 3</span>
+                </div>
+                <div class="verified">
+                  <span class="dot"></span> Live Token Tracker: <strong>4,120 Tokens</strong>
+                </div>
+              </div>
+
+              <!-- Model Selector Cards -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-bottom: 1.2rem;">
+                
+                <div class="benchmark-card" style="padding: 1rem; border-color: var(--amber); background: #1f1f26;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <i class="fa-solid fa-brain brand-claude" style="font-size: 1.2rem;"></i>
+                    <span class="benchmark-badge amber">PRIMARY</span>
+                  </div>
+                  <strong style="color: #fff; font-size: 0.88rem; display: block;">Claude 3.7 Sonnet</strong>
+                  <span style="font-size: 0.74rem; color: var(--muted);">Reasoning & Intent Triage</span>
+                </div>
+
+                <div class="benchmark-card" style="padding: 1rem;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <i class="fa-solid fa-bolt brand-chatgpt" style="font-size: 1.2rem;"></i>
+                    <span class="benchmark-badge green">CONNECTED</span>
+                  </div>
+                  <strong style="color: #fff; font-size: 0.88rem; display: block;">ChatGPT 4.5</strong>
+                  <span style="font-size: 0.74rem; color: var(--muted);">Lead Profile Enrichment</span>
+                </div>
+
+                <div class="benchmark-card" style="padding: 1rem;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <i class="fa-solid fa-gem brand-astra" style="font-size: 1.2rem;"></i>
+                    <span class="benchmark-badge blue">ACTIVE</span>
+                  </div>
+                  <strong style="color: #fff; font-size: 0.88rem; display: block;">Astra Intelligence</strong>
+                  <span style="font-size: 0.74rem; color: var(--muted);">CRM & Webhook Sync</span>
+                </div>
+
+                <div class="benchmark-card" style="padding: 1rem;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <i class="fa-solid fa-wand-magic-sparkles brand-manus" style="font-size: 1.2rem;"></i>
+                    <span class="benchmark-badge amber">STANDBY</span>
+                  </div>
+                  <strong style="color: #fff; font-size: 0.88rem; display: block;">Manus AI</strong>
+                  <span style="font-size: 0.74rem; color: var(--muted);">Autonomous Web Actions</span>
+                </div>
+
+              </div>
+
+              <!-- Interactive Simulator Terminal -->
+              <div style="background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px; margin-bottom: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                    <span class="dot"></span>
+                    <span style="font-family: var(--mono); font-size: 0.78rem; color: #fff; font-weight: 700;">LIVE ORCHESTRATION TERMINAL</span>
+                    
+                    <!-- Live Voice & Agent Audio Waveform Visualizer -->
+                    <div class="audio-waveform-container" title="Real-Time Voice AI Stream Monitor" style="margin-left: 10px;">
+                      <span class="audio-wave-bar"></span>
+                      <span class="audio-wave-bar"></span>
+                      <span class="audio-wave-bar"></span>
+                      <span class="audio-wave-bar"></span>
+                      <span class="audio-wave-bar"></span>
+                      <span class="audio-wave-bar"></span>
+                      <span class="audio-wave-bar"></span>
+                      <span class="audio-wave-bar"></span>
+                    </div>
+                  </div>
+                  <div style="display: flex; gap: 8px;">
+                    <input type="text" id="sim-lead-name" value="Apex Medical Clinic ($5.2k MRR)" style="background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); color: #fff; font-size: 0.78rem; padding: 4px 10px; font-family: var(--mono); width: 230px;" />
+                    <button class="btn-amber" style="padding: 5px 14px; font-size: 0.76rem;" onclick="runAgentSimulator()">
+                      <i class="fa-solid fa-play"></i> Trigger Simulation
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Terminal Output Window -->
+                <div id="agent-sim-terminal" style="background: #060607; border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius-sm); height: 180px; overflow-y: auto; padding: 12px; font-family: var(--mono); font-size: 0.76rem; line-height: 1.6; color: #a1a1aa;">
+                  <div><span style="color: #64748b;">[System Boot]</span> Initializing WHX Multi-Agent Runtime v4.8...</div>
+                  <div><span style="color: #10b981;">[Ready]</span> 5 Agent microservices listening for webhooks on port 8000.</div>
+                  <div><span style="color: var(--amber);">[Standby]</span> Click 'Trigger Simulation' to test full lead triage & CRM sync pipeline.</div>
+                </div>
+
+                <!-- Execution Progress Bar -->
+                <div style="margin-top: 12px;">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.74rem; font-family: var(--mono); margin-bottom: 4px;">
+                    <span id="sim-progress-status" style="color: var(--muted);">Ready to run</span>
+                    <span id="sim-progress-pct" style="color: var(--amber); font-weight: 700;">0%</span>
+                  </div>
+                  <div style="background: var(--card); height: 6px; border-radius: 999px; overflow: hidden;">
+                    <div id="sim-progress-fill" style="width: 0%; height: 100%; background: var(--amber); transition: width 0.4s ease;"></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div> <!-- End Tab 3 -->
+
+
+          <!-- ===================================================================
+               TAB 4: CITATION BUILDING (DIRECTORY NAP CONSISTENCY)
+               =================================================================== -->
+          <div id="tab-citations" class="tab-pane" style="display: none;">
+            
+            <div class="benchmark-card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 10px;">
+                <div>
+                  <h3 style="font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0 0 4px 0;"><i class="fa-solid fa-link" style="color: var(--amber);"></i> Local Directory Citation Auditor</h3>
+                  <span style="font-size: 0.8rem; color: var(--muted);">Enforce 100% canonical NAP (Name, Address, Phone) consistency across Tier-1 directories</span>
+                </div>
+                <button class="btn-amber" style="padding: 6px 14px; font-size: 0.78rem;" onclick="submitBatchCitations()">
+                  <i class="fa-solid fa-arrows-rotate"></i> Push Batch Sync (85 Listings)
+                </button>
+              </div>
+
+              <div style="overflow-x: auto;">
+                <table class="benchmark-table">
+                  <thead>
+                    <tr>
+                      <th>Directory Source</th>
+                      <th>Listed Business Name</th>
+                      <th>Canonical Phone</th>
+                      <th>Address Verified</th>
+                      <th>Audit Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><i class="fa-brands fa-google brand-gemini" style="font-size: 1.1rem; margin-right: 6px;"></i> <strong>Google Business Profile</strong></td>
+                      <td>WHX Digital LLC</td>
+                      <td>+1 (307) 301-7406</td>
+                      <td>Dallas, TX & Casper, WY</td>
+                      <td><span class="benchmark-badge green"><i class="fa-solid fa-check"></i> 100% Match</span></td>
+                      <td><span style="color: #10b981; font-weight: 700; font-family: var(--mono); font-size: 0.78rem;"><i class="fa-solid fa-lock"></i> Verified</span></td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa-brands fa-apple brand-apple" style="font-size: 1.1rem; margin-right: 6px;"></i> <strong>Apple Maps</strong></td>
+                      <td>WHX Digital LLC</td>
+                      <td>+1 (307) 301-7406</td>
+                      <td>Dallas, TX & Casper, WY</td>
+                      <td><span class="benchmark-badge green"><i class="fa-solid fa-check"></i> 100% Match</span></td>
+                      <td><span style="color: #10b981; font-weight: 700; font-family: var(--mono); font-size: 0.78rem;"><i class="fa-solid fa-lock"></i> Verified</span></td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa-brands fa-yelp brand-yelp" style="font-size: 1.1rem; margin-right: 6px;"></i> <strong>Yelp Directory</strong></td>
+                      <td>WHX Digital Agency</td>
+                      <td>+1 (307) 301-7406</td>
+                      <td>Suite #600</td>
+                      <td id="status-yelp"><span class="benchmark-badge amber"><i class="fa-solid fa-triangle-exclamation"></i> Suite Mismatch</span></td>
+                      <td><button class="btn-light" style="padding: 3px 8px; font-size: 0.72rem;" id="fix-yelp-btn" onclick="fixCitation('yelp')">Auto-Heal NAP</button></td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa-brands fa-microsoft brand-bing" style="font-size: 1.1rem; margin-right: 6px;"></i> <strong>Bing Places</strong></td>
+                      <td>WHX Digital LLC</td>
+                      <td>+1 (307) 301-7406</td>
+                      <td>Dallas, TX & Casper, WY</td>
+                      <td><span class="benchmark-badge green"><i class="fa-solid fa-check"></i> 100% Match</span></td>
+                      <td><span style="color: #10b981; font-weight: 700; font-family: var(--mono); font-size: 0.78rem;"><i class="fa-solid fa-lock"></i> Verified</span></td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa-solid fa-book brand-yp" style="font-size: 1.1rem; margin-right: 6px;"></i> <strong>YellowPages</strong></td>
+                      <td>WHX Digital</td>
+                      <td>(307) 301-7406</td>
+                      <td>Dallas Metro</td>
+                      <td id="status-yp"><span class="benchmark-badge amber"><i class="fa-solid fa-circle-exclamation"></i> Format Discrepancy</span></td>
+                      <td><button class="btn-light" style="padding: 3px 8px; font-size: 0.72rem;" id="fix-yp-btn" onclick="fixCitation('yp')">Auto-Heal NAP</button></td>
+                    </tr>
+                    <tr>
+                      <td><i class="fa-solid fa-shield-halved brand-bbb" style="font-size: 1.1rem; margin-right: 6px;"></i> <strong>Better Business Bureau (BBB)</strong></td>
+                      <td>WHX Digital LLC</td>
+                      <td>+1 (307) 301-7406</td>
+                      <td>Dallas, TX & Casper, WY</td>
+                      <td><span class="benchmark-badge green"><i class="fa-solid fa-check"></i> 100% Match</span></td>
+                      <td><span style="color: #10b981; font-weight: 700; font-family: var(--mono); font-size: 0.78rem;"><i class="fa-solid fa-lock"></i> Verified</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div> <!-- End Tab 4 -->
+
+
+          <!-- ===================================================================
+               TAB 5: ANALYTICS & ROI
+               =================================================================== -->
+          <div id="tab-analytics" class="tab-pane" style="display: none;">
+            
+            <div class="benchmark-card" style="margin-bottom: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 10px;">
+                <div>
+                  <h3 style="font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0 0 4px 0;"><i class="fa-solid fa-chart-line" style="color: var(--amber);"></i> Inbound Search & Conversion Velocity</h3>
+                  <span style="font-size: 0.8rem; color: var(--muted);">Real-time search impressions, map direction requests, and direct phone calls</span>
+                </div>
+                <div style="display: flex; gap: 6px;">
+                  <button class="btn-light" style="padding: 4px 10px; font-size: 0.74rem;" onclick="updateAnalyticsPeriod('today')">Today</button>
+                  <button class="btn-light" style="padding: 4px 10px; font-size: 0.74rem;" onclick="updateAnalyticsPeriod('7d')">7D</button>
+                  <button class="btn-light active" style="padding: 4px 10px; font-size: 0.74rem; border-color: var(--amber);" onclick="updateAnalyticsPeriod('30d')">30D</button>
+                  <button class="btn-light" style="padding: 4px 10px; font-size: 0.74rem;" onclick="updateAnalyticsPeriod('90d')">90D</button>
+                </div>
+              </div>
+
+              <!-- Velocity Chart Representation -->
+              <div style="background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px; margin-bottom: 1.2rem;">
+                <svg viewBox="0 0 700 180" style="width: 100%; height: 180px; overflow: visible;">
+                  <defs>
+                    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#f5a623" stop-opacity="0.35"/>
+                      <stop offset="100%" stop-color="#f5a623" stop-opacity="0.0"/>
+                    </linearGradient>
+                  </defs>
+                  <!-- Grid lines -->
+                  <line x1="0" y1="30" x2="700" y2="30" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4" />
+                  <line x1="0" y1="80" x2="700" y2="80" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4" />
+                  <line x1="0" y1="130" x2="700" y2="130" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4" />
+                  
+                  <!-- Area Fill -->
+                  <path d="M 0,140 Q 120,110 240,80 T 480,45 T 700,20 L 700,180 L 0,180 Z" fill="url(#chartGrad)" />
+                  
+                  <!-- Main Curve Line -->
+                  <path d="M 0,140 Q 120,110 240,80 T 480,45 T 700,20" fill="none" stroke="#f5a623" stroke-width="3" stroke-linecap="round" />
+                  
+                  <!-- Live Data Dots -->
+                  <circle cx="240" cy="80" r="5" fill="#f5a623" stroke="#0b0b0d" stroke-width="2" />
+                  <circle cx="480" cy="45" r="5" fill="#f5a623" stroke="#0b0b0d" stroke-width="2" />
+                  <circle cx="700" cy="20" r="6" fill="#10b981" stroke="#0b0b0d" stroke-width="2" />
+                </svg>
+                <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.72rem; color: var(--subtle-ink); margin-top: 8px;">
+                  <span>Week 1</span>
+                  <span>Week 2</span>
+                  <span>Week 3</span>
+                  <span style="color: #10b981; font-weight: 700;">Current Velocity (+420%)</span>
+                </div>
+              </div>
+
+              <!-- Metric Strip -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px;">
+                <div style="background: #17171c; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px;">
+                  <span class="benchmark-mono-tag">TOTAL IMPRESSIONS</span>
+                  <div style="font-family: var(--mono); font-size: 1.3rem; font-weight: 700; color: #fff; margin-top: 4px;" id="stat-impressions">48,290</div>
+                </div>
+                <div style="background: #17171c; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px;">
+                  <span class="benchmark-mono-tag">DIRECT PHONE CALLS</span>
+                  <div style="font-family: var(--mono); font-size: 1.3rem; font-weight: 700; color: #10b981; margin-top: 4px;" id="stat-calls">1,410</div>
+                </div>
+                <div style="background: #17171c; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px;">
+                  <span class="benchmark-mono-tag">CONVERSIONS</span>
+                  <div style="font-family: var(--mono); font-size: 1.3rem; font-weight: 700; color: #f5a623; margin-top: 4px;" id="stat-conversions">348</div>
+                </div>
+                <div style="background: #17171c; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px;">
+                  <span class="benchmark-mono-tag">EST. VALUE GENERATED</span>
+                  <div style="font-family: var(--mono); font-size: 1.3rem; font-weight: 700; color: #3b82f6; margin-top: 4px;" id="stat-saved">$14,280</div>
+                </div>
+              </div>
+
+            </div>
+
+          </div> <!-- End Tab 5 -->
+
+
+          <!-- ===================================================================
+               TAB 6: BILLING & PLANS
+               =================================================================== -->
+          <div id="tab-billing" class="tab-pane" style="display: none;">
+            
+            <div class="benchmark-card" style="margin-bottom: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; flex-wrap: wrap; gap: 10px;">
+                <div>
+                  <h3 style="font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0 0 4px 0;"><i class="fa-solid fa-credit-card" style="color: var(--amber);"></i> Plan Usage & Quotas</h3>
+                  <span style="font-size: 0.8rem; color: var(--muted);">Active Tier: <strong>WHX Autonomous Agency Pro (Month-to-Month)</strong></span>
+                </div>
+                <div class="verified">
+                  <span class="dot"></span> Next Renewal: Oct 28, 2026
+                </div>
+              </div>
+
+              <!-- Usage Progress Meters -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 1.5rem;">
+                
+                <div style="background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px;">
+                  <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.78rem; margin-bottom: 6px;">
+                    <span style="color: #fff;">Agent Execution Hours</span>
+                    <span style="color: var(--amber); font-weight: 700;">148 / 500 hrs</span>
+                  </div>
+                  <div style="background: var(--card); height: 6px; border-radius: 999px; overflow: hidden;">
+                    <div style="width: 29.6%; height: 100%; background: var(--amber);"></div>
+                  </div>
+                </div>
+
+                <div style="background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px;">
+                  <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.78rem; margin-bottom: 6px;">
+                    <span style="color: #fff;">Geo-Grid Radius Scans</span>
+                    <span style="color: #10b981; font-weight: 700;">842 / 2,000 scans</span>
+                  </div>
+                  <div style="background: var(--card); height: 6px; border-radius: 999px; overflow: hidden;">
+                    <div style="width: 42.1%; height: 100%; background: #10b981;"></div>
+                  </div>
+                </div>
+
+                <div style="background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px;">
+                  <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.78rem; margin-bottom: 6px;">
+                    <span style="color: #fff;">Directory Sync API Calls</span>
+                    <span style="color: #3b82f6; font-weight: 700;">12,480 / 50,000</span>
+                  </div>
+                  <div style="background: var(--card); height: 6px; border-radius: 999px; overflow: hidden;">
+                    <div style="width: 24.9%; height: 100%; background: #3b82f6;"></div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Billing Invoices History -->
+              <h4 style="font-size: 0.95rem; font-weight: 700; color: #fff; margin: 0 0 10px 0;">Invoice History & Verified Receipts</h4>
+              <div style="overflow-x: auto;">
+                <table class="benchmark-table">
+                  <thead>
+                    <tr>
+                      <th>Invoice ID</th>
+                      <th>Date</th>
+                      <th>Amount</th>
+                      <th>Payment Method</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="font-family: var(--mono); font-weight: 700; color: #fff;">#INV-2026-098</td>
+                      <td>Oct 01, 2026</td>
+                      <td style="font-family: var(--mono); font-weight: 700; color: #fff;">$299.00 USD</td>
+                      <td><i class="fa-brands fa-cc-visa" style="color: #3b82f6;"></i> VISA ending in 4242</td>
+                      <td><span class="benchmark-badge green"><i class="fa-solid fa-check"></i> Paid</span></td>
+                      <td><button class="btn-light" style="padding: 3px 8px; font-size: 0.72rem;" onclick="downloadInvoice('INV-2026-098', '$299.00', 'Oct 01, 2026')"><i class="fa-solid fa-download"></i> Receipt</button></td>
+                    </tr>
+                    <tr>
+                      <td style="font-family: var(--mono); font-weight: 700; color: #fff;">#INV-2026-074</td>
+                      <td>Sep 01, 2026</td>
+                      <td style="font-family: var(--mono); font-weight: 700; color: #fff;">$299.00 USD</td>
+                      <td><i class="fa-brands fa-cc-visa" style="color: #3b82f6;"></i> VISA ending in 4242</td>
+                      <td><span class="benchmark-badge green"><i class="fa-solid fa-check"></i> Paid</span></td>
+                      <td><button class="btn-light" style="padding: 3px 8px; font-size: 0.72rem;" onclick="downloadInvoice('INV-2026-074', '$299.00', 'Sep 01, 2026')"><i class="fa-solid fa-download"></i> Receipt</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div> <!-- End Tab 6 -->
+
+
+          <!-- ===================================================================
+               TAB 7: WORKSPACE SETTINGS
+               =================================================================== -->
+          <div id="tab-settings" class="tab-pane" style="display: none;">
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+              
+              <!-- API & Integrations -->
+              <div class="benchmark-card">
+                <h3 style="font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0 0 1rem 0;"><i class="fa-solid fa-key" style="color: var(--amber);"></i> Live API Key Connections</h3>
+                
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                  <div>
+                    <label style="font-family: var(--mono); font-size: 0.72rem; color: var(--subtle-ink); display: block; margin-bottom: 4px;">ANTHROPIC API KEY (CLAUDE 3.7)</label>
+                    <div style="display: flex; gap: 6px;">
+                      <input type="password" id="key-anthropic" value="sk-ant-api03-live-94827103847291823749" style="flex: 1; background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-sm); color: #fff; padding: 6px 10px; font-family: var(--mono); font-size: 0.78rem;" />
+                      <button class="btn-light" style="padding: 4px 8px;" onclick="togglePassVisibility('key-anthropic')"><i class="fa-solid fa-eye"></i></button>
+                      <button class="btn-light" style="padding: 4px 8px;" onclick="testConnection('Claude 3.7 API')">Test</button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label style="font-family: var(--mono); font-size: 0.72rem; color: var(--subtle-ink); display: block; margin-bottom: 4px;">OPENAI API KEY (CHATGPT 4.5)</label>
+                    <div style="display: flex; gap: 6px;">
+                      <input type="password" id="key-openai" value="sk-proj-49102938471928374910293847192" style="flex: 1; background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-sm); color: #fff; padding: 6px 10px; font-family: var(--mono); font-size: 0.78rem;" />
+                      <button class="btn-light" style="padding: 4px 8px;" onclick="togglePassVisibility('key-openai')"><i class="fa-solid fa-eye"></i></button>
+                      <button class="btn-light" style="padding: 4px 8px;" onclick="testConnection('OpenAI API')">Test</button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label style="font-family: var(--mono); font-size: 0.72rem; color: var(--subtle-ink); display: block; margin-bottom: 4px;">TWILIO ACCOUNT SID / AUTH</label>
+                    <div style="display: flex; gap: 6px;">
+                      <input type="password" id="key-twilio" value="AC847291847192837491029384719283" style="flex: 1; background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-sm); color: #fff; padding: 6px 10px; font-family: var(--mono); font-size: 0.78rem;" />
+                      <button class="btn-light" style="padding: 4px 8px;" onclick="togglePassVisibility('key-twilio')"><i class="fa-solid fa-eye"></i></button>
+                      <button class="btn-light" style="padding: 4px 8px;" onclick="testConnection('Twilio SMS & Voice')">Test</button>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label style="font-family: var(--mono); font-size: 0.72rem; color: var(--subtle-ink); display: block; margin-bottom: 4px;">GOHIGHLEVEL (GHL) LOCATION API V2</label>
+                    <div style="display: flex; gap: 6px;">
+                      <input type="password" id="key-ghl" value="ghl-loc-api-91823749102938471928" style="flex: 1; background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-sm); color: #fff; padding: 6px 10px; font-family: var(--mono); font-size: 0.78rem;" />
+                      <button class="btn-light" style="padding: 4px 8px;" onclick="togglePassVisibility('key-ghl')"><i class="fa-solid fa-eye"></i></button>
+                      <button class="btn-light" style="padding: 4px 8px;" onclick="testConnection('GoHighLevel CRM')">Test</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Profile & Team -->
+              <div class="benchmark-card">
+                <h3 style="font-size: 1.1rem; font-weight: 700; color: #fff; margin: 0 0 1rem 0;"><i class="fa-solid fa-users" style="color: var(--amber);"></i> Organization & Team Access</h3>
+                
+                <div style="margin-bottom: 12px;">
+                  <label style="font-family: var(--mono); font-size: 0.72rem; color: var(--subtle-ink); display: block; margin-bottom: 4px;">BUSINESS NAME</label>
+                  <input type="text" id="setting-biz-name" value="WHX Digital LLC" style="width: 100%; background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-sm); color: #fff; padding: 6px 10px; font-size: 0.84rem;" />
+                </div>
+
+                <div style="margin-bottom: 14px;">
+                  <label style="font-family: var(--mono); font-size: 0.72rem; color: var(--subtle-ink); display: block; margin-bottom: 4px;">PRIMARY CANONICAL DOMAIN</label>
+                  <input type="text" id="setting-biz-url" value="https://whxdigital.com/" style="width: 100%; background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-sm); color: #fff; padding: 6px 10px; font-size: 0.84rem;" />
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                  <span style="font-size: 0.82rem; font-weight: 700; color: #fff;">Team Members</span>
+                  <button class="btn-light" style="padding: 3px 8px; font-size: 0.72rem;" onclick="inviteMember()"><i class="fa-solid fa-plus"></i> Invite</button>
+                </div>
+
+                <table class="benchmark-table" id="team-table" style="font-size: 0.78rem;">
+                  <tbody>
+                    <tr>
+                      <td><strong>Admin Owner</strong></td>
+                      <td>admin@whxdigital.com</td>
+                      <td><span class="benchmark-badge green">Superadmin</span></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Operations Lead</strong></td>
+                      <td>ops@whxdigital.com</td>
+                      <td><span class="benchmark-badge blue">Editor</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div style="margin-top: 14px; display: flex; justify-content: flex-end;">
+                  <button class="btn-amber" style="padding: 6px 16px; font-size: 0.8rem;" onclick="saveSettings()"><i class="fa-solid fa-floppy-disk"></i> Save Changes</button>
+                </div>
+              </div>
+
+            </div>
+
+          </div> <!-- End Tab 7 -->
+
+                  <!-- =============================================================
+               TAB 8: PRODUCT MANUAL & HOW WHX WORKS (SOLOOP-STYLE SHOWCASE)
+               ============================================================= -->
+          <div id="tab-docs" class="tab-pane" style="display: none;">
+            
+            <div style="display: grid; grid-template-columns: 240px 1fr 280px; gap: 20px; align-items: start;">
+              
+              <!-- Left Column: Guide Navigation -->
+              <div class="benchmark-card" style="padding: 16px; position: sticky; top: 100px;">
+                <div style="font-family: var(--mono); font-size: 0.72rem; font-weight: 700; color: var(--amber); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+                  <span>GUIDE NAVIGATION</span>
+                  <i class="fa-solid fa-compass"></i>
+                </div>
+                
+                <div style="display: flex; flex-direction: column; gap: 4px;" id="docs-nav-list">
+                  <a href="#" onclick="showDocSection('01'); return false;" class="docs-nav-link active" id="doc-nav-01"><span style="font-family: var(--mono); color: var(--amber); margin-right: 8px; font-size: 0.76rem;">01</span> Quickstart</a>
+                  <a href="#" onclick="showDocSection('02'); return false;" class="docs-nav-link" id="doc-nav-02"><span style="font-family: var(--mono); color: var(--subtle-ink); margin-right: 8px; font-size: 0.76rem;">02</span> Result Locations</a>
+                  <a href="#" onclick="showDocSection('03'); return false;" class="docs-nav-link" id="doc-nav-03"><span style="font-family: var(--mono); color: var(--subtle-ink); margin-right: 8px; font-size: 0.76rem;">03</span> Plans / Multi-Agent</a>
+                  <a href="#" onclick="showDocSection('04'); return false;" class="docs-nav-link" id="doc-nav-04"><span style="font-family: var(--mono); color: var(--subtle-ink); margin-right: 8px; font-size: 0.76rem;">04</span> Tasks and Quotas</a>
+                  <a href="#" onclick="showDocSection('05'); return false;" class="docs-nav-link" id="doc-nav-05"><span style="font-family: var(--mono); color: var(--subtle-ink); margin-right: 8px; font-size: 0.76rem;">05</span> Context & Memory</a>
+                  <a href="#" onclick="showDocSection('06'); return false;" class="docs-nav-link" id="doc-nav-06"><span style="font-family: var(--mono); color: var(--subtle-ink); margin-right: 8px; font-size: 0.76rem;">06</span> Tasks You Can Run</a>
+                  <a href="#" onclick="showDocSection('07'); return false;" class="docs-nav-link" id="doc-nav-07"><span style="font-family: var(--mono); color: var(--subtle-ink); margin-right: 8px; font-size: 0.76rem;">07</span> Integrations & Hooks</a>
+                  <a href="#" onclick="showDocSection('08'); return false;" class="docs-nav-link" id="doc-nav-08"><span style="font-family: var(--mono); color: var(--subtle-ink); margin-right: 8px; font-size: 0.76rem;">08</span> Troubleshooting</a>
+                </div>
+
+                <div style="margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border);">
+                  <button class="btn-amber" style="width: 100%; justify-content: center; font-size: 0.78rem;" onclick="switchTab('tab-overview'); showToast('Returned to main workspace');">
+                    Open Workspace <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem;"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Center Column: Main Interactive Documentation Content -->
+              <div style="display: flex; flex-direction: column; gap: 20px;">
+                
+                <!-- Hero Box -->
+                <div class="benchmark-card" style="background: linear-gradient(135deg, rgba(23, 23, 28, 0.95), rgba(11, 11, 13, 0.98)); border-color: var(--border); padding: 32px; position: relative; overflow: hidden;">
+                  <div style="position: absolute; right: -20px; top: -20px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(245, 166, 35, 0.08) 0%, transparent 70%); pointer-events: none;"></div>
+                  
+                  <div style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; background: rgba(245, 166, 35, 0.1); border: 1px solid rgba(245, 166, 35, 0.25); color: var(--amber); font-family: var(--mono); font-size: 0.72rem; font-weight: 700; margin-bottom: 16px;">
+                    <i class="fa-solid fa-shield-halved"></i> WHX ENTERPRISE SPECIFICATION 2026
+                  </div>
+
+                  <h2 style="font-size: 2.2rem; font-weight: 800; color: #fff; margin: 0 0 10px 0; letter-spacing: -0.03em;">
+                    How WHX works.
+                  </h2>
+                  <p style="font-size: 0.95rem; line-height: 1.6; color: var(--muted); margin: 0 0 24px 0; max-width: 650px;">
+                    The operating guide for running autonomous Local SEO sweeps, 24/7 AI agent pipelines, and high-velocity citation distribution from one central Command Core.
+                  </p>
+
+                  <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <button class="btn-amber" onclick="switchTab('tab-overview'); showToast('Loaded live workspace metrics');">
+                      Open workspace <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                    <button class="btn-light" onclick="showDocSection('01'); showToast('Jumped to Step 1: Quickstart');">
+                      Start at step 1 <i class="fa-solid fa-play" style="font-size: 0.72rem;"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Step Progression Rail (From Context to Results) -->
+                <div class="benchmark-card" style="padding: 24px;">
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+                    <div>
+                      <div style="font-family: var(--mono); font-size: 0.7rem; font-weight: 700; color: var(--amber); letter-spacing: 0.1em; text-transform: uppercase;">HOW WORK MOVES</div>
+                      <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin: 2px 0 0 0;">From Context to Results</h3>
+                    </div>
+                    <span class="benchmark-badge green"><i class="fa-solid fa-bolt"></i> Realtime Engine Active</span>
+                  </div>
+
+                  <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px;">
+                    <div style="background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; text-align: center; cursor: pointer; transition: all 0.2s;" onclick="showDocSection('01')" class="step-card-btn">
+                      <div style="font-family: var(--mono); color: var(--amber); font-weight: 700; font-size: 0.85rem; margin-bottom: 4px;">01</div>
+                      <strong style="display: block; font-size: 0.8rem; color: #fff;">Context</strong>
+                      <small style="color: var(--muted); font-size: 0.68rem;">Business data</small>
+                    </div>
+
+                    <div style="background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; text-align: center; cursor: pointer; transition: all 0.2s;" onclick="showDocSection('03')" class="step-card-btn">
+                      <div style="font-family: var(--mono); color: #3b82f6; font-weight: 700; font-size: 0.85rem; margin-bottom: 4px;">02</div>
+                      <strong style="display: block; font-size: 0.8rem; color: #fff;">Plan</strong>
+                      <small style="color: var(--muted); font-size: 0.68rem;">Multi-Agent spec</small>
+                    </div>
+
+                    <div style="background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; text-align: center; cursor: pointer; transition: all 0.2s;" onclick="showDocSection('04')" class="step-card-btn">
+                      <div style="font-family: var(--mono); color: #10b981; font-weight: 700; font-size: 0.85rem; margin-bottom: 4px;">03</div>
+                      <strong style="display: block; font-size: 0.8rem; color: #fff;">Run</strong>
+                      <small style="color: var(--muted); font-size: 0.68rem;">24/7 background</small>
+                    </div>
+
+                    <div style="background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; text-align: center; cursor: pointer; transition: all 0.2s;" onclick="showDocSection('02')" class="step-card-btn">
+                      <div style="font-family: var(--mono); color: #a855f7; font-weight: 700; font-size: 0.85rem; margin-bottom: 4px;">04</div>
+                      <strong style="display: block; font-size: 0.8rem; color: #fff;">Result</strong>
+                      <small style="color: var(--muted); font-size: 0.68rem;">Artifacts & CRM</small>
+                    </div>
+
+                    <div style="background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; text-align: center; cursor: pointer; transition: all 0.2s;" onclick="showDocSection('05')" class="step-card-btn">
+                      <div style="font-family: var(--mono); color: #ec4899; font-weight: 700; font-size: 0.85rem; margin-bottom: 4px;">05</div>
+                      <strong style="display: block; font-size: 0.8rem; color: #fff;">Continue</strong>
+                      <small style="color: var(--muted); font-size: 0.68rem;">Next cycle loop</small>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Dynamic Content Display Panel -->
+                <div class="benchmark-card" id="doc-content-panel" style="padding: 28px;">
+                  <!-- Injected via JavaScript showDocSection() -->
+                </div>
+
+              </div>
+
+              <!-- Right Column: Context Summary Cards -->
+              <div style="display: flex; flex-direction: column; gap: 16px; position: sticky; top: 100px;">
+                
+                <!-- Card 1 -->
+                <div class="benchmark-card" style="padding: 16px; border-left: 3px solid var(--amber);">
+                  <div style="font-family: var(--mono); font-size: 0.7rem; font-weight: 700; color: var(--amber); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">YOUR AI CO-FOUNDER</div>
+                  <h4 style="font-size: 0.95rem; font-weight: 700; color: #fff; margin: 0 0 6px 0;">Autonomous Execution</h4>
+                  <p style="font-size: 0.78rem; color: var(--muted); line-height: 1.45; margin: 0;">
+                    WHX runs continuous triage across local rankings, customer inquiries, and citation sync without requiring manual intervention.
+                  </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="benchmark-card" style="padding: 16px; border-left: 3px solid #10b981;">
+                  <div style="font-family: var(--mono); font-size: 0.7rem; font-weight: 700; color: #10b981; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">AUTONOMOUS QUOTAS</div>
+                  <h4 style="font-size: 0.95rem; font-weight: 700; color: #fff; margin: 0 0 6px 0;">Unlimited Parallel Runs</h4>
+                  <p style="font-size: 0.78rem; color: var(--muted); line-height: 1.45; margin: 0;">
+                    Every plan includes automatic load balancing across Claude 3.7 Sonnet, ChatGPT 4.5, and Gemini 2.5 Flash.
+                  </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="benchmark-card" style="padding: 16px; border-left: 3px solid #3b82f6;">
+                  <div style="font-family: var(--mono); font-size: 0.7rem; font-weight: 700; color: #3b82f6; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">TELEMETRY & RESULTS</div>
+                  <h4 style="font-size: 0.95rem; font-weight: 700; color: #fff; margin: 0 0 6px 0;">Verified 200 Client Data</h4>
+                  <p style="font-size: 0.78rem; color: var(--muted); line-height: 1.45; margin: 0;">
+                    Realtime simulation verifies 200 distinct enterprise accounts with continuous browser session rotation.
+                  </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="benchmark-card" style="padding: 16px; border-left: 3px solid #a855f7;">
+                  <div style="font-family: var(--mono); font-size: 0.7rem; font-weight: 700; color: #a855f7; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px;">LIVE SUPPORT & ASSISTANCE</div>
+                  <h4 style="font-size: 0.95rem; font-weight: 700; color: #fff; margin: 0 0 6px 0;">Dallas & Casper Core</h4>
+                  <p style="font-size: 0.78rem; color: var(--muted); line-height: 1.45; margin: 0;">
+                    Direct access to specialized automation architects. Response time SLA is under 4 minutes.
+                  </p>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div> <!-- End Tab 8: Product Manual -->
+        </div> <!-- End dashboard-content -->
+
       </main>
+
     </div>
 
-    <!-- Optional JS for interactivity -->
+    <!-- ===================================================================
+         INTERACTIVE 50 ZIP CODE RAPID SCAN MODAL
+         =================================================================== -->
+    <div id="zip-scan-modal" class="zip-modal-overlay" style="display: none;">
+      <div class="zip-modal-content">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-bolt" style="color: var(--amber);"></i> 50 Target Zip Codes Rapid Audit
+            </h3>
+            <span style="font-size: 0.8rem; color: var(--muted);">Live Map Pack & AI visibility scanner across 50 target municipal zip codes</span>
+          </div>
+          <button class="btn-light" style="padding: 4px 10px; font-size: 0.8rem;" onclick="closeZipScanModal()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div style="margin-bottom: 14px;">
+          <div style="display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.76rem; margin-bottom: 6px;">
+            <span id="zip-modal-status" style="color: var(--amber);">Auditing Zip Codes 1 to 50...</span>
+            <span id="zip-modal-pct" style="color: #10b981; font-weight: 700;">100% Complete</span>
+          </div>
+          <div style="background: #0b0b0d; height: 8px; border-radius: 999px; overflow: hidden; border: 1px solid var(--border);">
+            <div id="zip-modal-bar" style="width: 100%; height: 100%; background: linear-gradient(90deg, #f5a623, #10b981);"></div>
+          </div>
+        </div>
+
+        <div style="max-height: 240px; overflow-y: auto; background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-sm); margin-bottom: 16px; padding: 4px;">
+          <table class="benchmark-table" style="font-size: 0.78rem;">
+            <thead>
+              <tr>
+                <th>Zip Code</th>
+                <th>Target Area</th>
+                <th>Search Keyword</th>
+                <th>Google Rank</th>
+                <th>Inbound Call Est.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td style="font-family: var(--mono); color: #fff;">75201</td><td>Downtown Dallas, TX</td><td>AI Agency Near Me</td><td><span class="benchmark-badge green">#1 Map Pack</span></td><td style="color: #10b981;">+48/mo</td></tr>
+              <tr><td style="font-family: var(--mono); color: #fff;">75202</td><td>Dallas West End, TX</td><td>Local SEO Automation</td><td><span class="benchmark-badge green">#1 Map Pack</span></td><td style="color: #10b981;">+42/mo</td></tr>
+              <tr><td style="font-family: var(--mono); color: #fff;">75001</td><td>Addison Metro, TX</td><td>Enterprise AI Agency</td><td><span class="benchmark-badge green">#1 Map Pack</span></td><td style="color: #10b981;">+39/mo</td></tr>
+              <tr><td style="font-family: var(--mono); color: #fff;">82601</td><td>Casper HQ, WY</td><td>Local Business SEO</td><td><span class="benchmark-badge green">#1 Map Pack</span></td><td style="color: #10b981;">+55/mo</td></tr>
+              <tr><td style="font-family: var(--mono); color: #fff;">75204</td><td>Uptown Dallas, TX</td><td>Dental AI Intake</td><td><span class="benchmark-badge green">#1 Map Pack</span></td><td style="color: #10b981;">+36/mo</td></tr>
+              <tr><td style="font-family: var(--mono); color: #fff;">75024</td><td>Plano Legacy, TX</td><td>Medical Clinic Automation</td><td><span class="benchmark-badge green">#1 Map Pack</span></td><td style="color: #10b981;">+34/mo</td></tr>
+              <tr><td style="font-family: var(--mono); color: #fff;">76102</td><td>Fort Worth Downtown, TX</td><td>Local SEO & Citations</td><td><span class="benchmark-badge amber">#2 Map Pack</span></td><td style="color: var(--amber);">+28/mo</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 0.78rem; color: #10b981; font-family: var(--mono);"><i class="fa-solid fa-circle-check"></i> 48 of 50 Zip Codes Dominating Top 3</span>
+          <button class="btn-amber" onclick="closeZipScanModal(); showToast('50 Zip Code Audit synced to primary database.');"><i class="fa-solid fa-check"></i> Apply to Live Geo-Grid</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================================================================
+         CORE CLIENT-SIDE ENGINE JAVASCRIPT
+         =================================================================== -->
     <script>
-      // Randomize User Profile and Plan on load
-      const userNames = ["Ethan Wright", "Sarah Jenkins", "Michael Chen", "Aisha Patel", "David Ross", "Emma Vance"];
-      const plans = ["Basic Tier", "Pro Plan", "Enterprise Tier", "Starter Plan"];
-      const avatarColors = ["linear-gradient(135deg, #6366f1, #8b5cf6)", "linear-gradient(135deg, #ef4444, #f97316)", "linear-gradient(135deg, #10b981, #3b82f6)", "linear-gradient(135deg, #f59e0b, #ef4444)"];
-
-      const randomName = userNames[Math.floor(Math.random() * userNames.length)];
-      const randomPlan = plans[Math.floor(Math.random() * plans.length)];
-      const randomAvatarColor = avatarColors[Math.floor(Math.random() * avatarColors.length)];
-
-      document.addEventListener("DOMContentLoaded", () => {
-        const userNameEl = document.querySelector('.user-name');
-        const userRoleEl = document.querySelector('.user-role');
-        const planTextEl = document.querySelector('.plan-details h3 .neon-text');
-        const avatarEl = document.querySelector('.user-profile .avatar');
-        
-        if(userNameEl) userNameEl.textContent = randomName;
-        if(userRoleEl) userRoleEl.textContent = randomPlan;
-        if(planTextEl) planTextEl.textContent = randomPlan;
-        if(avatarEl) {
-          avatarEl.style.background = randomAvatarColor;
-          avatarEl.innerHTML = randomName.charAt(0);
-        }
-      });
-
-      // Dropdown toggle function
-      window.toggleDropdown = function(id) {
-        const d = document.getElementById(id);
-        const wasVisible = d.style.display === 'block';
-        document.querySelectorAll('.cyber-dropdown').forEach(el => el.style.display = 'none');
-        d.style.display = wasVisible ? 'none' : 'block';
-      };
-
-      // Close dropdowns if clicked outside
-      window.addEventListener('click', function(e) {
-        if (!e.target.closest('.dropdown-wrapper')) {
-          document.querySelectorAll('.cyber-dropdown').forEach(el => el.style.display = 'none');
-        }
-      });
-
-      // WHX Admin - Advanced SaaS Tab & Animation Logic
-      const navLinks = document.querySelectorAll('.sidebar-nav a[data-tab]');
-      const tabPanes = document.querySelectorAll('.tab-pane');
-
-      // Initialize Analytics Bars to 0
-      const analyticsBars = document.querySelectorAll('.bar');
-      analyticsBars.forEach(bar => bar.style.height = '0%');
-
-      // Initialize Citation Ring
-      const citationRing = document.querySelector('.circle');
-      if(citationRing) citationRing.style.strokeDasharray = '0, 100';
-
-      navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const targetTabId = e.currentTarget.getAttribute('data-tab');
-          switchTab(targetTabId);
-        });
-      });
-
+      // Tab Switching Architecture
       window.switchTab = function(tabId) {
-        document.querySelectorAll('.sidebar-nav li').forEach(li => li.classList.remove('active'));
-        tabPanes.forEach(pane => pane.style.display = 'none');
+        // Hide all panes
+        document.querySelectorAll('.tab-pane').forEach(el => el.style.display = 'none');
         
-        const targetLink = document.querySelector(`.sidebar-nav a[data-tab="${tabId}"]`);
-        if (targetLink) {
-          targetLink.parentElement.classList.add('active');
+        // Show target
+        const target = document.getElementById(tabId);
+        if (target) {
+          target.style.display = 'block';
         }
-        
-        const targetTab = document.getElementById(tabId);
-        if (targetTab) {
-          targetTab.style.display = 'block';
-          window.dispatchEvent(new Event('resize'));
-          
-          // Core fade/slide animation
-          targetTab.style.opacity = '0';
-          targetTab.style.transform = 'translateY(10px)';
-          setTimeout(() => {
-            targetTab.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-            targetTab.style.opacity = '1';
-            targetTab.style.transform = 'translateY(0)';
-          }, 10);
 
-          // Trigger Module-Specific Animations
-          triggerModuleAnimation(tabId);
+        // Update Nav Active States
+        document.querySelectorAll('.sidebar-nav li').forEach(li => li.classList.remove('active'));
+        const navMatch = document.querySelector(`.sidebar-nav a[data-tab="${tabId}"]`);
+        if (navMatch && navMatch.parentElement) {
+          navMatch.parentElement.classList.add('active');
+        }
+
+        // Update Rail Active States
+        document.querySelectorAll('.benchmark-rail-item').forEach(el => el.classList.remove('is-selected'));
+        const railIdx = {
+          'tab-overview': 0,
+          'tab-seo': 1,
+          'tab-automation': 2,
+          'tab-citations': 3,
+          'tab-analytics': 4,
+          'tab-docs': 4,
+          'tab-analytics': 5,
+          'tab-billing': 6,
+          'tab-settings': 7
+          'tab-settings': 6
+        }[tabId];
+        const railItems = document.querySelectorAll('.benchmark-icon-rail > .benchmark-rail-item');
+        if (railItems && railItems[railIdx]) {
+          railItems[railIdx].classList.add('is-selected');
+        }
+
+        // Update Top Capability Bar
+        document.querySelectorAll('.tasklet-capabilities-track button').forEach(b => {
+          b.classList.remove('active');
+          if (b.getAttribute('data-tab-target') === tabId) {
+            b.classList.add('active');
+          }
+        });
+      };
+
+      // Smooth Tab Scroll Buttons
+      window.scrollTabs = function(distance) {
+        const track = document.getElementById('capabilities-tab-track');
+        if (track) {
+          track.scrollBy({ left: distance, behavior: 'smooth' });
         }
       };
 
+      // Mouse Drag-To-Scroll Functionality
+      function makeDraggable(element) {
+        if (!element) return;
+        let isDown = false;
+        let startX;
+        let scrollLeft;
 
-      // Search Bar Functionality
-      const searchInput = document.querySelector('.header-search input');
-      searchInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          const query = searchInput.value.toLowerCase();
-          
-          // Show SaaS style notification
-          const notif = document.createElement('div');
-          notif.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i> Searching core modules for "${query}"...`;
-          notif.style.position = 'fixed';
-          notif.style.bottom = '20px';
-          notif.style.right = '20px';
-          notif.style.background = '#0f172a';
-          notif.style.color = '#00f0ff';
-          notif.style.padding = '15px 25px';
-          notif.style.borderRadius = '8px';
-          notif.style.border = '1px solid #1e293b';
-          notif.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
-          notif.style.zIndex = '9999';
-          document.body.appendChild(notif);
-          
-          setTimeout(() => {
-            notif.innerHTML = `<i class="fa-solid fa-triangle-exclamation" style="color:#f59e0b;"></i> No results found for "${query}".`;
-            notif.style.color = '#f59e0b';
-            setTimeout(() => {
-              notif.style.opacity = '0';
-              notif.style.transition = 'opacity 0.5s ease';
-              setTimeout(() => notif.remove(), 500);
-            }, 2500);
-          }, 1500);
-          
-          searchInput.value = '';
-        }
-      });
-
-      function triggerModuleAnimation(tabId) {
-        if (tabId === 'tab-seo') {
-          // Animate Grid Cells popping in
-          const cells = document.querySelectorAll('.grid-cell');
-          cells.forEach((cell, i) => {
-            cell.style.transform = 'scale(0)';
-            cell.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-            setTimeout(() => {
-              cell.style.transform = 'scale(1)';
-            }, 300 + (i * 100));
-          });
-        } 
-        else if (tabId === 'tab-citations') {
-          // Animate the Sync Ring
-          if(citationRing) {
-            citationRing.style.transition = 'none';
-            citationRing.style.strokeDasharray = '0, 100';
-            setTimeout(() => {
-              citationRing.style.transition = 'stroke-dasharray 2s ease-out';
-              citationRing.style.strokeDasharray = '85, 100'; // Target 85%
-            }, 100);
-          }
-        }
-        else if (tabId === 'tab-analytics') {
-          // Animate Holographic Bars
-          analyticsBars.forEach((bar, i) => {
-            bar.style.height = '0%';
-            const randomHeight = Math.floor(Math.random() * 60) + 40; // 40% to 100%
-            setTimeout(() => {
-              bar.style.height = `${randomHeight}%`;
-            }, 200 + (i * 150));
-          });
-        }
+        element.addEventListener('mousedown', (e) => {
+          isDown = true;
+          element.style.cursor = 'grabbing';
+          startX = e.pageX - element.offsetLeft;
+          scrollLeft = element.scrollLeft;
+        });
+        element.addEventListener('mouseleave', () => {
+          isDown = false;
+          element.style.cursor = 'grab';
+        });
+        element.addEventListener('mouseup', () => {
+          isDown = false;
+          element.style.cursor = 'grab';
+        });
+        element.addEventListener('mousemove', (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - element.offsetLeft;
+          const walk = (x - startX) * 1.5;
+          element.scrollLeft = scrollLeft - walk;
+        });
       }
 
-      // Settings toggles functionality (UI only)
-      const passwordIcons = document.querySelectorAll('.action-icon.fa-eye');
-      passwordIcons.forEach(icon => {
-        icon.addEventListener('click', (e) => {
-          const input = e.target.previousElementSibling;
-          if (input.type === 'password') {
-            input.type = 'text';
-            e.target.classList.replace('fa-eye', 'fa-eye-slash');
-          } else {
-            input.type = 'password';
-            e.target.classList.replace('fa-eye-slash', 'fa-eye');
-          }
+      // Event Listeners for Tab Buttons
+      document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.sidebar-nav a[data-tab]').forEach(a => {
+          a.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchTab(a.getAttribute('data-tab'));
+          });
         });
+
+        document.querySelectorAll('.tasklet-capabilities-track button[data-tab-target]').forEach(b => {
+          b.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchTab(b.getAttribute('data-tab-target'));
+          });
+        });
+
+        makeDraggable(document.getElementById('capabilities-tab-track'));
+        makeDraggable(document.getElementById('main-ticker-bar'));
       });
-      // Make Terminal Logs look active
-      const terminals = document.querySelectorAll('.terminal-logs');
-      const logLines = [
-        '<span style="color: #6366f1;">[ROUTER]</span> Processing incoming payload...',
-        '<span style="color: #ffb340;">[ASTRO]</span> Analyzing contextual semantics...',
-        '<span style="color: #10b981;">[SYS]</span> Checking API rate limits: OK',
-        '<span style="color: #00f0ff;">[EXECUTE]</span> Syncing with GoHighLevel CRM.',
-        '<span style="color: #ff3366;">[NETWORK]</span> Fetching localized map data...',
-        '<span style="color: #ffb340;">[ASTRO]</span> Generating strategic response (99.1%).',
-        '<span style="color: #94a3b8;">[SYS]</span> Waiting for next event trigger...'
-      ];
-      
-      setInterval(() => {
-        terminals.forEach(term => {
-          const newLine = document.createElement('div');
-          newLine.innerHTML = logLines[Math.floor(Math.random() * logLines.length)];
-          term.insertBefore(newLine, term.lastElementChild);
+
+      // 50 Zip Code Modal Controller
+      window.openZipScanModal = function() {
+        const modal = document.getElementById('zip-scan-modal');
+        if (modal) {
+          modal.style.display = 'flex';
+          const pStatus = document.getElementById('zip-modal-status');
+          const pBar = document.getElementById('zip-modal-bar');
+          const pPct = document.getElementById('zip-modal-pct');
+
+          pStatus.textContent = 'Sweeping all 50 target municipal zip codes...';
+          pBar.style.width = '0%';
+          pPct.textContent = '0%';
+
+          setTimeout(() => { pBar.style.width = '45%'; pPct.textContent = '45%'; pStatus.textContent = 'Parsing Dallas & Fort Worth Map Packs...'; }, 400);
+          setTimeout(() => { pBar.style.width = '85%'; pPct.textContent = '85%'; pStatus.textContent = 'Verifying Casper & Addison Local Signals...'; }, 900);
+          setTimeout(() => { pBar.style.width = '100%'; pPct.textContent = '100% Complete'; pStatus.textContent = 'Audit Complete! 48 of 50 Zip Codes in #1 Position.'; showToast('50 Zip Code Rapid Scan Complete!'); }, 1400);
+        }
+      };
+
+      window.closeZipScanModal = function() {
+        const modal = document.getElementById('zip-scan-modal');
+        if (modal) modal.style.display = 'none';
+      };
+
+      // Interactive Geo Grid Pins
+      window.showPinDetails = function(pinNum, coords, rank, desc, calls) {
+        const box = document.getElementById('pin-detail-box');
+        const coordsEl = document.getElementById('pin-coords');
+        const rankEl = document.getElementById('pin-rank');
+        const descEl = document.getElementById('pin-desc');
+
+        coordsEl.textContent = `Coordinates: ${coords} (Pin #${pinNum})`;
+        rankEl.textContent = `Rank: ${rank}`;
+        rankEl.style.color = rank.includes('#1') ? '#10b981' : (rank.includes('#2') || rank.includes('#3') ? '#f5a623' : '#ea4335');
+        descEl.innerHTML = `Status: ${desc}. Estimated Local Search Call Volume: <strong>${calls}</strong>.`;
+      };
+
+      // Live Scan Simulation
+      window.runLiveGeoScan = function() {
+        const btn = document.getElementById('scan-grid-btn');
+        btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sweeping 25 Grid Coordinates...';
+        btn.disabled = true;
+
+        setTimeout(() => {
+          btn.innerHTML = '<i class="fa-solid fa-check"></i> Grid Scan Complete';
+          showToast('Live Geo-Grid Sweep completed: 18 coordinates holding #1 rank in Google Map Pack.');
+          setTimeout(() => {
+            btn.innerHTML = '<i class="fa-solid fa-radar"></i> Run Live Scan';
+            btn.disabled = false;
+          }, 2000);
+        }, 1500);
+      };
+
+      // Review Tone Selector
+      window.generateReviewReply = function(tone) {
+        const draft = document.getElementById('ai-review-draft');
+        if (tone === 'professional') {
+          draft.value = "Thank you for the five-star endorsement, Dr. Vance. Our team at WHX Digital is dedicated to maintaining your dominance in local search rankings and ensuring seamless patient intake.";
+        } else if (tone === 'warm') {
+          draft.value = "We are so genuinely grateful for your trust, Dr. Vance! Seeing your Dallas practice thrive and phones ring nonstop is the absolute highlight of our week. Let's keep winning together!";
+        } else if (tone === 'seo') {
+          draft.value = "Thank you Dr. Vance! Delivering high-intent dental implant and orthodontic patient leads in the Dallas metroplex through our Google Map Pack automation is what we do best. Appreciate your partnership!";
+        }
+        showToast(`Draft regenerated with tone: ${tone.toUpperCase()}`);
+      };
+
+      window.postAiReviewReply = function() {
+        showToast('Reply pushed directly to Google Business Profile API (Status: 200 OK).');
+      };
+
+      // Runway Visualizer Node Selector
+      window.selectRunwayNode = function(id, title, desc, status, latency, model) {
+        const titleEl = document.getElementById('inspector-node-title');
+        const metaEl = document.getElementById('inspector-node-meta');
+        const contentEl = document.getElementById('inspector-node-content');
+
+        titleEl.innerHTML = `<i class="fa-solid fa-terminal"></i> Node ${id}: ${title}`;
+        metaEl.textContent = `Latency: ${latency} | Status: ${status} | Engine: ${model}`;
+        contentEl.innerHTML = `Description: <strong>${desc}</strong><br />Execution trace verified with real-time JSON payload streams.`;
+      };
+
+      // Multi-Agent Pipeline Simulator
+      window.runAgentSimulator = function() {
+        const terminal = document.getElementById('agent-sim-terminal');
+        const leadName = document.getElementById('sim-lead-name').value;
+        const pStatus = document.getElementById('sim-progress-status');
+        const pPct = document.getElementById('sim-progress-pct');
+        const pFill = document.getElementById('sim-progress-fill');
+
+        terminal.innerHTML = '';
+        pStatus.textContent = 'Initializing Inbound Webhook...';
+        pPct.textContent = '10%';
+        pFill.style.width = '10%';
+
+        const appendLog = (msg) => {
+          const d = document.createElement('div');
+          d.innerHTML = `<span style="color: #64748b;">[${new Date().toLocaleTimeString()}]</span> ${msg}`;
+          terminal.appendChild(d);
+          terminal.scrollTop = terminal.scrollHeight;
+        };
+
+        appendLog(`<span style="color: #f22f46;">[WEBHOOK INBOUND]</span> Received inquiry from: <strong>${leadName}</strong>`);
+
+        setTimeout(() => {
+          pStatus.textContent = 'Agent 1: Claude 3.7 Analyzing Intent...';
+          pPct.textContent = '25%';
+          pFill.style.width = '25%';
+          appendLog(`<span style="color: #d97706;">[CLAUDE 3.7]</span> Intent parsed: "High-Intent Medical Orthodontic Automation". Confidence: 99.4%`);
+        }, 700);
+
+        setTimeout(() => {
+          pStatus.textContent = 'Agent 2: ChatGPT 4.5 Enriching Lead Profile...';
+          pPct.textContent = '55%';
+          pFill.style.width = '55%';
+          appendLog(`<span style="color: #10a37f;">[CHATGPT 4.5]</span> Enrichment complete. Organization: Sterling Dental LLC, Estimated Practice MRR: $85k.`);
+        }, 1600);
+
+        setTimeout(() => {
+          pStatus.textContent = 'Agent 3: GoHighLevel CRM Sync...';
+          pPct.textContent = '80%';
+          pFill.style.width = '80%';
+          appendLog(`<span style="color: #0055ff;">[CRM SYNC]</span> Deal opportunity created in GHL Pipeline: "Sterling Orthodontics" ($4,200 package).`);
+        }, 2500);
+
+        setTimeout(() => {
+          pStatus.textContent = 'Workflow Complete! Lead Dispatched.';
+          pPct.textContent = '100%';
+          pFill.style.width = '100%';
+          appendLog(`<span style="color: #10b981;">[DISPATCH]</span> Priority SMS & automated calendar link sent to prospect.`);
+          showToast(`WHX Agent Run Success! Lead qualified and synced to CRM.`);
           
-          if(term.children.length > 8) {
-            term.removeChild(term.firstElementChild);
-          }
+          const kpi = document.getElementById('kpi-agent-actions');
+          if (kpi) kpi.textContent = (parseInt(kpi.textContent.replace(',', '')) + 1).toLocaleString();
+        }, 3400);
+      };
+
+      // Fix Citations Live
+      window.fixCitation = function(type) {
+        if (type === 'yelp') {
+          const statusEl = document.getElementById('status-yelp');
+          const btn = document.getElementById('fix-yelp-btn');
+          btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Syncing...';
+          btn.disabled = true;
+
+          setTimeout(() => {
+            statusEl.innerHTML = '<span class="benchmark-badge green"><i class="fa-solid fa-check"></i> 100% Match</span>';
+            btn.outerHTML = '<span style="color: #10b981; font-weight: 700; font-family: var(--mono); font-size: 0.78rem;"><i class="fa-solid fa-check"></i> Synced</span>';
+            showToast('Yelp citation suite discrepancy resolved & updated live.');
+          }, 1100);
+        } else if (type === 'yp') {
+          const statusEl = document.getElementById('status-yp');
+          const btn = document.getElementById('fix-yp-btn');
+          btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Syncing...';
+          btn.disabled = true;
+
+          setTimeout(() => {
+            statusEl.innerHTML = '<span class="benchmark-badge green"><i class="fa-solid fa-check"></i> 100% Match</span>';
+            btn.outerHTML = '<span style="color: #10b981; font-weight: 700; font-family: var(--mono); font-size: 0.78rem;"><i class="fa-solid fa-check"></i> Synced</span>';
+            showToast('YellowPages phone formatting synced to canonical NAP.');
+          }, 1100);
+        }
+      };
+
+      window.submitBatchCitations = function() {
+        showToast('Pushed 20 new high-authority local citations to distribution queue.');
+      };
+
+      // Analytics Filter
+      window.updateAnalyticsPeriod = function(period) {
+        document.querySelectorAll('#tab-analytics .btn-light').forEach(b => {
+          b.classList.remove('active');
+          b.style.borderColor = 'var(--border)';
         });
-      }, 2000);
+        if (event && event.target) {
+          event.target.classList.add('active');
+          event.target.style.borderColor = 'var(--amber)';
+        }
 
-      // Deployment Workflow Script
-      const deployButtons = document.querySelectorAll('.service-node .button');
-      const termStream = document.getElementById('terminal-stream');
-      
-      deployButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          if(btn.innerText.includes('Deploy Instance')) {
-            const nodeName = e.target.closest('.service-node').querySelector('h3').innerText;
-            const time = new Date().toLocaleTimeString();
-            
-            // Initial log
-            const log1 = document.createElement('div');
-            log1.innerHTML = `<span style="color: #666;">[${time}]</span> <span style="color: #eab308;">[DEPLOY]</span> Initiating deployment sequence for ${nodeName}...`;
-            termStream.appendChild(log1);
-            if(termStream.children.length > 5) termStream.removeChild(termStream.firstElementChild);
+        const statImp = document.getElementById('stat-impressions');
+        const statCalls = document.getElementById('stat-calls');
+        const statConv = document.getElementById('stat-conversions');
+        const statSaved = document.getElementById('stat-saved');
 
-            // Change button state
-            btn.innerText = 'Deploying...';
-            btn.style.opacity = '0.7';
-            btn.style.pointerEvents = 'none';
-            
-            setTimeout(() => {
-              const log2 = document.createElement('div');
-              log2.innerHTML = `<span style="color: #666;">[${new Date().toLocaleTimeString()}]</span> <span style="color: #00f0ff;">[BUILD]</span> Provisioning node resources... OK`;
-              termStream.appendChild(log2);
-              if(termStream.children.length > 5) termStream.removeChild(termStream.firstElementChild);
-            }, 1500);
+        if (period === 'today') {
+          statImp.textContent = '2,410';
+          statCalls.textContent = '64';
+          statConv.textContent = '19';
+          statSaved.textContent = '$720';
+        } else if (period === '7d') {
+          statImp.textContent = '14,890';
+          statCalls.textContent = '380';
+          statConv.textContent = '94';
+          statSaved.textContent = '$4,100';
+        } else if (period === '30d') {
+          statImp.textContent = '48,290';
+          statCalls.textContent = '1,410';
+          statConv.textContent = '348';
+          statSaved.textContent = '$14,280';
+        } else if (period === '90d') {
+          statImp.textContent = '142,800';
+          statCalls.textContent = '4,290';
+          statConv.textContent = '1,040';
+          statSaved.textContent = '$42,900';
+        }
+        showToast(`Analytics view updated for period: ${period.toUpperCase()}`);
+      };
 
-            setTimeout(() => {
-              const log3 = document.createElement('div');
-              log3.innerHTML = `<span style="color: #666;">[${new Date().toLocaleTimeString()}]</span> <span style="color: #10b981;">[SUCCESS]</span> ${nodeName} is now ACTIVE and running.`;
-              termStream.appendChild(log3);
-              if(termStream.children.length > 5) termStream.removeChild(termStream.firstElementChild);
-              
-              btn.innerText = 'Configure';
-              btn.style.opacity = '1';
-              btn.style.pointerEvents = 'auto';
-              btn.style.background = 'rgba(16, 185, 129, 0.1)';
-              btn.style.borderColor = '#10b981';
-              btn.style.color = '#10b981';
-              btn.style.boxShadow = '0 0 10px rgba(16, 185, 129, 0.2)';
-              
-              // Change node badge
-              const badge = e.target.closest('.service-node').querySelector('.status-badge');
-              if(badge) {
-                badge.style.background = 'rgba(16, 185, 129, 0.15)';
-                badge.style.color = '#10b981';
-                badge.style.borderColor = 'rgba(16, 185, 129, 0.3)';
-                badge.innerHTML = '<span style="display: block; width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 8px #10b981; animation: blink 1.5s infinite;"></span> ACTIVE';
-              }
-            }, 3500);
+      // Invoice Downloader Simulator
+      window.downloadInvoice = function(invId, amount, date) {
+        const dummyReceipt = `
+======================================================
+WHX DIGITAL ENTERPRISE - VERIFIED RECEIPT
+======================================================
+Invoice Number: ${invId}
+Date of Issue: ${date}
+Plan: WHX Autonomous Agency Pro (Month-to-Month)
+Amount Paid: ${amount}
+Payment Status: PAID (VISA *4242)
+Organization: WHX Digital LLC (Dallas, TX & Casper, WY)
+======================================================
+Thank you for accelerating your growth with WHX Digital.
+======================================================
+        `;
+        const blob = new Blob([dummyReceipt], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Invoice-${invId}.txt`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        showToast(`Downloaded verified receipt for Invoice #${invId}`);
+      };
+
+      // Settings & Key Interactivity
+      window.togglePassVisibility = function(id) {
+        const el = document.getElementById(id);
+        if (el.type === 'password') {
+          el.type = 'text';
+        } else {
+          el.type = 'password';
+        }
+      };
+
+      window.testConnection = function(name) {
+        showToast(`Testing ${name}... Connection verified (HTTP 200 OK).`);
+      };
+
+      window.saveSettings = function() {
+        const name = document.getElementById('setting-biz-name').value;
+        showToast(`Workspace profile for "${name}" saved to database.`);
+      };
+
+      window.inviteMember = function() {
+        const email = prompt('Enter team member email address:');
+        if (email && email.includes('@')) {
+          const tbody = document.querySelector('#team-table tbody');
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td><strong>Invited User</strong></td>
+            <td>${email}</td>
+            <td><span class="benchmark-badge amber">Pending Invite</span></td>
+          `;
+          tbody.appendChild(tr);
+          showToast(`Invitation dispatched to ${email}`);
+        }
+      };
+
+      // Toast Notification Helper
+      window.showToast = function(msg) {
+        const toast = document.createElement('div');
+        toast.className = 'benchmark-toast';
+        toast.style.position = 'fixed';
+        toast.style.bottom = '24px';
+        toast.style.right = '24px';
+        toast.style.background = '#17171c';
+        toast.style.border = '1px solid var(--amber)';
+        toast.style.color = '#fff';
+        toast.style.padding = '12px 18px';
+        toast.style.borderRadius = '10px';
+        toast.style.boxShadow = '0 10px 30px rgba(0,0,0,0.6)';
+        toast.style.fontSize = '0.84rem';
+        toast.style.display = 'flex';
+        toast.style.alignItems = 'center';
+        toast.style.gap = '10px';
+        toast.style.zIndex = '99999';
+        toast.innerHTML = `<i class="fa-solid fa-circle-check" style="color: #f5a623;"></i> <span>${msg}</span>`;
+        document.body.appendChild(toast);
+        setTimeout(() => {
+          toast.style.opacity = '0';
+          toast.style.transition = 'opacity 0.3s ease';
+          setTimeout(() => toast.remove(), 300);
+        }, 3200);
+      };
+
+      window.triggerQuickSprint = function() {
+        showToast('Initiating Autonomous WHX Sprint across all target coordinates...');
+        setTimeout(() => {
+          showToast('Scan sprint complete! 18 Map Pack rankings verified at #1.');
+        }, 1800);
+      };
+
+      window.toggleDropdown = function(id) {
+        const d = document.getElementById(id);
+        d.style.display = d.style.display === 'block' ? 'none' : 'block';
+      };
+
+      window.clearNotifs = function() {
+        document.querySelectorAll('#notif-dropdown > div:not(:first-child)').forEach(el => el.remove());
+        showToast('Notification stream cleared.');
+      };
+
+      // Filter Events
+      window.filterEvents = function(type) {
+        const rows = document.querySelectorAll('#event-feed-table tbody tr');
+        rows.forEach(r => {
+          if (type === 'all' || r.getAttribute('data-type') === type) {
+            r.style.display = '';
           } else {
-            const time = new Date().toLocaleTimeString();
-            const log1 = document.createElement('div');
-            const nodeName = e.target.closest('.service-node').querySelector('h3').innerText;
-            log1.innerHTML = `<span style="color: #666;">[${time}]</span> <span style="color: #00f0ff;">[INFO]</span> Accessing configuration for ${nodeName}...`;
-            termStream.appendChild(log1);
-            if(termStream.children.length > 5) termStream.removeChild(termStream.firstElementChild);
+            r.style.display = 'none';
           }
         });
+      };
+
+      // Initialize 200 Client Rotation Engine on Load
+      document.addEventListener('DOMContentLoaded', () => {
+        if (typeof window.initBenchmarkClientEngine === 'function') {
+          window.initBenchmarkClientEngine();
+        }
       });
     </script>
   </body>

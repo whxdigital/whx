@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -193,8 +193,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" /></noscript>
+    <link rel="stylesheet" href="style.min.css" />
   
     <link rel="alternate" hreflang="x-default" href="https://whxdigital.com/" />
     <link rel="alternate" hreflang="en" href="https://whxdigital.com/" />
@@ -210,10 +211,10 @@
     <div id="whxBoot" class="boot-screen WHX-boot" aria-hidden="true" style="opacity:1; transition: opacity 0.15s ease, visibility 0.15s ease;">
       <div class="cyber-boot-panel" id="whxBootPanel" style="transition: transform 0.15s ease;">
         <div class="cyber-header">
-          <span class="cyber-dot red"></span>
-          <span class="cyber-dot yellow"></span>
-          <span class="cyber-dot green"></span>
-          <span class="cyber-title">WHX_CORE // INITIALIZING</span>
+          
+          
+          
+          <span class="cyber-title" style="margin-left:0; color:#f5a623;"><i class="fa-solid fa-terminal" style="font-size:0.75rem; margin-right:6px;"></i>WHX_CORE // INITIALIZING</span>
         </div>
         <div class="cyber-code-stream" id="cyberCodeStream">
           <div class="code-line" id="bootLine1" style="opacity:0;">&gt; INITIALIZING AI AGENT WORKFORCE...</div>
@@ -241,7 +242,7 @@
           b.style.pointerEvents = 'none';
           setTimeout(function(){ b.style.display = 'none'; }, 150);
         }
-      }, 750);
+      }, 300);
     </script>
     <div class="page-glow glow-one"></div>
     <div class="page-glow glow-two"></div>
@@ -249,7 +250,7 @@
 
             <header class="site-header" id="top">
       <div class="logo">
-        <a href="index.html#top" class="logo-link" aria-label="Apex AI home">
+        <a href="index.html#top" class="logo-link" aria-label="WHX Digital home">
           <svg class="logo-icon-svg" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
             <rect x="6" y="8" width="14" height="18" rx="2" fill="currentColor" opacity="0.9"></rect>
             <rect x="9" y="6" width="14" height="18" rx="2" fill="currentColor" opacity="0.7"></rect>
@@ -262,12 +263,12 @@
       <nav class="main-nav" aria-label="Main navigation">
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
-          <li><a href="#search-services">Search &amp; Local SEO</a></li>
+          <li><a href="index.html#search-services">Search &amp; Local SEO</a></li>
           <li><a href="services.html" data-i18n="nav.services">AI Automation</a></li>
           <li><a href="architecture.html">AI Agents</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
           <li><a href="insights/index.html" data-i18n="nav.insights">Insights</a></li>
           <li><a href="reviews.html">Reviews</a></li>
-          <li><a href="contact.html">Contact</a></li>
           <li class="nav-item-dashboard" style="margin-left: 8px;">
             <a href="dashboard.html" class="nav-dashboard-btn" style="padding: 6px 14px; border-radius: 9999px; font-size: 0.84rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; background: rgba(0,0,0,0.05); color: #0f172a; border: 1px solid rgba(0,0,0,0.08); text-decoration: none;">Dashboard <i class="fa-solid fa-arrow-right" style="font-size: 0.72rem; color: #64748b;"></i></a>
           </li>
@@ -283,7 +284,19 @@
           <p class="eyebrow"><span>SEARCH VISIBILITY &amp; AUTONOMOUS AI</span><strong class="system-online-indicator"><i></i>SYSTEMS ONLINE</strong></p>
           <h1 data-i18n="hero.title">Rank #1 on Google &amp; Automate<br /><span>with intelligent systems.</span></h1>
           <div class="whx-rotating-services" data-rotate-prefix="GROW &amp; SCALE" data-rotate-items="Local SEO|Google Maps 3-Pack (GMP)|Citation Building|Authority Link Building|AI CRM Automation|Voice AI Agents|Multi-Agent Systems"></div>
-          <p class="lead" data-i18n="hero.description">WHX Digital powers business growth through dual engines: we put you at the very top of Google Maps and local search to capture high-value clients, while deploying custom AI agents to automate your operations, leads, and follow-ups 24/7.</p>
+          <p class="lead" data-i18n="hero.description"><strong>Dual-Engine Growth:</strong> Dominate Google Maps rankings to capture high-intent clients, and deploy 24/7 autonomous AI agents to automate workflows, CRM, and revenue.</p>
+          
+          
+
+            <div class="hlw-terminal-box">
+              <div class="hlw-term-prefix"><i class="fa-solid fa-terminal"></i></div>
+              <div class="hlw-term-content">
+                <span class="hlw-term-label" id="hlwTermLabel">EVENT:</span>
+                <span class="hlw-term-text" id="hlwTermText">Inbound Lead detected &middot; Commercial Client ()</span>
+              </div>
+              <div class="hlw-term-badge" id="hlwTermBadge">PROCESSED</div>
+            </div>
+          </div>
           <div class="hero-cta-actions-row">
             <div class="hero-cta-actions" style="display:flex; gap:14px; flex-wrap:wrap;">
               <a class="button button-primary" href="#search-services" data-i18n="cta.primary">Explore Search Services <i class="fa-solid fa-arrow-down" style="margin-left:6px;"></i></a>
@@ -388,8 +401,19 @@
             </ul>
             <div class="search-card-footer">
               <span class="search-impact-tag"><i class="fa-solid fa-chart-line"></i> Top Organic Search Positions</span>
-              <a href="#connect" class="search-card-cta">Audit My Local SEO &#8594;</a>
+              
+            <div style="margin-top: 15px;">
+              <form onsubmit="event.preventDefault(); var u = this.querySelector('input').value; var dest = 'tools/website-audit/index.html'; if(window.location.protocol !== 'file:') dest += '?url=' + encodeURIComponent(u); window.location.href = dest;" style="display: flex; gap: 8px; width: 100%;">
+                <div style="flex: 1; position: relative; display: flex; align-items: center;">
+                  <i class="fa-solid fa-globe" style="position: absolute; left: 12px; color: #94a3b8; font-size: 0.9rem;"></i>
+                  <input type="text" name="url" style="width: 100%; padding: 10px 10px 10px 34px; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; outline: none; background: rgba(0,0,0,0.2); color: #f8fafc;" placeholder="Enter website URL" required />
+                </div>
+                <button type="submit" style="background: #7c3aed; color: #fff; border: none; border-radius: 8px; padding: 0 16px; font-weight: 600; cursor: pointer; transition: 0.2s; white-space: nowrap; font-size: 0.85rem;">
+                  Audit My Local SEO <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </form>
             </div>
+          </div>
           </article>
 
           <!-- Service 2: GMP / Google 3-Pack -->
@@ -422,8 +446,19 @@
             </ul>
             <div class="search-card-footer">
               <span class="search-impact-tag"><i class="fa-solid fa-phone-volume"></i> 3x Inbound Calls &amp; Directions</span>
-              <a href="#connect" class="search-card-cta">Rank in Map Pack &#8594;</a>
+              
+            <div style="margin-top: 15px;">
+              <form onsubmit="event.preventDefault(); var u = this.querySelector('input').value; var dest = 'tools/website-audit/index.html'; if(window.location.protocol !== 'file:') dest += '?url=' + encodeURIComponent(u); window.location.href = dest;" style="display: flex; gap: 8px; width: 100%;">
+                <div style="flex: 1; position: relative; display: flex; align-items: center;">
+                  <i class="fa-solid fa-globe" style="position: absolute; left: 12px; color: #94a3b8; font-size: 0.9rem;"></i>
+                  <input type="text" name="url" style="width: 100%; padding: 10px 10px 10px 34px; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; outline: none; background: rgba(0,0,0,0.2); color: #f8fafc;" placeholder="Enter website URL" required />
+                </div>
+                <button type="submit" style="background: #7c3aed; color: #fff; border: none; border-radius: 8px; padding: 0 16px; font-weight: 600; cursor: pointer; transition: 0.2s; white-space: nowrap; font-size: 0.85rem;">
+                  Rank in Map Pack <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </form>
             </div>
+          </div>
           </article>
 
           <!-- Service 3: Citation Building -->
@@ -456,11 +491,11 @@
               <li><i class="fa-solid fa-check"></i> 100% manual submission on tier-1 platforms (Apple Maps, Bing, Yelp, BBB)</li>
               <li><i class="fa-solid fa-check"></i> Niche-specific industry portals &amp; local chamber directories</li>
               <li><i class="fa-solid fa-check"></i> Duplicate listing audit, cleanup &amp; NAP conflict suppression</li>
-              <li><i class="fa-solid fa-check"></i> Full login credentials, live verification links &amp; indexing guarantee</li>
+              <li><i class="fa-solid fa-check"></i> Full login credentials, live verification links &amp; indexing support</li>
             </ul>
             <div class="search-card-footer">
               <span class="search-impact-tag"><i class="fa-solid fa-shield-halved"></i> 100% NAP Consistency &amp; Algorithm Trust</span>
-              <a href="#connect" class="search-card-cta">Build Citations &#8594;</a>
+              <a href="#connect" class="search-card-cta">Build Citations <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
             </div>
           </article>
 
@@ -493,7 +528,7 @@
             </ul>
             <div class="search-card-footer">
               <span class="search-impact-tag"><i class="fa-solid fa-bolt"></i> Compounding Domain Authority</span>
-              <a href="#connect" class="search-card-cta">Build Authority Links &#8594;</a>
+              <a href="#connect" class="search-card-cta">Build Authority Links <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
             </div>
           </article>
         </div>
@@ -523,7 +558,7 @@
                   <div class="pack-info">
                     <strong id="winner-biz-name">Your Business (WHX Optimized)</strong>
                     <div class="pack-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span id="winner-reviews-text">5.0 (240+ Verified Reviews)</span></div>
-                    <p id="winner-desc-text">Verified Google Business Profile &middot; Open 24/7 &middot; Instant AI Booking</p>
+                    <p id="winner-desc-text">Verified Google Business Profile &middot; Open 24/7 &middot; Automated AI Booking</p>
                     <span class="pack-action-chip"><i class="fa-solid fa-phone"></i> Inbound Calls Flowing Automatically</span>
                   </div>
                 </div>
@@ -695,7 +730,7 @@
                   <span>Closed Clients / Mo</span>
                 </div>
               </div>
-              <a href="#connect" class="button button-primary roi-cta-button">Claim Your Territory Dominance Audit &#8594;</a>
+              <a href="#connect" class="button button-primary roi-cta-button">Claim Your Territory Dominance Audit <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
@@ -707,7 +742,7 @@
             <p>Once our Local SEO and Google Maps optimization puts your business at the top, our AI business automation handles every incoming lead within seconds, booking appointments and updating your CRM automatically.</p>
           </div>
           <div class="growth-banner-actions">
-            <a href="tools/website-audit/index.html" class="button button-primary">Book Free Growth Audit &#8594;</a>
+            <a href="tools/website-audit/index.html" class="button button-primary">Book Free Growth Audit <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
             <a href="services.html" class="button button-secondary">Explore AI Automation</a>
           </div>
         </div>
@@ -722,11 +757,11 @@
           <h2>From software you use<br /><span>to systems that work.</span></h2>
         </div>
         <div class="intelligent-pipeline" aria-label="Intelligent operating pipeline">
-          <span><b>01</b><strong>INTENT</strong><small>capture the objective</small></span><i class="pipeline-arrow">&#8594;</i><span><b>02</b><strong>CONTEXT</strong><small>retain the signal</small></span><i class="pipeline-arrow">&#8594;</i><span><b>03</b><strong>REASON</strong><small>understand what matters</small></span><i class="pipeline-arrow">&#8594;</i><span><b>04</b><strong>ACT</strong><small>make the next move</small></span><i class="pipeline-arrow">&#8594;</i><span><b>05</b><strong>VERIFY</strong><small>check the result</small></span><i class="pipeline-arrow">&#8594;</i><strong class="pipeline-outcome"><b>06</b>OUTCOME<small>work that compounds</small></strong>
+          <span><b>01</b><strong>INTENT</strong><small>capture the objective</small></span><i class="pipeline-arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i><span><b>02</b><strong>CONTEXT</strong><small>retain the signal</small></span><i class="pipeline-arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i><span><b>03</b><strong>REASON</strong><small>understand what matters</small></span><i class="pipeline-arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i><span><b>04</b><strong>ACT</strong><small>make the next move</small></span><i class="pipeline-arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i><span><b>05</b><strong>VERIFY</strong><small>check the result</small></span><i class="pipeline-arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i><strong class="pipeline-outcome"><b>06</b>OUTCOME<small>work that compounds</small></strong>
         </div>
       </section>
       
-      <section class="agent-section AgentLoop loop-section reveal" id="agent-loop"><div class="section-intro"><p class="kicker">03 / AGENT LOOP</p><h2>Progress is a<br /><span>continuous decision.</span></h2></div><div class="loop-visual ExecutionCycle"><div class="loop-orbit"><span class="loop-particle"></span><span class="loop-label loop-goal">GOAL</span><span class="loop-label loop-context">CONTEXT</span><span class="loop-label loop-reason">REASON</span><span class="loop-label loop-plan">PLAN</span><span class="loop-label loop-tool">TOOL</span><span class="loop-label loop-action">ACTION</span><span class="loop-label loop-observe">OBSERVE</span><span class="loop-label loop-verify">VERIFY</span><span class="loop-label loop-complete">COMPLETE</span></div><p class="loop-note">THE AGENT LEARNS FROM EVERY PASS <span>&#8594;&#187;</span></p></div></section>
+      <section class="agent-section AgentLoop loop-section reveal" id="agent-loop"><div class="section-intro"><p class="kicker">03 / AGENT LOOP</p><h2>Progress is a<br /><span>continuous decision.</span></h2></div><div class="loop-visual ExecutionCycle"><div class="loop-orbit"><span class="loop-particle"></span><span class="loop-label loop-goal">GOAL</span><span class="loop-label loop-context">CONTEXT</span><span class="loop-label loop-reason">REASON</span><span class="loop-label loop-plan">PLAN</span><span class="loop-label loop-tool">TOOL</span><span class="loop-label loop-action">ACTION</span><span class="loop-label loop-observe">OBSERVE</span><span class="loop-label loop-verify">VERIFY</span><span class="loop-label loop-complete">COMPLETE</span></div><p class="loop-note">THE AGENT LEARNS FROM EVERY PASS <span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i>&#187;</span></p></div></section>
 
       <section class="build-systems section reveal" id="build-systems">
         <div class="section-head">
@@ -734,14 +769,14 @@
           <h2>Intelligence designed around <span>your business.</span></h2>
         </div>
         <div class="build-systems-grid">
-          <article><span>01 / AI AGENT DEVELOPMENT</span><h3>Custom AI agents that reason, use approved tools and complete multi-step work.</h3><a href="architecture.html">Explore AI agents &#8594;</a></article>
-          <article><span>02 / AI AUTOMATION</span><h3>Intelligent workflows connecting your CRM, email, databases, APIs and operations.</h3><a href="services.html">Explore AI automation &#8594;</a></article>
-          <article><span>03 / RAG &amp; KNOWLEDGE AI</span><h3>Connect documents, databases and business systems to AI that retrieves relevant context, produces grounded responses and keeps answers tied to approved knowledge.</h3><a href="knowledge.html">Explore RAG systems &#8594;</a></article>
-          <article><span>04 / VOICE AI AGENTS</span><h3>Real-time voice agents that qualify, schedule, update systems and hand off.</h3><a href="voice.html">Explore voice AI &#8594;</a></article>
-          <article><span>05 / MULTI-AGENT SYSTEMS</span><h3>Specialized agents coordinated around one business objective and shared context.</h3><a href="multi-agent.html">Explore multi-agent systems &#8594;</a></article>
-          <article><span>06 / AI CRM AUTOMATION</span><h3>Lead routing, qualification, follow-up and CRM updates with human control.</h3><a href="ai-crm-automation.html">Explore CRM automation &#8594;</a></article>
+          <article><span>01 / AI AGENT DEVELOPMENT</span><h3>Custom AI agents that reason, use approved tools and complete multi-step work.</h3><a href="architecture.html">Explore AI agents <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></article>
+          <article><span>02 / AI AUTOMATION</span><h3>Intelligent workflows connecting your CRM, email, databases, APIs and operations.</h3><a href="services.html">Explore AI automation <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></article>
+          <article><span>03 / RAG &amp; KNOWLEDGE AI</span><h3>Connect documents, databases and business systems to AI that retrieves relevant context, produces grounded responses and keeps answers tied to approved knowledge.</h3><a href="knowledge.html">Explore RAG systems <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></article>
+          <article><span>04 / VOICE AI AGENTS</span><h3>Real-time voice agents that qualify, schedule, update systems and hand off.</h3><a href="voice.html">Explore voice AI <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></article>
+          <article><span>05 / MULTI-AGENT SYSTEMS</span><h3>Specialized agents coordinated around one business objective and shared context.</h3><a href="multi-agent.html">Explore multi-agent systems <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></article>
+          <article><span>06 / AI CRM AUTOMATION</span><h3>Lead routing, qualification, follow-up and CRM updates with human control.</h3><a href="ai-crm-automation.html">Explore CRM automation <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></article>
         </div>
-        <div class="integration-preview"><div><p class="kicker">INTEGRATIONS / CONNECTED SYSTEMS</p><h3>Connect the tools your operation already uses.</h3><p>Explore the automation, CRM, voice, API and database connectors that sit behind a working AI system.</p></div><a class="button button-secondary" href="technology.html">View integrations &#8594;</a></div>
+        <div class="integration-preview"><div><p class="kicker">INTEGRATIONS / CONNECTED SYSTEMS</p><h3>Connect the tools your operation already uses.</h3><p>Explore the automation, CRM, voice, API and database connectors that sit behind a working AI system.</p></div><a class="button button-secondary" href="technology.html">View integrations <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></div>
       </section>
       <section class="system-process section reveal" id="system-process">
         <div class="section-head">
@@ -750,19 +785,19 @@
         </div>
         <div class="system-process-diagram" aria-label="AI system operating flow diagram">
           <div class="process-node process-goal"><span>01</span><strong>Goal</strong><small>new lead objective</small></div>
-          <div class="process-arrow" aria-hidden="true">&#8594;</div>
+          <div class="process-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
           <div class="process-node process-context"><span>02</span><strong>Context</strong><small>research signals</small></div>
-          <div class="process-arrow" aria-hidden="true">&#8594;</div>
+          <div class="process-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
           <div class="process-node process-memory"><span>03</span><strong>Memory</strong><small>CRM history</small></div>
-          <div class="process-arrow" aria-hidden="true">&#8594;</div>
+          <div class="process-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
           <div class="process-node process-reasoning"><span>04</span><strong>Reasoning</strong><small>lead qualification</small></div>
-          <div class="process-arrow" aria-hidden="true">&#8594;</div>
+          <div class="process-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
           <div class="process-node process-tools"><span>05</span><strong>Tools</strong><small>sales agent tools</small></div>
-          <div class="process-arrow" aria-hidden="true">&#8594;</div>
+          <div class="process-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
           <div class="process-node process-action"><span>06</span><strong>Action</strong><small>CRM update</small></div>
-          <div class="process-arrow" aria-hidden="true">&#8594;</div>
+          <div class="process-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
           <div class="process-node process-verification"><span>07</span><strong>Verification</strong><small>human approval</small></div>
-          <div class="process-arrow" aria-hidden="true">&#8594;</div>
+          <div class="process-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></div>
           <div class="process-node process-result"><span>08</span><strong>Result</strong><small>follow-up verified</small></div>
         </div>
         <div class="system-process-demo">
@@ -799,7 +834,7 @@
           <div class="collaboration-list">
             <div class="collaboration-step">
               <span>Agent A</span>
-              <p>&#8594; need customer information.&#8594;</p>
+              <p><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> need customer information.<i class="fa-solid fa-arrow-right" aria-hidden="true"></i></p>
             </div>
             <div class="collaboration-step">
               <span>Agent B</span>
@@ -911,8 +946,8 @@
             <div class="review-stars">
               <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
             </div>
-            <p class="review-excerpt">"WHX Digital engineered autonomous AI search benchmarking and data extraction pipelines for SEO Benchmark. Their RAG knowledge systems gave our team 10x operational efficiency."</p>
-            <a href="knowledge.html" class="review-work-badge"><i class="fa-solid fa-brain"></i> Relevant Work: RAG &amp; Knowledge AI &#8594;</a>
+            <p class="review-excerpt">"WHX Digital engineered autonomous AI search benchmarking and data extraction pipelines for SEO Benchmark. Their RAG knowledge systems gave our team significant operational efficiency."</p>
+            <a href="knowledge.html" class="review-work-badge"><i class="fa-solid fa-brain"></i> Relevant Work: RAG &amp; Knowledge AI <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
             <div class="review-footer">
               <span class="review-date">Verified Partner</span>
               <a href="https://seobenchmark.com/" target="_blank" rel="noopener noreferrer" class="review-link">Visit Client Site <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
@@ -921,7 +956,7 @@
 
         </div>
         <div class="reviews-action" style="text-align: center; margin-top: 3rem;">
-           <a class="button button-secondary" href="reviews.html">View verified client review &#8594;</a>
+           <a class="button button-secondary" href="reviews.html">View verified client review <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </div>
       </section>
 
@@ -932,7 +967,7 @@
           <span style="font-family:'Space Grotesk', sans-serif; font-weight:700; color:#1f2430; display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-hand-paper" style="color:#7c3aed;"></i> Human Approval</span>
           <span style="font-family:'Space Grotesk', sans-serif; font-weight:700; color:#1f2430; display:flex; align-items:center; gap:8px;"><i class="fa-solid fa-network-wired" style="color:#2f68ff;"></i> Connected Systems</span>
         </div>
-        <a class="button button-secondary" href="trust-center.html">Explore WHX Trust Center &#8594;</a>
+        <a class="button button-secondary" href="trust-center.html">Explore WHX Trust Center <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
       </section>
 
       <section class="section reveal" id="latest-insights">
@@ -940,45 +975,57 @@
           <p class="kicker">LATEST INSIGHTS</p>
           <h2>Engineering notes on <span>AI automation.</span></h2>
         </div>
-        <div class="insights-grid" style="padding:0; margin-bottom: 2rem;">
-          <a href="insights/ai-automation-for-business/index.html" class="insights-card">
+                <div class="insights-grid" style="padding:0; margin-bottom: 2.5rem;">
+          <!-- Featured Flagship Post 1: AI Automation Architecture -->
+          <a href="insights/ai-automation-architecture/index.html" class="insights-card featured-insight-card" style="border: 1px solid rgba(124, 58, 237, 0.28); background: linear-gradient(145deg, #ffffff 0%, #faf5ff 100%); box-shadow: 0 10px 30px -4px rgba(124, 58, 237, 0.08); text-decoration:none;">
             <div>
-              <span class="insights-card-category">AI Automation</span>
-              <h3 class="insights-card-title">What Is AI Automation for Business?</h3>
-              <p class="insights-card-desc">An executive and technical guide to moving from rigid IF/THEN triggers to context-aware AI workflows that reason and execute.</p>
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+                <span class="insights-card-category" style="background:#7c3aed; color:#ffffff; font-weight:700; font-size:0.72rem; padding:4px 10px; border-radius:6px;">FEATURED ARCHITECTURE</span>
+                <span style="font-size:0.75rem; color:#7c3aed; font-weight:600;"><i class="fa-solid fa-sparkles"></i> 2026 Stack</span>
+              </div>
+              <h3 class="insights-card-title" style="font-size:1.25rem; font-family:'Space Grotesk',sans-serif; color:#0f172a; margin-bottom:10px; line-height:1.4; font-weight:700;">AI Automation Architecture: What a Production AI Agent Actually Needs</h3>
+              <p class="insights-card-desc" style="color:#475569; font-size:0.92rem; line-height:1.6;">A deep architectural breakdown of model routing, tool execution boundaries, browser automation, document AI, and deterministic verification gates.</p>
             </div>
-            <div class="insights-card-footer">
-              <span>Sep 17, 2026 ? 6 min read</span>
-              <span class="insights-card-readmore">Read insight &#8594;</span>
+            <div class="insights-card-footer" style="margin-top:20px; padding-top:14px; border-top:1px solid rgba(124,58,237,0.1); display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:0.8rem; color:#64748b; font-weight:500;">Oct 6, 2026 &middot; 8 min read</span>
+              <span class="insights-card-readmore" style="color:#7c3aed; font-weight:700; font-size:0.86rem; display:inline-flex; align-items:center; gap:6px;">Read full guide <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
             </div>
           </a>
 
-          <a href="insights/ai-agents-business-workflows/index.html" class="insights-card">
+          <!-- Featured Post 2: What Is AI Automation for Business -->
+          <a href="insights/ai-automation-for-business/index.html" class="insights-card" style="border: 1px solid #e2e8f0; background: #ffffff; box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04); text-decoration:none;">
             <div>
-              <span class="insights-card-category">AI Agents</span>
-              <h3 class="insights-card-title">How AI Agents Automate Business Workflows</h3>
-              <p class="insights-card-desc">Learn how autonomous digital workers plan, execute tool calls, verify outcomes, and handle complex multi-step operations.</p>
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+                <span class="insights-card-category" style="background:#f1f5f9; color:#0f172a; font-weight:700; font-size:0.72rem; padding:4px 10px; border-radius:6px;">AI AUTOMATION</span>
+                <span style="font-size:0.75rem; color:#059669; font-weight:600;"><i class="fa-solid fa-check"></i> Core Guide</span>
+              </div>
+              <h3 class="insights-card-title" style="font-size:1.15rem; font-family:'Space Grotesk',sans-serif; color:#0f172a; margin-bottom:10px; line-height:1.4; font-weight:700;">What Is AI Automation for Business?</h3>
+              <p class="insights-card-desc" style="color:#475569; font-size:0.92rem; line-height:1.6;">An executive and technical guide to moving from rigid IF/THEN triggers to context-aware AI workflows that reason and execute.</p>
             </div>
-            <div class="insights-card-footer">
-              <span>Sep 17, 2026 ? 7 min read</span>
-              <span class="insights-card-readmore">Read insight &#8594;</span>
+            <div class="insights-card-footer" style="margin-top:20px; padding-top:14px; border-top:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:0.8rem; color:#64748b; font-weight:500;">Sep 17, 2026 &middot; 6 min read</span>
+              <span class="insights-card-readmore" style="color:#7c3aed; font-weight:700; font-size:0.86rem; display:inline-flex; align-items:center; gap:6px;">Read insight <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
             </div>
           </a>
 
-          <a href="insights/ai-agents-api-tool-calling/index.html" class="insights-card">
+          <!-- Post 3: How AI Agents Automate Business Workflows -->
+          <a href="insights/ai-agents-business-workflows/index.html" class="insights-card" style="border: 1px solid #e2e8f0; background: #ffffff; box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.04); text-decoration:none;">
             <div>
-              <span class="insights-card-category">API &amp; Integrations</span>
-              <h3 class="insights-card-title">How AI Agents Use APIs to Take Real Business Actions</h3>
-              <p class="insights-card-desc">Understanding function calling, OpenAPI schemas, sandboxed execution, and structured output parsing in agent design.</p>
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:12px;">
+                <span class="insights-card-category" style="background:#f1f5f9; color:#0f172a; font-weight:700; font-size:0.72rem; padding:4px 10px; border-radius:6px;">AI AGENTS</span>
+                <span style="font-size:0.75rem; color:#0284c7; font-weight:600;"><i class="fa-solid fa-gears"></i> Operations</span>
+              </div>
+              <h3 class="insights-card-title" style="font-size:1.15rem; font-family:'Space Grotesk',sans-serif; color:#0f172a; margin-bottom:10px; line-height:1.4; font-weight:700;">How AI Agents Automate Business Workflows</h3>
+              <p class="insights-card-desc" style="color:#475569; font-size:0.92rem; line-height:1.6;">Learn how autonomous digital workers plan, execute tool calls, verify outcomes, and handle complex multi-step operations.</p>
             </div>
-            <div class="insights-card-footer">
-              <span>Sep 17, 2026 ? 7 min read</span>
-              <span class="insights-card-readmore">Read insight &#8594;</span>
+            <div class="insights-card-footer" style="margin-top:20px; padding-top:14px; border-top:1px solid #f1f5f9; display:flex; justify-content:space-between; align-items:center;">
+              <span style="font-size:0.8rem; color:#64748b; font-weight:500;">Sep 17, 2026 &middot; 7 min read</span>
+              <span class="insights-card-readmore" style="color:#7c3aed; font-weight:700; font-size:0.86rem; display:inline-flex; align-items:center; gap:6px;">Read insight <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
             </div>
           </a>
         </div>
         <div style="text-align: center;">
-          <a class="button button-secondary" href="insights/index.html">Explore All Insights &#8594;</a>
+          <a class="button button-secondary" href="insights/index.html">Explore All Insights <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </div>
       </section>
 
@@ -1078,16 +1125,16 @@
             <p class="kicker">SEARCH DOMINANCE &amp; AI AUTOMATION AUDIT</p>
             <h3>Ready to rank #1 &amp; automate your operations?</h3>
             <p>Tell us your target market and current bottlenecks. We will deliver a complimentary Local SEO &amp; Google Maps audit alongside a custom AI automation blueprint.</p>
-            <div class="support-sla-banner"><i class="fa-solid fa-clock-rotate-left"></i> Guaranteed &lt;24hr Response ? Direct Senior Growth Architect Support</div>
+            <div class="support-sla-banner"><i class="fa-solid fa-clock-rotate-left"></i> Targeted &lt;24hr Response &middot; Direct Senior Growth Architect Support</div>
           </div>
-          <div class="final-cta-actions-wrapper" style="display:flex; flex-direction:column; gap:16px;">
-            <div class="final-cta-actions">
-              <a class="button button-primary" href="https://www.linkedin.com/in/whxdigital/" target="_blank" rel="noopener noreferrer">LinkedIn &#8594;</a>
-              <a class="button button-secondary" href="https://www.upwork.com/freelancers/~0187ee99ef01623869?mp_source=share" target="_blank" rel="noopener noreferrer">Upwork &#8594;</a>
-            </div>
-            <div class="contact-emails" style="display:flex; flex-direction:column; gap:10px; margin-top:8px;">
-              <a href="mailto:info@whxdigital.com" style="color:#cbd5e1; text-decoration:none; font-size:15px; display:inline-flex; align-items:center; transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#cbd5e1'"><i class="fa-solid fa-envelope" style="margin-right:8px; color:#a78bfa;"></i>info@whxdigital.com</a>
-              <a href="mailto:whxdigital@gmail.com" style="color:#cbd5e1; text-decoration:none; font-size:15px; display:inline-flex; align-items:center; transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#cbd5e1'"><i class="fa-solid fa-envelope" style="margin-right:8px; color:#a78bfa;"></i>whxdigital@gmail.com</a>
+                              <div class="final-cta-actions-wrapper" style="display:flex; flex-direction:column; gap:16px;">
+            <div class="final-cta-actions" style="display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-top:4px;">
+              <a class="button button-primary whatsapp-cta-btn" href="https://wa.me/351928350275" target="_blank" rel="noopener noreferrer" style="background:#22c55e; border-color:#16a34a; color:#ffffff; font-weight:700; display:inline-flex; align-items:center; gap:10px; padding:12px 22px; min-height:48px; border-radius:10px; box-shadow:0 8px 24px rgba(34, 197, 94, 0.28); text-decoration:none;">
+                <i class="fa-brands fa-whatsapp" style="font-size:1.25rem;"></i> WhatsApp <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </a>
+              <a class="button button-secondary" href="contact.html" style="font-weight:600; display:inline-flex; align-items:center; gap:10px; padding:12px 22px; min-height:48px; border-radius:10px; text-decoration:none;">
+                <i class="fa-solid fa-calendar-check" style="font-size:1rem; color:#f5a623;"></i> Book Strategy Session <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </a>
             </div>
           </div>
         </div>
@@ -1105,7 +1152,7 @@
             <p class="footer-tagline">Dual-engine digital growth: Dominant Local SEO &amp; Google Maps rankings powered by 24/7 AI business automation.</p>
             <div class="footer-badges">
               <span class="footer-badge"><i class="fa-solid fa-location-dot"></i> Google 3-Pack Specialist</span>
-              <span class="footer-badge"><i class="fa-solid fa-shield-halved"></i> 99.9% SLA Verified</span>
+              <span class="footer-badge"><i class="fa-solid fa-shield-halved"></i> Reliable Automation</span>
               <span class="footer-badge"><i class="fa-solid fa-hand-paper"></i> HITL Guardrails</span>
             </div>
           </div>
@@ -1114,12 +1161,12 @@
           <div class="site-footer-col">
             <h4>Search &amp; Local SEO</h4>
             <ul>
-              <li><a href="/index.html#search-services">Local SEO Domination</a></li>
-              <li><a href="/index.html#search-services">Google Maps (GMP) 3-Pack</a></li>
-              <li><a href="/index.html#search-services">Citation Building &amp; Sync</a></li>
-              <li><a href="/index.html#search-services">Authority Link Building</a></li>
-              <li><a href="/tools/website-audit/">Free Website Audit</a></li>
-              <li><a href="/reviews.html">Client Success Proof</a></li>
+              <li><a href="index.html#search-services">Local SEO Domination</a></li>
+              <li><a href="index.html#search-services">Google Maps (GMP) 3-Pack</a></li>
+              <li><a href="index.html#search-services">Citation Building &amp; Sync</a></li>
+              <li><a href="index.html#search-services">Authority Link Building</a></li>
+              <li><a href="tools/website-audit/index.html">Free Website Audit</a></li>
+              <li><a href="reviews.html">Client Success Proof</a></li>
             </ul>
           </div>
 
@@ -1127,12 +1174,14 @@
           <div class="site-footer-col">
             <h4>AI Systems &amp; Ops</h4>
             <ul>
-              <li><a href="/architecture.html">AI Agent Systems</a></li>
-              <li><a href="/multi-agent.html">Multi-Agent Workforce</a></li>
-              <li><a href="/ai-crm-automation.html">AI CRM Automation</a></li>
-              <li><a href="/n8n-automation.html">n8n Workflow Engines</a></li>
-              <li><a href="/voice.html">Real-Time Voice AI</a></li>
-              <li><a href="/knowledge.html">RAG Knowledge Systems</a></li>
+              <li><a href="architecture.html">AI Agent Systems</a></li>
+              <li><a href="multi-agent.html">Multi-Agent Workforce</a></li>
+              <li><a href="ai-crm-automation.html">AI CRM Automation</a></li>
+              <li><a href="n8n-automation.html">n8n Workflow Engines</a></li>
+              <li><a href="voice.html">Real-Time Voice AI</a></li>
+              <li><a href="knowledge.html">RAG Knowledge Systems</a></li>
+              <li><a href="insights/ai-automation-architecture/index.html">AI Automation Architecture</a></li>
+              <li><a href="pricing.html">Pricing &amp; Plans</a></li>
             </ul>
           </div>
 
@@ -1140,51 +1189,37 @@
           <div class="site-footer-col footer-contact-col">
             <h4>Connect &amp; Company</h4>
             <ul class="footer-contact-links">
-              <li><a href="/about.html"><i class="fa-solid fa-building"></i> About WHX Digital</a></li>
-              <li><a href="/contact.html"><i class="fa-solid fa-calendar-check"></i> Book Strategy Session</a></li>
-              <li><a href="https://www.upwork.com/freelancers/~0187ee99ef01623869?mp_source=share" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-upwork brand-icon brand-upwork" style="color:#14a800 !important;"></i> Verified Upwork Profile</a></li>
-              <li><a href="https://www.linkedin.com/in/whxdigital/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin brand-icon brand-linkedin" style="color:#0a66c2 !important;"></i> LinkedIn Profile</a></li>
+              <li><a href="about.html"><i class="fa-solid fa-building"></i> About WHX Digital</a></li>
+              <li><a href="contact.html"><i class="fa-solid fa-calendar-check"></i> Book Strategy Session</a></li>
+              <li><a href="https://wa.me/351928350275" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp brand-icon brand-whatsapp" style="color:#22c55e !important;"></i> WhatsApp</a></li>
+              
               <li><a href="mailto:info@whxdigital.com"><i class="fa-solid fa-envelope"></i> info@whxdigital.com</a></li>
               <li><a href="mailto:whxdigital@gmail.com"><i class="fa-solid fa-paper-plane" style="color:#38bdf8;"></i> whxdigital@gmail.com</a></li>
             </ul>
           </div>
         </div>
 
-        <div class="site-footer-bottom" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.05); margin-top:40px;">
-          <div class="footer-copyright" style="color:#64748b; font-size:0.85rem;">&copy; 2026 WHX Digital. All rights reserved.</div>
-          <div class="footer-legal-links" style="display:flex; gap:16px; align-items:center;">
-            <a href="/privacy.html" style="color:#94a3b8; text-decoration:none; font-size:0.85rem; transition:color 0.2s;">Privacy Policy</a>
-            <span class="divider" style="color:#334155; font-size:0.8rem;">|</span>
-            <a href="/terms.html" style="color:#94a3b8; text-decoration:none; font-size:0.85rem; transition:color 0.2s;">Terms of Service</a>
-            <span class="divider" style="color:#334155; font-size:0.8rem;">|</span>
-            <a href="/trust-center.html" style="color:#94a3b8; text-decoration:none; font-size:0.85rem; transition:color 0.2s;">Security Audit</a>
-            <span class="divider" style="color:#334155; font-size:0.8rem;">|</span>
-            <div class="language-switcher footer-lang-switcher" style="position:relative; cursor:pointer; display:inline-flex;">
-              <div class="lang-current" style="display:inline-flex; align-items:center; gap:6px; font-weight:600; font-size:0.82rem; color:#cbd5e1; padding:4px 12px; border-radius:9999px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); transition:all 0.2s;">
-                <i class="fa-solid fa-globe" style="color:#a855f7; font-size:0.85rem;"></i> <span class="current-lang" style="color:#e2e8f0;">EN</span> <i class="fa-solid fa-chevron-up" style="font-size:0.65rem; color:#94a3b8; margin-left:1px;"></i>
-              </div>
-              <ul class="lang-dropdown" style="display:none; position:absolute; bottom:calc(100% + 10px); right:0; background:#0f172a; border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:6px; list-style:none; min-width:135px; z-index:1001; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);">
-                <li><a href="#" data-lang="en" class="lang-option">English</a></li>
-                <li><a href="#" data-lang="es" class="lang-option">Español</a></li>
-                <li><a href="#" data-lang="pt" class="lang-option">Português</a></li>
-                <li><a href="#" data-lang="ar" class="lang-option">العربية</a></li>
-                <li><a href="#" data-lang="fr" class="lang-option">Français</a></li>
-                <li><a href="#" data-lang="de" class="lang-option">Deutsch</a></li>
-                <li><a href="#" data-lang="it" class="lang-option">Italiano</a></li>
-                <li><a href="#" data-lang="nl" class="lang-option">Nederlands</a></li>
-              </ul>
+        <div class="site-footer-bottom">
+          <div class="footer-legal">
+            <span>&copy; 2026 WHX Digital. All rights reserved.</span>
+            <div class="legal-links">
+              <a href="privacy.html">Privacy Policy</a>
+              <a href="terms.html">Terms of Service</a>
+              <a href="security.html">Security</a>
+              <a href="trust-center.html">Trust Center</a>
             </div>
           </div>
-          <div class="footer-status-indicator" style="display:flex; align-items:center; gap:8px;">
-            <span class="status-dot" style="width:8px; height:8px; border-radius:50%; background:#10b981; box-shadow:0 0 8px rgba(16,185,129,0.5); display:inline-block; animation: pulseGreen 2s infinite;"></span>
-            <span class="status-text" style="color:#94a3b8; font-size:0.85rem; font-weight:600; letter-spacing:0.5px;">AI Systems Operational</span>
+          <div class="footer-social">
+            <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/whxdigital/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
           </div>
         </div>
       </div>
     </footer>
 
 
-    <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6ab59fae50fc24ace6f7fff6"></script>
+    <script defer src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6ab59fae50fc24ace6f7fff6"></script>
   
 <!-- Code Vibe Modal -->
 <div id="codeVibeModal" class="code-vibe-modal" style="display:none;">

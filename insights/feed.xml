@@ -5,9 +5,16 @@
     <link>https://whxdigital.com/insights/</link>
     <description>Practical guidance, workflow architecture, and engineering notes on AI agents, RAG systems, API integrations, and enterprise automation.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 Sep 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 08:00:00 GMT</lastBuildDate>
     <atom:link href="https://whxdigital.com/insights/feed.xml" rel="self" type="application/rss+xml" />
 
+    <item>
+      <title>AI Automation Architecture: What a Production AI Agent Actually Needs</title>
+      <link>https://whxdigital.com/insights/ai-automation-architecture/</link>
+      <guid>https://whxdigital.com/insights/ai-automation-architecture/</guid>
+      <pubDate>Tue, 06 Oct 2026 08:00:00 GMT</pubDate>
+      <description>See how production AI automation architecture combines model routing, AI agents, browser tools, document intelligence, APIs, verification and human control.</description>
+    </item>
     <item>
       <title>What Is AI Automation for Business?</title>
       <link>https://whxdigital.com/insights/ai-automation-for-business/</link>

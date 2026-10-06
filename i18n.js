@@ -123,7 +123,19 @@
   }
 
   async function loadAndApplyTranslations(lang) {
+    // Set Arabic RTL
+    if (lang === 'ar') {
+      document.documentElement.lang = 'ar';
+      document.documentElement.dir = 'rtl';
+      document.body.classList.add('rtl-active');
+    } else {
+      document.documentElement.lang = lang;
+      document.documentElement.dir = 'ltr';
+      document.body.classList.remove('rtl-active');
+    }
+
     if (window.location.protocol === 'file:') return; // Static HTML pages are pre-translated for local viewing
+
     try {
       const response = await fetch(`/locales/${lang}.json`);
       if (!response.ok) return;
@@ -143,17 +155,6 @@
           }
         }
       });
-      
-      // Set Arabic RTL
-      if (lang === 'ar') {
-        document.documentElement.lang = 'ar';
-        document.documentElement.dir = 'rtl';
-        document.body.classList.add('rtl-active');
-      } else {
-        document.documentElement.lang = lang;
-        document.documentElement.dir = 'ltr';
-        document.body.classList.remove('rtl-active');
-      }
       
     } catch (e) {
       console.error('Failed to load translations', e);

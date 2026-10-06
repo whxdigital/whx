@@ -1,0 +1,38 @@
+/* ========================================= */
+/* ACCESSIBILITY & CONTRAST OVERRIDES        */
+/* ========================================= */
+
+/* Link Distinguishability (WCAG AA) */
+p a, li a, .article-content a {
+  text-decoration: underline;
+  text-decoration-color: rgba(124, 58, 237, 0.4);
+  text-underline-offset: 3px;
+}
+.nav-links a, .site-footer a, .footer-links a, .button, .insights-card, .spec-cta, .nav-cta, .cta-button, .header-cta, .sys-btn, .button-primary, .button-secondary {
+  text-decoration: none !important;
+}
+
+/* Footer Contrast Override (WCAG AA minimum 4.5:1 on #07090E) */
+.site-footer {
+  color: #94a3b8 !important;
+}
+.site-footer p, .site-footer small, .site-footer span {
+  color: #94a3b8 !important;
+}
+.site-footer a, .site-footer-col a, .footer-legal-links a {
+  color: #94a3b8 !important;
+}
+.site-footer a:hover, .site-footer-col a:hover, .footer-legal-links a:hover {
+  color: #c4b5fd !important;
+}
+
+/* Input Placeholder Contrast */
+::placeholder {
+  color: #94a3b8 !important;
+  opacity: 1 !important;
+}
+
+/* AI Chat Window contrast */
+.chat-placeholder {
+  color: #94a3b8 !important;
+}

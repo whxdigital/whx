@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -19,7 +19,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" /></noscript>
     <link rel="stylesheet" href="../../style.css" />
 
     <!-- Structured Data: WebPage & BreadcrumbList -->
@@ -1227,6 +1228,419 @@
         color: #0f172a;
       }
 
+      /* Device Audit Switcher Bar (Mobile vs Desktop) */
+      .device-results-switcher-bar {
+        background: #f8fafc;
+        border: 1.5px solid #e2e8f0;
+        border-radius: 14px;
+        padding: 10px 16px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .device-switcher-title {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: #475569;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .device-switcher-tabs {
+        display: inline-flex;
+        background: #e2e8f0;
+        padding: 4px;
+        border-radius: 10px;
+        gap: 4px;
+      }
+      .device-switch-btn {
+        background: transparent;
+        border: none;
+        padding: 8px 18px;
+        border-radius: 8px;
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: #64748b;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.2s ease;
+      }
+      .device-switch-btn:hover {
+        color: #1e293b;
+      }
+      .device-switch-btn.is-active {
+        background: #ffffff;
+        color: var(--accent-purple, #7c3aed);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
+      .device-score-tag {
+        font-size: 0.78rem;
+        padding: 2px 8px;
+        border-radius: 6px;
+        background: #ede9fe;
+        color: #7c3aed;
+        font-weight: 800;
+      }
+      .device-switch-btn.is-active .device-score-tag {
+        background: #7c3aed;
+        color: #ffffff;
+      }
+
+      /* Google Business Profile & Local Entity Audit Card */
+      .local-biz-audit-card {
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 30px 28px;
+        box-shadow: 0 10px 30px -10px rgba(66, 133, 244, 0.12), 0 4px 16px rgba(15, 23, 42, 0.05);
+        border: 2px solid #dbeafe;
+        margin-bottom: 30px;
+        position: relative;
+        overflow: hidden;
+      }
+      .local-biz-audit-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, #4285f4, #ea4335, #fbbc05, #34a853);
+      }
+      .local-biz-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+        margin-bottom: 22px;
+        flex-wrap: wrap;
+      }
+      .local-biz-header h3 {
+        margin: 6px 0;
+        font-size: 1.45rem;
+        font-weight: 800;
+        color: #0f172a;
+        letter-spacing: -0.02em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .local-biz-header p {
+        margin: 0;
+        color: #64748b;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        max-width: 680px;
+      }
+      .local-status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+      .local-status-pill.status-detected {
+        background: #ecfdf5;
+        color: #059669;
+        border: 1px solid #a7f3d0;
+      }
+      .local-status-pill.status-optimize {
+        background: #fffbeb;
+        color: #b45309;
+        border: 1px solid #fde68a;
+      }
+      .local-status-pill.status-missing {
+        background: #fff1f2;
+        color: #e11d48;
+        border: 1px solid #fecdd3;
+      }
+      .local-signals-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      .local-signal-box {
+        background: #f8fafc;
+        border: 1.5px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 12px 14px;
+        font-size: 0.86rem;
+      }
+      .local-signal-title {
+        color: #64748b;
+        font-size: 0.74rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 4px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .local-signal-val {
+        color: #0f172a;
+        font-weight: 700;
+        word-break: break-word;
+      }
+      .local-issues-box {
+        background: #fff1f2;
+        border: 1.5px solid #fecdd3;
+        border-radius: 12px;
+        padding: 16px 18px;
+        margin-bottom: 20px;
+      }
+      .local-issues-head {
+        font-weight: 800;
+        color: #9f1239;
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .local-issues-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .local-issue-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 0.88rem;
+        color: #881337;
+        line-height: 1.5;
+      }
+      .local-pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+        margin-top: 18px;
+      }
+      .local-price-card {
+        background: #f8fafc;
+        border: 1.5px solid #cbd5e1;
+        border-radius: 14px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 14px;
+        transition: all 0.2s ease;
+      }
+      .local-price-card.featured {
+        background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+        border-color: #3b82f6;
+        box-shadow: 0 4px 16px rgba(59, 130, 246, 0.1);
+      }
+      .local-price-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .local-price-title {
+        font-size: 1.05rem;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 0 0 6px;
+      }
+      .local-price-desc {
+        font-size: 0.85rem;
+        color: #475569;
+        line-height: 1.5;
+        margin: 0;
+      }
+      .local-price-tag {
+        font-size: 1.6rem;
+        font-weight: 900;
+        color: #2563eb;
+        white-space: nowrap;
+      }
+      .local-price-btn {
+        background: #2563eb;
+        color: #ffffff;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: all 0.2s ease;
+        text-decoration: none;
+      }
+      .local-price-btn:hover {
+        background: #1d4ed8;
+      }
+      .local-price-btn.btn-outline {
+        background: #ffffff;
+        color: #2563eb;
+        border: 1.5px solid #2563eb;
+      }
+      .local-price-btn.btn-outline:hover {
+        background: #eff6ff;
+      }
+
+      /* Google Keyword Intelligence & Ranking Diagnostics Card */
+      .keyword-intel-card {
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 30px 28px;
+        box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.12), 0 4px 16px rgba(15, 23, 42, 0.05);
+        border: 2px solid #ede9fe;
+        margin-bottom: 30px;
+        position: relative;
+        overflow: hidden;
+      }
+      .keyword-intel-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, #7c3aed, #a855f7, #06b6d4);
+      }
+      .keyword-intel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+        margin-bottom: 22px;
+        flex-wrap: wrap;
+      }
+      .keyword-intel-header h3 {
+        margin: 6px 0;
+        font-size: 1.45rem;
+        font-weight: 800;
+        color: #0f172a;
+        letter-spacing: -0.02em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .keyword-intel-header p {
+        margin: 0;
+        color: #64748b;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        max-width: 680px;
+      }
+      .keyword-health-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #f5f3ff;
+        color: #6d28d9;
+        border: 1px solid #ddd6fe;
+        font-weight: 700;
+        font-size: 0.85rem;
+        padding: 8px 16px;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
+      .keywords-table-wrap {
+        overflow-x: auto;
+        border-radius: 12px;
+        border: 1.5px solid #e2e8f0;
+        margin-bottom: 20px;
+      }
+      .keywords-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.88rem;
+        text-align: left;
+      }
+      .keywords-table th {
+        background: #f8fafc;
+        padding: 12px 16px;
+        font-weight: 700;
+        color: #475569;
+        border-bottom: 1.5px solid #e2e8f0;
+        text-transform: uppercase;
+        font-size: 0.76rem;
+        letter-spacing: 0.04em;
+      }
+      .keywords-table td {
+        padding: 12px 16px;
+        border-bottom: 1px solid #f1f5f9;
+        color: #1e293b;
+        vertical-align: middle;
+      }
+      .keywords-table tr:last-child td {
+        border-bottom: none;
+      }
+      .intent-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 3px 8px;
+        border-radius: 6px;
+        font-size: 0.74rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+      .intent-badge.commercial { background: #fef3c7; color: #b45309; }
+      .intent-badge.local { background: #e0f2fe; color: #0369a1; }
+      .intent-badge.informational { background: #f1f5f9; color: #475569; }
+      .pill-found {
+        display: inline-block;
+        font-size: 0.72rem;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-weight: 700;
+        margin-right: 4px;
+      }
+      .pill-found.yes { background: #dcfce7; color: #15803d; }
+      .pill-found.no { background: #fee2e2; color: #b91c1c; }
+      .keyword-gaps-box {
+        background: #faf5ff;
+        border: 1.5px solid #e9d5ff;
+        border-radius: 12px;
+        padding: 18px 20px;
+      }
+      .keyword-gaps-head {
+        font-weight: 800;
+        color: #6b21a8;
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .keyword-gaps-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .keyword-gap-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 0.88rem;
+        color: #581c87;
+        line-height: 1.5;
+      }
+
       /* Responsive rules */
       @media (max-width: 860px) {
         .scores-cards-grid {
@@ -1277,7 +1691,7 @@
     <!-- Header Navigation -->
     <header class="site-header" id="top">
       <div class="logo">
-        <a href="../../index.html" class="logo-link" aria-label="WHX Digital home">
+        <a href="../../index.html#top" class="logo-link" aria-label="WHX Digital home">
           <svg class="logo-icon-svg" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
             <rect x="6" y="8" width="14" height="18" rx="2" fill="currentColor" opacity="0.9"></rect>
             <rect x="9" y="6" width="14" height="18" rx="2" fill="currentColor" opacity="0.7"></rect>
@@ -1290,12 +1704,15 @@
       <nav class="main-nav" aria-label="Main navigation">
         <ul class="nav-links">
           <li><a href="../../index.html">Home</a></li>
-          <li><a href="../../index.html#search-services">Search Services</a></li>
-          <li><a href="../../services.html">AI Automation</a></li>
+          <li><a href="../../index.html#search-services">Search &amp; Local SEO</a></li>
+          <li><a href="../../services.html" data-i18n="nav.services">AI Automation</a></li>
           <li><a href="../../architecture.html">AI Agents</a></li>
-          <li><a href="../../insights/index.html">Insights</a></li>
+          <li><a href="../../insights/index.html" data-i18n="nav.insights">Insights</a></li>
           <li><a href="../../reviews.html">Reviews</a></li>
           <li><a href="../../contact.html">Contact</a></li>
+          <li class="nav-item-dashboard" style="margin-left: 8px;">
+            <li><a href="../../dashboard.html" class="nav-dashboard-btn" style="padding: 6px 14px; border-radius: 9999px; font-size: 0.84rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; background: rgba(0,0,0,0.05); color: #0f172a; border: 1px solid rgba(0,0,0,0.08); text-decoration: none;">Dashboard <i class="fa-solid fa-arrow-right" style="font-size: 0.72rem; color: #64748b;"></i></a></li>
+          </li>
         </ul>
       </nav>
     </header>
@@ -1368,6 +1785,25 @@
       <!-- Results Dashboard -->
       <section class="audit-results-container" id="results-dashboard">
         
+        <!-- Device Switcher Bar (Mobile vs Desktop) -->
+        <div class="device-results-switcher-bar" role="tablist" aria-label="Device Audit Strategy">
+          <div class="device-switcher-title">
+            <i class="fa-solid fa-sliders"></i> Audit Device View:
+          </div>
+          <div class="device-switcher-tabs">
+            <button type="button" class="device-switch-btn is-active" id="btn-device-mobile" data-device="mobile" role="tab" aria-selected="true">
+              <i class="fa-solid fa-mobile-screen"></i>
+              <span>Mobile Report</span>
+              <span class="device-score-tag" id="badge-device-mobile-score">--</span>
+            </button>
+            <button type="button" class="device-switch-btn" id="btn-device-desktop" data-device="desktop" role="tab" aria-selected="false">
+              <i class="fa-solid fa-desktop"></i>
+              <span>Desktop Report</span>
+              <span class="device-score-tag" id="badge-device-desktop-score">--</span>
+            </button>
+          </div>
+        </div>
+
         <!-- Header Bar -->
         <div class="results-header-bar">
           <div class="audited-url-info">
@@ -1530,16 +1966,50 @@
           </div>
         </div>
 
+        <!-- Google Business Profile & Local Entity Audit Card -->
+        <div class="local-biz-audit-card" id="local-biz-audit-card">
+          <div class="local-biz-header">
+            <div>
+              <span class="audit-badge" style="margin-bottom:6px;"><i class="fa-solid fa-location-dot"></i> LOCAL SEO &amp; GOOGLE MAPS</span>
+              <h3><i class="fa-brands fa-google" style="color:#4285F4;"></i> Google Business Profile &amp; Local Business Audit</h3>
+              <p>Google Maps 3-Pack rankings drive over 70% of high-intent local customer calls and direct inquiries. Here is your verified local business presence, entity schema status, and ranking roadmap.</p>
+            </div>
+            <div id="local-biz-status-pill" class="local-status-pill status-checking">
+              <i class="fa-solid fa-spinner fa-spin"></i> Analyzing Local Setup...
+            </div>
+          </div>
+          <div id="local-biz-content-area">
+            <!-- Dynamically populated by audit-tool.js -->
+          </div>
+        </div>
+
+        <!-- Google Keyword Intelligence & Ranking Diagnostics Card -->
+        <div class="keyword-intel-card" id="keyword-intel-card">
+          <div class="keyword-intel-header">
+            <div>
+              <span class="audit-badge" style="margin-bottom:6px;"><i class="fa-solid fa-magnifying-glass-chart"></i> SEARCH RANKING VISIBILITY</span>
+              <h3><i class="fa-solid fa-key" style="color:#7c3aed;"></i> Google Keyword Intelligence &amp; Search Diagnostics</h3>
+              <p>Live extraction of target keywords from your page title, headings, and metadata &mdash; analyzed for search intent, keyword gaps, and Google Page 1 ranking roadblocks.</p>
+            </div>
+            <div id="keyword-health-score-pill" class="keyword-health-pill">
+              <i class="fa-solid fa-chart-line"></i> Keyword Score: <strong id="keyword-opt-score" style="margin-left:4px;">--</strong>
+            </div>
+          </div>
+          <div id="keyword-intel-content-area">
+            <!-- Dynamically populated by audit-tool.js -->
+          </div>
+        </div>
+
         <!-- Automatic Weakness Analysis & Fix Budget Calculator -->
         <div class="fix-budget-card" id="fix-budget-calculator">
           <div class="budget-card-header">
             <div>
               <span class="audit-badge" style="margin-bottom:6px;"><i class="fa-solid fa-calculator"></i> AUTOMATED REPAIR QUOTE</span>
-              <h3><i class="fa-solid fa-wrench" style="color:#7c3aed;"></i> Detected Site Weaknesses &amp; Instant Fix Budget</h3>
+              <h3><i class="fa-solid fa-wrench" style="color:#7c3aed;"></i> Detected Site Weaknesses &amp; Performance Fix Budget</h3>
               <p>Based on your live Lighthouse audit, our diagnostic system flagged the issues below that are dragging down your ranking and conversions. Select the optimizations you need or get the turnkey full-site repair package.</p>
             </div>
             <div class="budget-guarantee-pill">
-              <i class="fa-solid fa-certificate"></i> 90+ Score Guarantee &amp; 30-Day SLA
+              <i class="fa-solid fa-certificate"></i> 90+ Score Target &amp; 30-Day SLA
             </div>
           </div>
 
@@ -1615,7 +2085,7 @@
             <h3 id="lead-banner-title">Want WHX Digital to fix these issues?</h3>
             <p id="lead-banner-desc">We can review the technical bottlenecks and build a practical improvement plan for your website speed, Core Web Vitals, and search visibility.</p>
           </div>
-          <button type="button" class="lead-action-btn" id="open-fix-modal-btn">Fix My Website Speed &#8594;</button>
+          <button type="button" class="lead-action-btn" id="open-fix-modal-btn">Fix My Website Speed <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
         </div>
 
       </section>
@@ -1703,7 +2173,7 @@
             <p class="footer-tagline">Dual-engine digital growth: Dominant Local SEO &amp; Google Maps rankings powered by 24/7 AI business automation.</p>
             <div class="footer-badges">
               <span class="footer-badge"><i class="fa-solid fa-location-dot"></i> Google 3-Pack Specialist</span>
-              <span class="footer-badge"><i class="fa-solid fa-shield-halved"></i> 99.9% SLA Verified</span>
+              <span class="footer-badge"><i class="fa-solid fa-shield-halved"></i> Reliable Automation</span>
               <span class="footer-badge"><i class="fa-solid fa-hand-paper"></i> HITL Guardrails</span>
             </div>
           </div>
@@ -1712,12 +2182,12 @@
           <div class="site-footer-col">
             <h4>Search &amp; Local SEO</h4>
             <ul>
-              <li><a href="/index.html#search-services">Local SEO Domination</a></li>
-              <li><a href="/index.html#search-services">Google Maps (GMP) 3-Pack</a></li>
-              <li><a href="/index.html#search-services">Citation Building &amp; Sync</a></li>
-              <li><a href="/index.html#search-services">Authority Link Building</a></li>
-              <li><a href="/tools/website-audit/">Free Website Audit</a></li>
-              <li><a href="/reviews.html">Client Success Proof</a></li>
+              <li><a href="../../index.html#search-services">Local SEO Domination</a></li>
+              <li><a href="../../index.html#search-services">Google Maps (GMP) 3-Pack</a></li>
+              <li><a href="../../index.html#search-services">Citation Building &amp; Sync</a></li>
+              <li><a href="../../index.html#search-services">Authority Link Building</a></li>
+              <li><a href="../../tools/website-audit/index.html">Free Website Audit</a></li>
+              <li><a href="../../reviews.html">Client Success Proof</a></li>
             </ul>
           </div>
 
@@ -1725,12 +2195,12 @@
           <div class="site-footer-col">
             <h4>AI Systems &amp; Ops</h4>
             <ul>
-              <li><a href="/architecture.html">AI Agent Systems</a></li>
-              <li><a href="/multi-agent.html">Multi-Agent Workforce</a></li>
-              <li><a href="/ai-crm-automation.html">AI CRM Automation</a></li>
-              <li><a href="/n8n-automation.html">n8n Workflow Engines</a></li>
-              <li><a href="/voice.html">Real-Time Voice AI</a></li>
-              <li><a href="/knowledge.html">RAG Knowledge Systems</a></li>
+              <li><a href="../../architecture.html">AI Agent Systems</a></li>
+              <li><a href="../../multi-agent.html">Multi-Agent Workforce</a></li>
+              <li><a href="../../ai-crm-automation.html">AI CRM Automation</a></li>
+              <li><a href="../../n8n-automation.html">n8n Workflow Engines</a></li>
+              <li><a href="../../voice.html">Real-Time Voice AI</a></li>
+              <li><a href="../../knowledge.html">RAG Knowledge Systems</a></li>
             </ul>
           </div>
 
@@ -1738,28 +2208,30 @@
           <div class="site-footer-col footer-contact-col">
             <h4>Connect &amp; Company</h4>
             <ul class="footer-contact-links">
-              <li><a href="/about.html"><i class="fa-solid fa-building"></i> About WHX Digital</a></li>
-              <li><a href="/contact.html"><i class="fa-solid fa-calendar-check"></i> Book Strategy Session</a></li>
-              <li><a href="https://www.upwork.com/freelancers/~0187ee99ef01623869?mp_source=share" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-upwork brand-icon brand-upwork" style="color:#14a800 !important;"></i> Verified Upwork Profile</a></li>
-              <li><a href="https://www.linkedin.com/in/whxdigital/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin brand-icon brand-linkedin" style="color:#0a66c2 !important;"></i> LinkedIn Profile</a></li>
+              <li><a href="../../about.html"><i class="fa-solid fa-building"></i> About WHX Digital</a></li>
+              <li><a href="../../contact.html"><i class="fa-solid fa-calendar-check"></i> Book Strategy Session</a></li>
+              <li><a href="https://wa.me/351928350275" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp brand-icon brand-whatsapp" style="color:#22c55e !important;"></i> WhatsApp</a></li>
+              
               <li><a href="mailto:info@whxdigital.com"><i class="fa-solid fa-envelope"></i> info@whxdigital.com</a></li>
               <li><a href="mailto:whxdigital@gmail.com"><i class="fa-solid fa-paper-plane" style="color:#38bdf8;"></i> whxdigital@gmail.com</a></li>
             </ul>
           </div>
         </div>
 
-        <div class="site-footer-bottom" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.05); margin-top:40px;">
-          <div class="footer-copyright" style="color:#64748b; font-size:0.85rem;">&copy; 2026 WHX Digital. All rights reserved.</div>
-          <div class="footer-legal-links" style="display:flex; gap:16px; align-items:center;">
-            <a href="/privacy.html" style="color:#94a3b8; text-decoration:none; font-size:0.85rem;">Privacy Policy</a>
-            <span class="divider" style="color:#334155; font-size:0.8rem;">|</span>
-            <a href="/terms.html" style="color:#94a3b8; text-decoration:none; font-size:0.85rem;">Terms of Service</a>
-            <span class="divider" style="color:#334155; font-size:0.8rem;">|</span>
-            <a href="/trust-center.html" style="color:#94a3b8; text-decoration:none; font-size:0.85rem;">Security Audit</a>
+        <div class="site-footer-bottom">
+          <div class="footer-legal">
+            <span>&copy; 2026 WHX Digital. All rights reserved.</span>
+            <div class="legal-links">
+              <a href="../../privacy.html">Privacy Policy</a>
+              <a href="../../terms.html">Terms of Service</a>
+              <a href="../../security.html">Security</a>
+              <a href="../../trust-center.html">Trust Center</a>
+            </div>
           </div>
-          <div class="footer-status-indicator" style="display:flex; align-items:center; gap:8px;">
-            <span class="status-dot" style="width:8px; height:8px; border-radius:50%; background:#10b981; box-shadow:0 0 8px rgba(16,185,129,0.5); display:inline-block;"></span>
-            <span class="status-text" style="color:#94a3b8; font-size:0.85rem; font-weight:600; letter-spacing:0.5px;">AI Systems Operational</span>
+          <div class="footer-social">
+            <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/whxdigital/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
   <head>
-    <base href="/" />
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Custom AI agent development services for business agents that reason, use tools, follow permissions and complete multi-step work." />
@@ -22,7 +22,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" /></noscript>
     <link rel="stylesheet" href="style.css" />
   
     <link rel="alternate" hreflang="x-default" href="https://whxdigital.com/" />
@@ -41,7 +42,7 @@
 
             <header class="site-header" id="top">
       <div class="logo">
-        <a href="index.html#top" class="logo-link" aria-label="Apex AI home">
+        <a href="../index.html#top" class="logo-link" aria-label="WHX Digital home">
           <svg class="logo-icon-svg" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
             <rect x="6" y="8" width="14" height="18" rx="2" fill="currentColor" opacity="0.9"></rect>
             <rect x="9" y="6" width="14" height="18" rx="2" fill="currentColor" opacity="0.7"></rect>
@@ -53,19 +54,23 @@
       <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
       <nav class="main-nav" aria-label="Main navigation">
         <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="architecture.html">AI Agents</a></li>
-          <li><a href="insights/index.html">Insights</a></li>
-          <li><a href="reviews.html">Reviews</a></li>
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../index.html#search-services">Search &amp; Local SEO</a></li>
+          <li><a href="../services.html" data-i18n="nav.services">AI Automation</a></li>
+          <li><a href="../architecture.html">AI Agents</a></li>
+          <li><a href="../insights/index.html" data-i18n="nav.insights">Insights</a></li>
+          <li><a href="../reviews.html">Reviews</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li class="nav-item-dashboard" style="margin-left: 8px;">
+            <li><a href="../dashboard.html" class="nav-dashboard-btn" style="padding: 6px 14px; border-radius: 9999px; font-size: 0.84rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; background: rgba(0,0,0,0.05); color: #0f172a; border: 1px solid rgba(0,0,0,0.08); text-decoration: none;">Dashboard <i class="fa-solid fa-arrow-right" style="font-size: 0.72rem; color: #64748b;"></i></a></li>
+          </li>
         </ul>
       </nav>
     </header>
 
     <main class="agent-experience">
       <section class="agent-hero AgentHero agent-section" id="agent-hero">
-        <nav class="site-breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true">&#8594;</span><span>AI Agent Development</span></nav>
+        <nav class="site-breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span aria-hidden="true"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span><span>AI Agent Development</span></nav>
         <div class="hero-agent-copy">
           <p class="agent-eyebrow">AI AGENTS / AUTONOMOUS SYSTEMS <span><i></i> LIVE DEMO</span></p>
           <h1>Custom AI agents that<br /><em>reason, act &amp; complete work.</em></h1>
@@ -98,12 +103,12 @@
 
       <section class="agent-section AgentDefinition transform-section" id="what-is-agent">
         <div class="section-intro"><p class="kicker">01 / WHAT IS AN AI AGENT?</p><h2>A workflow becomes a worker<br /><span>when it can close the loop.</span></h2></div>
-        <div class="workflow-transform" aria-label="Agent workflow transformation"><div class="workflow-old"><span>INPUT</span><i>&#8594;</i><span>RULE</span><i>&#8594;</i><span>OUTPUT</span></div><div class="workflow-new"><span>GOAL</span><i>&#8594;</i><span>UNDERSTAND</span><i>&#8594;</i><span>PLAN</span><i>&#8594;</i><span>ACT</span><i>&#8594;</i><span>VERIFY</span><i>&#8594;</i><strong>COMPLETE</strong></div><p>STATIC WORKFLOW <b>&#8594;</b> ADAPTIVE AGENT</p></div>
+        <div class="workflow-transform" aria-label="Agent workflow transformation"><div class="workflow-old"><span>INPUT</span><i><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i><span>RULE</span><i><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i><span>OUTPUT</span></div><div class="workflow-new"><span>GOAL</span><i><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i><span>UNDERSTAND</span><i><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i><span>PLAN</span><i><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i><span>ACT</span><i><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i><span>VERIFY</span><i><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i><strong>COMPLETE</strong></div><p>STATIC WORKFLOW <b><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></b> ADAPTIVE AGENT</p></div>
       </section>
 
       <section class="agent-section AgentBrainSection brain-section" id="agent-brain"><div class="section-intro"><p class="kicker">02 / AGENT BRAIN</p><h2>Six moves.<br /><span>One adaptive system.</span></h2></div><div class="brain-layout AgentStages"><ol class="brain-stages"><li data-state="THINKING...">PERCEIVE</li><li data-state="THINKING...">REASON</li><li data-state="PLANNING...">PLAN</li><li data-state="EXECUTING...">ACT</li><li data-state="VERIFYING...">VERIFY</li><li data-state="COMPLETE">ADAPT</li></ol><div class="brain-core"><span class="core-ring"></span><strong>AI<br />BRAIN</strong><small class="brain-stage-status">THINKING...</small></div></div></section>
 
-      <section class="agent-section AgentLoop loop-section" id="agent-loop"><div class="section-intro"><p class="kicker">03 / AGENT LOOP</p><h2>Progress is a<br /><span>continuous decision.</span></h2></div><div class="loop-visual ExecutionCycle"><div class="loop-orbit"><span class="loop-particle"></span><span class="loop-label loop-goal">GOAL</span><span class="loop-label loop-context">CONTEXT</span><span class="loop-label loop-reason">REASON</span><span class="loop-label loop-plan">PLAN</span><span class="loop-label loop-tool">TOOL</span><span class="loop-label loop-action">ACTION</span><span class="loop-label loop-observe">OBSERVE</span><span class="loop-label loop-verify">VERIFY</span><span class="loop-label loop-complete">COMPLETE</span></div><p class="loop-note">THE AGENT LEARNS FROM EVERY PASS <span>&#8594;?</span></p></div></section>
+      <section class="agent-section AgentLoop loop-section" id="agent-loop"><div class="section-intro"><p class="kicker">03 / AGENT LOOP</p><h2>Progress is a<br /><span>continuous decision.</span></h2></div><div class="loop-visual ExecutionCycle"><div class="loop-orbit"><span class="loop-particle"></span><span class="loop-label loop-goal">GOAL</span><span class="loop-label loop-context">CONTEXT</span><span class="loop-label loop-reason">REASON</span><span class="loop-label loop-plan">PLAN</span><span class="loop-label loop-tool">TOOL</span><span class="loop-label loop-action">ACTION</span><span class="loop-label loop-observe">OBSERVE</span><span class="loop-label loop-verify">VERIFY</span><span class="loop-label loop-complete">COMPLETE</span></div><p class="loop-note">THE AGENT LEARNS FROM EVERY PASS <span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i>?</span></p></div></section>
 
       <section class="agent-section AgentTools tools-section" id="tools"><div class="section-intro"><p class="kicker">04 / TOOLS &amp; ACTIONS</p><h2>Intelligence is useful<br /><span>when it can touch reality.</span></h2></div><div class="tools-network"><div class="tool-list"><button class="ToolCard" data-tool="CRM">CRM</button><button class="ToolCard" data-tool="DATABASE">DATABASE</button><button class="ToolCard" data-tool="API">API</button><button class="ToolCard" data-tool="BROWSER">BROWSER</button><button class="ToolCard" data-tool="EMAIL">EMAIL</button><button class="ToolCard" data-tool="CALENDAR">CALENDAR</button></div><div class="tool-agent"><span>AI</span><strong>AGENT</strong><small>ROUTING ACTION</small></div><div class="tool-action"><span>ACTION</span><strong>EXECUTE</strong></div><div class="tool-lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></section>
 
@@ -111,20 +116,20 @@
 
       <section class="agent-section task-section" id="task"><div class="section-intro"><p class="kicker">06 / MULTI-STEP TASK</p><h2>Watch the work happen<br /><span>from goal to outcome.</span></h2></div><div class="task-console"><div class="task-console-head"><span>TASK / 0084</span><strong>QUALIFY NEW CUSTOMER</strong><b>RUNNING</b></div><ol class="task-steps"><li><span>01</span><strong>Prospect signals gathered</strong><small>Research / web + firmographics</small><b>DONE</b></li><li><span>02</span><strong>Account history synced</strong><small>CRM / contacts + activity</small><b>DONE</b></li><li><span>03</span><strong>Buying intent modeled</strong><small>Analysis / fit + urgency</small><b>DONE</b></li><li><span>04</span><strong>Next-best action drafted</strong><small>Recommendation / route + timing</small><b>DONE</b></li><li><span>05</span><strong>Opportunity record updated</strong><small>CRM / score + owner</small><b>DONE</b></li><li><span>06</span><strong>Sales pod briefed</strong><small>Notification / context attached</small><b>DONE</b></li></ol><div class="task-complete">TASK COMPLETED <span>100% / VERIFIED</span></div></div></section>
 
-      <section class="agent-section review-section" id="human-review"><div class="section-intro"><p class="kicker">07 / HUMAN-IN-THE-LOOP</p><h2>Autonomy with<br /><span>the right guardrails.</span></h2></div><div class="decision-flow"><div class="decision-card"><small>AGENT DECISION</small><strong>DECISION REQUIRED</strong><p>Risk threshold exceeded. Route to the right human.</p><div><span>LOW RISK <b>&#8594; AUTO EXECUTE</b></span><span class="high-risk">HIGH RISK <b>&#8594; HUMAN REVIEW</b></span></div></div><div class="review-card"><small>HUMAN REVIEW</small><strong>Approve next action?</strong><div class="review-actions"><button>APPROVE</button><button>MODIFY</button><button>REJECT</button></div></div></div></section>
+      <section class="agent-section review-section" id="human-review"><div class="section-intro"><p class="kicker">07 / HUMAN-IN-THE-LOOP</p><h2>Autonomy with<br /><span>the right guardrails.</span></h2></div><div class="decision-flow"><div class="decision-card"><small>AGENT DECISION</small><strong>DECISION REQUIRED</strong><p>Risk threshold exceeded. Route to the right human.</p><div><span>LOW RISK <b><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> AUTO EXECUTE</b></span><span class="high-risk">HIGH RISK <b><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> HUMAN REVIEW</b></span></div></div><div class="review-card"><small>HUMAN REVIEW</small><strong>Approve next action?</strong><div class="review-actions"><button>APPROVE</button><button>MODIFY</button><button>REJECT</button></div></div></div></section>
 
       <section class="agent-section workforce-section" id="multi-agent"><div class="section-intro"><p class="kicker">08 / MULTI-AGENT SYSTEM</p><h2>One agent is useful.<br /><span>An AI workforce is leverage.</span></h2></div><div class="workforce-network"><div class="orchestrator">ORCHESTRATOR</div><div class="specialists"><span>RESEARCH</span><span>SALES</span><span>SUPPORT</span></div><div class="shared-memory">SHARED MEMORY</div><div class="business-systems">BUSINESS SYSTEMS</div></div></section>
 
       <section class="agent-section evaluation-section" id="evaluation"><div class="section-intro"><p class="kicker">09 / EVALUATION</p><h2>Better agents are<br /><span>measured in the open.</span></h2></div><div class="eval-dashboard"><div class="eval-runs"><span>TEST RUNS</span><b>RUN 001</b><b>RUN 002</b><b>RUN 003</b><b>RUN 004</b><b>RUN 005</b></div><div class="eval-metrics"><span>TASK SUCCESS <b>94%</b></span><span>RELIABILITY <b>91%</b></span><span>TOOL ACCURACY <b>97%</b></span><span>GROUNDING <b>89%</b></span><span>SAFETY <b>99%</b></span><small>DEMO / ILLUSTRATIVE METRICS</small></div></div></section>
 
-      <section class="agent-section use-cases" id="use-cases"><div class="section-intro"><p class="kicker">10 / USE CASES</p><h2>Built for the work<br /><span>your business repeats.</span></h2></div><div class="use-case-grid"><article><span>01</span><strong>SALES</strong><small>GOAL &#8594; REASON &#8594; ACT &#8594; OUTCOME</small></article><article><span>02</span><strong>SUPPORT</strong><small>GOAL &#8594; REASON &#8594; ACT &#8594; OUTCOME</small></article><article><span>03</span><strong>OPERATIONS</strong><small>GOAL &#8594; REASON &#8594; ACT &#8594; OUTCOME</small></article><article><span>04</span><strong>RESEARCH</strong><small>GOAL &#8594; REASON &#8594; ACT &#8594; OUTCOME</small></article><article><span>05</span><strong>KNOWLEDGE</strong><small>GOAL &#8594; REASON &#8594; ACT &#8594; OUTCOME</small></article></div></section>
+      <section class="agent-section use-cases" id="use-cases"><div class="section-intro"><p class="kicker">10 / USE CASES</p><h2>Built for the work<br /><span>your business repeats.</span></h2></div><div class="use-case-grid"><article><span>01</span><strong>SALES</strong><small>GOAL <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> REASON <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> ACT <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> OUTCOME</small></article><article><span>02</span><strong>SUPPORT</strong><small>GOAL <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> REASON <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> ACT <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> OUTCOME</small></article><article><span>03</span><strong>OPERATIONS</strong><small>GOAL <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> REASON <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> ACT <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> OUTCOME</small></article><article><span>04</span><strong>RESEARCH</strong><small>GOAL <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> REASON <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> ACT <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> OUTCOME</small></article><article><span>05</span><strong>KNOWLEDGE</strong><small>GOAL <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> REASON <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> ACT <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> OUTCOME</small></article></div></section>
 
       <!-- 11 / CROSS-DEPARTMENT ORCHESTRATION -->
       <section class="agent-section orchestration-section" id="orchestration">
         <div class="section-intro">
           <p class="kicker">11 / CROSS-DEPARTMENT ORCHESTRATION</p>
           <h2>One objective.<br /><span>Every department connected.</span></h2>
-          <p>Agents coordinate across sales, support, finance and operations ? sharing context and handing off tasks without manual hand-holding.</p>
+          <p>Agents coordinate across sales, support, finance and operations &middot; sharing context and handing off tasks without manual hand-holding.</p>
         </div>
         <div class="orchestration-network" aria-label="Cross-department AI orchestration network">
           <div class="orchestration-head">
@@ -171,15 +176,15 @@
             <div class="feedback-run feedback-run-task">
               <b>01</b><strong>TASK RUN</strong><small>agent executes goal</small>
             </div>
-            <i class="feedback-arrow">&#8594;</i>
+            <i class="feedback-arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i>
             <div class="feedback-run feedback-run-eval">
               <b>02</b><strong>EVALUATE</strong><small>output scored + reviewed</small>
             </div>
-            <i class="feedback-arrow">&#8594;</i>
+            <i class="feedback-arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i>
             <div class="feedback-run feedback-run-log">
               <b>03</b><strong>LOG RESULT</strong><small>patterns stored</small>
             </div>
-            <i class="feedback-arrow">&#8594;</i>
+            <i class="feedback-arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i>
             <div class="feedback-run feedback-run-improve">
               <b>04</b><strong>IMPROVE</strong><small>next run benefits</small>
             </div>
@@ -202,7 +207,7 @@
         <div class="section-intro">
           <p class="kicker">13 / ENTERPRISE SYSTEMS INTEGRATION</p>
           <h2>Agents that connect<br /><span>to systems you already use.</span></h2>
-          <p>WHX agents integrate with your existing enterprise stack ? CRM, ERP, ITSM, databases and APIs ? without replacing what works.</p>
+          <p>WHX agents integrate with your existing enterprise stack &middot; CRM, ERP, ITSM, databases and APIs &middot; without replacing what works.</p>
         </div>
         <div class="enterprise-integration" aria-label="Enterprise systems integration diagram">
           <div class="enterprise-head">
@@ -254,15 +259,15 @@
               <strong>HIGH-VALUE ACTION DETECTED</strong>
               <p>Contract value exceeds threshold. Routing to human approval before execution.</p>
               <div class="hitl-risk-levels">
-                <span>LOW RISK <b>&#8594; AUTO EXECUTE</b></span>
-                <span class="hitl-risk-high">HIGH RISK <b>&#8594; HUMAN REVIEW</b></span>
+                <span>LOW RISK <b><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> AUTO EXECUTE</b></span>
+                <span class="hitl-risk-high">HIGH RISK <b><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> HUMAN REVIEW</b></span>
               </div>
             </div>
             <i class="hitl-arrow">&#8595;</i>
             <div class="hitl-review-card">
               <small>APPROVAL REQUIRED</small>
               <strong>Approve this action?</strong>
-              <p class="hitl-action-detail">Update contract status and trigger payment workflow for Northstar Labs ? $48,000.</p>
+              <p class="hitl-action-detail">Update contract status and trigger payment workflow for Northstar Labs &middot; $48,000.</p>
               <div class="hitl-approve-actions">
                 <button class="hitl-approve hitl-approve-yes" type="button" data-hitl-action="APPROVE">&#10003; APPROVE</button>
                 <button class="hitl-approve hitl-approve-mod" type="button" data-hitl-action="MODIFY">&#9998; MODIFY</button>
@@ -293,12 +298,12 @@
 
       <section class="agent-section AgentDefinition transform-section" id="what-is-agent">
         <div class="section-intro"><p class="kicker">01 / WHAT IS AN AI AGENT?</p><h2>A workflow becomes a worker<br /><span>when it can close the loop.</span></h2></div>
-        <div class="workflow-transform" aria-label="Agent workflow transformation"><div class="workflow-old"><span>INPUT</span><i>&#8594;</i><span>RULE</span><i>&#8594;</i><span>OUTPUT</span></div><div class="workflow-new"><span>GOAL</span><i>&#8594;</i><span>UNDERSTAND</span><i>&#8594;</i><span>PLAN</span><i>&#8594;</i><span>ACT</span><i>&#8594;</i><span>VERIFY</span><i>&#8594;</i><strong>COMPLETE</strong></div><p>STATIC WORKFLOW <b>&#8594;</b> ADAPTIVE AGENT</p></div>
+        <div class="workflow-transform" aria-label="Agent workflow transformation"><div class="workflow-old"><span>INPUT</span><i><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i><span>RULE</span><i><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i><span>OUTPUT</span></div><div class="workflow-new"><span>GOAL</span><i><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i><span>UNDERSTAND</span><i><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i><span>PLAN</span><i><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i><span>ACT</span><i><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i><span>VERIFY</span><i><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i><strong>COMPLETE</strong></div><p>STATIC WORKFLOW <b><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></b> ADAPTIVE AGENT</p></div>
       </section>
 
       <section class="agent-section AgentBrainSection brain-section" id="agent-brain"><div class="section-intro"><p class="kicker">02 / AGENT BRAIN</p><h2>Six moves.<br /><span>One adaptive system.</span></h2></div><div class="brain-layout AgentStages"><ol class="brain-stages"><li data-state="THINKING...">PERCEIVE</li><li data-state="THINKING...">REASON</li><li data-state="PLANNING...">PLAN</li><li data-state="EXECUTING...">ACT</li><li data-state="VERIFYING...">VERIFY</li><li data-state="COMPLETE">ADAPT</li></ol><div class="brain-core"><span class="core-ring"></span><strong>AI<br />BRAIN</strong><small class="brain-stage-status">THINKING...</small></div></div></section>
 
-      <section class="agent-section AgentLoop loop-section" id="agent-loop"><div class="section-intro"><p class="kicker">03 / AGENT LOOP</p><h2>Progress is a<br /><span>continuous decision.</span></h2></div><div class="loop-visual ExecutionCycle"><div class="loop-orbit"><span class="loop-particle"></span><span class="loop-label loop-goal">GOAL</span><span class="loop-label loop-context">CONTEXT</span><span class="loop-label loop-reason">REASON</span><span class="loop-label loop-plan">PLAN</span><span class="loop-label loop-tool">TOOL</span><span class="loop-label loop-action">ACTION</span><span class="loop-label loop-observe">OBSERVE</span><span class="loop-label loop-verify">VERIFY</span><span class="loop-label loop-complete">COMPLETE</span></div><p class="loop-note">THE AGENT LEARNS FROM EVERY PASS <span>&#8594;?</span></p></div></section>
+      <section class="agent-section AgentLoop loop-section" id="agent-loop"><div class="section-intro"><p class="kicker">03 / AGENT LOOP</p><h2>Progress is a<br /><span>continuous decision.</span></h2></div><div class="loop-visual ExecutionCycle"><div class="loop-orbit"><span class="loop-particle"></span><span class="loop-label loop-goal">GOAL</span><span class="loop-label loop-context">CONTEXT</span><span class="loop-label loop-reason">REASON</span><span class="loop-label loop-plan">PLAN</span><span class="loop-label loop-tool">TOOL</span><span class="loop-label loop-action">ACTION</span><span class="loop-label loop-observe">OBSERVE</span><span class="loop-label loop-verify">VERIFY</span><span class="loop-label loop-complete">COMPLETE</span></div><p class="loop-note">THE AGENT LEARNS FROM EVERY PASS <span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i>?</span></p></div></section>
 
       <section class="agent-section AgentTools tools-section" id="tools"><div class="section-intro"><p class="kicker">04 / TOOLS &amp; ACTIONS</p><h2>Intelligence is useful<br /><span>when it can touch reality.</span></h2></div><div class="tools-network"><div class="tool-list"><button class="ToolCard" data-tool="CRM">CRM</button><button class="ToolCard" data-tool="DATABASE">DATABASE</button><button class="ToolCard" data-tool="API">API</button><button class="ToolCard" data-tool="BROWSER">BROWSER</button><button class="ToolCard" data-tool="EMAIL">EMAIL</button><button class="ToolCard" data-tool="CALENDAR">CALENDAR</button></div><div class="tool-agent"><span>AI</span><strong>AGENT</strong><small>ROUTING ACTION</small></div><div class="tool-action"><span>ACTION</span><strong>EXECUTE</strong></div><div class="tool-lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></section>
 
@@ -306,20 +311,20 @@
 
       <section class="agent-section task-section" id="task"><div class="section-intro"><p class="kicker">06 / MULTI-STEP TASK</p><h2>Watch the work happen<br /><span>from goal to outcome.</span></h2></div><div class="task-console"><div class="task-console-head"><span>TASK / 0084</span><strong>QUALIFY NEW CUSTOMER</strong><b>RUNNING</b></div><ol class="task-steps"><li><span>01</span><strong>Prospect signals gathered</strong><small>Research / web + firmographics</small><b>DONE</b></li><li><span>02</span><strong>Account history synced</strong><small>CRM / contacts + activity</small><b>DONE</b></li><li><span>03</span><strong>Buying intent modeled</strong><small>Analysis / fit + urgency</small><b>DONE</b></li><li><span>04</span><strong>Next-best action drafted</strong><small>Recommendation / route + timing</small><b>DONE</b></li><li><span>05</span><strong>Opportunity record updated</strong><small>CRM / score + owner</small><b>DONE</b></li><li><span>06</span><strong>Sales pod briefed</strong><small>Notification / context attached</small><b>DONE</b></li></ol><div class="task-complete">TASK COMPLETED <span>100% / VERIFIED</span></div></div></section>
 
-      <section class="agent-section review-section" id="human-review"><div class="section-intro"><p class="kicker">07 / HUMAN-IN-THE-LOOP</p><h2>Autonomy with<br /><span>the right guardrails.</span></h2></div><div class="decision-flow"><div class="decision-card"><small>AGENT DECISION</small><strong>DECISION REQUIRED</strong><p>Risk threshold exceeded. Route to the right human.</p><div><span>LOW RISK <b>&#8594; AUTO EXECUTE</b></span><span class="high-risk">HIGH RISK <b>&#8594; HUMAN REVIEW</b></span></div></div><div class="review-card"><small>HUMAN REVIEW</small><strong>Approve next action?</strong><div class="review-actions"><button>APPROVE</button><button>MODIFY</button><button>REJECT</button></div></div></div></section>
+      <section class="agent-section review-section" id="human-review"><div class="section-intro"><p class="kicker">07 / HUMAN-IN-THE-LOOP</p><h2>Autonomy with<br /><span>the right guardrails.</span></h2></div><div class="decision-flow"><div class="decision-card"><small>AGENT DECISION</small><strong>DECISION REQUIRED</strong><p>Risk threshold exceeded. Route to the right human.</p><div><span>LOW RISK <b><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> AUTO EXECUTE</b></span><span class="high-risk">HIGH RISK <b><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> HUMAN REVIEW</b></span></div></div><div class="review-card"><small>HUMAN REVIEW</small><strong>Approve next action?</strong><div class="review-actions"><button>APPROVE</button><button>MODIFY</button><button>REJECT</button></div></div></div></section>
 
       <section class="agent-section workforce-section" id="multi-agent"><div class="section-intro"><p class="kicker">08 / MULTI-AGENT SYSTEM</p><h2>One agent is useful.<br /><span>An AI workforce is leverage.</span></h2></div><div class="workforce-network"><div class="orchestrator">ORCHESTRATOR</div><div class="specialists"><span>RESEARCH</span><span>SALES</span><span>SUPPORT</span></div><div class="shared-memory">SHARED MEMORY</div><div class="business-systems">BUSINESS SYSTEMS</div></div></section>
 
       <section class="agent-section evaluation-section" id="evaluation"><div class="section-intro"><p class="kicker">09 / EVALUATION</p><h2>Better agents are<br /><span>measured in the open.</span></h2></div><div class="eval-dashboard"><div class="eval-runs"><span>TEST RUNS</span><b>RUN 001</b><b>RUN 002</b><b>RUN 003</b><b>RUN 004</b><b>RUN 005</b></div><div class="eval-metrics"><span>TASK SUCCESS <b>94%</b></span><span>RELIABILITY <b>91%</b></span><span>TOOL ACCURACY <b>97%</b></span><span>GROUNDING <b>89%</b></span><span>SAFETY <b>99%</b></span><small>DEMO / ILLUSTRATIVE METRICS</small></div></div></section>
 
-      <section class="agent-section use-cases" id="use-cases"><div class="section-intro"><p class="kicker">10 / USE CASES</p><h2>Built for the work<br /><span>your business repeats.</span></h2></div><div class="use-case-grid"><article><span>01</span><strong>SALES</strong><small>GOAL &#8594; REASON &#8594; ACT &#8594; OUTCOME</small></article><article><span>02</span><strong>SUPPORT</strong><small>GOAL &#8594; REASON &#8594; ACT &#8594; OUTCOME</small></article><article><span>03</span><strong>OPERATIONS</strong><small>GOAL &#8594; REASON &#8594; ACT &#8594; OUTCOME</small></article><article><span>04</span><strong>RESEARCH</strong><small>GOAL &#8594; REASON &#8594; ACT &#8594; OUTCOME</small></article><article><span>05</span><strong>KNOWLEDGE</strong><small>GOAL &#8594; REASON &#8594; ACT &#8594; OUTCOME</small></article></div></section>
+      <section class="agent-section use-cases" id="use-cases"><div class="section-intro"><p class="kicker">10 / USE CASES</p><h2>Built for the work<br /><span>your business repeats.</span></h2></div><div class="use-case-grid"><article><span>01</span><strong>SALES</strong><small>GOAL <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> REASON <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> ACT <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> OUTCOME</small></article><article><span>02</span><strong>SUPPORT</strong><small>GOAL <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> REASON <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> ACT <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> OUTCOME</small></article><article><span>03</span><strong>OPERATIONS</strong><small>GOAL <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> REASON <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> ACT <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> OUTCOME</small></article><article><span>04</span><strong>RESEARCH</strong><small>GOAL <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> REASON <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> ACT <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> OUTCOME</small></article><article><span>05</span><strong>KNOWLEDGE</strong><small>GOAL <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> REASON <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> ACT <i class="fa-solid fa-arrow-right" aria-hidden="true"></i> OUTCOME</small></article></div></section>
 
       <!-- 11 / CROSS-DEPARTMENT ORCHESTRATION -->
       <section class="agent-section orchestration-section" id="orchestration">
         <div class="section-intro">
           <p class="kicker">11 / CROSS-DEPARTMENT ORCHESTRATION</p>
           <h2>One objective.<br /><span>Every department connected.</span></h2>
-          <p>Agents coordinate across sales, support, finance and operations ? sharing context and handing off tasks without manual hand-holding.</p>
+          <p>Agents coordinate across sales, support, finance and operations &middot; sharing context and handing off tasks without manual hand-holding.</p>
         </div>
         <div class="orchestration-network" aria-label="Cross-department AI orchestration network">
           <div class="orchestration-head">
@@ -366,15 +371,15 @@
             <div class="feedback-run feedback-run-task">
               <b>01</b><strong>TASK RUN</strong><small>agent executes goal</small>
             </div>
-            <i class="feedback-arrow">&#8594;</i>
+            <i class="feedback-arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i>
             <div class="feedback-run feedback-run-eval">
               <b>02</b><strong>EVALUATE</strong><small>output scored + reviewed</small>
             </div>
-            <i class="feedback-arrow">&#8594;</i>
+            <i class="feedback-arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i>
             <div class="feedback-run feedback-run-log">
               <b>03</b><strong>LOG RESULT</strong><small>patterns stored</small>
             </div>
-            <i class="feedback-arrow">&#8594;</i>
+            <i class="feedback-arrow"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></i>
             <div class="feedback-run feedback-run-improve">
               <b>04</b><strong>IMPROVE</strong><small>next run benefits</small>
             </div>
@@ -397,7 +402,7 @@
         <div class="section-intro">
           <p class="kicker">13 / ENTERPRISE SYSTEMS INTEGRATION</p>
           <h2>Agents that connect<br /><span>to systems you already use.</span></h2>
-          <p>WHX agents integrate with your existing enterprise stack ? CRM, ERP, ITSM, databases and APIs ? without replacing what works.</p>
+          <p>WHX agents integrate with your existing enterprise stack &middot; CRM, ERP, ITSM, databases and APIs &middot; without replacing what works.</p>
         </div>
         <div class="enterprise-integration" aria-label="Enterprise systems integration diagram">
           <div class="enterprise-head">
@@ -449,15 +454,15 @@
               <strong>HIGH-VALUE ACTION DETECTED</strong>
               <p>Contract value exceeds threshold. Routing to human approval before execution.</p>
               <div class="hitl-risk-levels">
-                <span>LOW RISK <b>&#8594; AUTO EXECUTE</b></span>
-                <span class="hitl-risk-high">HIGH RISK <b>&#8594; HUMAN REVIEW</b></span>
+                <span>LOW RISK <b><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> AUTO EXECUTE</b></span>
+                <span class="hitl-risk-high">HIGH RISK <b><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> HUMAN REVIEW</b></span>
               </div>
             </div>
             <i class="hitl-arrow">&#8595;</i>
             <div class="hitl-review-card">
               <small>APPROVAL REQUIRED</small>
               <strong>Approve this action?</strong>
-              <p class="hitl-action-detail">Update contract status and trigger payment workflow for Northstar Labs ? $48,000.</p>
+              <p class="hitl-action-detail">Update contract status and trigger payment workflow for Northstar Labs &middot; $48,000.</p>
               <div class="hitl-approve-actions">
                 <button class="hitl-approve hitl-approve-yes" type="button" data-hitl-action="APPROVE">&#10003; APPROVE</button>
                 <button class="hitl-approve hitl-approve-mod" type="button" data-hitl-action="MODIFY">&#9998; MODIFY</button>
@@ -542,7 +547,7 @@
         </div>
       </section>
 
-      <section class="agent-final agent-section" id="connect"><div class="final-network" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><p class="kicker">READY TO DEPLOY</p><h2>Give your business<br /><span>an AI workforce.</span></h2><div class="final-flow"><span>GOAL</span><i>&#8595;</i><span>AGENT</span><i>&#8595;</i><span>TOOLS</span><i>&#8595;</i><span>ACTION</span><i>&#8595;</i><strong>OUTCOME</strong></div><a class="button button-primary" href="index.html#connect">Start building <span>&#8594;</span></a><small>WHX DIGITAL / AUTONOMOUS SYSTEMS</small></section>
+      <section class="agent-final agent-section" id="connect"><div class="final-network" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><p class="kicker">READY TO DEPLOY</p><h2>Give your business<br /><span>an AI workforce.</span></h2><div class="final-flow"><span>GOAL</span><i>&#8595;</i><span>AGENT</span><i>&#8595;</i><span>TOOLS</span><i>&#8595;</i><span>ACTION</span><i>&#8595;</i><strong>OUTCOME</strong></div><a class="button button-primary" href="index.html#connect">Start building <span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span></a><small>WHX DIGITAL / AUTONOMOUS SYSTEMS</small></section>
         <section class="section reveal" id="related-insights" style="margin-top: 40px;">
       <div class="section-head">
         <p class="kicker">RELATED INSIGHTS</p>
@@ -556,8 +561,8 @@
             <p class="insights-card-desc">An executive and technical guide to moving from rigid IF/THEN triggers to context-aware AI workflows that reason and execute.</p>
           </div>
           <div class="insights-card-footer">
-            <span>Sep 17, 2026 ? 6 min read</span>
-            <span class="insights-card-readmore">Read insight &#8594;</span>
+            <span>Sep 17, 2026 &middot; 6 min read</span>
+            <span class="insights-card-readmore">Read insight <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
           </div>
         </a>
         <a href="insights/ai-agents-business-workflows/index.html" class="insights-card">
@@ -567,8 +572,8 @@
             <p class="insights-card-desc">Learn how autonomous digital workers plan, execute tool calls, verify outcomes, and handle complex multi-step operations.</p>
           </div>
           <div class="insights-card-footer">
-            <span>Sep 17, 2026 ? 7 min read</span>
-            <span class="insights-card-readmore">Read insight &#8594;</span>
+            <span>Sep 17, 2026 &middot; 7 min read</span>
+            <span class="insights-card-readmore">Read insight <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
           </div>
         </a>
         <a href="insights/ai-agents-api-tool-calling/index.html" class="insights-card">
@@ -578,8 +583,8 @@
             <p class="insights-card-desc">Understanding function calling, OpenAPI schemas, sandboxed execution, and structured output parsing in agent design.</p>
           </div>
           <div class="insights-card-footer">
-            <span>Sep 17, 2026 ? 7 min read</span>
-            <span class="insights-card-readmore">Read insight &#8594;</span>
+            <span>Sep 17, 2026 &middot; 7 min read</span>
+            <span class="insights-card-readmore">Read insight <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
           </div>
         </a>
       </div>
@@ -607,68 +612,71 @@
                                 <footer class="site-footer">
       <div class="site-footer-inner">
         <div class="site-footer-grid">
+          <!-- Col 1: Brand & Authority -->
           <div class="site-footer-col footer-brand-col">
             <strong class="footer-name">WHX Digital</strong>
-            <p class="footer-tagline">Autonomous AI systems &amp; multi-agent workforce engineering for business operations.</p>
+            <p class="footer-tagline">Dual-engine digital growth: Dominant Local SEO &amp; Google Maps rankings powered by 24/7 AI business automation.</p>
             <div class="footer-badges">
-              <span class="footer-badge"><i class="fa-solid fa-shield-halved"></i> 99.9% SLA Verified</span>
+              <span class="footer-badge"><i class="fa-solid fa-location-dot"></i> Google 3-Pack Specialist</span>
+              <span class="footer-badge"><i class="fa-solid fa-shield-halved"></i> Reliable Automation</span>
               <span class="footer-badge"><i class="fa-solid fa-hand-paper"></i> HITL Guardrails</span>
             </div>
           </div>
+
+          <!-- Col 2: Search & Local Dominance -->
           <div class="site-footer-col">
-            <h4>AI Systems</h4>
+            <h4>Search &amp; Local SEO</h4>
             <ul>
-              <li><a href="/architecture.html">AI Agent Systems</a></li>
-              <li><a href="/multi-agent.html">Multi-Agent Workforce</a></li>
-              <li><a href="/ai-crm-automation.html">AI CRM Automation</a></li>
-              <li><a href="/n8n-automation.html">n8n Workflow Engines</a></li>
-              <li><a href="/voice.html">Real-Time Voice AI</a></li>
-              <li><a href="/knowledge.html">RAG Knowledge Systems</a></li>
-              <li><a href="/gohighlevel-automation.html">GoHighLevel Pipelines</a></li>
+              <li><a href="../index.html#search-services">Local SEO Domination</a></li>
+              <li><a href="../index.html#search-services">Google Maps (GMP) 3-Pack</a></li>
+              <li><a href="../index.html#search-services">Citation Building &amp; Sync</a></li>
+              <li><a href="../index.html#search-services">Authority Link Building</a></li>
+              <li><a href="../tools/website-audit/index.html">Free Website Audit</a></li>
+              <li><a href="../reviews.html">Client Success Proof</a></li>
             </ul>
           </div>
+
+          <!-- Col 3: Autonomous AI Systems -->
           <div class="site-footer-col">
-            <h4>Company &amp; Resources</h4>
+            <h4>AI Systems &amp; Ops</h4>
             <ul>
-              <li><a href="/about.html">About WHX Digital</a></li>
-              <li><a href="/services.html">Services Overview</a></li>
-              <li><a href="/insights/index.html">Engineering Insights</a></li>
-              <li><a href="/reviews.html">Client Reviews</a></li>
-              <li><a href="/technology.html">Integrations &amp; Stack</a></li>
-              <li><a href="/trust-center.html">Security &amp; Trust Center</a></li>
-              <li><a href="/insights/feed.xml">RSS Feed</a></li>
+              <li><a href="../architecture.html">AI Agent Systems</a></li>
+              <li><a href="../multi-agent.html">Multi-Agent Workforce</a></li>
+              <li><a href="../ai-crm-automation.html">AI CRM Automation</a></li>
+              <li><a href="../n8n-automation.html">n8n Workflow Engines</a></li>
+              <li><a href="../voice.html">Real-Time Voice AI</a></li>
+              <li><a href="../knowledge.html">RAG Knowledge Systems</a></li>
             </ul>
           </div>
+
+          <!-- Col 4: Connect & Support -->
           <div class="site-footer-col footer-contact-col">
-            <h4>Connect &amp; Support</h4>
+            <h4>Connect &amp; Company</h4>
             <ul class="footer-contact-links">
-              <li><a href="https://www.upwork.com/freelancers/~0187ee99ef01623869?mp_source=share" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-upwork brand-icon brand-upwork" style="color:#14a800 !important;"></i> Verified Upwork Profile</a></li>
-              <li><a href="https://www.linkedin.com/in/whxdigital/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin brand-icon brand-linkedin" style="color:#0a66c2 !important;"></i> LinkedIn Profile</a></li>
-              <li><a href="/contact.html"><i class="fa-solid fa-calendar-check"></i> Book Strategy Session</a></li>
+              <li><a href="../about.html"><i class="fa-solid fa-building"></i> About WHX Digital</a></li>
+              <li><a href="../contact.html"><i class="fa-solid fa-calendar-check"></i> Book Strategy Session</a></li>
+              <li><a href="https://wa.me/351928350275" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp brand-icon brand-whatsapp" style="color:#22c55e !important;"></i> WhatsApp</a></li>
+              
               <li><a href="mailto:info@whxdigital.com"><i class="fa-solid fa-envelope"></i> info@whxdigital.com</a></li>
-              <li><a href="mailto:whxdigital@gmail.com"><svg class="brand-icon brand-gmail" width="18" height="18" viewBox="0 0 24 24" fill="none" style="vertical-align: middle; margin-right:6px; transform:translateY(-1px);">
-  <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.818V11.729L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L12 10.684l8.073-7.191C21.691 2.279 24 3.434 24 5.457z" fill="#4285f4"/>
-  <path d="M12 16.64l6.545-4.91v9.273h3.818c.904 0 1.636-.732 1.636-1.636V5.457c0-2.023-2.309-3.178-3.927-1.964L12 10.684l-8.073-7.191C2.309 2.279 0 3.434 0 5.457v13.909c0 .904.732 1.636 1.636 1.636h3.818V11.729l6.545 4.91z" fill="#34a853"/>
-  <path d="M1.636 21.002h3.818V11.729L12 16.64l6.545-4.91v9.273h3.818c.904 0 1.636-.732 1.636-1.636V5.457c0-2.023-2.309-3.178-3.927-1.964L12 10.684l-8.073-7.191C2.309 2.279 0 3.434 0 5.457v13.909c0 .904.732 1.636 1.636 1.636z" fill="#ea4335"/>
-  <path d="M0 5.457v13.909c0 .904.732 1.636 1.636 1.636h3.818V11.729l-5.455-4.09z" fill="#c5221f"/>
-  <path d="M18.545 11.729v9.273h3.818c.904 0 1.636-.732 1.636-1.636V5.457z" fill="#fbbc04"/>
-  <path d="M12 16.64l6.545-4.91V5.457c0-2.023-2.309-3.178-3.927-1.964L12 10.684z" fill="#ea4335"/>
-</svg> whxdigital@gmail.com</a></li>
+              <li><a href="mailto:whxdigital@gmail.com"><i class="fa-solid fa-paper-plane" style="color:#38bdf8;"></i> whxdigital@gmail.com</a></li>
             </ul>
           </div>
         </div>
-                <div class="site-footer-bottom" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.05); margin-top:40px;">
-          <div class="footer-copyright" style="color:#64748b; font-size:0.85rem;">&copy; 2026 WHX Digital. All rights reserved.</div>
-          <div class="footer-legal-links" style="display:flex; gap:16px; align-items:center;">
-            <a href="/privacy.html" style="color:#94a3b8; text-decoration:none; font-size:0.85rem; transition:color 0.2s;">Privacy Policy</a>
-            <span class="divider" style="color:#334155; font-size:0.8rem;">|</span>
-            <a href="/terms.html" style="color:#94a3b8; text-decoration:none; font-size:0.85rem; transition:color 0.2s;">Terms of Service</a>
-            <span class="divider" style="color:#334155; font-size:0.8rem;">|</span>
-            <a href="/trust-center.html" style="color:#94a3b8; text-decoration:none; font-size:0.85rem; transition:color 0.2s;">Security Audit</a>
+
+        <div class="site-footer-bottom">
+          <div class="footer-legal">
+            <span>&copy; 2026 WHX Digital. All rights reserved.</span>
+            <div class="legal-links">
+              <a href="../privacy.html">Privacy Policy</a>
+              <a href="../terms.html">Terms of Service</a>
+              <a href="../security.html">Security</a>
+              <a href="../trust-center.html">Trust Center</a>
+            </div>
           </div>
-          <div class="footer-status-indicator" style="display:flex; align-items:center; gap:8px;">
-            <span class="status-dot" style="width:8px; height:8px; border-radius:50%; background:#10b981; box-shadow:0 0 8px rgba(16,185,129,0.5); display:inline-block; animation: pulseGreen 2s infinite;"></span>
-            <span class="status-text" style="color:#94a3b8; font-size:0.85rem; font-weight:600; letter-spacing:0.5px;">AI Systems Operational</span>
+          <div class="footer-social">
+            <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/whxdigital/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
           </div>
         </div>
       </div>
@@ -677,7 +685,7 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="script.js"></script>
   
-    <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6ab59fae50fc24ace6f7fff6"></script>
+    <script defer src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6ab59fae50fc24ace6f7fff6"></script>
   </body>
 </html>
 

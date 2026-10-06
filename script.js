@@ -541,16 +541,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!reducedMotion) {
       const magneticButtons = document.querySelectorAll(".button, .header-cta");
       magneticButtons.forEach((button) => {
+        button.addEventListener("pointerenter", () => { button._bounds = button.getBoundingClientRect(); });
+        button.addEventListener("pointerleave", () => { button._bounds = null; gsap.to(button, { x: 0, y: 0, duration: 0.45, ease: "elastic.out(1, 0.5)", overwrite: true }); });
         button.addEventListener("pointermove", (event) => {
-          const bounds = button.getBoundingClientRect();
+          const bounds = button._bounds || button.getBoundingClientRect();
           const offsetX = (event.clientX - bounds.left - bounds.width / 2) * 0.12;
           const offsetY = (event.clientY - bounds.top - bounds.height / 2) * 0.12;
           gsap.to(button, { x: offsetX, y: offsetY, duration: 0.25, ease: "power2.out", overwrite: true });
         });
 
-        button.addEventListener("pointerleave", () => {
-          gsap.to(button, { x: 0, y: 0, duration: 0.45, ease: "elastic.out(1, 0.5)", overwrite: true });
-        });
+
       });
 
       const heroVisual = document.querySelector(".hero-visual");
@@ -804,15 +804,19 @@ document.addEventListener("DOMContentLoaded", () => {
       const section = document.querySelector(".AgentLoop");
       const labels = [...document.querySelectorAll(".loop-label")];
       if (!section || !labels.length) return;
+      let topOffset = 0, height = 0;
+      const measure = () => { const b = section.getBoundingClientRect(); topOffset = b.top + window.scrollY; height = b.height; };
       const update = () => {
-        const bounds = section.getBoundingClientRect();
-        const progress = Math.max(0, Math.min(1, (window.innerHeight - bounds.top) / (window.innerHeight + bounds.height)));
+        const top = topOffset - window.scrollY;
+        const progress = Math.max(0, Math.min(1, (window.innerHeight - top) / (window.innerHeight + height)));
         section.style.setProperty("--agent-progress", progress.toFixed(3));
         labels.forEach((label, index) => label.classList.toggle("is-progress-active", index <= Math.round(progress * (labels.length - 1))));
       };
+      measure();
       update();
+      window.addEventListener("resize", measure, { passive: true });
       window.addEventListener("scroll", update, { passive: true });
-      addCleanup(() => window.removeEventListener("scroll", update));
+      addCleanup(() => { window.removeEventListener("resize", measure); window.removeEventListener("scroll", update); });
     };
 
     const useToolConnections = () => {
@@ -869,15 +873,19 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll(".specialists span").forEach((element, index) => new AgentNode({ element, type: "specialist", label: element.textContent.trim(), status: index === 0 ? "active" : "idle", connectedTo: ["orchestrator", "shared-memory"] }));
       const section = document.querySelector(".MultiAgentSystem");
       if (!section) return;
+      let topOffset = 0, height = 0;
+      const measure = () => { const b = section.getBoundingClientRect(); topOffset = b.top + window.scrollY; height = b.height; };
       const update = () => {
-        const bounds = section.getBoundingClientRect();
-        const progress = Math.max(0, Math.min(1, (window.innerHeight - bounds.top) / (window.innerHeight + bounds.height)));
+        const top = topOffset - window.scrollY;
+        const progress = Math.max(0, Math.min(1, (window.innerHeight - top) / (window.innerHeight + height)));
         section.style.setProperty("--network-progress", progress.toFixed(3));
         document.querySelectorAll(".specialists span").forEach((node, index) => node.classList.toggle("is-network-active", progress > index / 3));
       };
+      measure();
       update();
+      window.addEventListener("resize", measure, { passive: true });
       window.addEventListener("scroll", update, { passive: true });
-      addCleanup(() => window.removeEventListener("scroll", update));
+      addCleanup(() => { window.removeEventListener("resize", measure); window.removeEventListener("scroll", update); });
     };
     const useEvaluationDashboard = () => document.querySelector(".AgentEvaluation")?.classList.add("dashboard-ready");
     const useCTAAnimation = () => document.querySelector(".AgentCTA")?.classList.add("cta-ready");
@@ -1317,30 +1325,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const orchestration = document.querySelector(".orchestration-section");
     const orchestrationNodes = document.querySelectorAll(".orchestration-flow span, .orchestration-flow strong");
+    let orchTopOffset = 0, orchHeight = 0;
+    const measureOrchestration = () => { if (!orchestration) return; const b = orchestration.getBoundingClientRect(); orchTopOffset = b.top + window.scrollY; orchHeight = b.height; };
     const updateOrchestration = () => {
       if (!orchestration) return;
-      const bounds = orchestration.getBoundingClientRect();
-      const progress = Math.max(0, Math.min(1, (window.innerHeight - bounds.top) / (window.innerHeight + bounds.height)));
+      const top = orchTopOffset - window.scrollY;
+      const progress = Math.max(0, Math.min(1, (window.innerHeight - top) / (window.innerHeight + orchHeight)));
       orchestration.style.setProperty("--orchestration-progress", progress.toFixed(3));
       orchestrationNodes.forEach((node, index) => node.classList.toggle("is-orchestration-active", index <= Math.round(progress * (orchestrationNodes.length - 1))));
     };
+    measureOrchestration();
     updateOrchestration();
+    window.addEventListener("resize", measureOrchestration, { passive: true });
     window.addEventListener("scroll", updateOrchestration, { passive: true });
-    addCleanup(() => window.removeEventListener("scroll", updateOrchestration));
+    addCleanup(() => { window.removeEventListener("resize", measureOrchestration); window.removeEventListener("scroll", updateOrchestration); });
 
     const parallelSection = document.querySelector(".parallel-section");
     const parallelAgents = document.querySelectorAll(".parallel-agents span");
+    let parallelTopOffset = 0, parallelHeight = 0;
+    const measureParallel = () => { if (!parallelSection) return; const b = parallelSection.getBoundingClientRect(); parallelTopOffset = b.top + window.scrollY; parallelHeight = b.height; };
     const updateParallel = () => {
       if (!parallelSection) return;
-      const bounds = parallelSection.getBoundingClientRect();
-      const progress = Math.max(0, Math.min(1, (window.innerHeight - bounds.top) / (window.innerHeight + bounds.height)));
+      const top = parallelTopOffset - window.scrollY;
+      const progress = Math.max(0, Math.min(1, (window.innerHeight - top) / (window.innerHeight + parallelHeight)));
       parallelSection.style.setProperty("--parallel-progress", progress.toFixed(3));
       parallelAgents.forEach((agent, index) => agent.classList.toggle("is-parallel-working", progress > .25 + index * .08));
       parallelSection.classList.toggle("is-synthesis-complete", progress > .82);
     };
+    measureParallel();
     updateParallel();
+    window.addEventListener("resize", measureParallel, { passive: true });
     window.addEventListener("scroll", updateParallel, { passive: true });
-    addCleanup(() => window.removeEventListener("scroll", updateParallel));
+    addCleanup(() => { window.removeEventListener("resize", measureParallel); window.removeEventListener("scroll", updateParallel); });
 
     const communicationItems = document.querySelectorAll(".communication-feed article");
     let communicationIndex = 0;
@@ -1623,20 +1639,14 @@ document.addEventListener("DOMContentLoaded", () => {
           setTimeout(() => { whxBoot.style.display = "none"; }, 150);
         }, 150);
       } else {
-        setTimeout(() => showLine(0), 100);
-        setTimeout(() => { showLine(1); setProgress(25); }, 400);
-        setTimeout(() => { showLine(2); setProgress(50); }, 700);
-        setTimeout(() => { showLine(3); setProgress(75); }, 1000);
-        setTimeout(() => { showLine(4); setProgress(100); }, 1300);
+        lines.forEach(l => { if(l) l.style.opacity = "1"; });
+        setProgress(100);
         setTimeout(() => { 
-          showLine(5);
-        }, 1600);
-        setTimeout(() => { 
-          if (panel) panel.style.transform = "scale(0.96) translateY(-8px)";
+          if (panel) panel.style.transform = "scale(0.98) translateY(-4px)";
           whxBoot.style.opacity = "0";
           whxBoot.style.pointerEvents = "none";
-        }, 2200);
-        setTimeout(() => { whxBoot.style.display = "none"; }, 2500);
+        }, 250);
+        setTimeout(() => { whxBoot.style.display = "none"; }, 400);
       }
     }
   }
@@ -3091,15 +3101,15 @@ document.addEventListener("DOMContentLoaded", () => {
         return "WHX Digital provides dual-engine growth solutions:<br>&bull; <b>Local SEO & Google Maps 3-Pack Dominance</b> (citations, authority links, geo-grid rankings)<br>&bull; <b>Autonomous AI Systems</b> (AI CRM, Voice AI agents, multi-agent workflows with n8n & GoHighLevel).";
       }
       if (q.includes("pricing") || q.includes("cost") || q.includes("price") || q.includes("package") || q.includes("budget")) {
-        return "Our growth plans are custom-tailored to your competition and automation needs. Test your site on our <a href='tools/website-audit/index.html' style='color:#a855f7; font-weight:700;'>Audit Tool</a> or message our team on WhatsApp at <b>+351 928 350 275</b>.";
+        return "Our growth plans are custom-tailored to your competition and automation needs. Test your site on our <a href='tools/website-audit/index.html' style='color:#a855f7; font-weight:700;'>Audit Tool</a> or message our team on WhatsApp at <b>WhatsApp Direct</b>.";
       }
       if (q.includes("contact") || q.includes("whatsapp") || q.includes("email") || q.includes("phone") || q.includes("call")) {
-        return "You can reach us directly:<br>&bull; <b>WhatsApp:</b> <a href='https://wa.me/351928350275' target='_blank' style='color:#22c55e; font-weight:700;'>+351 928 350 275</a><br>&bull; <b>Email:</b> <a href='mailto:whxdigital@gmail.com' style='color:#a855f7; font-weight:700;'>whxdigital@gmail.com</a>";
+        return "You can reach us directly:<br>&bull; <b>WhatsApp:</b> <a href='https://wa.me/351928350275' target='_blank' style='color:#22c55e; font-weight:700;'>WhatsApp Direct</a><br>&bull; <b>Email:</b> <a href='mailto:whxdigital@gmail.com' style='color:#a855f7; font-weight:700;'>whxdigital@gmail.com</a>";
       }
       if (q.includes("seo") || q.includes("google map") || q.includes("gmp") || q.includes("ranking") || q.includes("local")) {
         return "Our Local SEO engine targets Google Maps 3-Pack supremacy. We optimize your Google Business Profile, build verified citations, and secure top rankings across your entire geographic radius.";
       }
-      return "WHX Digital helps businesses dominate Google search and deploy automated AI operations. Would you like to run a <a href='tools/website-audit/index.html' style='color:#a855f7; font-weight:700;'>Free Website Audit</a>, or connect with our lead strategist on <a href='https://wa.me/351928350275' target='_blank' style='color:#22c55e; font-weight:700;'>WhatsApp (+351 928 350 275)</a>?";
+      return "WHX Digital helps businesses dominate Google search and deploy automated AI operations. Would you like to run a <a href='tools/website-audit/index.html' style='color:#a855f7; font-weight:700;'>Free Website Audit</a>, or connect with our lead strategist on <a href='https://wa.me/351928350275' target='_blank' style='color:#22c55e; font-weight:700;'>WhatsApp (WhatsApp Direct)</a>?";
     }
 
     const effectiveKey = GEMINI_API_KEY || localStorage.getItem("whx_gemini_key") || "";
@@ -3162,3 +3172,121 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
+
+// Live Hero Automation Workflow Pipeline Cycle
+document.addEventListener('DOMContentLoaded', function () {
+  const nodes = document.querySelectorAll('.hlw-node');
+  const statusEl = document.getElementById('hlwStatusText');
+  if (!nodes.length || !statusEl) return;
+
+  let currentIdx = 0;
+  setInterval(function () {
+    nodes.forEach(function (node, idx) {
+      node.classList.remove('is-active');
+      if (idx === currentIdx) {
+        node.classList.add('is-active');
+        const label = node.getAttribute('data-label') || 'Active';
+        statusEl.textContent = label;
+      }
+    });
+    currentIdx = (currentIdx + 1) % nodes.length;
+  }, 2000);
+});
+
+// Interactive FAQ Accordion Slides
+document.addEventListener('DOMContentLoaded', function () {
+  const faqItems = document.querySelectorAll('.faq-item');
+  if (!faqItems.length) return;
+
+  faqItems.forEach(function (item) {
+    const questionBtn = item.querySelector('.faq-question');
+    if (!questionBtn) return;
+
+    questionBtn.addEventListener('click', function () {
+      const isOpen = item.classList.contains('is-open');
+
+      // Close other accordion slides for compact height
+      faqItems.forEach(function (other) {
+        other.classList.remove('is-open');
+        const otherBtn = other.querySelector('.faq-question');
+        if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+      });
+
+      // Toggle current item
+      if (!isOpen) {
+        item.classList.add('is-open');
+        questionBtn.setAttribute('aria-expanded', 'true');
+      } else {
+        item.classList.remove('is-open');
+        questionBtn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+});
+
+// SEOBenchmark Style Live Automation Workflow Simulation
+document.addEventListener('DOMContentLoaded', function () {
+  const steps = document.querySelectorAll('.hlw-step-item');
+  const termLabel = document.getElementById('hlwTermLabel');
+  const termText = document.getElementById('hlwTermText');
+  const termBadge = document.getElementById('hlwTermBadge');
+  const stateBadge = document.getElementById('hlwLiveState');
+  if (!steps.length || !termText) return;
+
+  const events = [
+    {
+      step: 0,
+      label: 'TRIGGER:',
+      text: 'Inbound Lead detected &middot; Commercial RFP (,000)',
+      badge: 'RECEIVED',
+      state: 'INGESTING'
+    },
+    {
+      step: 1,
+      label: 'AI REASON:',
+      text: 'AI Agent triaging intent, matching services & routing priority...',
+      badge: 'ANALYZING',
+      state: 'REASONING'
+    },
+    {
+      step: 2,
+      label: 'TOOL CALL:',
+      text: 'Connecting HubSpot CRM & booking calendar discovery slot...',
+      badge: 'ACTIVE',
+      state: 'EXECUTING'
+    },
+    {
+      step: 3,
+      label: 'VERIFIED:',
+      text: 'Discovery call auto-booked & CRM pipeline stage synced 24/7.',
+      badge: 'COMPLETED',
+      state: 'VERIFIED'
+    }
+  ];
+
+  let currentIdx = 0;
+  setInterval(function () {
+    const cur = events[currentIdx];
+    steps.forEach(function (step, i) {
+      if (i === cur.step) {
+        step.classList.add('is-active');
+      } else {
+        step.classList.remove('is-active');
+      }
+    });
+
+    if (termLabel) termLabel.textContent = cur.label;
+    if (termText) {
+      termText.style.opacity = '0';
+      setTimeout(function () {
+        termText.innerHTML = cur.text;
+        termText.style.opacity = '1';
+      }, 150);
+    }
+    if (termBadge) termBadge.textContent = cur.badge;
+    if (stateBadge) stateBadge.textContent = cur.state;
+
+    currentIdx = (currentIdx + 1) % events.length;
+  }, 2200);
+});

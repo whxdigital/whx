@@ -1,0 +1,577 @@
+/* ==========================================================================
+   SOLOOP.IO AUTHENTIC CREAM & ANIMATED BACKGROUND THEME
+   WHX Autonomous Growth Hub - Editorial Warm Cream Edition
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Soloop Authentic Warm Cream Palette */
+  --sl-bg: #f8ebe2;
+  --sl-bg-subtle: #fbf5ef;
+  --sl-surface: #ffffff;
+  --sl-surface-card: rgba(255, 255, 255, 0.88);
+  --sl-surface-card-hover: #ffffff;
+  --sl-surface-elevated: #fbf6f0;
+  --sl-surface-input: #ffffff;
+  --sl-border: rgba(180, 140, 120, 0.18);
+  --sl-border-light: rgba(180, 140, 120, 0.28);
+  --sl-border-active: #ff8ac4;
+
+  --sl-text: #1e293b;
+  --sl-text-dark: #0f172a;
+  --sl-text-muted: #64748b;
+  --sl-text-dim: #94a3b8;
+
+  /* Soloop Pastel & Accent Colors */
+  --sl-pink: #ff8ac4;
+  --sl-amber: #ff8b16;
+  --sl-yellow: #f4ee5c;
+  --sl-cyan: #0284c7;
+  --sl-emerald: #059669;
+  --sl-purple: #9333ea;
+  --sl-blue: #2563eb;
+
+  /* Authentic Brand Colors */
+  --brand-claude: #d97706;
+  --brand-chatgpt: #10a37f;
+  --brand-gemini: #4285f4;
+  --brand-astra: #3b82f6;
+  --brand-grok: #0f172a;
+  --brand-perplexity: #0891b2;
+  --brand-manus: #ec4899;
+  --brand-ghl: #0055ff;
+  --brand-twilio: #f22f46;
+  --brand-yelp: #d32323;
+  --brand-apple: #1e293b;
+  --brand-bing: #0080ff;
+  --brand-yp: #eab308;
+  --brand-bbb: #005a70;
+  --brand-whatsapp: #25d366;
+
+  --sl-gradient-soloop: linear-gradient(135deg, #ff8ac4 0%, #ff8b16 50%, #f4ee5c 100%);
+  --sl-gradient-soloop-soft: linear-gradient(135deg, rgba(255, 138, 196, 0.18) 0%, rgba(255, 139, 22, 0.18) 50%, rgba(244, 238, 92, 0.18) 100%);
+  --sl-gradient-warm-card: linear-gradient(135deg, #ffffff 0%, #fdf8f4 100%);
+
+  --sl-radius-sm: 8px;
+  --sl-radius-md: 14px;
+  --sl-radius-lg: 22px;
+  --sl-radius-pill: 9999px;
+
+  --sl-shadow-sm: 0 2px 8px rgba(180, 140, 120, 0.08);
+  --sl-shadow-md: 0 10px 30px -4px rgba(180, 140, 120, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
+  --sl-shadow-glow: 0 0 24px -2px rgba(255, 138, 196, 0.35);
+}
+
+/* Soloop Animated Fluid Mesh Canvas */
+body.dashboard-body {
+  background-color: var(--sl-bg) !important;
+  color: var(--sl-text) !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Animated Flowing Pastel Mesh in the Background */
+.soloop-ambient-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.soloop-fluid-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.55;
+  animation: floatBlobs 24s infinite alternate ease-in-out;
+}
+
+.soloop-blob-1 {
+  top: -10%;
+  left: 10%;
+  width: 550px;
+  height: 480px;
+  background: radial-gradient(circle, #f3c6d6 0%, #fbe4ec 60%, transparent 80%);
+  animation-duration: 22s;
+}
+
+.soloop-blob-2 {
+  top: 30%;
+  right: 5%;
+  width: 650px;
+  height: 520px;
+  background: radial-gradient(circle, #f5e9bd 0%, #fbe6c6 60%, transparent 80%);
+  animation-duration: 28s;
+  animation-delay: -5s;
+}
+
+.soloop-blob-3 {
+  bottom: -15%;
+  left: 30%;
+  width: 700px;
+  height: 550px;
+  background: radial-gradient(circle, #f1cbc6 0%, #f8ebe2 60%, transparent 80%);
+  animation-duration: 25s;
+  animation-delay: -10s;
+}
+
+.soloop-blob-4 {
+  top: 55%;
+  left: -5%;
+  width: 480px;
+  height: 420px;
+  background: radial-gradient(circle, #f0d586 0%, #f9f1dc 60%, transparent 80%);
+  animation-duration: 20s;
+  animation-delay: -3s;
+}
+
+@keyframes floatBlobs {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(40px, -60px) scale(1.08); }
+  66% { transform: translate(-50px, 40px) scale(0.94); }
+  100% { transform: translate(20px, 30px) scale(1.04); }
+}
+
+.dashboard-container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Sidebar Styling (Soloop Cream Aesthetic) */
+.dashboard-sidebar {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(24px) !important;
+  border-right: 1px solid var(--sl-border) !important;
+  box-shadow: 2px 0 20px rgba(180, 140, 120, 0.05) !important;
+}
+
+.sidebar-nav a {
+  color: var(--sl-text) !important;
+  border-radius: var(--sl-radius-sm) !important;
+  font-weight: 600;
+  transition: all 0.2s ease !important;
+}
+
+.sidebar-nav li.active a {
+  background: var(--sl-gradient-soloop-soft) !important;
+  color: var(--sl-text-dark) !important;
+  box-shadow: 0 2px 8px rgba(255, 138, 196, 0.2) !important;
+  border: 1px solid rgba(255, 138, 196, 0.3) !important;
+}
+
+.sidebar-nav a:hover {
+  background: rgba(0, 0, 0, 0.03) !important;
+  color: var(--sl-text-dark) !important;
+}
+
+.sidebar-nav a i {
+  color: var(--sl-text-muted);
+}
+.sidebar-nav li.active a i {
+  color: #ff8b16 !important;
+}
+
+.user-profile {
+  background: var(--sl-surface-elevated) !important;
+  border: 1px solid var(--sl-border) !important;
+  border-radius: var(--sl-radius-md) !important;
+}
+.user-profile .user-name {
+  color: var(--sl-text-dark) !important;
+}
+.user-profile .user-role {
+  color: #d97706 !important;
+}
+
+/* Header */
+.dashboard-header {
+  background: rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid var(--sl-border) !important;
+}
+
+.header-search input {
+  background: #ffffff !important;
+  border: 1px solid var(--sl-border) !important;
+  color: var(--sl-text-dark) !important;
+}
+.header-search input::placeholder {
+  color: var(--sl-text-dim) !important;
+}
+
+/* Soloop Top Capabilities Pill Navigation (Warm Edition) */
+.soloop-capabilities-track {
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--sl-border-light);
+  border-radius: var(--sl-radius-pill);
+  padding: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  box-shadow: var(--sl-shadow-md);
+  margin-bottom: 2rem;
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.soloop-cap-btn {
+  background: transparent;
+  border: none;
+  border-radius: var(--sl-radius-pill);
+  padding: 8px 18px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--sl-text-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  position: relative;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.soloop-cap-btn:hover {
+  color: var(--sl-text-dark);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.soloop-cap-btn.active {
+  color: var(--sl-text-dark) !important;
+  background: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(180, 140, 120, 0.2), inset 0 0 0 1px rgba(255, 138, 196, 0.4) !important;
+}
+
+.soloop-cap-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: var(--sl-gradient-soloop);
+  border-radius: var(--sl-radius-pill);
+}
+
+.soloop-cap-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.76rem;
+  background: rgba(0, 0, 0, 0.05);
+  color: inherit;
+}
+
+.soloop-cap-icon.brand {
+  background: var(--sl-gradient-soloop);
+  color: #111;
+  font-weight: 800;
+}
+
+/* Soloop Card Architecture (Warm Cream Edition) */
+.soloop-card {
+  background: var(--sl-surface-card) !important;
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--sl-border) !important;
+  border-radius: var(--sl-radius-lg) !important;
+  padding: 1.75rem;
+  box-shadow: var(--sl-shadow-md) !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  position: relative;
+}
+
+.soloop-card:hover {
+  border-color: var(--sl-border-light) !important;
+}
+
+.soloop-card-title {
+  color: var(--sl-text-dark) !important;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Soloop Pill Badges / Chips */
+.soloop-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--sl-radius-pill);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.soloop-chip.live {
+  background: rgba(16, 185, 129, 0.12) !important;
+  color: #047857 !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+}
+.soloop-chip.live .pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: slPulse 1.8s infinite;
+}
+
+.soloop-chip.soloop-brand {
+  background: rgba(255, 138, 196, 0.2) !important;
+  color: #db2777 !important;
+  border: 1px solid rgba(255, 138, 196, 0.4) !important;
+}
+
+.soloop-chip.amber {
+  background: rgba(255, 139, 22, 0.15) !important;
+  color: #d97706 !important;
+  border: 1px solid rgba(255, 139, 22, 0.3) !important;
+}
+
+.soloop-chip.cyan {
+  background: rgba(2, 132, 199, 0.15) !important;
+  color: #0284c7 !important;
+  border: 1px solid rgba(2, 132, 199, 0.3) !important;
+}
+
+/* Soloop Metric Cards */
+.soloop-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.soloop-metric-box {
+  background: #ffffff !important;
+  border: 1px solid var(--sl-border) !important;
+  border-radius: var(--sl-radius-md) !important;
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--sl-shadow-sm) !important;
+  transition: all 0.25s ease;
+}
+
+.soloop-metric-box:hover {
+  border-color: var(--sl-border-light) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--sl-shadow-md) !important;
+}
+
+.soloop-metric-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--sl-border);
+}
+.soloop-metric-box.active-soloop::before {
+  background: var(--sl-gradient-soloop) !important;
+}
+
+.soloop-metric-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--sl-text-muted);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.soloop-metric-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--sl-text-dark) !important;
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+/* Runway Visualizer */
+.soloop-runway-board {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border: 1px solid var(--sl-border-light) !important;
+  border-radius: var(--sl-radius-lg) !important;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--sl-shadow-md) !important;
+}
+
+.soloop-step-node {
+  background: #ffffff !important;
+  border: 1px solid var(--sl-border) !important;
+  border-radius: var(--sl-radius-md) !important;
+  padding: 1.2rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: var(--sl-shadow-sm) !important;
+}
+
+.soloop-step-node:hover, .soloop-step-node.selected {
+  border-color: #ff8ac4 !important;
+  box-shadow: 0 0 20px rgba(255, 138, 196, 0.25) !important;
+  transform: translateY(-2px);
+}
+
+.soloop-step-title {
+  color: var(--sl-text-dark) !important;
+  font-weight: 700;
+}
+
+.soloop-step-badge {
+  background: var(--sl-surface-elevated) !important;
+  color: var(--sl-text-dark) !important;
+  border: 1px solid var(--sl-border) !important;
+}
+.soloop-step-node.selected .soloop-step-badge {
+  background: var(--sl-gradient-soloop) !important;
+  color: #000 !important;
+  font-weight: 800;
+}
+
+.soloop-inspector-box {
+  background: #0f172a !important;
+  border: 1px solid #334155 !important;
+  color: #e2e8f0 !important;
+  border-radius: var(--sl-radius-md);
+  padding: 1.25rem;
+  margin-top: 1.25rem;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.82rem;
+}
+
+/* Soloop Buttons */
+.soloop-btn {
+  background: #ffffff;
+  border: 1px solid var(--sl-border);
+  color: var(--sl-text-dark);
+  border-radius: var(--sl-radius-pill);
+  padding: 9px 20px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: var(--sl-shadow-sm);
+}
+
+.soloop-btn:hover {
+  background: var(--sl-surface-elevated);
+  border-color: var(--sl-border-light);
+  transform: translateY(-1px);
+}
+
+.soloop-btn.primary {
+  background: var(--sl-gradient-soloop) !important;
+  color: #0f172a !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(255, 138, 196, 0.35) !important;
+}
+
+.soloop-btn.primary:hover {
+  box-shadow: 0 6px 22px rgba(255, 138, 196, 0.55) !important;
+  transform: translateY(-2px);
+}
+
+.soloop-btn.cyan {
+  background: #0284c7 !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+.soloop-btn.small {
+  padding: 6px 14px;
+  font-size: 0.78rem;
+}
+
+/* Tables */
+.soloop-table-wrapper {
+  background: #ffffff !important;
+  border-radius: var(--sl-radius-md);
+  border: 1px solid var(--sl-border) !important;
+}
+
+.soloop-table th {
+  background: var(--sl-surface-elevated) !important;
+  color: var(--sl-text-muted) !important;
+  border-bottom: 1px solid var(--sl-border) !important;
+}
+
+.soloop-table td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important;
+  color: var(--sl-text-dark) !important;
+}
+
+.soloop-table tr:hover td {
+  background: rgba(0, 0, 0, 0.02) !important;
+}
+
+/* Inputs */
+.soloop-input {
+  background: #ffffff !important;
+  border: 1px solid var(--sl-border) !important;
+  color: var(--sl-text-dark) !important;
+  border-radius: var(--sl-radius-sm);
+}
+.soloop-input:focus {
+  border-color: #ff8ac4 !important;
+  box-shadow: 0 0 0 2px rgba(255, 138, 196, 0.2) !important;
+}
+
+/* Geo Grid Matrix Pins */
+.geo-grid-pin {
+  border: 1px solid var(--sl-border) !important;
+  background: #ffffff;
+  box-shadow: var(--sl-shadow-sm);
+}
+.geo-grid-pin.rank-1 {
+  background: rgba(16, 185, 129, 0.15) !important;
+  color: #047857 !important;
+  border-color: #10b981 !important;
+}
+.geo-grid-pin.rank-2-3 {
+  background: rgba(245, 158, 11, 0.15) !important;
+  color: #b45309 !important;
+  border-color: #f59e0b !important;
+}
+.geo-grid-pin.rank-4-plus {
+  background: rgba(239, 68, 68, 0.12) !important;
+  color: #b91c1c !important;
+  border-color: #ef4444 !important;
+}
+
+/* Toasts */
+.soloop-toast {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+}

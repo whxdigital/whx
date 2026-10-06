@@ -1,14 +1,14 @@
-﻿/* dashboard.css - SaaS Portal Styles for WHX Hub */
+/* dashboard.css - SaaS Portal Styles for WHX Hub */
 
 :root {
-  --dash-bg: #0b0f19;
-  --dash-surface: #131b2c;
-  --dash-surface-hover: #1a2438;
-  --dash-border: rgba(255, 255, 255, 0.08);
-  --dash-text: #e2e8f0;
-  --dash-text-muted: #94a3b8;
-  --dash-primary: #00f0ff;
-  --dash-primary-dim: rgba(0, 240, 255, 0.1);
+  --dash-bg: #0b0b0d;
+  --dash-surface: #17171c;
+  --dash-surface-hover: #1f1f26;
+  --dash-border: #27272d;
+  --dash-text: #f4f4f5;
+  --dash-text-muted: #a1a1aa;
+  --dash-primary: #f5a623;
+  --dash-primary-dim: rgba(245, 166, 35, 0.12);
   --sidebar-width: 280px;
 }
 
@@ -26,6 +26,7 @@ body.dashboard-body {
   display: flex;
   height: 100vh;
   width: 100vw;
+  background-color: #0b0b0d;
 }
 
 /* Sidebar Styles */
@@ -163,18 +164,23 @@ body.dashboard-body {
 }
 
 /* Main Content Styles */
-.dashboard-main {
+.dashboard-main,
+body.dashboard-body main {
   flex: 1;
   display: flex;
   flex-direction: column;
+  padding: 0 !important;
+  margin: 0 !important;
   overflow: hidden;
   background: radial-gradient(circle at top right, rgba(0, 240, 255, 0.03), transparent 40%),
               radial-gradient(circle at bottom left, rgba(99, 102, 241, 0.03), transparent 40%);
 }
 
 .dashboard-header {
-  height: 72px;
-  padding: 0 32px;
+  height: 60px;
+  padding: 0 28px;
+  margin: 0 !important;
+  top: 0 !important;
   display: flex;
   align-items: center;
   justify-content: space-between;
