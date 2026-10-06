@@ -6378,7 +6378,7 @@ body.homepage>main>.quote {
 }
 
 .voice-workflow-steps li.voice-step-complete b::before {
-  content: "Ã¢Å“â€œ ";
+  content: "&#10003; ";
   color: #15803d;
 }
 
@@ -15469,11 +15469,11 @@ body.architecture-spec-page .spec-cta .button {
 }
 
 .knowledge-page .knowledge-scroll-story .story-step::after {
-  content: " Ã¢â€”â€¹";
+  content: " &#9675;";
 }
 
 .knowledge-page .knowledge-scroll-story .story-step.is-active::after {
-  content: " Ã¢â€”Â";
+  content: " &bull;";
 }
 
 @media (max-width: 780px) {
@@ -21312,7 +21312,7 @@ body {
   color: var(--apex-violet) !important;
 }
 
-/* Middle Content Sections Ã¢â‚¬â€ Apex Styling */
+/* Middle Content Sections — Apex Styling */
 .topic-main,
 main,
 section {
@@ -23921,7 +23921,7 @@ input.invalid, textarea.invalid {
 }
 
 .site-footer-col ul li a::before {
-  content: 'â†’';
+  content: '→';
   position: absolute;
   left: 0;
   opacity: 0;
@@ -24304,7 +24304,7 @@ input.invalid, textarea.invalid {
   line-height: 1.5;
 }
 #whx-modal-list li::before {
-  content: 'â†’';
+  content: '→';
   position: absolute;
   left: 0;
   top: 0;

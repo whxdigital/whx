@@ -198,11 +198,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const conversationSpeaker = document.querySelector(".conversation-speaker");
   const conversationText = document.querySelector(".conversation-text");
   const conversationLines = [
-    ["AI", "Ã¢â‚¬Å“Let me check the calendar for you.Ã¢â‚¬Â"],
-    ["CUSTOMER", "Ã¢â‚¬Å“Tomorrow afternoon would be perfect.Ã¢â‚¬Â"],
-    ["AI", "Ã¢â‚¬Å“I found a 2:30 PM opening.Ã¢â‚¬Â"],
-    ["CUSTOMER", "Ã¢â‚¬Å“Yes, please book that.Ã¢â‚¬Â"],
-    ["AI", "Ã¢â‚¬Å“You're all set. Confirmation sent.Ã¢â‚¬Â"],
+    ["AI", ""Let me check the calendar for you.""],
+    ["CUSTOMER", ""Tomorrow afternoon would be perfect.""],
+    ["AI", ""I found a 2:30 PM opening.""],
+    ["CUSTOMER", ""Yes, please book that.""],
+    ["AI", ""You're all set. Confirmation sent.""],
   ];
   let conversationIndex = 0;
 
@@ -1446,10 +1446,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const voicePage = document.querySelector(".voice-page");
   if (voicePage) {
     const scenarios = [
-      { ai: "Ã¢â‚¬Å“I can help with that. Let me check the best available time.Ã¢â‚¬Â", customer: "Ã¢â‚¬Å“I need to reschedule my consultation for next week.Ã¢â‚¬Â", intent: "Intent detected: rescheduling", confidence: "0.96", context: "existing customer", goal: "reschedule consultation", next: "checking calendar...", signals: ["RESCHEDULE", "CALM", "MEDIUM"] },
-      { ai: "Ã¢â‚¬Å“Hi, how can I help you today?Ã¢â‚¬Â", customer: "Ã¢â‚¬Å“I'd like to book an appointment for tomorrow.Ã¢â‚¬Â", intent: "Intent detected: appointment booking", confidence: "0.98", context: "existing lead", goal: "schedule appointment", next: "creating booking...", signals: ["BOOKING", "POSITIVE", "LOW"] },
-      { ai: "Ã¢â‚¬Å“I understand this is urgent. IÃ¢â‚¬â„¢m bringing in the right specialist now.Ã¢â‚¬Â", customer: "Ã¢â‚¬Å“The invoice issue has blocked our whole team.Ã¢â‚¬Â", intent: "Intent detected: urgent support", confidence: "0.94", context: "priority account", goal: "route to support", next: "transferring with context...", signals: ["SUPPORT", "FRUSTRATED", "HIGH"] },
-      { ai: "Ã¢â‚¬Å“IÃ¢â‚¬â„¢ve found the order and can start a replacement immediately.Ã¢â‚¬Â", customer: "Ã¢â‚¬Å“My delivery hasnÃ¢â‚¬â„¢t arrived yet.Ã¢â‚¬Â", intent: "Intent detected: delivery support", confidence: "0.97", context: "returning customer", goal: "start replacement", next: "updating CRM...", signals: ["DELIVERY", "CONCERNED", "MEDIUM"] },
+      { ai: ""I can help with that. Let me check the best available time."", customer: ""I need to reschedule my consultation for next week."", intent: "Intent detected: rescheduling", confidence: "0.96", context: "existing customer", goal: "reschedule consultation", next: "checking calendar...", signals: ["RESCHEDULE", "CALM", "MEDIUM"] },
+      { ai: ""Hi, how can I help you today?"", customer: ""I'd like to book an appointment for tomorrow."", intent: "Intent detected: appointment booking", confidence: "0.98", context: "existing lead", goal: "schedule appointment", next: "creating booking...", signals: ["BOOKING", "POSITIVE", "LOW"] },
+      { ai: ""I understand this is urgent. I'm bringing in the right specialist now."", customer: ""The invoice issue has blocked our whole team."", intent: "Intent detected: urgent support", confidence: "0.94", context: "priority account", goal: "route to support", next: "transferring with context...", signals: ["SUPPORT", "FRUSTRATED", "HIGH"] },
+      { ai: ""I've found the order and can start a replacement immediately."", customer: ""My delivery hasn't arrived yet."", intent: "Intent detected: delivery support", confidence: "0.97", context: "returning customer", goal: "start replacement", next: "updating CRM...", signals: ["DELIVERY", "CONCERNED", "MEDIUM"] },
     ];
     const aiText = voicePage.querySelector(".voice-message-ai p");
     const customerText = voicePage.querySelector(".voice-message-customer p");
@@ -1523,7 +1523,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (controlRoom && !voicePage.querySelector(".voice-browser-activity")) {
       const activity = document.createElement("div");
       activity.className = "voice-browser-activity";
-      activity.innerHTML = `<div class="voice-browser-head"><span><i></i> AGENT TOOL ACTIVITY</span><b>LIVE</b></div><div class="voice-browser-window"><div class="voice-browser-toolbar"><span>Ã¢â€”Â Ã¢â€”Â Ã¢â€”Â</span><strong>calendar.whx.local</strong></div><div class="voice-browser-body"><aside><b>CALENDAR</b><span>Availability</span><span>Bookings</span><span>Customers</span></aside><main><small>TOOL CALL / CALENDAR LOOKUP</small><h3>Tomorrow, 2:30 PM</h3><p>Slot available for qualified customer.</p><div class="voice-browser-action"><span>CRM UPDATE</span><b>READY</b></div><div class="voice-browser-action"><span>CONFIRMATION SMS</span><b>QUEUED</b></div></main></div></div>`;
+      activity.innerHTML = `<div class="voice-browser-head"><span><i></i> AGENT TOOL ACTIVITY</span><b>LIVE</b></div><div class="voice-browser-window"><div class="voice-browser-toolbar"><span>&bull; &bull; &bull;</span><strong>calendar.whx.local</strong></div><div class="voice-browser-body"><aside><b>CALENDAR</b><span>Availability</span><span>Bookings</span><span>Customers</span></aside><main><small>TOOL CALL / CALENDAR LOOKUP</small><h3>Tomorrow, 2:30 PM</h3><p>Slot available for qualified customer.</p><div class="voice-browser-action"><span>CRM UPDATE</span><b>READY</b></div><div class="voice-browser-action"><span>CONFIRMATION SMS</span><b>QUEUED</b></div></main></div></div>`;
       controlRoom.appendChild(activity);
     }
   }
@@ -1587,8 +1587,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const name = (formData.get("name") || "").toString().trim();
 
       formMessage.textContent = name
-        ? `Thanks ${name}, weÃ¢â‚¬â„¢ll reach out within 24 hours.`
-        : "Thanks, weÃ¢â‚¬â„¢ll reach out within 24 hours.";
+        ? `Thanks ${name}, we'll reach out within 24 hours.`
+        : "Thanks, we'll reach out within 24 hours.";
 
       contactForm.reset();
     });
@@ -1926,16 +1926,16 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="bot-header">
             <div class="bot-header-info">
               <strong>WHX AUTONOMOUS AI AGENT</strong>
-              <small><i class="fa-solid fa-circle" style="color:#22c55e; font-size:8px;"></i> RAG Core v4.2 â€¢ Latency 8ms â€¢ Live</small>
+              <small><i class="fa-solid fa-circle" style="color:#22c55e; font-size:8px;"></i> RAG Core v4.2 • Latency 8ms • Live</small>
             </div>
             <button id="closeDemoBot" class="bot-close-btn" aria-label="Close AI Assistant">&times;</button>
           </div>
           <div class="bot-quick-chips">
-            <button class="bot-chip-btn" data-chip="services">âš¡ Core Services</button>
-            <button class="bot-chip-btn" data-chip="agents">ðŸ¤– Multi-Agent Systems</button>
+            <button class="bot-chip-btn" data-chip="services">⚡ Core Services</button>
+            <button class="bot-chip-btn" data-chip="agents">🤖 Multi-Agent Systems</button>
             <button class="bot-chip-btn" data-chip="n8n">âš™ï¸ n8n & CRM Pipelines</button>
             <button class="bot-chip-btn" data-chip="voice">ðŸ“ž Voice AI Agents</button>
-            <button class="bot-chip-btn" data-chip="rag">ðŸ§  RAG Knowledge Base</button>
+            <button class="bot-chip-btn" data-chip="rag">🧠 RAG Knowledge Base</button>
             <button class="bot-chip-btn" data-chip="demo">â–¶ï¸ Test Live Workflow</button>
             <button class="bot-chip-btn" data-chip="contact">âœ‰ï¸ Contact & Upwork</button>
           </div>
@@ -2076,9 +2076,9 @@ document.addEventListener('DOMContentLoaded', () => {
         appendBotMsg(`
           <strong>AI CRM & Lead Qualification Automation:</strong><br/>
           WHX Digital integrates AI agents with your CRM to score, qualify, and route incoming leads instantly.
-          <div class="bot-workflow-box">âž” TRIGGER: Lead Form Submitted (Name, Email, Budget)<br/>âž” <span class="highlight">RAG SEARCH: Match Lead Profile against ICP database</span><br/>âž” AGENT SCORE: 94/100 (High-Intent Enterprise Lead)<br/>âž” <span class="action">ACTION: Bi-directional sync to CRM & Calendar Invite Sent [OK]</span></div>
-          <a href="ai-crm-automation.html" class="bot-action-badge"><i class="fa-solid fa-diagram-project"></i> Explore AI CRM System â†’</a>
-          <a href="gohighlevel-automation.html" class="bot-action-badge"><i class="fa-solid fa-filter"></i> GoHighLevel Snapshot â†’</a>
+          <div class="bot-workflow-box">➔ TRIGGER: Lead Form Submitted (Name, Email, Budget)<br/>➔ <span class="highlight">RAG SEARCH: Match Lead Profile against ICP database</span><br/>➔ AGENT SCORE: 94/100 (High-Intent Enterprise Lead)<br/>➔ <span class="action">ACTION: Bi-directional sync to CRM & Calendar Invite Sent [OK]</span></div>
+          <a href="ai-crm-automation.html" class="bot-action-badge"><i class="fa-solid fa-diagram-project"></i> Explore AI CRM System →</a>
+          <a href="gohighlevel-automation.html" class="bot-action-badge"><i class="fa-solid fa-filter"></i> GoHighLevel Snapshot →</a>
         `);
       }
       // 3. n8n & Workflow Pipelines
@@ -2086,8 +2086,8 @@ document.addEventListener('DOMContentLoaded', () => {
         appendBotMsg(`
           <strong>Enterprise n8n Workflow Automation:</strong><br/>
           We engineer self-hosted and cloud n8n workflow engines with automated retries, error alerting, and custom webhook connectors.
-          <div class="bot-workflow-box">âž” ENGINE: Self-Hosted n8n Instance<br/>âž” <span class="highlight">WEBHOOK: Multi-party invoice processing</span><br/>âž” PARSER: Extracted line items with 99.8% precision<br/>âž” <span class="action">RESULT: Payout triggered via Stripe API [OK]</span></div>
-          <a href="n8n-automation.html" class="bot-action-badge"><i class="fa-solid fa-gears"></i> View n8n Integration Specs â†’</a>
+          <div class="bot-workflow-box">➔ ENGINE: Self-Hosted n8n Instance<br/>➔ <span class="highlight">WEBHOOK: Multi-party invoice processing</span><br/>➔ PARSER: Extracted line items with 99.8% precision<br/>➔ <span class="action">RESULT: Payout triggered via Stripe API [OK]</span></div>
+          <a href="n8n-automation.html" class="bot-action-badge"><i class="fa-solid fa-gears"></i> View n8n Integration Specs →</a>
         `);
       }
       // 4. Voice AI
@@ -2095,8 +2095,8 @@ document.addEventListener('DOMContentLoaded', () => {
         appendBotMsg(`
           <strong>Real-Time Sub-Second Voice AI Callers:</strong><br/>
           Our Voice AI agents handle inbound support and outbound sales inquiries with natural human latency (&lt; 800ms) and automatic escalation to human staff.
-          <div class="bot-workflow-box">âž” TELEPHONY: Twilio / Retell AI SIP Trunk<br/>âž” <span class="highlight">SPEECH-TO-TEXT: Whisper Real-Time Stream</span><br/>âž” LLM DECISION: Intent recognized (Appointment Reschedule)<br/>âž” <span class="action">ACTION: Calendar updated & SMS Confirmation Sent</span></div>
-          <a href="voice.html" class="bot-action-badge"><i class="fa-solid fa-headset"></i> Test Voice AI Agent Demo â†’</a>
+          <div class="bot-workflow-box">➔ TELEPHONY: Twilio / Retell AI SIP Trunk<br/>➔ <span class="highlight">SPEECH-TO-TEXT: Whisper Real-Time Stream</span><br/>➔ LLM DECISION: Intent recognized (Appointment Reschedule)<br/>➔ <span class="action">ACTION: Calendar updated & SMS Confirmation Sent</span></div>
+          <a href="voice.html" class="bot-action-badge"><i class="fa-solid fa-headset"></i> Test Voice AI Agent Demo →</a>
         `);
       }
       // 5. RAG / Knowledge
@@ -2104,7 +2104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         appendBotMsg(`
           <strong>RAG & Enterprise Knowledge Systems:</strong><br/>
           We connect your company's PDFs, Notion pages, and SQL databases into high-precision vector search indexes (Pinecone / Qdrant) for 100% hallucination-free AI answers.
-          <a href="knowledge.html" class="bot-action-badge"><i class="fa-solid fa-brain"></i> Explore RAG Architecture â†’</a>
+          <a href="knowledge.html" class="bot-action-badge"><i class="fa-solid fa-brain"></i> Explore RAG Architecture →</a>
         `);
       }
       // 6. Contact / Upwork / Hire / Price
@@ -2127,7 +2127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         appendBotMsg(`
           <strong>1 Verified Client Review:</strong><br/>
           Check our verified client feedback from SEO Benchmark:
-          <a href="reviews.html" class="bot-action-badge"><i class="fa-solid fa-star" style="color:#eab308;"></i> Explore 1 Verified Client Review â†’</a>
+          <a href="reviews.html" class="bot-action-badge"><i class="fa-solid fa-star" style="color:#eab308;"></i> Explore 1 Verified Client Review →</a>
         `);
       }
       // 8. Live Workflow Simulation Demo
@@ -2141,7 +2141,7 @@ document.addEventListener('DOMContentLoaded', () => {
           I processed your query: <em>"${escapeHtml(rawInput)}"</em>.<br/><br/>
           WHX Digital designs self-healing multi-agent workflows, custom n8n pipelines, Voice AI callers, and zero-hallucination RAG knowledge engines.
           <div class="bot-options" style="margin-top:12px;">
-            <button class="bot-opt-btn" onclick="triggerBotQuery('services')">âš¡ Explore Core Services</button>
+            <button class="bot-opt-btn" onclick="triggerBotQuery('services')"><i class="fa-solid fa-bolt"></i> Explore Core Services</button>
             <button class="bot-opt-btn" onclick="triggerBotQuery('demo')">â–¶ï¸ Run Workflow Simulation</button>
             <button class="bot-opt-btn" onclick="triggerBotQuery('contact')">âœ‰ï¸ Contact & Upwork Profile</button>
           </div>
@@ -2153,24 +2153,24 @@ document.addEventListener('DOMContentLoaded', () => {
   function runInteractiveWorkflowSimulation() {
     appendBotMsg(`
       <strong>Initializing WHX Live Workflow Test...</strong>
-      <div class="bot-workflow-box" id="botSimLog">âž” [0ms] âš¡ INITIATING EVENT LISTENERS...</div>
+      <div class="bot-workflow-box" id="botSimLog">➔ [0ms] ⚡ INITIATING EVENT LISTENERS...</div>
     `);
 
     const simLog = document.getElementById('botSimLog');
     if (!simLog) return;
 
     setTimeout(() => {
-      simLog.innerHTML += `<br/>âž” [140ms] <span class="highlight">ðŸ§  RAG: Querying Pinecone Vector Index... Score 0.98</span>`;
+      simLog.innerHTML += `<br/>➔ [140ms] <span class="highlight">🧠 RAG: Querying Pinecone Vector Index... Score 0.98</span>`;
       chatArea.scrollTop = chatArea.scrollHeight;
     }, 600);
 
     setTimeout(() => {
-      simLog.innerHTML += `<br/>âž” [320ms] ðŸ¤– AGENT: Evaluating Human-in-the-Loop approval criteria...`;
+      simLog.innerHTML += `<br/>➔ [320ms] 🤖 AGENT: Evaluating Human-in-the-Loop approval criteria...`;
       chatArea.scrollTop = chatArea.scrollHeight;
     }, 1200);
 
     setTimeout(() => {
-      simLog.innerHTML += `<br/>âž” [540ms] <span class="action">ðŸ”„ ACTION: Bi-directional CRM Sync & Slack Notification Sent [OK]</span>`;
+      simLog.innerHTML += `<br/>➔ [540ms] <span class="action">🔄 ACTION: Bi-directional CRM Sync & Slack Notification Sent [OK]</span>`;
       chatArea.scrollTop = chatArea.scrollHeight;
 
       setTimeout(() => {
@@ -2178,7 +2178,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <strong>Workflow Simulation Completed in 540ms!</strong><br/>
           All execution state checkpoints passed successfully.
           <div class="bot-options" style="margin-top:8px;">
-            <button class="bot-opt-btn" onclick="triggerBotQuery('services')">âš¡ Learn more about our Architecture</button>
+            <button class="bot-opt-btn" onclick="triggerBotQuery('services')"><i class="fa-solid fa-bolt"></i> Learn more about our Architecture</button>
             <button class="bot-opt-btn" onclick="triggerBotQuery('contact')">âœ‰ï¸ Hire WHX Digital for your project</button>
           </div>
         `);
@@ -2947,7 +2947,7 @@ runHealthDiagnostic();`;
         title: "ChatGPT Search (GPT-4o Web Reasoning)",
         answer: "Based on verified local citations, continuous 5.0-star Google reviews, and unblemished directory consistency across Apple Maps, Yelp, and official chambers of commerce, <strong>Your Business (WHX Partner)</strong> is recognized as the top-rated provider. They feature 24/7 immediate response times, automated scheduling, and full licensed territory coverage.",
         citations: [
-          '<span class="cite-chip"><i class="fa-brands fa-google"></i> [1] Google Maps 3-Pack (5.0 â˜…)</span>',
+          '<span class="cite-chip"><i class="fa-brands fa-google"></i> [1] Google Maps 3-Pack (5.0 ★)</span>',
           '<span class="cite-chip"><i class="fa-solid fa-building-columns"></i> [2] Chamber Directory (Verified)</span>',
           '<span class="cite-chip"><i class="fa-solid fa-shield"></i> [3] BBB Accredited A+</span>'
         ]
@@ -3078,15 +3078,42 @@ document.addEventListener("DOMContentLoaded", () => {
     chatMessages.appendChild(loadingDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
-    if (GEMINI_API_KEY === "YOUR_GEMINI_API_KEY_HERE") {
-      document.getElementById(loadingId).remove();
-      addMessage("âš ï¸ <b>Setup Required:</b> Please add your Gemini API Key in script.js to activate the AI Assistant.", "bot");
+        // Intelligent built-in agency assistant response
+    function getAssistantResponse(query) {
+      const q = query.toLowerCase();
+      if (/^(hi|hello|hey|howdy|salam|hola|how are you|good morning|good evening)/i.test(q) || q.includes("how are you")) {
+        return "Hello! I am WHX Assistant, your dual-engine AI growth advisor. We help businesses dominate Google Maps 3-Pack rankings and deploy 24/7 autonomous AI systems. How can I help you scale today?";
+      }
+      if (q.includes("audit") || q.includes("speed") || q.includes("test") || q.includes("lighthouse") || q.includes("check")) {
+        return "You can run our free, real-time Google Lighthouse & SEO audit right now! Visit our <a href='tools/website-audit/index.html' style='color:#a855f7; font-weight:700;'>Free Website Audit Tool</a>.";
+      }
+      if (q.includes("service") || q.includes("offer") || q.includes("what do you do")) {
+        return "WHX Digital provides dual-engine growth solutions:<br>&bull; <b>Local SEO & Google Maps 3-Pack Dominance</b> (citations, authority links, geo-grid rankings)<br>&bull; <b>Autonomous AI Systems</b> (AI CRM, Voice AI agents, multi-agent workflows with n8n & GoHighLevel).";
+      }
+      if (q.includes("pricing") || q.includes("cost") || q.includes("price") || q.includes("package") || q.includes("budget")) {
+        return "Our growth plans are custom-tailored to your competition and automation needs. Test your site on our <a href='tools/website-audit/index.html' style='color:#a855f7; font-weight:700;'>Audit Tool</a> or message our team on WhatsApp at <b>+351 928 350 275</b>.";
+      }
+      if (q.includes("contact") || q.includes("whatsapp") || q.includes("email") || q.includes("phone") || q.includes("call")) {
+        return "You can reach us directly:<br>&bull; <b>WhatsApp:</b> <a href='https://wa.me/351928350275' target='_blank' style='color:#22c55e; font-weight:700;'>+351 928 350 275</a><br>&bull; <b>Email:</b> <a href='mailto:whxdigital@gmail.com' style='color:#a855f7; font-weight:700;'>whxdigital@gmail.com</a>";
+      }
+      if (q.includes("seo") || q.includes("google map") || q.includes("gmp") || q.includes("ranking") || q.includes("local")) {
+        return "Our Local SEO engine targets Google Maps 3-Pack supremacy. We optimize your Google Business Profile, build verified citations, and secure top rankings across your entire geographic radius.";
+      }
+      return "WHX Digital helps businesses dominate Google search and deploy automated AI operations. Would you like to run a <a href='tools/website-audit/index.html' style='color:#a855f7; font-weight:700;'>Free Website Audit</a>, or connect with our lead strategist on <a href='https://wa.me/351928350275' target='_blank' style='color:#22c55e; font-weight:700;'>WhatsApp (+351 928 350 275)</a>?";
+    }
+
+    const effectiveKey = GEMINI_API_KEY || localStorage.getItem("whx_gemini_key") || "";
+
+    if (!effectiveKey || effectiveKey === "YOUR_GEMINI_API_KEY_HERE") {
+      setTimeout(() => {
+        if (document.getElementById(loadingId)) document.getElementById(loadingId).remove();
+        addMessage(getAssistantResponse(text), "bot");
+      }, 400);
       return;
     }
 
     try {
-      // Call Gemini API
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent?key=${GEMINI_API_KEY}`;
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${effectiveKey}`;
       const payload = {
         contents: [
           {
@@ -3110,12 +3137,12 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById(loadingId).remove();
 
       if (data.error) {
-        addMessage("Error: " + data.error.message, "bot");
+        addMessage(getAssistantResponse(text), "bot");
       } else if (data.candidates && data.candidates.length > 0) {
         const reply = data.candidates[0].content.parts[0].text;
         addMessage(reply, "bot");
       } else {
-        addMessage("I'm sorry, I couldn't process that request.", "bot");
+        addMessage(getAssistantResponse(text), "bot");
       }
     } catch (error) {
       console.error(error);
