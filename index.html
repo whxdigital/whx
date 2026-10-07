@@ -1226,7 +1226,7 @@
     <div class="ai-chat-header">
       <div class="ai-chat-header-title">
         <i class="fa-solid fa-robot"></i>
-        <span>WHX Assistant</span>
+        <span>AI Consultant</span>
         <span class="ai-chat-header-status"><i></i> Online</span>
       </div>
       <button class="ai-chat-close" id="aiChatClose" type="button" onclick="closeAIChat()" aria-label="Close Chat">
@@ -1235,7 +1235,7 @@
     </div>
     <div class="ai-chat-messages" id="aiChatMessages">
       <div class="ai-message bot">
-        Hello! I am <strong>WHX Assistant</strong>, your autonomous AI growth advisor. How can I help you scale today?
+        Hello! I am <strong>AI Consultant</strong>, your autonomous AI growth advisor. How can I help you scale today?
         <div class="ai-chat-chips">
           <button type="button" class="ai-chat-chip" onclick="sendChipQuery('Free Website Audit')"><i class="fa-solid fa-magnifying-glass-chart" style="color:#38bdf8;"></i> Free SEO Audit</button>
           <button type="button" class="ai-chat-chip" onclick="sendChipQuery('Local SEO & Maps 3-Pack')"><i class="fa-solid fa-location-dot" style="color:#a78bfa;"></i> Google 3-Pack</button>
@@ -1311,7 +1311,7 @@
     function getReply(q) {
       var query = q.toLowerCase();
       if (/^(hi|hello|hey|howdy|salam|hola|good|aoa)/i.test(query)) {
-        return "Hello! I am <b>WHX Assistant</b>, your autonomous AI growth advisor.<br><br>We help businesses dominate Google Maps 3-Pack rankings and deploy 24/7 autonomous AI systems. How can I help you scale today?<div class='ai-chat-chips'><button type='button' class='ai-chat-chip' onclick=\"sendChipQuery('Free Website Audit')\"><i class='fa-solid fa-magnifying-glass-chart' style='color:#38bdf8;'></i> Free SEO Audit</button><button type='button' class='ai-chat-chip' onclick=\"sendChipQuery('Local SEO & Maps 3-Pack')\"><i class='fa-solid fa-location-dot' style='color:#a78bfa;'></i> Google 3-Pack</button><button type='button' class='ai-chat-chip' onclick=\"sendChipQuery('AI Automation & Agents')\"><i class='fa-solid fa-robot' style='color:#c084fc;'></i> AI Agents</button><button type='button' class='ai-chat-chip' onclick=\"sendChipQuery('WhatsApp Direct')\"><i class='fa-brands fa-whatsapp' style='color:#22c55e;'></i> WhatsApp</button></div>";
+        return "Hello! I am <b>AI Consultant</b>, your autonomous AI growth advisor.<br><br>We help businesses dominate Google Maps 3-Pack rankings and deploy 24/7 autonomous AI systems. How can I help you scale today?<div class='ai-chat-chips'><button type='button' class='ai-chat-chip' onclick=\"sendChipQuery('Free Website Audit')\"><i class='fa-solid fa-magnifying-glass-chart' style='color:#38bdf8;'></i> Free SEO Audit</button><button type='button' class='ai-chat-chip' onclick=\"sendChipQuery('Local SEO & Maps 3-Pack')\"><i class='fa-solid fa-location-dot' style='color:#a78bfa;'></i> Google 3-Pack</button><button type='button' class='ai-chat-chip' onclick=\"sendChipQuery('AI Automation & Agents')\"><i class='fa-solid fa-robot' style='color:#c084fc;'></i> AI Agents</button><button type='button' class='ai-chat-chip' onclick=\"sendChipQuery('WhatsApp Direct')\"><i class='fa-brands fa-whatsapp' style='color:#22c55e;'></i> WhatsApp</button></div>";
       }
       if (query.includes('audit') || query.includes('speed') || query.includes('test') || query.includes('lighthouse') || query.includes('check')) {
         return "You can run our free, real-time Google Lighthouse & Local SEO Audit right now!<br><br><a href='tools/website-audit/index.html' class='ai-chat-btn primary'><i class='fa-solid fa-magnifying-glass-chart'></i> Launch Free Audit Tool</a>";

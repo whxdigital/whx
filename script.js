@@ -3092,7 +3092,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function getAssistantResponse(query) {
       const q = query.toLowerCase();
       if (/^(hi|hello|hey|howdy|salam|hola|how are you|good morning|good evening)/i.test(q) || q.includes("how are you")) {
-        return "Hello! I am WHX Assistant, your dual-engine AI growth advisor. We help businesses dominate Google Maps 3-Pack rankings and deploy 24/7 autonomous AI systems. How can I help you scale today?";
+        return "Hello! I am AI Consultant, your dual-engine AI growth advisor. We help businesses dominate Google Maps 3-Pack rankings and deploy 24/7 autonomous AI systems. How can I help you scale today?";
       }
       if (q.includes("audit") || q.includes("speed") || q.includes("test") || q.includes("lighthouse") || q.includes("check")) {
         return "You can run our free, real-time Google Lighthouse & SEO audit right now! Visit our <a href='tools/website-audit/index.html' style='color:#a855f7; font-weight:700;'>Free Website Audit Tool</a>.";
