@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   /* WHX Digital design tokens */
   --bg-main: #f8f7fc;
   --bg-surface: #ffffff;
@@ -23169,7 +23169,7 @@ main {
 
 .site-footer-grid {
   display: grid !important;
-  grid-template-columns: 1.4fr 1fr 1fr 1.2fr !important;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr !important;
   gap: 40px !important;
   padding-bottom: 48px !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -26747,4 +26747,43 @@ p a, li a, .article-content a {
   .hlw-step-connector {
     display: none;
   }
+}
+
+.footer-badges {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  width: 100% !important;
+  max-width: 280px !important;
+}
+
+.footer-badge {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  background: rgba(124, 58, 237, 0.12) !important;
+  border: 1px solid rgba(124, 58, 237, 0.28) !important;
+  color: #c4b5fd !important;
+  font-size: 0.8rem !important;
+  font-weight: 600 !important;
+  padding: 10px 14px !important;
+  border-radius: 8px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  transition: all 0.2s ease !important;
+}
+
+.footer-badge:hover {
+  background: rgba(124, 58, 237, 0.22) !important;
+  border-color: rgba(167, 139, 250, 0.5) !important;
+  color: #ffffff !important;
+  transform: translateX(3px) !important;
+}
+
+.footer-badge i {
+  color: #a78bfa !important;
+  font-size: 0.88rem !important;
+  width: 18px !important;
+  text-align: center !important;
+  flex-shrink: 0 !important;
 }
