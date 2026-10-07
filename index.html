@@ -1221,7 +1221,7 @@
 </div>
 
 <!-- Gemini AI Chatbot Widget -->
-<div class="ai-chat-widget">
+<div class="ai-chat-widget" id="aiChatWidget">
   <div class="ai-chat-window" id="aiChatWindow">
     <div class="ai-chat-header">
       <div class="ai-chat-header-title">
@@ -1229,28 +1229,158 @@
         <span>WHX Assistant</span>
         <span class="ai-chat-header-status"><i></i> Online</span>
       </div>
-      <button class="ai-chat-close" id="aiChatClose" aria-label="Close Chat"><i class="fa-solid fa-xmark"></i></button>
+      <button class="ai-chat-close" id="aiChatClose" type="button" onclick="closeAIChat()" aria-label="Close Chat">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
     </div>
     <div class="ai-chat-messages" id="aiChatMessages">
       <div class="ai-message bot">
         Hello! I am <strong>WHX Assistant</strong>, your autonomous AI growth advisor. How can I help you scale today?
         <div class="ai-chat-chips">
-          <button type="button" class="ai-chat-chip" data-query="Free Website Audit">ðŸš€ Free SEO Audit</button>
-          <button type="button" class="ai-chat-chip" data-query="Local SEO Services">ðŸ“ Google 3-Pack</button>
-          <button type="button" class="ai-chat-chip" data-query="AI Automation">ðŸ¤– AI Agents</button>
-          <button type="button" class="ai-chat-chip" data-query="WhatsApp Contact">ðŸ’¬ WhatsApp Direct</button>
+          <button type="button" class="ai-chat-chip" onclick="sendChipQuery('Free Website Audit')"><i class="fa-solid fa-magnifying-glass-chart" style="color:#38bdf8;"></i> Free SEO Audit</button>
+          <button type="button" class="ai-chat-chip" onclick="sendChipQuery('Local SEO & Maps 3-Pack')"><i class="fa-solid fa-location-dot" style="color:#a78bfa;"></i> Google 3-Pack</button>
+          <button type="button" class="ai-chat-chip" onclick="sendChipQuery('AI Automation & Agents')"><i class="fa-solid fa-robot" style="color:#c084fc;"></i> AI Agents</button>
+          <button type="button" class="ai-chat-chip" onclick="sendChipQuery('WhatsApp Direct')"><i class="fa-brands fa-whatsapp" style="color:#22c55e;"></i> WhatsApp Direct</button>
         </div>
       </div>
     </div>
     <div class="ai-chat-input-area">
-      <input type="text" class="ai-chat-input" id="aiChatInput" placeholder="Ask something..." aria-label="Chat input" />
-      <button class="ai-chat-send" id="aiChatSend" aria-label="Send message"><i class="fa-solid fa-paper-plane"></i></button>
+      <input type="text" class="ai-chat-input" id="aiChatInput" placeholder="Ask about SEO, AI Agents, Audit..." aria-label="Chat input" onkeydown="if(event.key==='Enter'){event.preventDefault();sendAIChat();}" />
+      <button class="ai-chat-send" id="aiChatSend" type="button" onclick="sendAIChat()" aria-label="Send message">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
     </div>
   </div>
-  <button class="ai-chat-toggle" id="aiChatToggle" aria-label="Toggle AI Chat">
-    <i class="fa-solid fa-message"></i>
+  <button class="ai-chat-toggle" id="aiChatToggle" type="button" onclick="toggleAIChat()" aria-label="Toggle AI Chat">
+    <i class="fa-solid fa-message" id="aiChatToggleIcon"></i>
   </button>
 </div>
+
+<script>
+  window.toggleAIChat = function() {
+    var win = document.getElementById('aiChatWindow');
+    var icon = document.getElementById('aiChatToggleIcon');
+    if (!win) return;
+    var isOpen = win.classList.toggle('active');
+    if (icon) {
+      icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-message';
+    }
+    if (isOpen) {
+      var inp = document.getElementById('aiChatInput');
+      if (inp) inp.focus();
+    }
+  };
+
+  window.closeAIChat = function() {
+    var win = document.getElementById('aiChatWindow');
+    var icon = document.getElementById('aiChatToggleIcon');
+    if (win) win.classList.remove('active');
+    if (icon) icon.className = 'fa-solid fa-message';
+  };
+
+  window.sendChipQuery = function(query) {
+    var inp = document.getElementById('aiChatInput');
+    if (inp) {
+      inp.value = query;
+      window.sendAIChat();
+    }
+  };
+
+  window.sendAIChat = async function() {
+    var inp = document.getElementById('aiChatInput');
+    var box = document.getElementById('aiChatMessages');
+    if (!inp || !box) return;
+    var rawText = inp.value.trim();
+    if (!rawText) return;
+
+    var userDiv = document.createElement('div');
+    userDiv.className = 'ai-message user';
+    userDiv.textContent = rawText;
+    box.appendChild(userDiv);
+    inp.value = '';
+    box.scrollTop = box.scrollHeight;
+
+    var loadingId = 'loading-' + Date.now();
+    var loadDiv = document.createElement('div');
+    loadDiv.className = 'ai-message bot ai-typing';
+    loadDiv.id = loadingId;
+    loadDiv.innerHTML = '<span></span><span></span><span></span>';
+    box.appendChild(loadDiv);
+    box.scrollTop = box.scrollHeight;
+
+    function getReply(q) {
+      var query = q.toLowerCase();
+      if (/^(hi|hello|hey|howdy|salam|hola|good|aoa)/i.test(query)) {
+        return "Hello! I am <b>WHX Assistant</b>, your autonomous AI growth advisor.<br><br>We help businesses dominate Google Maps 3-Pack rankings and deploy 24/7 autonomous AI systems. How can I help you scale today?<div class='ai-chat-chips'><button type='button' class='ai-chat-chip' onclick=\"sendChipQuery('Free Website Audit')\"><i class='fa-solid fa-magnifying-glass-chart' style='color:#38bdf8;'></i> Free SEO Audit</button><button type='button' class='ai-chat-chip' onclick=\"sendChipQuery('Local SEO & Maps 3-Pack')\"><i class='fa-solid fa-location-dot' style='color:#a78bfa;'></i> Google 3-Pack</button><button type='button' class='ai-chat-chip' onclick=\"sendChipQuery('AI Automation & Agents')\"><i class='fa-solid fa-robot' style='color:#c084fc;'></i> AI Agents</button><button type='button' class='ai-chat-chip' onclick=\"sendChipQuery('WhatsApp Direct')\"><i class='fa-brands fa-whatsapp' style='color:#22c55e;'></i> WhatsApp</button></div>";
+      }
+      if (query.includes('audit') || query.includes('speed') || query.includes('test') || query.includes('lighthouse') || query.includes('check')) {
+        return "You can run our free, real-time Google Lighthouse & Local SEO Audit right now!<br><br><a href='tools/website-audit/index.html' class='ai-chat-btn primary'><i class='fa-solid fa-magnifying-glass-chart'></i> Launch Free Audit Tool</a>";
+      }
+      if (query.includes('service') || query.includes('offer') || query.includes('what do you do')) {
+        return "WHX Digital scales modern businesses via a <b>Dual-Engine Growth Model</b>:<br><br><b>1. Search Dominance:</b><br>&bull; Google Maps 3-Pack Optimization<br>&bull; 100% NAP Citations<br>&bull; Authority Link Building<br><br><b>2. Autonomous AI:</b><br>&bull; CRM Workflows (HubSpot, GoHighLevel)<br>&bull; Voice AI Agents & Multi-Agent Systems<br><br><a href='services.html' class='ai-chat-btn secondary'>View All Services</a>";
+      }
+      if (query.includes('seo') || query.includes('map') || query.includes('gmp') || query.includes('ranking') || query.includes('citation') || query.includes('backlink')) {
+        return "Our <b>Local SEO & Google Maps 3-Pack Engine</b> puts your business at the very top of Google Maps where 70%+ of mobile calls occur. We optimize your GBP, syndicate clean citations, and build high-authority links.<br><br><a href='index.html#search-services' class='ai-chat-btn primary'><i class='fa-solid fa-location-dot'></i> Explore Search Services</a>";
+      }
+      if (query.includes('ai') || query.includes('agent') || query.includes('automation') || query.includes('n8n') || query.includes('crm') || query.includes('voice') || query.includes('gohighlevel')) {
+        return "We build production-ready <b>Autonomous AI Workforce Systems</b>. They qualify inbound leads in seconds, book calendar discovery meetings, and automate back-office workflows 24/7.<br><br><a href='architecture.html' class='ai-chat-btn secondary'><i class='fa-solid fa-robot'></i> Explore AI Architecture</a>";
+      }
+      if (query.includes('contact') || query.includes('whatsapp') || query.includes('email') || query.includes('phone') || query.includes('call') || query.includes('number')) {
+        return "You can reach our team directly:<br><br>&bull; <b>WhatsApp:</b> <a href='https://wa.me/351928350275' target='_blank' style='color:#22c55e; font-weight:700;'>+351 928 350 275</a><br>&bull; <b>Email:</b> <a href='mailto:info@whxdigital.com' style='color:#a78bfa; font-weight:700;'>info@whxdigital.com</a><br><br><a href='https://wa.me/351928350275' target='_blank' class='ai-chat-btn whatsapp'><i class='fa-brands fa-whatsapp'></i> Chat on WhatsApp</a>";
+      }
+      if (query.includes('price') || query.includes('pricing') || query.includes('cost') || query.includes('package') || query.includes('budget') || query.includes('quote')) {
+        return "Every growth and automation solution is custom-tailored to your competition and operations. Connect with our strategist for a complimentary audit and direct quote.<br><br><a href='contact.html' class='ai-chat-btn primary'><i class='fa-solid fa-calendar-check'></i> Book Strategy Session</a> or <a href='https://wa.me/351928350275' target='_blank' class='ai-chat-btn whatsapp'><i class='fa-brands fa-whatsapp'></i> WhatsApp Direct</a>";
+      }
+      return "WHX Digital specializes in Google Maps 3-Pack supremacy and custom AI business automation. How can we help you scale?<div class='ai-chat-chips'><button type='button' class='ai-chat-chip' onclick=\"sendChipQuery('Free Website Audit')\"><i class='fa-solid fa-magnifying-glass-chart' style='color:#38bdf8;'></i> Free SEO Audit</button><button type='button' class='ai-chat-chip' onclick=\"sendChipQuery('WhatsApp Direct')\"><i class='fa-brands fa-whatsapp' style='color:#22c55e;'></i> WhatsApp Direct</button><button type='button' class='ai-chat-chip' onclick=\"sendChipQuery('Book Strategy Session')\"><i class='fa-solid fa-calendar-check' style='color:#f5a623;'></i> Book Call</button></div>";
+    }
+
+    var key = window.GEMINI_API_KEY || localStorage.getItem('whx_gemini_key') || '';
+
+    if (!key || key === 'YOUR_GEMINI_API_KEY_HERE') {
+      setTimeout(function() {
+        var el = document.getElementById(loadingId);
+        if (el) el.remove();
+        var replyDiv = document.createElement('div');
+        replyDiv.className = 'ai-message bot';
+        replyDiv.innerHTML = getReply(rawText);
+        box.appendChild(replyDiv);
+        box.scrollTop = box.scrollHeight;
+      }, 350);
+      return;
+    }
+
+    try {
+      var res = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + key, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ role: 'user', parts: [{ text: 'You are WHX_CORE, AI assistant for WHX Digital. Specialize in Local SEO, Google Maps 3-Pack, Citations, and AI Business Automation (n8n, GoHighLevel, AI Agents). Answer briefly and helpfully with markdown. User: ' + rawText }] }]
+        })
+      });
+      var data = await res.json();
+      var el = document.getElementById(loadingId);
+      if (el) el.remove();
+      var text = (data.candidates && data.candidates[0] && data.candidates[0].content.parts[0].text) || '';
+      var replyDiv = document.createElement('div');
+      replyDiv.className = 'ai-message bot';
+      if (text) {
+        replyDiv.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<b></b>').replace(/\n/g, '<br>');
+      } else {
+        replyDiv.innerHTML = getReply(rawText);
+      }
+      box.appendChild(replyDiv);
+      box.scrollTop = box.scrollHeight;
+    } catch(e) {
+      var el = document.getElementById(loadingId);
+      if (el) el.remove();
+      var replyDiv = document.createElement('div');
+      replyDiv.className = 'ai-message bot';
+      replyDiv.innerHTML = getReply(rawText);
+      box.appendChild(replyDiv);
+      box.scrollTop = box.scrollHeight;
+    }
+  };
+</script>
 <!-- End Gemini AI Chatbot Widget -->
 
 <script src="script.js"></script>
