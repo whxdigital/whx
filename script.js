@@ -1,4 +1,4 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
   }
@@ -1943,11 +1943,11 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="bot-quick-chips">
             <button class="bot-chip-btn" data-chip="services">⚡ Core Services</button>
             <button class="bot-chip-btn" data-chip="agents">🤖 Multi-Agent Systems</button>
-            <button class="bot-chip-btn" data-chip="n8n">âš™ï¸ n8n & CRM Pipelines</button>
-            <button class="bot-chip-btn" data-chip="voice">ðŸ“ž Voice AI Agents</button>
+            <button class="bot-chip-btn" data-chip="n8n"><i class="fa-solid fa-gears"></i> n8n & CRM Pipelines</button>
+            <button class="bot-chip-btn" data-chip="voice"><i class="fa-solid fa-headset"></i> Voice AI Agents</button>
             <button class="bot-chip-btn" data-chip="rag">🧠 RAG Knowledge Base</button>
-            <button class="bot-chip-btn" data-chip="demo">â–¶ï¸ Test Live Workflow</button>
-            <button class="bot-chip-btn" data-chip="contact">âœ‰ï¸ Contact & Upwork</button>
+            <button class="bot-chip-btn" data-chip="demo"><i class="fa-solid fa-play"></i> Test Live Workflow</button>
+            <button class="bot-chip-btn" data-chip="contact"><i class="fa-solid fa-envelope"></i> Contact & Upwork</button>
           </div>
           <div class="bot-body" id="botChatArea">
             <div class="bot-msg">
@@ -2076,8 +2076,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <a href="computer-use.html" class="bot-action-badge"><i class="fa-solid fa-desktop"></i> Computer Use & Browser Agents</a>
           </div>
           <div class="bot-options" style="margin-top:10px;">
-            <button class="bot-opt-btn" onclick="triggerBotQuery('demo')">â–¶ï¸ Test Live Workflow</button>
-            <button class="bot-opt-btn" onclick="triggerBotQuery('contact')">âœ‰ï¸ Book Consultation</button>
+            <button class="bot-opt-btn" onclick="triggerBotQuery('demo')"><i class="fa-solid fa-play"></i> Test Live Workflow</button>
+            <button class="bot-opt-btn" onclick="triggerBotQuery('contact')"><i class="fa-solid fa-envelope"></i> Book Consultation</button>
           </div>
         `);
       }
@@ -2152,8 +2152,8 @@ document.addEventListener('DOMContentLoaded', () => {
           WHX Digital designs self-healing multi-agent workflows, custom n8n pipelines, Voice AI callers, and zero-hallucination RAG knowledge engines.
           <div class="bot-options" style="margin-top:12px;">
             <button class="bot-opt-btn" onclick="triggerBotQuery('services')"><i class="fa-solid fa-bolt"></i> Explore Core Services</button>
-            <button class="bot-opt-btn" onclick="triggerBotQuery('demo')">â–¶ï¸ Run Workflow Simulation</button>
-            <button class="bot-opt-btn" onclick="triggerBotQuery('contact')">âœ‰ï¸ Contact & Upwork Profile</button>
+            <button class="bot-opt-btn" onclick="triggerBotQuery('demo')"><i class="fa-solid fa-play"></i> Run Workflow Simulation</button>
+            <button class="bot-opt-btn" onclick="triggerBotQuery('contact')"><i class="fa-solid fa-envelope"></i> Contact & Upwork Profile</button>
           </div>
         `);
       }
@@ -2189,7 +2189,7 @@ document.addEventListener('DOMContentLoaded', () => {
           All execution state checkpoints passed successfully.
           <div class="bot-options" style="margin-top:8px;">
             <button class="bot-opt-btn" onclick="triggerBotQuery('services')"><i class="fa-solid fa-bolt"></i> Learn more about our Architecture</button>
-            <button class="bot-opt-btn" onclick="triggerBotQuery('contact')">âœ‰ï¸ Hire WHX Digital for your project</button>
+            <button class="bot-opt-btn" onclick="triggerBotQuery('contact')"><i class="fa-solid fa-envelope"></i> Hire WHX Digital for your project</button>
           </div>
         `);
       }, 500);
@@ -2900,21 +2900,1377 @@ runHealthDiagnostic();`;
     });
   }
 
-  // ==============================================================
-  // WHX SAAS INTERACTIVE SYSTEMS: RADAR, GEO SIMULATOR & ROI CALC
-  // ==============================================================
+  
+  });
+});
 
-  // 1. Interactive 25km Geo-Grid Radar
-  const radarMap = document.getElementById("whx-radar-map");
+/* ==========================================================================
+   WHX Insights Hub Filtering & Search Initialization
+   ========================================================================== */
+function initInsightsHub() {
+  const filterBtns = document.querySelectorAll(".insights-filter-btn");
+  const searchInput = document.querySelector(".insights-search-input");
+  const cards = document.querySelectorAll(".insights-card");
+
+  if (!cards.length) return;
+
+  let activeCategory = "all";
+  let searchQuery = "";
+
+  const filterCards = () => {
+    cards.forEach((card) => {
+      const cardCategory = (card.dataset.category || "").toLowerCase();
+      const cardTitle = (card.querySelector(".insights-card-title")?.textContent || "").toLowerCase();
+      const cardDesc = (card.querySelector(".insights-card-desc")?.textContent || "").toLowerCase();
+
+      const matchesCategory = activeCategory === "all" || cardCategory.includes(activeCategory.toLowerCase());
+      const matchesSearch = !searchQuery || cardTitle.includes(searchQuery) || cardDesc.includes(searchQuery) || cardCategory.includes(searchQuery);
+
+      if (matchesCategory && matchesSearch) {
+        card.style.display = "flex";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  };
+
+  if (filterBtns.length) {
+    filterBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filterBtns.forEach((b) => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+        activeCategory = btn.dataset.filter || "all";
+        filterCards();
+      });
+    });
+  }
+
+  if (searchInput) {
+    searchInput.addEventListener("input", (e) => {
+      searchQuery = e.target.value.trim().toLowerCase();
+      filterCards();
+    });
+  }
+}
+
+/* ==========================================================================
+   WHX Advanced Architecture Interactive Nodes
+   ========================================================================== */
+function initAdvancedArchitectureInteractions() {
+  document.querySelectorAll(".orchestration-node").forEach((node) => {
+    node.addEventListener("click", () => {
+      const result = node.dataset.orchestrationResult || "";
+      const display = document.querySelector(".orchestration-result strong");
+      if (display && result) display.textContent = result;
+    });
+  });
+
+  document.querySelectorAll(".feedback-controls button, .feedback-run").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const result = btn.dataset.feedbackResult || "Feedback trace logged for evaluation.";
+      const display = document.querySelector(".feedback-result-display strong");
+      if (display) display.textContent = result;
+    });
+  });
+
+  document.querySelectorAll(".enterprise-node").forEach((node) => {
+    node.addEventListener("click", () => {
+      const result = node.dataset.enterpriseResult || "";
+      const display = document.querySelector(".enterprise-readout strong");
+      if (display && result) display.textContent = result;
+    });
+  });
+
+  document.querySelectorAll(".hitl-approve").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const action = btn.dataset.hitlAction || "";
+      const display = document.querySelector(".hitl-outcome strong");
+      if (display && action) {
+        if (action === "APPROVE") display.textContent = "Action Approved. Workflow executed and committed to system logs.";
+        else if (action === "MODIFY") display.textContent = "Modification Requested. Prompt context returned to engineer for review.";
+        else if (action === "REJECT") display.textContent = "Action Rejected. Workflow cancelled and alert logged.";
+      }
+    });
+  });
+}
+
+/* ==========================================================================
+   WHX Shared FAQ Accordion Component Initialization
+   ========================================================================== */
+function initFaqAccordions() {
+  const faqItems = document.querySelectorAll(".faq-item");
+  if (!faqItems.length) return;
+
+  faqItems.forEach((item) => {
+    const questionBtn = item.querySelector(".faq-question");
+    if (!questionBtn) return;
+
+    questionBtn.addEventListener("click", () => {
+      const isOpen = item.classList.contains("is-open");
+      const parentGrid = item.closest(".faq-grid");
+
+      // Close sibling items in the same grid
+      if (parentGrid && !isOpen) {
+        parentGrid.querySelectorAll(".faq-item.is-open").forEach((sibling) => {
+          sibling.classList.remove("is-open");
+          const sibBtn = sibling.querySelector(".faq-question");
+          if (sibBtn) sibBtn.setAttribute("aria-expanded", "false");
+        });
+      }
+
+      item.classList.toggle("is-open", !isOpen);
+      questionBtn.setAttribute("aria-expanded", String(!isOpen));
+    });
+  });
+}
+
+/* ==========================================================================
+   WHX Shared Rotating Services Component Initialization
+   ========================================================================== */
+function initRotatingServices() {
+  const containers = document.querySelectorAll(".whx-rotating-services");
+  if (!containers.length) return;
+
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  containers.forEach((container) => {
+    const prefixText = container.dataset.rotatePrefix || "";
+    const rawItems = container.dataset.rotateItems || "";
+    const phrases = rawItems.split("|").map((item) => item.trim()).filter(Boolean);
+
+    if (!phrases.length) return;
+
+    container.innerHTML = "";
+
+    if (prefixText) {
+      const prefixSpan = document.createElement("span");
+      prefixSpan.className = "whx-rotate-prefix";
+      prefixSpan.textContent = prefixText;
+      container.appendChild(prefixSpan);
+    }
+
+    const viewport = document.createElement("span");
+    viewport.className = "whx-rotate-viewport";
+
+    const phraseSpan = document.createElement("span");
+    phraseSpan.className = "whx-rotate-phrase is-active";
+    phraseSpan.textContent = phrases[0];
+
+    viewport.appendChild(phraseSpan);
+    container.appendChild(viewport);
+
+    const trace = document.createElement("span");
+    trace.className = "whx-rotate-trace";
+    trace.setAttribute("aria-hidden", "true");
+    container.appendChild(trace);
+
+    // Measure max width of phrases to prevent layout shift
+    const measurer = document.createElement("span");
+    measurer.className = "whx-rotate-phrase";
+    measurer.style.position = "absolute";
+    measurer.style.visibility = "hidden";
+    measurer.style.left = "-9999px";
+    measurer.style.top = "-9999px";
+    measurer.style.pointerEvents = "none";
+    document.body.appendChild(measurer);
+
+    let maxW = 0;
+    phrases.forEach((phrase) => {
+      measurer.textContent = phrase;
+      const w = measurer.getBoundingClientRect().width;
+      if (w > maxW) maxW = w;
+    });
+    document.body.removeChild(measurer);
+
+    if (maxW > 0) {
+      viewport.style.minWidth = Math.ceil(maxW + 4) + "px";
+    }
+
+    if (reducedMotion) return;
+
+    let currentIndex = 0;
+    let timer = null;
+
+    const advance = () => {
+      currentIndex = (currentIndex + 1) % phrases.length;
+      const nextPhrase = phrases[currentIndex];
+
+      phraseSpan.classList.remove("is-active", "is-entering");
+      phraseSpan.classList.add("is-exiting");
+
+      setTimeout(() => {
+        phraseSpan.textContent = nextPhrase;
+        phraseSpan.classList.remove("is-exiting");
+        phraseSpan.classList.add("is-entering");
+
+        void phraseSpan.offsetWidth;
+
+        phraseSpan.classList.remove("is-entering");
+        phraseSpan.classList.add("is-active");
+      }, 380);
+    };
+
+    const startTimer = () => {
+      if (!timer) {
+        timer = setInterval(advance, 2800);
+      }
+    };
+
+    const stopTimer = () => {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    };
+
+    startTimer();
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        stopTimer();
+      } else {
+        startTimer();
+      }
+    });
+  });
+}
+/* ==========================================
+   WHX REAL AI CORE & AUTOMATION BOT ENGINE
+   ========================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  const statusBtn = document.getElementById('whxSystemStatus');
+  
+  if (statusBtn && !document.getElementById('whxDemoBot')) {
+    const botHtml = `
+      <div id="whxDemoBot" class="whx-demo-bot-overlay" aria-hidden="true">
+        <div class="whx-demo-bot-panel">
+          <div class="bot-header">
+            <div class="bot-header-info">
+              <strong>WHX AUTONOMOUS AI AGENT</strong>
+              <small><i class="fa-solid fa-circle" style="color:#22c55e; font-size:8px;"></i> RAG Core v4.2 • Latency 8ms • Live</small>
+            </div>
+            <button id="closeDemoBot" class="bot-close-btn" aria-label="Close AI Assistant">&times;</button>
+          </div>
+          <div class="bot-quick-chips">
+            <button class="bot-chip-btn" data-chip="services">⚡ Core Services</button>
+            <button class="bot-chip-btn" data-chip="agents">🤖 Multi-Agent Systems</button>
+            <button class="bot-chip-btn" data-chip="n8n"><i class="fa-solid fa-gears"></i> n8n & CRM Pipelines</button>
+            <button class="bot-chip-btn" data-chip="voice"><i class="fa-solid fa-headset"></i> Voice AI Agents</button>
+            <button class="bot-chip-btn" data-chip="rag">🧠 RAG Knowledge Base</button>
+            <button class="bot-chip-btn" data-chip="demo"><i class="fa-solid fa-play"></i> Test Live Workflow</button>
+            <button class="bot-chip-btn" data-chip="contact"><i class="fa-solid fa-envelope"></i> Contact & Upwork</button>
+          </div>
+          <div class="bot-body" id="botChatArea">
+            <div class="bot-msg">
+              <span class="bot-avatar"><i class="fa-solid fa-robot"></i></span>
+              <div class="bot-bubble">
+                <strong>Greetings! I am the WHX Autonomous AI Agent Core.</strong><br/>
+                I have indexed all 17 service modules, 31 research insights, and live system architectures across WHX Digital.<br/><br/>
+                Ask me any question in English or Urdu about our <em>AI Agents, n8n workflows, CRM automation, RAG knowledge systems, Voice callers, or client proof</em>, or run a live workflow test!
+                <div class="bot-options" style="margin-top:12px;">
+                  <button class="bot-opt-btn" onclick="triggerBotQuery('services')"><i class="fa-solid fa-cubes"></i> Explore All AI Services</button>
+                  <button class="bot-opt-btn" onclick="triggerBotQuery('demo')"><i class="fa-solid fa-play"></i> Run Live Workflow Simulation</button>
+                  <button class="bot-opt-btn" onclick="triggerBotQuery('reviews')"><i class="fa-solid fa-star"></i> View 10 Verified Client Reviews</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bot-footer">
+            <input type="text" id="botInput" placeholder="Ask about AI agents, n8n, CRM, RAG, Voice AI..." />
+            <button class="bot-send-btn" id="botSendBtn" aria-label="Send message"><i class="fa-solid fa-paper-plane"></i></button>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', botHtml);
+  }
+
+  const demoBot = document.getElementById('whxDemoBot');
+  const closeBtn = document.getElementById('closeDemoBot');
+  const chatArea = document.getElementById('botChatArea');
+  const botInput = document.getElementById('botInput');
+  const botSendBtn = document.getElementById('botSendBtn');
+
+  if (statusBtn && demoBot) {
+    statusBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      demoBot.classList.add('active');
+      demoBot.setAttribute('aria-hidden', 'false');
+      if (botInput) botInput.focus();
+    });
+  }
+
+  if (closeBtn && demoBot) {
+    closeBtn.addEventListener('click', () => {
+      demoBot.classList.remove('active');
+      demoBot.setAttribute('aria-hidden', 'true');
+    });
+  }
+
+  // Quick Chips listener
+  document.querySelectorAll('.bot-chip-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const chipKey = btn.getAttribute('data-chip');
+      if (chipKey) processUserIntent(chipKey);
+    });
+  });
+
+  window.triggerBotQuery = function(key) {
+    processUserIntent(key);
+  };
+
+  function appendUserMsg(msgText) {
+    const div = document.createElement('div');
+    div.className = 'bot-msg user';
+    div.innerHTML = `
+      <span class="bot-avatar"><i class="fa-solid fa-user"></i></span>
+      <div class="bot-bubble">${escapeHtml(msgText)}</div>
+    `;
+    chatArea.appendChild(div);
+    chatArea.scrollTop = chatArea.scrollHeight;
+  }
+
+  function appendThinkingState() {
+    const div = document.createElement('div');
+    div.className = 'bot-msg thinking-msg';
+    div.id = 'botThinkingMsg';
+    div.innerHTML = `
+      <span class="bot-avatar"><i class="fa-solid fa-brain" style="color:#a78bfa;"></i></span>
+      <div class="bot-bubble" style="background:#f1f5f9; color:#64748b;">
+        <span style="font-size:0.8rem; font-family:monospace; font-weight:700;">[RAG Vector Search & Agent Execution...]</span>
+        <div class="typing-indicator" style="margin-top:4px;">
+          <div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>
+        </div>
+      </div>
+    `;
+    chatArea.appendChild(div);
+    chatArea.scrollTop = chatArea.scrollHeight;
+  }
+
+  function removeThinkingState() {
+    const thinking = document.getElementById('botThinkingMsg');
+    if (thinking) thinking.remove();
+  }
+
+  function appendBotMsg(htmlContent) {
+    removeThinkingState();
+    const div = document.createElement('div');
+    div.className = 'bot-msg';
+    div.innerHTML = `
+      <span class="bot-avatar"><i class="fa-solid fa-robot"></i></span>
+      <div class="bot-bubble">${htmlContent}</div>
+    `;
+    chatArea.appendChild(div);
+    chatArea.scrollTop = chatArea.scrollHeight;
+  }
+
+  function processUserIntent(rawInput) {
+    const input = rawInput.toLowerCase().trim();
+    if (!input) return;
+
+    appendUserMsg(rawInput);
+    if (botInput) botInput.value = '';
+    appendThinkingState();
+
+    setTimeout(() => {
+      // 1. Services / Kaam
+      if (input.includes('service') || input.includes('kaam') || input.includes('capabilities') || input.includes('what do you do') || input.includes('whx') || input === 'services') {
+        appendBotMsg(`
+          <strong>WHX Digital Core Engineering Capabilities:</strong><br/>
+          We build autonomous AI workforce systems designed to handle real business operations:
+          <div style="margin-top:8px;">
+            <a href="multi-agent.html" class="bot-action-badge"><i class="fa-solid fa-network-wired"></i> Multi-Agent Workforce</a>
+            <a href="ai-crm-automation.html" class="bot-action-badge"><i class="fa-solid fa-diagram-project"></i> AI CRM & Lead Qualification</a>
+            <a href="n8n-automation.html" class="bot-action-badge"><i class="fa-solid fa-gears"></i> n8n Automated Workflows</a>
+            <a href="voice.html" class="bot-action-badge"><i class="fa-solid fa-headset"></i> Real-Time Voice AI Agents</a>
+            <a href="knowledge.html" class="bot-action-badge"><i class="fa-solid fa-brain"></i> RAG Zero-Hallucination Systems</a>
+            <a href="computer-use.html" class="bot-action-badge"><i class="fa-solid fa-desktop"></i> Computer Use & Browser Agents</a>
+          </div>
+          <div class="bot-options" style="margin-top:10px;">
+            <button class="bot-opt-btn" onclick="triggerBotQuery('demo')"><i class="fa-solid fa-play"></i> Test Live Workflow</button>
+            <button class="bot-opt-btn" onclick="triggerBotQuery('contact')"><i class="fa-solid fa-envelope"></i> Book Consultation</button>
+          </div>
+        `);
+      }
+      // 2. CRM / GoHighLevel
+      else if (input.includes('crm') || input.includes('gohighlevel') || input.includes('ghl') || input.includes('salesforce') || input.includes('hubspot') || input.includes('lead')) {
+        appendBotMsg(`
+          <strong>AI CRM & Lead Qualification Automation:</strong><br/>
+          WHX Digital integrates AI agents with your CRM to score, qualify, and route incoming leads instantly.
+          <div class="bot-workflow-box">➔ TRIGGER: Lead Form Submitted (Name, Email, Budget)<br/>➔ <span class="highlight">RAG SEARCH: Match Lead Profile against ICP database</span><br/>➔ AGENT SCORE: 94/100 (High-Intent Enterprise Lead)<br/>➔ <span class="action">ACTION: Bi-directional sync to CRM & Calendar Invite Sent [OK]</span></div>
+          <a href="ai-crm-automation.html" class="bot-action-badge"><i class="fa-solid fa-diagram-project"></i> Explore AI CRM System →</a>
+          <a href="gohighlevel-automation.html" class="bot-action-badge"><i class="fa-solid fa-filter"></i> GoHighLevel Snapshot →</a>
+        `);
+      }
+      // 3. n8n & Workflow Pipelines
+      else if (input.includes('n8n') || input.includes('workflow') || input.includes('zapier') || input.includes('make') || input === 'n8n') {
+        appendBotMsg(`
+          <strong>Enterprise n8n Workflow Automation:</strong><br/>
+          We engineer self-hosted and cloud n8n workflow engines with automated retries, error alerting, and custom webhook connectors.
+          <div class="bot-workflow-box">➔ ENGINE: Self-Hosted n8n Instance<br/>➔ <span class="highlight">WEBHOOK: Multi-party invoice processing</span><br/>➔ PARSER: Extracted line items with 99.8% precision<br/>➔ <span class="action">RESULT: Payout triggered via Stripe API [OK]</span></div>
+          <a href="n8n-automation.html" class="bot-action-badge"><i class="fa-solid fa-gears"></i> View n8n Integration Specs →</a>
+        `);
+      }
+      // 4. Voice AI
+      else if (input.includes('voice') || input.includes('call') || input.includes('phone') || input.includes('support') || input === 'voice') {
+        appendBotMsg(`
+          <strong>Real-Time Sub-Second Voice AI Callers:</strong><br/>
+          Our Voice AI agents handle inbound support and outbound sales inquiries with natural human latency (&lt; 800ms) and automatic escalation to human staff.
+          <div class="bot-workflow-box">➔ TELEPHONY: Twilio / Retell AI SIP Trunk<br/>➔ <span class="highlight">SPEECH-TO-TEXT: Whisper Real-Time Stream</span><br/>➔ LLM DECISION: Intent recognized (Appointment Reschedule)<br/>➔ <span class="action">ACTION: Calendar updated & SMS Confirmation Sent</span></div>
+          <a href="voice.html" class="bot-action-badge"><i class="fa-solid fa-headset"></i> Test Voice AI Agent Demo →</a>
+        `);
+      }
+      // 5. RAG / Knowledge
+      else if (input.includes('rag') || input.includes('knowledge') || input.includes('vector') || input.includes('document') || input.includes('pdf')) {
+        appendBotMsg(`
+          <strong>RAG & Enterprise Knowledge Systems:</strong><br/>
+          We connect your company's PDFs, Notion pages, and SQL databases into high-precision vector search indexes (Pinecone / Qdrant) for 100% hallucination-free AI answers.
+          <a href="knowledge.html" class="bot-action-badge"><i class="fa-solid fa-brain"></i> Explore RAG Architecture →</a>
+        `);
+      }
+      // 6. Contact / Upwork / Hire / Price
+      else if (input.includes('contact') || input.includes('upwork') || input.includes('linkedin') || input.includes('email') || input.includes('hire') || input.includes('price') || input.includes('cost')) {
+        appendBotMsg(`
+          <strong>Connect with WHX Digital Engineering:</strong><br/>
+          We partner with enterprises, agencies, and founders globally:
+          <div style="margin-top:8px;">
+            <a href="https://www.upwork.com/freelancers/~0187ee99ef01623869?mp_source=share" target="_blank" rel="noopener noreferrer" class="bot-action-badge" style="background:#14a800; color:#fff; border-color:#14a800;"><i class="fa-brands fa-upwork"></i> Verified Upwork Profile</a>
+            <a href="https://www.linkedin.com/in/whxdigital?originalSubdomain=pt" target="_blank" rel="noopener noreferrer" class="bot-action-badge" style="background:#0a66c2; color:#fff; border-color:#0a66c2;"><i class="fa-brands fa-linkedin"></i> LinkedIn Profile</a>
+          </div>
+          <div style="margin-top:10px; font-size:0.88rem; color:#475569;">
+            <i class="fa-solid fa-envelope" style="color:#7c3aed;"></i> <strong>info@whxdigital.com</strong><br/>
+            <i class="fa-solid fa-envelope" style="color:#7c3aed;"></i> <strong>whxdigital@gmail.com</strong>
+          </div>
+        `);
+      }
+      // 7. Reviews / Proof
+      else if (input.includes('review') || input.includes('proof') || input.includes('client') || input.includes('testimonial') || input.includes('rating')) {
+        appendBotMsg(`
+          <strong>1 Verified Client Review:</strong><br/>
+          Check our verified client feedback from SEO Benchmark:
+          <a href="reviews.html" class="bot-action-badge"><i class="fa-solid fa-star" style="color:#eab308;"></i> Explore 1 Verified Client Review →</a>
+        `);
+      }
+      // 8. Live Workflow Simulation Demo
+      else if (input.includes('demo') || input.includes('test') || input.includes('run') || input.includes('agents')) {
+        runInteractiveWorkflowSimulation();
+      }
+      // 9. General Intelligent Fallback
+      else {
+        appendBotMsg(`
+          <strong>WHX Autonomous AI Intelligence Response:</strong><br/>
+          I processed your query: <em>"${escapeHtml(rawInput)}"</em>.<br/><br/>
+          WHX Digital designs self-healing multi-agent workflows, custom n8n pipelines, Voice AI callers, and zero-hallucination RAG knowledge engines.
+          <div class="bot-options" style="margin-top:12px;">
+            <button class="bot-opt-btn" onclick="triggerBotQuery('services')"><i class="fa-solid fa-bolt"></i> Explore Core Services</button>
+            <button class="bot-opt-btn" onclick="triggerBotQuery('demo')"><i class="fa-solid fa-play"></i> Run Workflow Simulation</button>
+            <button class="bot-opt-btn" onclick="triggerBotQuery('contact')"><i class="fa-solid fa-envelope"></i> Contact & Upwork Profile</button>
+          </div>
+        `);
+      }
+    }, 700);
+  }
+
+  function runInteractiveWorkflowSimulation() {
+    appendBotMsg(`
+      <strong>Initializing WHX Live Workflow Test...</strong>
+      <div class="bot-workflow-box" id="botSimLog">➔ [0ms] ⚡ INITIATING EVENT LISTENERS...</div>
+    `);
+
+    const simLog = document.getElementById('botSimLog');
+    if (!simLog) return;
+
+    setTimeout(() => {
+      simLog.innerHTML += `<br/>➔ [140ms] <span class="highlight">🧠 RAG: Querying Pinecone Vector Index... Score 0.98</span>`;
+      chatArea.scrollTop = chatArea.scrollHeight;
+    }, 600);
+
+    setTimeout(() => {
+      simLog.innerHTML += `<br/>➔ [320ms] 🤖 AGENT: Evaluating Human-in-the-Loop approval criteria...`;
+      chatArea.scrollTop = chatArea.scrollHeight;
+    }, 1200);
+
+    setTimeout(() => {
+      simLog.innerHTML += `<br/>➔ [540ms] <span class="action">🔄 ACTION: Bi-directional CRM Sync & Slack Notification Sent [OK]</span>`;
+      chatArea.scrollTop = chatArea.scrollHeight;
+
+      setTimeout(() => {
+        appendBotMsg(`
+          <strong>Workflow Simulation Completed in 540ms!</strong><br/>
+          All execution state checkpoints passed successfully.
+          <div class="bot-options" style="margin-top:8px;">
+            <button class="bot-opt-btn" onclick="triggerBotQuery('services')"><i class="fa-solid fa-bolt"></i> Learn more about our Architecture</button>
+            <button class="bot-opt-btn" onclick="triggerBotQuery('contact')"><i class="fa-solid fa-envelope"></i> Hire WHX Digital for your project</button>
+          </div>
+        `);
+      }, 500);
+    }, 1800);
+  }
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  if (botSendBtn && botInput) {
+    botSendBtn.addEventListener('click', () => {
+      const val = botInput.value.trim();
+      if (val) processUserIntent(val);
+    });
+
+    botInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        botSendBtn.click();
+      }
+    });
+  }
+
+  // Initialize review filter on reviews.html
+  initReviewsFilter();
+});
+
+/* ==========================================================================
+   WHX Multi-Platform Reviews Filter
+   ========================================================================== */
+function initReviewsFilter() {
+  const filterBtns = document.querySelectorAll('.review-filter-btn');
+  const reviewCards = document.querySelectorAll('.review-card[data-source]');
+  if (!filterBtns.length || !reviewCards.length) return;
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const source = btn.getAttribute('data-filter');
+
+      filterBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      reviewCards.forEach((card) => {
+        const cardSource = card.getAttribute('data-source');
+        if (source === 'all' || cardSource === source) {
+          card.style.display = 'flex';
+          card.style.opacity = '1';
+        } else {
+          card.style.display = 'none';
+          card.style.opacity = '0';
+        }
+      });
+    });
+  });
+}
+
+
+/* ==========================================================================
+   CONTACT FORM DIRECT EMAIL DELIVERY (whxdigital@gmail.com)
+   ========================================================================== */
+
+const WHX_RECEIVER_EMAIL = "whxdigital@gmail.com";
+const WHX_FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${WHX_RECEIVER_EMAIL}`;
+
+document.addEventListener('DOMContentLoaded', () => {
+  const contactForm = document.getElementById('whx-contact-form');
+  if (contactForm) {
+    const formRenderTime = Date.now();
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const statusDiv = document.getElementById('form-status');
+      const submitBtn = document.getElementById('form-submit-btn');
+      
+      // Basic Spam Protection (Honeypot + Time Check)
+      const honeypot = document.getElementById('bot_field') ? document.getElementById('bot_field').value : '';
+      const timeElapsed = Date.now() - formRenderTime;
+      
+      if (honeypot || timeElapsed < 1500) {
+        statusDiv.style.display = 'block';
+        statusDiv.style.background = '#dcfce7';
+        statusDiv.style.color = '#16a34a';
+        statusDiv.innerText = "Thanks - your automation request has been received.";
+        contactForm.reset();
+        return;
+      }
+
+      // Gather Data
+      const name = (document.getElementById('form-name')?.value || '').trim();
+      const email = (document.getElementById('form-email')?.value || '').trim();
+      const company = (document.getElementById('form-company')?.value || '').trim() || 'N/A';
+      const currentTools = (document.getElementById('form-tools')?.value || '').trim() || 'N/A';
+      const automationGoal = (document.getElementById('form-goal')?.value || '').trim();
+      const message = (document.getElementById('form-message')?.value || '').trim() || 'N/A';
+
+      if (!name || !email || !automationGoal) {
+        statusDiv.style.display = 'block';
+        statusDiv.style.background = '#fee2e2';
+        statusDiv.style.color = '#b91c1c';
+        statusDiv.innerText = "Please fill in all required fields (Name, Work Email, Automation Goal).";
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.innerText = "DISPATCHING TO WHX TEAM...";
+      submitBtn.style.opacity = "0.7";
+      statusDiv.style.display = 'none';
+
+      const trace = document.getElementById('whx-trace-lines');
+      const log = (msg, col = '#059669') => {
+        if (!trace) return;
+        trace.innerHTML += `<div class="trace-line" style="color:${col};">[ ${new Date().toISOString().substring(11,23)} ] ${msg}</div>`;
+        trace.parentElement.scrollTop = trace.parentElement.scrollHeight;
+      };
+      
+      const setNode = (i, state) => {
+        const n = document.getElementById('node-'+i);
+        const b = document.getElementById('badge-'+i);
+        if (n) {
+          n.style.borderColor = state === 'success' ? '#10b981' : state === 'error' ? '#ef4444' : state === 'active' ? '#7c3aed' : '';
+          n.style.background = state === 'active' ? 'rgba(124, 58, 237, 0.05)' : '';
+        }
+        if (b) {
+          b.textContent = state.toUpperCase();
+          b.style.background = state === 'success' ? '#dcfce7' : state === 'error' ? '#fee2e2' : state === 'active' ? '#f3e8ff' : '';
+          b.style.color = state === 'success' ? '#16a34a' : state === 'error' ? '#dc2626' : state === 'active' ? '#7c3aed' : '';
+        }
+      };
+
+      if (trace) trace.innerHTML = '';
+      log("INIT: Contact package compiled.");
+      setNode(1, 'active');
+      await new Promise(r => setTimeout(r, 350));
+      setNode(1, 'success');
+      
+      setNode(2, 'active');
+      log("VALIDATE: Schema & work email verified.");
+      await new Promise(r => setTimeout(r, 350));
+      setNode(2, 'success');
+      
+      setNode(3, 'active');
+      log("CLASSIFY: High-intent Growth & Automation inquiry.");
+      await new Promise(r => setTimeout(r, 350));
+      setNode(3, 'success');
+
+      setNode(4, 'active');
+      log(`ROUTE: Transmitting directly to ${WHX_RECEIVER_EMAIL}...`);
+
+      const payload = {
+        name: name,
+        email: email,
+        company: company,
+        currentTools: currentTools,
+        automationGoal: automationGoal,
+        message: message,
+        submittedAt: new Date().toISOString(),
+        pageSource: window.location.href,
+        _subject: `New WHX Project Request from ${name} (${company !== 'N/A' ? company : email})`,
+        _template: "table",
+        _captcha: "false"
+      };
+
+      try {
+        const response = await fetch(WHX_FORMSUBMIT_ENDPOINT, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const resData = await response.json().catch(() => ({}));
+
+        setNode(4, 'success');
+        setNode(5, 'active');
+
+        // FormSubmit returns 200 or { success: "true" } or { message: "This form needs Activation..." }
+        if (response.ok || resData.success === "true" || resData.success === true || (resData.message && resData.message.includes('Activation'))) {
+          log(`NOTIFY: Delivery confirmed to ${WHX_RECEIVER_EMAIL}.`);
+          setNode(5, 'success');
+          setNode(6, 'success');
+          log("COMPLETE: Dispatch sequence successful. Standby.");
+          
+          statusDiv.style.display = 'block';
+          statusDiv.style.background = '#dcfce7';
+          statusDiv.style.border = '1px solid #86efac';
+          statusDiv.style.color = '#15803d';
+          statusDiv.innerHTML = `<div style="font-weight:700; margin-bottom:4px;"><i class="fa-solid fa-circle-check"></i> Request Delivered to WHX Digital!</div><div>Your details have been sent directly to <strong>${WHX_RECEIVER_EMAIL}</strong>. We will review your project and reply within 24 hours.</div>`;
+          contactForm.reset();
+        } else {
+          throw new Error(resData.message || "Email dispatch failed");
+        }
+      } catch (err) {
+        console.warn("AJAX email delivery notice:", err);
+        // Fallback: Submit native form directly so it never gets lost
+        log("FALLBACK: Executing secondary dispatch pathway...", '#f59e0b');
+        setNode(4, 'active');
+        try {
+          contactForm.submit();
+        } catch (e2) {
+          setNode(4, 'error');
+          setNode(5, 'error');
+          setNode(6, 'error');
+          log(`ERR: Direct transmit failed. Please mail directly to ${WHX_RECEIVER_EMAIL}.`, '#ef4444');
+          statusDiv.style.display = 'block';
+          statusDiv.style.background = '#fee2e2';
+          statusDiv.style.border = '1px solid #fca5a5';
+          statusDiv.style.color = '#991b1b';
+          statusDiv.innerHTML = `<div>We could not auto-dispatch your form. Please email us directly at <a href="mailto:${WHX_RECEIVER_EMAIL}?subject=Automation Request from ${encodeURIComponent(name)}" style="color:#7c3aed; font-weight:700;">${WHX_RECEIVER_EMAIL}</a>.</div>`;
+        }
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = "SUBMIT AUTOMATION REQUEST";
+        submitBtn.style.opacity = "1";
+      }
+    });
+  }
+});
+
+/* ==========================================================================
+   WHX SYSTEM STATUS PANEL INTERACTION
+   ========================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  const badge = document.getElementById('whxSystemStatus');
+  const panel = document.getElementById('whxStatusPanel');
+  const closeBtn = document.getElementById('whxCloseStatus');
+
+  if (!badge || !panel) return;
+
+  function openPanel() {
+    badge.setAttribute('aria-expanded', 'true');
+    panel.classList.add('is-open');
+    panel.setAttribute('aria-hidden', 'false');
+  }
+
+  function closePanel() {
+    badge.setAttribute('aria-expanded', 'false');
+    panel.classList.remove('is-open');
+    panel.setAttribute('aria-hidden', 'true');
+  }
+
+  badge.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (panel.classList.contains('is-open')) {
+      closePanel();
+    } else {
+      openPanel();
+    }
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closePanel();
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    if (panel.classList.contains('is-open') && !panel.contains(e.target) && !badge.contains(e.target)) {
+      closePanel();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && panel.classList.contains('is-open')) {
+      closePanel();
+    }
+  });
+
+  // Optional module inspection
+  const moduleItems = panel.querySelectorAll('.status-module-item');
+  moduleItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      item.classList.toggle('is-expanded');
+    });
+  });
+});
+
+
+
+
+// WHX Interactive Modals & Workflow System
+(function() {
+  if (typeof document === 'undefined') return;
+
+  const interactiveItems = {
+    'aidecision': {
+      title: 'AI Decision',
+      description: 'The AI evaluates available context, business rules and workflow data to determine the appropriate next action.',
+      points: [
+        'Inputs: business context, CRM data, knowledge, rules',
+        'Decision: classify / route / respond / escalate',
+        'Safeguard: important decisions can require human approval'
+      ],
+      status: 'DECIDE',
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>'
+    },
+    'policycheck': {
+      title: 'Policy Check',
+      description: 'Before an action is executed, the workflow can validate permissions, business rules and operational restrictions.',
+      points: [
+        'Permission checks',
+        'Required conditions',
+        'Restricted actions',
+        'Compliance with configured business rules'
+      ],
+      status: 'CHECK',
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>'
+    },
+    'humanapproval': {
+      title: 'Human Approval',
+      description: 'Sensitive or high-impact actions can pause and wait for an authorized person before execution.',
+      points: [
+        'Approval required',
+        'Reject / Approve',
+        'Human-in-the-loop control',
+        'Audit trail where configured'
+      ],
+      status: 'APPROVE',
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>'
+    },
+    'apiaction': {
+      title: 'API Action',
+      description: 'After validation, the system can call an approved API or connected business application to perform the required action.',
+      points: [
+        'CRM updates',
+        'API requests',
+        'Notifications',
+        'Database actions',
+        'External business tools'
+      ],
+      status: 'ACT',
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M18 8h1a4 4 0 0 1 0 8h-1M6 8H5a4 4 0 0 0 0 8h1M2 12h20"/></svg>'
+    },
+    'verification': {
+      title: 'Verification',
+      description: 'The workflow checks whether the requested action completed successfully before marking the task complete.',
+      points: [
+        'Response validation',
+        'Error detection',
+        'Retry / queue logic',
+        'Final result confirmation'
+      ],
+      status: 'VERIFY',
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>'
+    },
+    'openai': {
+      title: 'OpenAI',
+      description: 'AI model and API platform used for language, reasoning and AI-powered application workflows.',
+      points: [
+        'AI agents',
+        'structured extraction',
+        'reasoning workflows',
+        'support automation',
+        'CRM automation',
+        'API-driven AI tasks'
+      ],
+      integration: 'Usually connected through secure server-side API calls.',
+      icon: '<svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2057 5.9847 5.9847 0 0 0 3.989-2.9 6.051 6.051 0 0 0-.7388-7.0732zM13.2599 22.5002c-1.258 0-2.4411-.565-3.2354-1.55l.081-.0447 5.3409-3.0844v-6.3268l3.6558 2.1107c.026.015.051.0298.0779.043v5.2758a4.57 4.57 0 0 1-5.9202 3.5764zm-8.2323-2.1228a4.5682 4.5682 0 0 1-1.0778-6.8533l.081.047 5.3409 3.0844v6.3268l-3.6558-2.1107c-.027-.015-.052-.03-.0789-.044zM3.483 8.3512a4.5682 4.5682 0 0 1 4.8424-4.954l-.04.0722-2.671 4.626-5.4804 3.1645v-4.2215c0-.03.0039-.06.0118-.0887zM10.74 1.4998c1.258 0 2.4411.565 3.2354 1.55l-.081.0447-5.3409 3.0844v6.3268L4.8977 10.395c-.026-.015-.051-.0298-.0779-.043V5.0762a4.57 4.57 0 0 1 5.9202-3.5764zm8.2323 2.1228a4.5682 4.5682 0 0 1 1.0778 6.8533l-.081-.047-5.3409-3.0844V4.9733l3.6558 2.1107c.027.015.052.03.0789.044zm2.8048 9.1764a4.5682 4.5682 0 0 1-4.8424 4.954l.04-.0722 2.671-4.626 5.4804-3.1645v4.2215c0 .03-.0039.06-.0118.0887zM12 15.539l-3.0642-1.769v-3.538L12 8.461l3.0642 1.769v3.538L12 15.539z"/></svg>'
+    },
+    'gemini': {
+      title: 'Gemini',
+      description: 'Google\'s AI model ecosystem for multimodal and generative AI workflows.',
+      points: [
+        'AI agents',
+        'multimodal workflows',
+        'business automation',
+        'structured reasoning',
+        'AI-assisted data processing'
+      ],
+      icon: '<svg viewBox="0 0 24 24" width="24" height="24"><path d="M12 0l2 8 8 2-8 2-2 8-2-8-8-2 8-2z" fill="#4285f4"/><circle cx="18" cy="6" r="3" fill="#ea4335"/><circle cx="6" cy="18" r="3" fill="#fbbc04"/></svg>'
+    },
+    'claude': {
+      title: 'Claude',
+      description: 'An AI model platform that can support reasoning, content understanding and workflow automation.',
+      points: [
+        'document workflows',
+        'reasoning',
+        'agent tasks',
+        'structured analysis'
+      ],
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/><polyline points="14 2 14 8 20 8"/><path d="M2 15h10M6 11l-4 4 4 4"/></svg>'
+    },
+    'n8n': {
+      title: 'n8n',
+      description: 'A workflow automation platform used to connect APIs, applications and AI systems.',
+      points: [
+        'webhooks',
+        'CRM automation',
+        'API orchestration',
+        'AI workflows',
+        'notifications',
+        'database workflows'
+      ],
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="#ea3a66" stroke-width="2" width="24" height="24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="#ea3a66"/><circle cx="15.5" cy="8.5" r="1.5" fill="#ea3a66"/><circle cx="12" cy="15.5" r="1.5" fill="#ea3a66"/><path d="M8.5 10v3.5a2 2 0 0 0 2 2h1.5M15.5 10v3.5a2 2 0 0 1-2 2h-1.5"/></svg>'
+    },
+    'make': {
+      title: 'Make',
+      description: 'A visual automation platform for connecting applications and business workflows.',
+      points: [
+        'application integrations',
+        'workflow automation',
+        'data routing',
+        'API workflows'
+      ],
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M12 2v6M12 16v6M2 12h6M16 12h6"/></svg>'
+    },
+    'gohighlevel': {
+      title: 'GoHighLevel',
+      description: 'A CRM and automation platform commonly used for lead management, pipelines, communication and appointments.',
+      points: [
+        'lead routing',
+        'CRM automation',
+        'Voice AI workflows',
+        'appointment workflows',
+        'pipeline updates'
+      ],
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M2 20h20M5 20V8l7-6 7 6v12M9 20v-6h6v6"/></svg>'
+    },
+    'restapis': {
+      title: 'REST APIs',
+      description: 'REST APIs allow software systems to exchange data and trigger actions.',
+      points: [
+        'CRM integration',
+        'AI provider integration',
+        'custom software',
+        'databases',
+        'workflow triggers',
+        'external systems'
+      ],
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>'
+    },
+    'seobenchmark': {
+      title: 'SEO Benchmark',
+      description: 'SEO Benchmark is a digital marketing and SEO platform/business associated with WHX\'s broader operating experience.',
+      link: 'https://seobenchmark.com/',
+      linkText: 'Visit SEO Benchmark',
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M3 3v18h18"/><path d="M18 9l-5 5-4-4-5 5"/></svg>'
+    }
+  };
+
+  // Convert texts to keys
+  const mapping = {
+    'ai decision': 'aidecision',
+    'policy check': 'policycheck',
+    'human approval': 'humanapproval',
+    'api action': 'apiaction',
+    'verification': 'verification',
+    'openai': 'openai',
+    'gemini': 'gemini',
+    'claude': 'claude',
+    'n8n': 'n8n',
+    'make': 'make',
+    'gohighlevel': 'gohighlevel',
+    'rest api': 'restapis',
+    'rest apis': 'restapis',
+    'seo benchmark': 'seobenchmark'
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Inject Dialog Modal
+    const dialogHTML = `
+      <dialog id="whx-info-modal" class="whx-info-modal">
+        <div class="whx-modal-content">
+          <button class="whx-modal-close" aria-label="Close" type="button">&times;</button>
+          <div class="whx-modal-header">
+            <div class="whx-modal-icon" id="whx-modal-icon"></div>
+            <h3 id="whx-modal-title"></h3>
+            <span id="whx-modal-status" class="whx-modal-status"></span>
+          </div>
+          <div class="whx-modal-body">
+            <p id="whx-modal-desc"></p>
+            <h4 id="whx-modal-cases-title">Use cases & workflows</h4>
+            <ul id="whx-modal-list"></ul>
+            <p id="whx-modal-integration" class="whx-integration-text"></p>
+            <div id="whx-modal-link-container"></div>
+          </div>
+        </div>
+      </dialog>
+    `;
+    document.body.insertAdjacentHTML('beforeend', dialogHTML);
+
+    const modal = document.getElementById('whx-info-modal');
+    const closeBtn = modal.querySelector('.whx-modal-close');
+    
+    closeBtn.addEventListener('click', () => modal.close());
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.close();
+    });
+
+    let currentTrigger = null;
+    modal.addEventListener('close', () => {
+      if (currentTrigger) {
+        currentTrigger.focus();
+        currentTrigger.classList.remove('is-active-node');
+      }
+      document.querySelectorAll('.whx-interactive-pill').forEach(el => el.classList.remove('is-dimmed'));
+    });
+
+    // Find and upgrade elements
+    const elementsToCheck = document.querySelectorAll('.tech-pill, .process-node, .workflow-step, .core-node, .badge, .decision-split, .approval-decision, .approval-card, .hitl-decision-card, .hitl-review-card, .capability-pill');
+    
+    elementsToCheck.forEach(el => {
+      if (el.tagName === 'A') return; // Skip links
+      
+      const text = el.textContent.toLowerCase();
+      let matchedKey = null;
+      
+      for (const [phrase, key] of Object.entries(mapping)) {
+        if (text.includes(phrase)) {
+          matchedKey = key;
+          break;
+        }
+      }
+
+      if (matchedKey) {
+        // Upgrade element
+        el.classList.add('whx-interactive-pill');
+        el.setAttribute('role', 'button');
+        el.setAttribute('tabindex', '0');
+        el.setAttribute('aria-haspopup', 'dialog');
+        
+        const handler = (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          currentTrigger = el;
+          
+          // Visual connection logic
+          document.querySelectorAll('.whx-interactive-pill').forEach(other => {
+            if (other !== el) other.classList.add('is-dimmed');
+            else other.classList.remove('is-dimmed');
+          });
+          el.classList.add('is-active-node');
+
+          // Populate modal
+          const data = interactiveItems[matchedKey];
+          document.getElementById('whx-modal-icon').innerHTML = data.icon;
+          document.getElementById('whx-modal-title').textContent = data.title;
+          document.getElementById('whx-modal-desc').textContent = data.description;
+          
+          if (data.status) {
+            document.getElementById('whx-modal-status').textContent = data.status;
+            document.getElementById('whx-modal-status').style.display = 'inline-block';
+          } else {
+            document.getElementById('whx-modal-status').style.display = 'none';
+          }
+
+          const listContainer = document.getElementById('whx-modal-list');
+          if (data.points && data.points.length > 0) {
+            document.getElementById('whx-modal-cases-title').style.display = 'block';
+            listContainer.style.display = 'block';
+            listContainer.innerHTML = data.points.map(p => `<li>${p}</li>`).join('');
+          } else {
+            document.getElementById('whx-modal-cases-title').style.display = 'none';
+            listContainer.style.display = 'none';
+          }
+
+          const intText = document.getElementById('whx-modal-integration');
+          if (data.integration) {
+            intText.textContent = data.integration;
+            intText.style.display = 'block';
+          } else {
+            intText.style.display = 'none';
+          }
+
+          const linkCont = document.getElementById('whx-modal-link-container');
+          if (data.link) {
+            linkCont.innerHTML = `<a href="${data.link}" target="_blank" rel="noopener noreferrer" class="whx-modal-btn">${data.linkText}</a>`;
+          } else {
+            linkCont.innerHTML = '';
+          }
+
+          modal.showModal();
+        };
+
+        el.addEventListener('click', handler);
+        el.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            handler(e);
+          }
+        });
+      }
+    });
+
+    // Also upgrade the explicit terms inside the "whx-rotating-services" or pure text spans if needed
+    // But since they are dynamic or text, applying to class lists is safer.
+  });
+})();
+
+// Code Vibe Modal Interaction
+document.addEventListener('DOMContentLoaded', () => {
+  // Ensure the modal HTML exists in the document
+  let codeModal = document.getElementById('codeVibeModal');
+  if (!codeModal) {
+    const modalHTML = `
+      <div id="codeVibeModal" class="code-vibe-modal" style="display:none;">
+        <div class="code-vibe-window">
+          <div class="code-vibe-header">
+            <div class="code-vibe-title" id="codeVibeTitle">whx-systems-core.js</div>
+            <button class="code-vibe-close">&times;</button>
+          </div>
+          <div class="code-vibe-body">
+            <pre><code id="codeVibeContent"></code></pre>
+          </div>
+        </div>
+      </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    codeModal = document.getElementById('codeVibeModal');
+  }
+
+  const closeBtn = document.querySelector('.code-vibe-close');
+  const codeContent = document.getElementById('codeVibeContent');
+  const modalTitle = document.getElementById('codeVibeTitle');
+  
+  const triggers = document.querySelectorAll('.system-online-indicator, .status-text');
+
+  const topCodeString = `// ==========================================
+// WHX DIGITAL - AUTONOMOUS AI CLUSTER
+// ==========================================
+
+import { AgentCluster, CRMConnector, Orchestrator } from '@whx/core';
+
+async function bootNextGenSystems() {
+  console.log('[CLUSTER] Initializing next-gen AI systems...');
+  const orchestrator = new Orchestrator({ concurrency: 100 });
+  
+  console.log('[CLUSTER] Establishing CRM webhooks...');
+  await CRMConnector.sync({ provider: 'GoHighLevel', mode: 'real-time' });
+
+  console.log('[CLUSTER] Deploying reasoning models...');
+  orchestrator.registerModels(['gpt-4o', 'gemini-1.5-pro']);
+  
+  console.log('[CLUSTER] ALL SYSTEMS ONLINE. AWAITING TRIGGERS.');
+  return { status: 200, message: 'Operational' };
+}
+
+bootNextGenSystems();`;
+
+  const footerCodeString = `// ==========================================
+// WHX DIGITAL - NETWORK & HEALTH STATUS
+// ==========================================
+
+import { SystemMonitor, Telemetry } from '@whx/monitoring';
+
+async function runHealthDiagnostic() {
+  console.log('[MONITOR] Pinging AI provider endpoints...');
+  const latency = await SystemMonitor.ping(['OpenAI', 'Gemini', 'Anthropic']);
+  
+  console.log('[MONITOR] Verifying webhook listeners...');
+  const webhooks = await Telemetry.checkActiveRoutes();
+  
+  console.log('[MONITOR] Checking n8n automation instances...');
+  const n8nStatus = await SystemMonitor.checkEngine('n8n');
+
+  if (latency.ok && webhooks.active && n8nStatus === 'healthy') {
+    console.log('[STATUS] AI SYSTEMS OPERATIONAL. 99.99% UPTIME.');
+  }
+}
+
+runHealthDiagnostic();`;
+
+  let typingTimeout;
+
+  triggers.forEach(trigger => {
+    if (trigger.classList.contains('system-online-indicator') || trigger.textContent.includes('AI Systems Operational')) {
+      trigger.style.cursor = 'pointer';
+      
+      trigger.addEventListener('click', () => {
+        const isTop = trigger.classList.contains('system-online-indicator');
+        const codeString = isTop ? topCodeString : footerCodeString;
+        
+        if (modalTitle) {
+          modalTitle.textContent = isTop ? 'whx-autonomous-cluster.js' : 'whx-health-monitor.js';
+        }
+
+        codeModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        codeContent.innerHTML = '';
+        
+        if (typingTimeout) clearTimeout(typingTimeout);
+        
+        let i = 0;
+        function typeWriter() {
+          if (i < codeString.length) {
+            codeContent.innerHTML += codeString.charAt(i);
+            i++;
+            typingTimeout = setTimeout(typeWriter, 15);
+          }
+        }
+        typeWriter();
+      });
+    }
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      codeModal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+      if (typingTimeout) clearTimeout(typingTimeout);
+    });
+  }
+});
+
+// ============================================================
+// WHX INTERACTIVE SUITE: GEO-GRID RADAR + GEO/AIO + REVENUE SIMULATOR + FAQ
+// ============================================================
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. Interactive 25km Geo-Grid Radar & Multi-Industry Live Preset Engine
+  const radarMap = document.getElementById("whx-radar-map") || document.getElementById("WHX-radar-map") || document.querySelector(".geogrid-radar-map");
   if (radarMap) {
-    const radarNodes = radarMap.querySelectorAll(".grid-node-dot");
+    const radarNodes = radarMap.querySelectorAll(".grid-node-pin");
     const teleNodeName = document.getElementById("tele-node-name");
     const teleRank = document.getElementById("tele-rank");
     const teleVol = document.getElementById("tele-vol");
     const teleCalls = document.getElementById("tele-calls");
     const mockupLocTag = document.getElementById("mockup-loc-tag");
+    const mockupSearchInput = document.getElementById("mockup-search-input");
+    const mockupSearchBtn = document.getElementById("mockup-search-btn");
     const winnerPack = document.getElementById("winner-pack-item");
+    const winnerBizName = document.getElementById("winner-biz-name");
+    const winnerReviewsText = document.getElementById("winner-reviews-text");
+    const winnerDescText = document.getElementById("winner-desc-text");
+    const comp1Name = document.getElementById("comp-1-name");
+    const comp1Desc = document.getElementById("comp-1-desc");
+    const comp2Name = document.getElementById("comp-2-name");
+    const comp2Desc = document.getElementById("comp-2-desc");
+    const presetChips = document.querySelectorAll(".preset-chip");
 
+    // Comprehensive real-world data presets
+    const industryPresets = {
+      hvac: {
+        query: "best emergency HVAC near me",
+        bizName: "Your Business (WHX Optimized)",
+        reviews: "4.9 ★ (340+ Verified Reviews)",
+        desc: "Google Business Profile • Open 24/7 • <15s Automated AI Booking",
+        locDefault: "Central Metro (0.0 km)",
+        comp1: { name: "Metro Climate Direct", desc: "4.2 ★ (48 reviews) • Missing secondary categories • Closes 5 PM" },
+        comp2: { name: "City Air Solutions", desc: "3.9 ★ (19 reviews) • Inconsistent citations • No localized schema" },
+        nodes: {
+          nw: { name: "Northwest Suburbs", dist: "7.8 km", vol: "1,840/mo", calls: "+290%" },
+          n: { name: "North Industrial Corridor", dist: "6.2 km", vol: "2,400/mo", calls: "+310%" },
+          ne: { name: "Northeast Tech Hub", dist: "8.5 km", vol: "1,650/mo", calls: "+275%" },
+          w: { name: "West Metro Commercial", dist: "5.1 km", vol: "2,900/mo", calls: "+330%" },
+          c: { name: "Metro Downtown Center", dist: "0.0 km", vol: "5,200/mo", calls: "+420%" },
+          e: { name: "East Business Park", dist: "5.4 km", vol: "2,750/mo", calls: "+320%" },
+          sw: { name: "Southwest Residential", dist: "9.1 km", vol: "1,420/mo", calls: "+260%" },
+          s: { name: "South Logistics Quarter", dist: "6.8 km", vol: "2,100/mo", calls: "+295%" },
+          se: { name: "Southeast Marina Zone", dist: "8.9 km", vol: "1,580/mo", calls: "+280%" }
+        }
+      },
+      dental: {
+        query: "cosmetic dentistry and dental implants near me",
+        bizName: "Your Dental Clinic (WHX Partner)",
+        reviews: "5.0 ★ (482 Google Reviews)",
+        desc: "Specialized Dental Center • Online Booking • Instant Consultation Chat",
+        locDefault: "Downtown Medical Arts (0.0 km)",
+        comp1: { name: "Care Dental Associates", desc: "4.3 ★ (84 reviews) • Unclaimed Apple Maps • Slow booking response" },
+        comp2: { name: "Smile Studio Pro", desc: "4.0 ★ (31 reviews) • Duplicate Yelp profiles • No patient Q&A" },
+        nodes: {
+          nw: { name: "Northwest Medical Center", dist: "7.2 km", vol: "2,100/mo", calls: "+340%" },
+          n: { name: "North Uptown District", dist: "5.8 km", vol: "2,850/mo", calls: "+360%" },
+          ne: { name: "Northeast Corporate Park", dist: "8.1 km", vol: "1,920/mo", calls: "+310%" },
+          w: { name: "West Financial Core", dist: "4.6 km", vol: "3,400/mo", calls: "+390%" },
+          c: { name: "Downtown Medical Arts", dist: "0.0 km", vol: "6,100/mo", calls: "+490%" },
+          e: { name: "East Harbour Promenade", dist: "5.0 km", vol: "3,100/mo", calls: "+370%" },
+          sw: { name: "Southwest Residential Plaza", dist: "8.7 km", vol: "1,750/mo", calls: "+280%" },
+          s: { name: "South University Quarter", dist: "6.4 km", vol: "2,450/mo", calls: "+330%" },
+          se: { name: "Southeast Health Complex", dist: "8.5 km", vol: "1,880/mo", calls: "+295%" }
+        }
+      },
+      legal: {
+        query: "commercial litigation attorney in city",
+        bizName: "Your Law Firm (WHX Authority)",
+        reviews: "5.0 ★ (196 Verified Client Reviews)",
+        desc: "Licensed Attorneys • 24/7 AI Intake • High-Value Retainer Specialist",
+        locDefault: "Financial Court District (0.0 km)",
+        comp1: { name: "Sterling Legal Partners", desc: "4.4 ★ (38 reviews) • Missing practice area schema • Voicemail only" },
+        comp2: { name: "Apex Law Group", desc: "4.1 ★ (22 reviews) • Inconsistent office hours • Weak citation trust" },
+        nodes: {
+          nw: { name: "Northwest Executive Row", dist: "6.9 km", vol: "1,250/mo", calls: "+280%" },
+          n: { name: "North Civic Center", dist: "5.1 km", vol: "1,680/mo", calls: "+320%" },
+          ne: { name: "Northeast Innovation Hub", dist: "7.9 km", vol: "1,420/mo", calls: "+290%" },
+          w: { name: "West Corporate District", dist: "4.2 km", vol: "2,200/mo", calls: "+360%" },
+          c: { name: "Financial Court District", dist: "0.0 km", vol: "4,100/mo", calls: "+450%" },
+          e: { name: "East Commerce Square", dist: "4.8 km", vol: "1,950/mo", calls: "+330%" },
+          sw: { name: "Southwest Judicial Plaza", dist: "8.4 km", vol: "1,150/mo", calls: "+250%" },
+          s: { name: "South Trade Center", dist: "6.1 km", vol: "1,520/mo", calls: "+300%" },
+          se: { name: "Southeast Marina Towers", dist: "8.2 km", vol: "1,310/mo", calls: "+270%" }
+        }
+      },
+      roofing: {
+        query: "luxury roofing contractor near me",
+        bizName: "Your Roofing & Restoration (WHX)",
+        reviews: "4.9 ★ (288 Project Reviews)",
+        desc: "Certified & Insured • Instant Drone Estimate • 24/7 Storm Response",
+        locDefault: "Metro Headquarters (0.0 km)",
+        comp1: { name: "Vanguard Roofers", desc: "4.2 ★ (42 reviews) • No geo-tagged photos • 48hr quote turnaround" },
+        comp2: { name: "Premier Exteriors", desc: "3.8 ★ (15 reviews) • Missing BBB accreditation • No schema" },
+        nodes: {
+          nw: { name: "Northwest Luxury Estates", dist: "8.2 km", vol: "2,350/mo", calls: "+350%" },
+          n: { name: "North Ridge Community", dist: "6.7 km", vol: "2,900/mo", calls: "+380%" },
+          ne: { name: "Northeast Heights", dist: "9.0 km", vol: "2,100/mo", calls: "+320%" },
+          w: { name: "West Valley Suburbs", dist: "5.5 km", vol: "3,600/mo", calls: "+410%" },
+          c: { name: "Metro Headquarters", dist: "0.0 km", vol: "5,800/mo", calls: "+470%" },
+          e: { name: "East Lakeside District", dist: "5.8 km", vol: "3,200/mo", calls: "+390%" },
+          sw: { name: "Southwest Canyon Estates", dist: "9.4 km", vol: "1,850/mo", calls: "+300%" },
+          s: { name: "South Foothills Suburb", dist: "7.2 km", vol: "2,600/mo", calls: "+340%" },
+          se: { name: "Southeast Country Club", dist: "9.2 km", vol: "2,050/mo", calls: "+310%" }
+        }
+      }
+    };
+
+    let currentPresetKey = "hvac";
+
+    const updatePresetUI = (presetKey) => {
+      const data = industryPresets[presetKey];
+      if (!data) return;
+      currentPresetKey = presetKey;
+
+      if (mockupSearchInput) mockupSearchInput.value = data.query;
+      if (winnerBizName) winnerBizName.textContent = data.bizName;
+      if (winnerReviewsText) winnerReviewsText.textContent = data.reviews;
+      if (winnerDescText) winnerDescText.textContent = data.desc;
+      if (comp1Name) comp1Name.textContent = data.comp1.name;
+      if (comp1Desc) comp1Desc.textContent = data.comp1.desc;
+      if (comp2Name) comp2Name.textContent = data.comp2.name;
+      if (comp2Desc) comp2Desc.textContent = data.comp2.desc;
+      if (mockupLocTag) mockupLocTag.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${data.locDefault}`;
+
+      // Reset center pin active
+      radarNodes.forEach((node) => {
+        const key = node.getAttribute("data-node");
+        const nodeData = data.nodes[key];
+        if (nodeData) {
+          node.setAttribute("data-name", nodeData.name);
+          node.setAttribute("data-dist", nodeData.dist);
+          node.setAttribute("data-searches", nodeData.vol);
+          node.setAttribute("data-calls", nodeData.calls);
+        }
+        if (key === "c") {
+          node.classList.add("is-active", "center-pin");
+          if (teleNodeName && nodeData) teleNodeName.textContent = `${nodeData.name} (${nodeData.dist})`;
+          if (teleRank) teleRank.textContent = "#1 Position";
+          if (teleVol && nodeData) teleVol.textContent = nodeData.vol;
+          if (teleCalls && nodeData) teleCalls.textContent = nodeData.calls;
+        } else {
+          node.classList.remove("is-active");
+        }
+      });
+    };
+
+    // Preset button click listeners
+    presetChips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        presetChips.forEach((c) => c.classList.remove("is-active"));
+        chip.classList.add("is-active");
+        const presetKey = chip.getAttribute("data-preset");
+        updatePresetUI(presetKey);
+      });
+    });
+
+    // Radar Node Pin Click Interactivity
     radarNodes.forEach((node) => {
       node.addEventListener("click", () => {
         radarNodes.forEach((n) => n.classList.remove("is-active"));
@@ -2922,371 +4278,381 @@ runHealthDiagnostic();`;
 
         const name = node.getAttribute("data-name") || "Downtown Center";
         const dist = node.getAttribute("data-dist") || "0.0 km";
-        const searches = node.getAttribute("data-searches") || "3,000";
-        const calls = node.getAttribute("data-calls") || "+350%";
+        const searches = node.getAttribute("data-searches") || "5,200/mo";
+        const calls = node.getAttribute("data-calls") || "+420%";
 
         if (teleNodeName) teleNodeName.textContent = `${name} (${dist})`;
-        if (teleVol) teleVol.textContent = `${searches}/mo`;
+        if (teleRank) teleRank.textContent = "#1 Position";
+        if (teleVol) teleVol.textContent = searches.includes("/mo") ? searches : `${searches}/mo`;
         if (teleCalls) teleCalls.textContent = calls;
-        if (mockupLocTag) mockupLocTag.textContent = `ðŸ“ ${name} (${dist})`;
+        if (mockupLocTag) mockupLocTag.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${name} (${dist})`;
 
         if (winnerPack) {
-          winnerPack.style.transition = "transform 0.2s ease, box-shadow 0.2s ease";
           winnerPack.style.transform = "scale(1.02)";
-          winnerPack.style.boxShadow = "0 0 25px rgba(16, 185, 129, 0.4)";
+          winnerPack.style.transition = "transform 0.25s ease";
           setTimeout(() => {
             winnerPack.style.transform = "scale(1)";
-            winnerPack.style.boxShadow = "";
-          }, 350);
+          }, 250);
         }
       });
     });
-  }
 
-  // 2. Interactive GEO & AIO AI Engine Simulator
-  const aioTabs = document.querySelectorAll(".aio-tab");
-  if (aioTabs.length) {
-    const aioEngineAvatar = document.getElementById("aio-engine-avatar");
-    const aioEngineTitle = document.getElementById("aio-engine-title");
-    const aioAnswerText = document.getElementById("aio-answer-text");
-    const aioCitationsContainer = document.getElementById("aio-citations-container");
+    // Custom search run button
+    if (mockupSearchBtn && mockupSearchInput) {
+      const runAudit = () => {
+        mockupSearchBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Scanning...`;
+        mockupSearchBtn.style.pointerEvents = "none";
 
-    const engineData = {
-      chatgpt: {
-        avatar: '<i class="fa-solid fa-robot"></i>',
-        title: "ChatGPT Search (GPT-4o Web Reasoning)",
-        answer: "Based on verified local citations, continuous 5.0-star Google reviews, and unblemished directory consistency across Apple Maps, Yelp, and official chambers of commerce, <strong>Your Business (WHX Partner)</strong> is recognized as the top-rated provider. They feature 24/7 immediate response times, automated scheduling, and full licensed territory coverage.",
-        citations: [
-          '<span class="cite-chip"><i class="fa-brands fa-google"></i> [1] Google Maps 3-Pack (5.0 ★)</span>',
-          '<span class="cite-chip"><i class="fa-solid fa-building-columns"></i> [2] Chamber Directory (Verified)</span>',
-          '<span class="cite-chip"><i class="fa-solid fa-shield"></i> [3] BBB Accredited A+</span>'
-        ]
-      },
-      perplexity: {
-        avatar: '<i class="fa-solid fa-compass"></i>',
-        title: "Perplexity AI Pro (Sonar Online Citation Graph)",
-        answer: "The consensus choice for top local services across independent web directories is <strong>Your Business (WHX Partner)</strong> [1]. Key ranking signals include high-authority local backlinks [2], 100% NAP consistency across 60+ directories [3], and automated instant booking workflows that eliminate lead drop-off.",
-        citations: [
-          '<span class="cite-chip"><i class="fa-solid fa-link"></i> [1] perplexity.ai/search/sources</span>',
-          '<span class="cite-chip"><i class="fa-solid fa-globe"></i> [2] Local News Editorial Backlinks</span>',
-          '<span class="cite-chip"><i class="fa-solid fa-check-double"></i> [3] Synced NAP Schema Graph</span>'
-        ]
-      },
-      "google-ai": {
-        avatar: '<i class="fa-brands fa-google"></i>',
-        title: "Google AI Overviews (Gemini Multi-Modal Engine)",
-        answer: "Google AI Overview synthesizes that <strong>Your Business (WHX Partner)</strong> holds the #1 verified position in the local Maps 3-Pack with a 5.0-star rating over 240+ reviews. They maintain active geo-tagged photos, complete entity schema, and instant 24/7 AI-assisted customer communication.",
-        citations: [
-          '<span class="cite-chip"><i class="fa-brands fa-google"></i> [1] Google Business Profile (Primary)</span>',
-          '<span class="cite-chip"><i class="fa-solid fa-map-location-dot"></i> [2] Local 3-Pack Geo-Grid #1</span>',
-          '<span class="cite-chip"><i class="fa-solid fa-star"></i> [3] Verified Customer Sentiment 100%</span>'
-        ]
-      }
-    };
-
-    aioTabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        aioTabs.forEach((t) => t.classList.remove("is-active"));
-        tab.classList.add("is-active");
-
-        const engine = tab.getAttribute("data-engine") || "chatgpt";
-        const data = engineData[engine];
-        if (data) {
-          if (aioEngineAvatar) aioEngineAvatar.innerHTML = data.avatar;
-          if (aioEngineTitle) aioEngineTitle.textContent = data.title;
-          if (aioAnswerText) aioAnswerText.innerHTML = data.answer;
-          if (aioCitationsContainer) aioCitationsContainer.innerHTML = data.citations.join("");
-        }
-      });
-    });
-  }
-
-  // 3. Interactive Local Search & AI Growth ROI Calculator
-  const dealSlider = document.getElementById("avg-deal-value");
-  const searchesSlider = document.getElementById("monthly-searches");
-
-  if (dealSlider && searchesSlider) {
-    const valDealDisplay = document.getElementById("val-deal-display");
-    const valSearchesDisplay = document.getElementById("val-searches-display");
-    const roiTotalRev = document.getElementById("roi-total-revenue");
-    const roiCallsCount = document.getElementById("roi-calls-count");
-    const roiDealsCount = document.getElementById("roi-deals-count");
-
-    const updateRoiCalculation = () => {
-      const dealVal = parseInt(dealSlider.value, 10) || 1500;
-      const searches = parseInt(searchesSlider.value, 10) || 3000;
-
-      if (valDealDisplay) valDealDisplay.textContent = `$${dealVal.toLocaleString()}`;
-      if (valSearchesDisplay) valSearchesDisplay.textContent = `${searches.toLocaleString()}`;
-
-      // In Google 3-Pack, ~22% click or call directly
-      const estCalls = Math.round(searches * 0.22);
-      // AI response under 15s converts at ~4.8% of search volume into closed clients
-      const estDeals = Math.max(1, Math.round(estCalls * 0.048));
-      const projectedRevenue = estDeals * dealVal;
-
-      if (roiCallsCount) roiCallsCount.textContent = estCalls.toLocaleString();
-      if (roiDealsCount) roiDealsCount.textContent = estDeals.toLocaleString();
-      if (roiTotalRev) roiTotalRev.innerHTML = `$${projectedRevenue.toLocaleString()}<small>/mo</small>`;
-    };
-
-    dealSlider.addEventListener("input", updateRoiCalculation);
-    searchesSlider.addEventListener("input", updateRoiCalculation);
-    updateRoiCalculation();
-  }
-});
-
-/* =====================================================================
-   Gemini AI Chatbot Widget Logic
-   ===================================================================== */
-document.addEventListener("DOMContentLoaded", () => {
-  const chatToggle = document.getElementById("aiChatToggle");
-  const chatWindow = document.getElementById("aiChatWindow");
-  const chatClose = document.getElementById("aiChatClose");
-  const chatInput = document.getElementById("aiChatInput");
-  const chatSend = document.getElementById("aiChatSend");
-  const chatMessages = document.getElementById("aiChatMessages");
-
-  if (!chatToggle || !chatWindow) return;
-
-  // IMPORTANT: Replace this with your actual Gemini API Key from Google AI Studio.
-  const GEMINI_API_KEY = window.GEMINI_API_KEY || ""; 
-
-  // Toggle Chat
-  chatToggle.addEventListener("click", () => {
-    chatWindow.classList.add("active");
-    chatInput.focus();
-  });
-
-  chatClose.addEventListener("click", () => {
-    chatWindow.classList.remove("active");
-  });
-
-  function addMessage(text, sender) {
-    const msgDiv = document.createElement("div");
-    msgDiv.classList.add("ai-message", sender);
-    // basic text formatting
-    msgDiv.innerHTML = text.replace(/\n/g, '<br>');
-    chatMessages.appendChild(msgDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-  }
-
-  async function handleSend() {
-    const text = chatInput.value.trim();
-    if (!text) return;
-
-    // Add user message
-    addMessage(text, "user");
-    chatInput.value = "";
-
-    // Show loading
-    const loadingId = "loading-" + Date.now();
-    const loadingDiv = document.createElement("div");
-    loadingDiv.classList.add("ai-message", "bot");
-    loadingDiv.id = loadingId;
-    loadingDiv.textContent = "Thinking...";
-    chatMessages.appendChild(loadingDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-
-        // Intelligent built-in agency assistant response
-    function getAssistantResponse(query) {
-      const q = query.toLowerCase();
-      if (/^(hi|hello|hey|howdy|salam|hola|how are you|good morning|good evening)/i.test(q) || q.includes("how are you")) {
-        return "Hello! I am AI Consultant, your dual-engine AI growth advisor. We help businesses dominate Google Maps 3-Pack rankings and deploy 24/7 autonomous AI systems. How can I help you scale today?";
-      }
-      if (q.includes("audit") || q.includes("speed") || q.includes("test") || q.includes("lighthouse") || q.includes("check")) {
-        return "You can run our free, real-time Google Lighthouse & SEO audit right now! Visit our <a href='tools/website-audit/index.html' style='color:#a855f7; font-weight:700;'>Free Website Audit Tool</a>.";
-      }
-      if (q.includes("service") || q.includes("offer") || q.includes("what do you do")) {
-        return "WHX Digital provides dual-engine growth solutions:<br>&bull; <b>Local SEO & Google Maps 3-Pack Dominance</b> (citations, authority links, geo-grid rankings)<br>&bull; <b>Autonomous AI Systems</b> (AI CRM, Voice AI agents, multi-agent workflows with n8n & GoHighLevel).";
-      }
-      if (q.includes("pricing") || q.includes("cost") || q.includes("price") || q.includes("package") || q.includes("budget")) {
-        return "Our growth plans are custom-tailored to your competition and automation needs. Test your site on our <a href='tools/website-audit/index.html' style='color:#a855f7; font-weight:700;'>Audit Tool</a> or message our team on WhatsApp at <b>WhatsApp Direct</b>.";
-      }
-      if (q.includes("contact") || q.includes("whatsapp") || q.includes("email") || q.includes("phone") || q.includes("call")) {
-        return "You can reach us directly:<br>&bull; <b>WhatsApp:</b> <a href='https://wa.me/351928350275' target='_blank' style='color:#22c55e; font-weight:700;'>WhatsApp Direct</a><br>&bull; <b>Email:</b> <a href='mailto:whxdigital@gmail.com' style='color:#a855f7; font-weight:700;'>whxdigital@gmail.com</a>";
-      }
-      if (q.includes("seo") || q.includes("google map") || q.includes("gmp") || q.includes("ranking") || q.includes("local")) {
-        return "Our Local SEO engine targets Google Maps 3-Pack supremacy. We optimize your Google Business Profile, build verified citations, and secure top rankings across your entire geographic radius.";
-      }
-      return "WHX Digital helps businesses dominate Google search and deploy automated AI operations. Would you like to run a <a href='tools/website-audit/index.html' style='color:#a855f7; font-weight:700;'>Free Website Audit</a>, or connect with our lead strategist on <a href='https://wa.me/351928350275' target='_blank' style='color:#22c55e; font-weight:700;'>WhatsApp (WhatsApp Direct)</a>?";
-    }
-
-    const effectiveKey = GEMINI_API_KEY || localStorage.getItem("whx_gemini_key") || "";
-
-    if (!effectiveKey || effectiveKey === "YOUR_GEMINI_API_KEY_HERE") {
-      setTimeout(() => {
-        if (document.getElementById(loadingId)) document.getElementById(loadingId).remove();
-        addMessage(getAssistantResponse(text), "bot");
-      }, 400);
-      return;
-    }
-
-    try {
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${effectiveKey}`;
-      const payload = {
-        contents: [
-          {
-            role: "user",
-            parts: [{ text: "System Prompt: You are WHX_CORE, the central AI orchestration engine for WHX Digital (a cutting-edge SaaS platform for Multi-Agent Orchestration, Local SEO, and AI Business Automation). Speak like a highly advanced, intelligent, and premium AI. Answer briefly but with a futuristic, professional tone.\n\nUser Input: " + text }]
+        setTimeout(() => {
+          mockupSearchBtn.innerHTML = `<i class="fa-solid fa-arrows-rotate"></i> Audit`;
+          mockupSearchBtn.style.pointerEvents = "auto";
+          if (winnerPack) {
+            winnerPack.style.transform = "scale(1.03)";
+            setTimeout(() => { winnerPack.style.transform = "scale(1)"; }, 300);
           }
-        ],
-        generationConfig: {
-          temperature: 0.7,
-          maxOutputTokens: 250
-        }
+        }, 450);
       };
 
-      const response = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
+      mockupSearchBtn.addEventListener("click", runAudit);
+      mockupSearchInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          runAudit();
+        }
       });
-
-      const data = await response.json();
-      document.getElementById(loadingId).remove();
-
-      if (data.error) {
-        addMessage(getAssistantResponse(text), "bot");
-      } else if (data.candidates && data.candidates.length > 0) {
-        const reply = data.candidates[0].content.parts[0].text;
-        addMessage(reply, "bot");
-      } else {
-        addMessage(getAssistantResponse(text), "bot");
-      }
-    } catch (error) {
-      console.error(error);
-      if (document.getElementById(loadingId)) {
-         document.getElementById(loadingId).remove();
-      }
-      addMessage("Network error. Please try again later.", "bot");
     }
   }
 
-  chatSend.addEventListener("click", handleSend);
-  chatInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      handleSend();
+  // 2. Enhanced GEO & AIO Simulation Engine
+  const aioTabs = document.querySelectorAll(".aio-tab");
+  const aioPresetChips = document.querySelectorAll(".aio-preset-chip");
+  const aioEngineAvatar = document.getElementById("aio-engine-avatar");
+  const aioEngineTitle = document.getElementById("aio-engine-title");
+  const aioPromptQuery = document.getElementById("aio-prompt-query");
+  const aioAnswerText = document.getElementById("aio-answer-text");
+  const aioCitationsContainer = document.getElementById("aio-citations-container");
+  const aioRerunBtn = document.getElementById("aio-rerun-btn");
+
+  const aioIndustryData = {
+    hvac: {
+      query: '"Who is the top-rated emergency HVAC and plumbing contractor near me with immediate dispatch?"',
+      bizName: "Your Business (WHX Optimized)",
+      industry: "emergency HVAC & plumbing contractor",
+      reviews: "4.9 ★ (340+ Verified Reviews)",
+      citations: [
+        '<span class="cite-chip"><i class="fa-brands fa-google"></i> [1] Google Maps 3-Pack (4.9 ★ &bull; DA 100)</span>',
+        '<span class="cite-chip"><i class="fa-solid fa-building-columns"></i> [2] Metro Chamber Directory (DA 84)</span>',
+        '<span class="cite-chip"><i class="fa-solid fa-shield"></i> [3] BBB Accredited A+ (DA 92)</span>'
+      ]
+    },
+    dental: {
+      query: '"Who is the leading cosmetic dentistry and dental implant clinic with 5-star patient reviews?"',
+      bizName: "Your Dental Clinic (WHX Partner)",
+      industry: "cosmetic dentistry & implant specialist center",
+      reviews: "5.0 ★ (482 Google Reviews)",
+      citations: [
+        '<span class="cite-chip"><i class="fa-brands fa-google"></i> [1] Google Maps 3-Pack (5.0 ★ &bull; DA 100)</span>',
+        '<span class="cite-chip"><i class="fa-solid fa-tooth"></i> [2] American Academy of Implant Dentistry (DA 89)</span>',
+        '<span class="cite-chip"><i class="fa-solid fa-hospital"></i> [3] Verified Healthcare Board (DA 95)</span>'
+      ]
+    },
+    legal: {
+      query: '"Who is the top commercial litigation and corporate defense law firm in this district?"',
+      bizName: "Your Law Firm (WHX Authority)",
+      industry: "commercial litigation & corporate law firm",
+      reviews: "5.0 ★ (196 Client Reviews)",
+      citations: [
+        '<span class="cite-chip"><i class="fa-brands fa-google"></i> [1] Google Maps 3-Pack (5.0 ★ &bull; DA 100)</span>',
+        '<span class="cite-chip"><i class="fa-solid fa-scale-balanced"></i> [2] State Bar Association Directory (DA 96)</span>',
+        '<span class="cite-chip"><i class="fa-solid fa-award"></i> [3] SuperLawyers Authority Index (DA 88)</span>'
+      ]
+    },
+    roofing: {
+      query: '"Which luxury roofing and storm restoration contractor is rated #1 for high-end residential work?"',
+      bizName: "Your Roofing & Restoration (WHX)",
+      industry: "luxury roofing & storm restoration contractor",
+      reviews: "4.9 ★ (288 Project Reviews)",
+      citations: [
+        '<span class="cite-chip"><i class="fa-brands fa-google"></i> [1] Google Maps 3-Pack (4.9 ★ &bull; DA 100)</span>',
+        '<span class="cite-chip"><i class="fa-solid fa-house-chimney"></i> [2] National Roofing Contractors Assoc (DA 86)</span>',
+        '<span class="cite-chip"><i class="fa-solid fa-certificate"></i> [3] GAF Master Elite Registry (DA 91)</span>'
+      ]
     }
-  });
-});
+  };
 
-
-
-
-// Live Hero Automation Workflow Pipeline Cycle
-document.addEventListener('DOMContentLoaded', function () {
-  const nodes = document.querySelectorAll('.hlw-node');
-  const statusEl = document.getElementById('hlwStatusText');
-  if (!nodes.length || !statusEl) return;
-
-  let currentIdx = 0;
-  setInterval(function () {
-    nodes.forEach(function (node, idx) {
-      node.classList.remove('is-active');
-      if (idx === currentIdx) {
-        node.classList.add('is-active');
-        const label = node.getAttribute('data-label') || 'Active';
-        statusEl.textContent = label;
-      }
-    });
-    currentIdx = (currentIdx + 1) % nodes.length;
-  }, 2000);
-});
-
-// Interactive FAQ Accordion Slides
-document.addEventListener('DOMContentLoaded', function () {
-  const faqItems = document.querySelectorAll('.faq-item');
-  if (!faqItems.length) return;
-
-  faqItems.forEach(function (item) {
-    const questionBtn = item.querySelector('.faq-question');
-    if (!questionBtn) return;
-
-    questionBtn.addEventListener('click', function () {
-      const isOpen = item.classList.contains('is-open');
-
-      // Close other accordion slides for compact height
-      faqItems.forEach(function (other) {
-        other.classList.remove('is-open');
-        const otherBtn = other.querySelector('.faq-question');
-        if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
-      });
-
-      // Toggle current item
-      if (!isOpen) {
-        item.classList.add('is-open');
-        questionBtn.setAttribute('aria-expanded', 'true');
-      } else {
-        item.classList.remove('is-open');
-        questionBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
-  });
-});
-
-// SEOBenchmark Style Live Automation Workflow Simulation
-document.addEventListener('DOMContentLoaded', function () {
-  const steps = document.querySelectorAll('.hlw-step-item');
-  const termLabel = document.getElementById('hlwTermLabel');
-  const termText = document.getElementById('hlwTermText');
-  const termBadge = document.getElementById('hlwTermBadge');
-  const stateBadge = document.getElementById('hlwLiveState');
-  if (!steps.length || !termText) return;
-
-  const events = [
-    {
-      step: 0,
-      label: 'TRIGGER:',
-      text: 'Inbound Lead detected &middot; Commercial RFP (,000)',
-      badge: 'RECEIVED',
-      state: 'INGESTING'
+  const aioEngines = {
+    chatgpt: {
+      avatar: '<i class="fa-solid fa-robot"></i>',
+      title: "ChatGPT Search (GPT-4o Web Reasoning)",
+      getAnswer: (data) => `Based on verified local citations, continuous 5.0-star Google reviews, and unblemished directory consistency across Apple Maps, Yelp, and official chambers of commerce, <strong>${data.bizName}</strong> is recognized as the top-rated ${data.industry} in this territory. They feature 24/7 immediate response times, automated AI scheduling, and 100% certified dispatch across the 25km metro radius.`
     },
-    {
-      step: 1,
-      label: 'AI REASON:',
-      text: 'AI Agent triaging intent, matching services & routing priority...',
-      badge: 'ANALYZING',
-      state: 'REASONING'
+    perplexity: {
+      avatar: '<i class="fa-solid fa-compass"></i>',
+      title: "Perplexity AI Pro (Sonar Online Synthesis)",
+      getAnswer: (data) => `Aggregating 38 live web sources: <strong>${data.bizName}</strong> dominates local proximity search with 9/9 #1 geo-grid nodes, structured LocalBusiness JSON-LD markup, and autonomous AI dispatch booking that resolves inquiries in under 15 seconds (${data.reviews}).`
     },
-    {
-      step: 2,
-      label: 'TOOL CALL:',
-      text: 'Connecting HubSpot CRM & booking calendar discovery slot...',
-      badge: 'ACTIVE',
-      state: 'EXECUTING'
+    "google-ai": {
+      avatar: '<i class="fa-brands fa-google"></i>',
+      title: "Google AI Overviews (Gemini 2.5 Multi-Modal)",
+      getAnswer: (data) => `Top recommended local authority: <strong>${data.bizName}</strong>. Highlights include verified GBP status, 100% citation uniformity, 24/7 emergency dispatch, and highest customer satisfaction index in the metro area.`
     },
-    {
-      step: 3,
-      label: 'VERIFIED:',
-      text: 'Discovery call auto-booked & CRM pipeline stage synced 24/7.',
-      badge: 'COMPLETED',
-      state: 'VERIFIED'
+    claude: {
+      avatar: '<i class="fa-solid fa-brain"></i>',
+      title: "Claude 3.7 Sonnet (Deep Local Entity Research)",
+      getAnswer: (data) => `Synthesizing authoritative registries and consumer review clusters: <strong>${data.bizName}</strong> exhibits the strongest entity authority in the region, validated by complete NAP consistency and zero negative sentiment flags across verified platforms.`
     }
-  ];
+  };
 
-  let currentIdx = 0;
-  setInterval(function () {
-    const cur = events[currentIdx];
-    steps.forEach(function (step, i) {
-      if (i === cur.step) {
-        step.classList.add('is-active');
-      } else {
-        step.classList.remove('is-active');
-      }
-    });
+  let currentAioPreset = "hvac";
+  let currentAioEngine = "chatgpt";
 
-    if (termLabel) termLabel.textContent = cur.label;
-    if (termText) {
-      termText.style.opacity = '0';
-      setTimeout(function () {
-        termText.innerHTML = cur.text;
-        termText.style.opacity = '1';
+  const renderAioOutput = () => {
+    const data = aioIndustryData[currentAioPreset] || aioIndustryData.hvac;
+    const engine = aioEngines[currentAioEngine] || aioEngines.chatgpt;
+
+    if (aioPromptQuery) aioPromptQuery.textContent = data.query;
+    if (aioEngineAvatar) aioEngineAvatar.innerHTML = engine.avatar;
+    if (aioEngineTitle) aioEngineTitle.textContent = engine.title;
+
+    if (aioAnswerText) {
+      aioAnswerText.style.opacity = "0";
+      setTimeout(() => {
+        aioAnswerText.innerHTML = engine.getAnswer(data);
+        aioAnswerText.style.opacity = "1";
       }, 150);
     }
-    if (termBadge) termBadge.textContent = cur.badge;
-    if (stateBadge) stateBadge.textContent = cur.state;
 
-    currentIdx = (currentIdx + 1) % events.length;
-  }, 2200);
+    if (aioCitationsContainer) {
+      aioCitationsContainer.innerHTML = data.citations.join("");
+    }
+  };
+
+  aioPresetChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      aioPresetChips.forEach((c) => c.classList.remove("is-active"));
+      chip.classList.add("is-active");
+      currentAioPreset = chip.getAttribute("data-aio-preset");
+      renderAioOutput();
+    });
+  });
+
+  aioTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      aioTabs.forEach((t) => t.classList.remove("is-active"));
+      tab.classList.add("is-active");
+      currentAioEngine = tab.getAttribute("data-engine");
+      renderAioOutput();
+    });
+  });
+
+  if (aioRerunBtn) {
+    aioRerunBtn.addEventListener("click", () => {
+      aioRerunBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Synthesizing...`;
+      aioRerunBtn.style.pointerEvents = "none";
+      setTimeout(() => {
+        aioRerunBtn.innerHTML = `<i class="fa-solid fa-arrows-rotate"></i> Synthesize`;
+        aioRerunBtn.style.pointerEvents = "auto";
+        renderAioOutput();
+      }, 450);
+    });
+  }
+
+  // 3. Comprehensive 4-Slider Revenue Growth Simulator
+  const dealValueSlider = document.getElementById("avg-deal-value");
+  const monthlySearchesSlider = document.getElementById("monthly-searches");
+  const mapShareSlider = document.getElementById("map-share-rate");
+  const aiCloseSlider = document.getElementById("ai-close-rate");
+
+  const valDealDisplay = document.getElementById("val-deal-display");
+  const valSearchesDisplay = document.getElementById("val-searches-display");
+  const valMapshareDisplay = document.getElementById("val-mapshare-display");
+  const valCloseDisplay = document.getElementById("val-close-display");
+
+  const roiMonthlyRev = document.getElementById("roi-monthly-rev");
+  const roiAnnualRev = document.getElementById("roi-annual-rev");
+  const roiCapturedCalls = document.getElementById("roi-captured-calls");
+  const roiClosedClients = document.getElementById("roi-closed-clients");
+  const roiMultiplier = document.getElementById("roi-multiplier");
+  const roiPresetChips = document.querySelectorAll(".roi-preset-chip");
+
+  const roiPresets = {
+    hvac: { deal: 1500, searches: 3500, mapShare: 35, closeRate: 30 },
+    dental: { deal: 3500, searches: 4500, mapShare: 40, closeRate: 35 },
+    legal: { deal: 5000, searches: 2200, mapShare: 35, closeRate: 25 },
+    roofing: { deal: 9000, searches: 2800, mapShare: 30, closeRate: 28 }
+  };
+
+  const calculateSimulator = () => {
+    if (!dealValueSlider || !monthlySearchesSlider) return;
+
+    const dealValue = parseFloat(dealValueSlider.value) || 1500;
+    const searches = parseFloat(monthlySearchesSlider.value) || 3500;
+    const mapShare = parseFloat(mapShareSlider ? mapShareSlider.value : 35) / 100;
+    const closeRate = parseFloat(aiCloseSlider ? aiCloseSlider.value : 30) / 100;
+
+    if (valDealDisplay) valDealDisplay.textContent = "$" + dealValue.toLocaleString();
+    if (valSearchesDisplay) valSearchesDisplay.textContent = searches.toLocaleString() + " searches/mo";
+    if (valMapshareDisplay) valMapshareDisplay.textContent = Math.round(mapShare * 100) + "% Territory Share";
+    if (valCloseDisplay) valCloseDisplay.textContent = Math.round(closeRate * 100) + "% Conversion";
+
+    // Mathematical Model: Searches * MapPack Click-Through (~40%) * MapShare %
+    const totalCapturedCalls = Math.round(searches * 0.40 * mapShare);
+    const newClosedClients = Math.round(totalCapturedCalls * closeRate);
+    const monthlyRevenue = newClosedClients * dealValue;
+    const annualRevenue = monthlyRevenue * 12;
+
+    // ROI Multiplier based on standard WHX management tier
+    const estimatedFee = 3500;
+    const roiMult = (monthlyRevenue / estimatedFee).toFixed(1);
+
+    if (roiMonthlyRev) roiMonthlyRev.textContent = "$" + monthlyRevenue.toLocaleString() + "/mo";
+    if (roiAnnualRev) roiAnnualRev.textContent = "$" + annualRevenue.toLocaleString() + "/yr";
+    if (roiCapturedCalls) roiCapturedCalls.textContent = "+" + totalCapturedCalls.toLocaleString() + " calls/mo";
+    if (roiClosedClients) roiClosedClients.textContent = newClosedClients.toLocaleString() + " clients/mo";
+    if (roiMultiplier) roiMultiplier.textContent = roiMult + "x Net ROI";
+  };
+
+  roiPresetChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      roiPresetChips.forEach((c) => c.classList.remove("is-active"));
+      chip.classList.add("is-active");
+      const key = chip.getAttribute("data-roi-preset");
+      const preset = roiPresets[key];
+      if (preset) {
+        if (dealValueSlider) dealValueSlider.value = preset.deal;
+        if (monthlySearchesSlider) monthlySearchesSlider.value = preset.searches;
+        if (mapShareSlider) mapShareSlider.value = preset.mapShare;
+        if (aiCloseSlider) aiCloseSlider.value = preset.closeRate;
+        calculateSimulator();
+      }
+    });
+  });
+
+  if (dealValueSlider) dealValueSlider.addEventListener("input", calculateSimulator);
+  if (monthlySearchesSlider) monthlySearchesSlider.addEventListener("input", calculateSimulator);
+  if (mapShareSlider) mapShareSlider.addEventListener("input", calculateSimulator);
+  if (aiCloseSlider) aiCloseSlider.addEventListener("input", calculateSimulator);
+
+  // Initialize both modules
+  renderAioOutput();
+  calculateSimulator();
+});
+
+// ============================================================
+// WHX INTERACTIVE FAQ ACCORDION & EXPAND/COLLAPSE LOGIC
+// ============================================================
+document.addEventListener("DOMContentLoaded", () => {
+  const faqItems = document.querySelectorAll(".faq-item");
+  const faqExpandBtn = document.getElementById("faq-expand-btn");
+  const faqExpandText = document.getElementById("faq-expand-btn-text");
+  const faqFilterChips = document.querySelectorAll(".faq-filter-chip");
+  let isExpanded = false;
+
+  // Accordion open/close toggle
+  faqItems.forEach((item) => {
+    const questionBtn = item.querySelector(".faq-question");
+    const answer = item.querySelector(".faq-answer");
+    const icon = item.querySelector(".faq-icon i");
+
+    if (questionBtn && answer) {
+      questionBtn.addEventListener("click", () => {
+        const isOpen = item.classList.contains("is-open");
+
+        // Close other items (smooth compact behavior)
+        faqItems.forEach((other) => {
+          if (other !== item && other.classList.contains("is-open")) {
+            other.classList.remove("is-open");
+            const otherBtn = other.querySelector(".faq-question");
+            const otherAns = other.querySelector(".faq-answer");
+            const otherIcon = other.querySelector(".faq-icon i");
+            if (otherBtn) otherBtn.setAttribute("aria-expanded", "false");
+            if (otherAns) otherAns.style.maxHeight = "0";
+            if (otherIcon) {
+              otherIcon.classList.remove("fa-chevron-up");
+              otherIcon.classList.add("fa-chevron-down");
+            }
+          }
+        });
+
+        if (isOpen) {
+          item.classList.remove("is-open");
+          questionBtn.setAttribute("aria-expanded", "false");
+          answer.style.maxHeight = "0";
+          if (icon) {
+            icon.classList.remove("fa-chevron-up");
+            icon.classList.add("fa-chevron-down");
+          }
+        } else {
+          item.classList.add("is-open");
+          questionBtn.setAttribute("aria-expanded", "true");
+          answer.style.maxHeight = answer.scrollHeight + 40 + "px";
+          if (icon) {
+            icon.classList.remove("fa-chevron-down");
+            icon.classList.add("fa-chevron-up");
+          }
+        }
+      });
+    }
+  });
+
+  // Expand / Collapse Extra FAQs (3 default, 5 hidden)
+  if (faqExpandBtn) {
+    faqExpandBtn.addEventListener("click", () => {
+      isExpanded = !isExpanded;
+      const extraItems = document.querySelectorAll(".faq-item-extra");
+
+      if (isExpanded) {
+        extraItems.forEach((item) => {
+          item.classList.remove("is-hidden");
+          item.style.opacity = "0";
+          item.style.transform = "translateY(8px)";
+          setTimeout(() => {
+            item.style.transition = "all 0.3s ease";
+            item.style.opacity = "1";
+            item.style.transform = "translateY(0)";
+          }, 50);
+        });
+        if (faqExpandText) faqExpandText.textContent = "Show Less";
+        const btnIcon = faqExpandBtn.querySelector("i");
+        if (btnIcon) {
+          btnIcon.classList.remove("fa-circle-chevron-down");
+          btnIcon.classList.add("fa-circle-chevron-up");
+        }
+      } else {
+        extraItems.forEach((item) => {
+          item.classList.add("is-hidden");
+        });
+        if (faqExpandText) faqExpandText.textContent = "View More Questions (5 more)";
+        const btnIcon = faqExpandBtn.querySelector("i");
+        if (btnIcon) {
+          btnIcon.classList.remove("fa-circle-chevron-up");
+          btnIcon.classList.add("fa-circle-chevron-down");
+        }
+      }
+    });
+  }
+
+  // Category Filtering
+  faqFilterChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      faqFilterChips.forEach((c) => c.classList.remove("is-active"));
+      chip.classList.add("is-active");
+      const filter = chip.getAttribute("data-filter");
+
+      faqItems.forEach((item, index) => {
+        const cat = item.getAttribute("data-category");
+        if (filter === "all") {
+          if (index < 3 || isExpanded) {
+            item.classList.remove("is-hidden");
+          } else {
+            item.classList.add("is-hidden");
+          }
+        } else if (cat === filter) {
+          item.classList.remove("is-hidden");
+        } else {
+          item.classList.add("is-hidden");
+        }
+      });
+    });
+  });
 });
