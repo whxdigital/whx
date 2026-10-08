@@ -1,4 +1,4 @@
-/* ==========================================================================
+﻿/* ==========================================================================
    WHX COMMAND CENTER & GROWTH DASHBOARD THEME
    WHX Autonomous Growth & Map Pack Engine
    ========================================================================== */
@@ -899,3 +899,85 @@ main.dashboard-main > header {
 }
 
 
+
+
+
+/* ==========================================================================
+   MOBILE & TABLET DASHBOARD RESPONSIVENESS (<= 900px)
+   ========================================================================== */
+@media (max-width: 900px) {
+  .dashboard-container {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow-y: auto !important;
+    flex-direction: column !important;
+  }
+
+  .benchmark-icon-rail {
+    width: 100% !important;
+    height: 52px !important;
+    flex-direction: row !important;
+    padding: 0 12px !important;
+    justify-content: space-around !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--border) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 9999 !important;
+    background: #09090b !important;
+  }
+
+  .benchmark-rail-logo {
+    margin-bottom: 0 !important;
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 0.95rem !important;
+  }
+
+  .benchmark-rail-item {
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  .benchmark-rail-bottom {
+    display: none !important;
+  }
+
+  .dashboard-main {
+    width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  .dashboard-header {
+    flex-direction: column !important;
+    height: auto !important;
+    padding: 12px 14px !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+  }
+
+  .dashboard-header > div {
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+
+  .header-search {
+    width: 100% !important;
+  }
+
+  .dashboard-content {
+    padding: 12px !important;
+  }
+
+  .telemetry-hud-strip {
+    padding: 8px 12px !important;
+    gap: 12px !important;
+  }
+
+  .tasklet-capabilities-track {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-bottom: 6px !important;
+  }
+}

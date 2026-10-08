@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+﻿document.addEventListener("DOMContentLoaded", () => {
   if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
   }
@@ -115,10 +115,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainNav = document.querySelector(".main-nav");
 
   if (menuToggle && mainNav) {
-    menuToggle.addEventListener("click", () => {
+    const closeMobileMenu = () => {
+      menuToggle.setAttribute("aria-expanded", "false");
+      mainNav.classList.remove("nav-open");
+      mainNav.classList.remove("open");
+      const icon = menuToggle.querySelector("i");
+      if (icon) {
+        icon.classList.remove("fa-xmark");
+        icon.classList.add("fa-bars");
+      }
+    };
+
+    menuToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
       const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
       menuToggle.setAttribute("aria-expanded", String(!isExpanded));
-      mainNav.classList.toggle("nav-open");
+      mainNav.classList.toggle("nav-open", !isExpanded);
       mainNav.classList.toggle("open", !isExpanded);
 
       const icon = menuToggle.querySelector("i");
@@ -130,6 +142,29 @@ document.addEventListener("DOMContentLoaded", () => {
           icon.classList.remove("fa-xmark");
           icon.classList.add("fa-bars");
         }
+      }
+    });
+
+    // Auto-close on link click (especially anchor links and nav jumps)
+    mainNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth <= 992) {
+          closeMobileMenu();
+        }
+      });
+    });
+
+    // Auto-close when clicking outside
+    document.addEventListener("click", (e) => {
+      if (menuToggle.getAttribute("aria-expanded") === "true" && !mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
+        closeMobileMenu();
+      }
+    });
+
+    // Auto-close on Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && menuToggle.getAttribute("aria-expanded") === "true") {
+        closeMobileMenu();
       }
     });
   }

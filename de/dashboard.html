@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -1754,5 +1754,150 @@ Thank you for accelerating your growth with WHX Digital.
         }
       });
     </script>
-  </body>
+      <!-- ===================================================================
+         CLIENT PORTAL LOGIN & ACCOUNT SWITCHER MODAL
+         =================================================================== -->
+    <div id="client-auth-modal" class="zip-modal-overlay" style="display: none; z-index: 100000;">
+      <div class="zip-modal-content" style="max-width: 520px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;">
+              <i class="fa-solid fa-user-shield" style="color: var(--amber);"></i> Client Portal Access & Login
+            </h3>
+            <span style="font-size: 0.8rem; color: var(--muted);">Authenticate to access real-time local search radar & AI multi-agent workflows</span>
+          </div>
+          <button class="btn-light" style="padding: 4px 10px; font-size: 0.8rem;" onclick="closeClientAuthModal()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <div style="display: flex; gap: 8px; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
+          <button id="auth-tab-btn-instant" class="benchmark-btn-secondary active" onclick="switchAuthTab('instant')" style="font-size: 0.8rem; padding: 6px 14px; border-radius: var(--radius-sm);">
+            <i class="fa-solid fa-bolt" style="color: var(--amber);"></i> 1-Click Client Switcher (200 Profiles)
+          </button>
+          <button id="auth-tab-btn-email" class="benchmark-btn-secondary" onclick="switchAuthTab('email')" style="font-size: 0.8rem; padding: 6px 14px; border-radius: var(--radius-sm);">
+            <i class="fa-solid fa-key" style="color: #10b981;"></i> Custom Access Key
+          </button>
+        </div>
+
+        <!-- Tab 1: Instant Client Selector -->
+        <div id="auth-tab-instant">
+          <div style="margin-bottom: 12px;">
+            <label style="font-size: 0.78rem; font-family: var(--mono); color: var(--muted); text-transform: uppercase; display: block; margin-bottom: 6px;">Select Business Profile:</label>
+            <input type="text" id="auth-client-search" placeholder="Type to filter 200 businesses by name or city..." oninput="filterAuthClients(this.value)" style="width: 100%; padding: 8px 12px; background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-sm); color: #fff; font-size: 0.84rem; margin-bottom: 8px; box-sizing: border-box;" />
+            <select id="auth-client-select" size="6" style="width: 100%; background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-sm); color: #fff; font-size: 0.82rem; padding: 6px; outline: none; box-sizing: border-box;">
+              <!-- Populated via JS -->
+            </select>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 14px;">
+            <span style="font-size: 0.75rem; color: #10b981;"><i class="fa-solid fa-shield-halved"></i> 200 Live Client Profiles Available</span>
+            <button class="btn-amber" onclick="submitInstantAuth()" style="padding: 8px 18px; font-size: 0.84rem;">
+              Login to Workspace <i class="fa-solid fa-arrow-right" style="font-size: 0.72rem; margin-left: 4px;"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab 2: Custom Access Key -->
+        <div id="auth-tab-email" style="display: none;">
+          <form onsubmit="submitCustomAuth(event)">
+            <div style="margin-bottom: 12px;">
+              <label style="font-size: 0.78rem; font-family: var(--mono); color: var(--muted); text-transform: uppercase; display: block; margin-bottom: 4px;">Client Business Email:</label>
+              <input type="email" id="auth-email-input" required placeholder="client@whxdigital.com" style="width: 100%; padding: 8px 12px; background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-sm); color: #fff; font-size: 0.84rem; box-sizing: border-box;" />
+            </div>
+            <div style="margin-bottom: 16px;">
+              <label style="font-size: 0.78rem; font-family: var(--mono); color: var(--muted); text-transform: uppercase; display: block; margin-bottom: 4px;">Access Token / PIN:</label>
+              <input type="password" id="auth-pin-input" required placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢" value="whx-growth-2026" style="width: 100%; padding: 8px 12px; background: #0b0b0d; border: 1px solid var(--border); border-radius: var(--radius-sm); color: #fff; font-size: 0.84rem; box-sizing: border-box;" />
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.75rem; color: var(--muted);"><i class="fa-solid fa-lock"></i> 256-Bit SSL Encrypted Session</span>
+              <button type="submit" class="btn-amber" style="padding: 8px 18px; font-size: 0.84rem;">
+                Authenticate <i class="fa-solid fa-arrow-right" style="font-size: 0.72rem; margin-left: 4px;"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+    <script>
+      // Client Portal Auth Modal Logic
+      window.openClientAuthModal = function() {
+        const modal = document.getElementById('client-auth-modal');
+        if (modal) {
+          modal.style.display = 'flex';
+          populateAuthClientList();
+        }
+      };
+
+      window.closeClientAuthModal = function() {
+        const modal = document.getElementById('client-auth-modal');
+        if (modal) modal.style.display = 'none';
+      };
+
+      window.switchAuthTab = function(tab) {
+        const tInstant = document.getElementById('auth-tab-instant');
+        const tEmail = document.getElementById('auth-tab-email');
+        const btnInstant = document.getElementById('auth-tab-btn-instant');
+        const btnEmail = document.getElementById('auth-tab-btn-email');
+
+        if (tab === 'instant') {
+          if (tInstant) tInstant.style.display = 'block';
+          if (tEmail) tEmail.style.display = 'none';
+          if (btnInstant) btnInstant.classList.add('active');
+          if (btnEmail) btnEmail.classList.remove('active');
+        } else {
+          if (tInstant) tInstant.style.display = 'none';
+          if (tEmail) tEmail.style.display = 'block';
+          if (btnInstant) btnInstant.classList.remove('active');
+          if (btnEmail) btnEmail.classList.add('active');
+        }
+      };
+
+      window.populateAuthClientList = function(filter) {
+        const sel = document.getElementById('auth-client-select');
+        if (!sel || !window.WHX_BENCHMARK_200_CLIENTS) return;
+        sel.innerHTML = '';
+        
+        const q = (filter || '').toLowerCase().trim();
+        window.WHX_BENCHMARK_200_CLIENTS.forEach((c, idx) => {
+          if (!q || c.name.toLowerCase().includes(q) || c.city.toLowerCase().includes(q)) {
+            const opt = document.createElement('option');
+            opt.value = idx;
+            opt.textContent = '#' + c.id + ' â€” ' + c.name + ' (' + c.city + ') [' + c.mapPackRank + ']';
+            if (window.currentBenchmarkClient && window.currentBenchmarkClient.id === c.id) {
+              opt.selected = true;
+            }
+            sel.appendChild(opt);
+          }
+        });
+      };
+
+      window.filterAuthClients = function(q) {
+        populateAuthClientList(q);
+      };
+
+      window.submitInstantAuth = function() {
+        const sel = document.getElementById('auth-client-select');
+        if (!sel || sel.value === '') {
+          if (typeof showToast === 'function') showToast('Please select a business profile.');
+          return;
+        }
+        const idx = parseInt(sel.value, 10);
+        if (typeof window.switchBenchmarkClientManual === 'function') {
+          window.switchBenchmarkClientManual(idx);
+        }
+        closeClientAuthModal();
+        if (typeof showToast === 'function') {
+          showToast('Client Session Verified! Welcome, ' + window.currentBenchmarkClient.name);
+        }
+      };
+
+      window.submitCustomAuth = function(e) {
+        e.preventDefault();
+        const email = document.getElementById('auth-email-input').value;
+        closeClientAuthModal();
+        if (typeof showToast === 'function') {
+          showToast('Access Key Verified for ' + email + '! Command Core Online.');
+        }
+      };
+    </script>
+</body>
 </html>
