@@ -1,4 +1,120 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
+﻿// ==========================================================================
+// WHX DIGITAL INSTANT MOBILE NAVIGATION SYSTEM (FAIL-SAFE GLOBAL INITIALIZER)
+// ==========================================================================
+(function() {
+  window.toggleMobileNav = function(btn) {
+    var header = (btn && btn.closest('.site-header')) || document.querySelector('.site-header');
+    var nav = header ? header.querySelector('.main-nav') : document.querySelector('.main-nav');
+    var toggle = btn || (header ? header.querySelector('.menu-toggle') : document.querySelector('.menu-toggle'));
+    if (!nav || !toggle) return;
+    var isExpanded = toggle.getAttribute('aria-expanded') === 'true' || nav.classList.contains('open') || nav.classList.contains('nav-open');
+    
+    if (isExpanded) {
+      nav.classList.remove('open', 'nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      var icon = toggle.querySelector('i');
+      if (icon) {
+        icon.classList.remove('fa-xmark');
+        icon.classList.add('fa-bars');
+      }
+    } else {
+      nav.classList.add('open', 'nav-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      var icon = toggle.querySelector('i');
+      if (icon) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-xmark');
+      }
+    }
+  };
+
+  var initGlobalMenuHandlers = function() {
+    document.addEventListener('click', function(e) {
+      var toggle = e.target.closest('.menu-toggle');
+      if (toggle) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.toggleMobileNav(toggle);
+        return;
+      }
+
+      var navLink = e.target.closest('.main-nav a');
+      if (navLink && window.innerWidth <= 992) {
+        var header = navLink.closest('.site-header') || document.querySelector('.site-header');
+        var nav = header ? header.querySelector('.main-nav') : document.querySelector('.main-nav');
+        var btn = header ? header.querySelector('.menu-toggle') : document.querySelector('.menu-toggle');
+        if (nav && btn) {
+          nav.classList.remove('open', 'nav-open');
+          btn.setAttribute('aria-expanded', 'false');
+          var icon = btn.querySelector('i');
+          if (icon) {
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+          }
+        }
+        return;
+      }
+
+      var openNav = document.querySelector('.main-nav.open, .main-nav.nav-open');
+      if (openNav && !openNav.contains(e.target) && !e.target.closest('.menu-toggle')) {
+        openNav.classList.remove('open', 'nav-open');
+        var btn = document.querySelector('.menu-toggle[aria-expanded="true"]');
+        if (btn) {
+          btn.setAttribute('aria-expanded', 'false');
+          var icon = btn.querySelector('i');
+          if (icon) {
+            icon.classList.remove('fa-xmark');
+            icon.classList.add('fa-bars');
+          }
+        }
+      }
+    }, true);
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        var openNav = document.querySelector('.main-nav.open, .main-nav.nav-open');
+        if (openNav) {
+          openNav.classList.remove('open', 'nav-open');
+          var btn = document.querySelector('.menu-toggle[aria-expanded="true"]');
+          if (btn) {
+            btn.setAttribute('aria-expanded', 'false');
+            var icon = btn.querySelector('i');
+            if (icon) {
+              icon.classList.remove('fa-xmark');
+              icon.classList.add('fa-bars');
+            }
+          }
+        }
+      }
+    });
+
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 992) {
+        var openNav = document.querySelector('.main-nav.open, .main-nav.nav-open');
+        if (openNav) {
+          openNav.classList.remove('open', 'nav-open');
+          var btn = document.querySelector('.menu-toggle[aria-expanded="true"]');
+          if (btn) {
+            btn.setAttribute('aria-expanded', 'false');
+            var icon = btn.querySelector('i');
+            if (icon) {
+              icon.classList.remove('fa-xmark');
+              icon.classList.add('fa-bars');
+            }
+          }
+        }
+      }
+    }, { passive: true });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGlobalMenuHandlers);
+  } else {
+    initGlobalMenuHandlers();
+  }
+})();
+
+document.addEventListener("DOMContentLoaded", () => {
   if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
   }
