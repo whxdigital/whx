@@ -2279,7 +2279,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <div style="margin-top:10px; font-size:0.88rem; color:#475569;">
             <i class="fa-solid fa-envelope" style="color:#7c3aed;"></i> <strong>info@whxdigital.com</strong><br/>
-            <i class="fa-solid fa-envelope" style="color:#7c3aed;"></i> <strong>whxdigital@gmail.com</strong>
+            <i class="fa-solid fa-envelope" style="color:#7c3aed;"></i> <strong>info@whxdigital.com</strong>
           </div>
         `);
       }
@@ -2403,10 +2403,10 @@ function initReviewsFilter() {
 
 
 /* ==========================================================================
-   CONTACT FORM DIRECT EMAIL DELIVERY (whxdigital@gmail.com)
+   CONTACT FORM DIRECT EMAIL DELIVERY (info@whxdigital.com)
    ========================================================================== */
 
-const WHX_RECEIVER_EMAIL = "whxdigital@gmail.com";
+const WHX_RECEIVER_EMAIL = "info@whxdigital.com";
 const WHX_FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${WHX_RECEIVER_EMAIL}`;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -3490,7 +3490,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
           <div style="margin-top:10px; font-size:0.88rem; color:#475569;">
             <i class="fa-solid fa-envelope" style="color:#7c3aed;"></i> <strong>info@whxdigital.com</strong><br/>
-            <i class="fa-solid fa-envelope" style="color:#7c3aed;"></i> <strong>whxdigital@gmail.com</strong>
+            <i class="fa-solid fa-envelope" style="color:#7c3aed;"></i> <strong>info@whxdigital.com</strong>
           </div>
         `);
       }
@@ -3614,10 +3614,10 @@ function initReviewsFilter() {
 
 
 /* ==========================================================================
-   CONTACT FORM DIRECT EMAIL DELIVERY (whxdigital@gmail.com)
+   CONTACT FORM DIRECT EMAIL DELIVERY (info@whxdigital.com)
    ========================================================================== */
 
-const WHX_RECEIVER_EMAIL = "whxdigital@gmail.com";
+const WHX_RECEIVER_EMAIL = "info@whxdigital.com";
 const WHX_FORMSUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${WHX_RECEIVER_EMAIL}`;
 
 document.addEventListener('DOMContentLoaded', () => {

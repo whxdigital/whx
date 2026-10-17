@@ -1,4 +1,4 @@
-/**
+﻿/**
  * WHX Digital - Free Website Speed & SEO Audit Tool
  * Real Google PageSpeed Insights v5 / Lighthouse Integration
  */
@@ -2177,7 +2177,7 @@ function initAuditTool() {
     });
   }
 
-  // Lead Form Submission -> Directly delivered to whxdigital@gmail.com
+  // Lead Form Submission -> Directly delivered to info@whxdigital.com
   leadForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const name = document.getElementById("lead-name").value.trim();
@@ -2213,13 +2213,13 @@ function initAuditTool() {
 
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.textContent = "Transmitting to whxdigital@gmail.com...";
+      submitBtn.textContent = "Transmitting to info@whxdigital.com...";
       submitBtn.style.opacity = "0.7";
     }
 
-    // Direct AJAX dispatch to whxdigital@gmail.com
+    // Direct AJAX dispatch to info@whxdigital.com
     try {
-      const response = await fetch("https://formsubmit.co/ajax/whxdigital@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/info@whxdigital.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -2243,7 +2243,7 @@ function initAuditTool() {
       leadFormStatus.style.padding = "10px 14px";
       leadFormStatus.style.borderRadius = "8px";
       leadFormStatus.style.border = "1px solid #86efac";
-      leadFormStatus.innerHTML = `<i class="fa-solid fa-circle-check"></i> <strong>Audit details dispatched!</strong> WHX team has received your submission directly at <strong>whxdigital@gmail.com</strong>. We will reply to <em>${email}</em> shortly.`;
+      leadFormStatus.innerHTML = `<i class="fa-solid fa-circle-check"></i> <strong>Audit details dispatched!</strong> WHX team has received your submission directly at <strong>info@whxdigital.com</strong>. We will reply to <em>${email}</em> shortly.`;
       
       leadForm.reset();
 
@@ -2259,7 +2259,7 @@ function initAuditTool() {
       leadFormStatus.style.color = "#15803d";
       leadFormStatus.style.padding = "10px 14px";
       leadFormStatus.style.borderRadius = "8px";
-      leadFormStatus.innerHTML = `Your details have been saved! You can also email us directly at <a href="mailto:whxdigital@gmail.com?subject=Audit Request for ${encodeURIComponent(leadUrlField.value)}" style="color:#7c3aed; font-weight:700;">whxdigital@gmail.com</a>.`;
+      leadFormStatus.innerHTML = `Your details have been saved! You can also email us directly at <a href="mailto:info@whxdigital.com?subject=Audit Request for ${encodeURIComponent(leadUrlField.value)}" style="color:#7c3aed; font-weight:700;">info@whxdigital.com</a>.`;
     } finally {
       if (submitBtn) {
         submitBtn.disabled = false;

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -196,6 +196,7 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" /></noscript>
     <link rel="stylesheet" href="style.min.css?v=20261008" />
+    <link rel="stylesheet" href="a11y-patch.css?v=20261016" />
   
     <link rel="alternate" hreflang="x-default" href="https://whxdigital.com/" />
     <link rel="alternate" hreflang="en" href="https://whxdigital.com/" />
@@ -228,7 +229,7 @@
     </script>
   </head>
   <body class="homepage">
-    <div id="whxBoot" class="boot-screen WHX-boot" aria-hidden="true" style="opacity:1; transition: opacity 0.15s ease, visibility 0.15s ease;">
+    <div id="whxBoot" class="boot-screen WHX-boot" aria-hidden="true" style="display:none !important;">
       <div class="cyber-boot-panel" id="whxBootPanel" style="transition: transform 0.15s ease;">
         <div class="cyber-header">
           
@@ -286,6 +287,7 @@
           <li><a href="index.html#search-services">Search &amp; Local SEO</a></li>
           <li><a href="services.html" data-i18n="nav.services">AI Automation</a></li>
           <li><a href="architecture.html">AI Agents</a></li>
+          <li><a href="tools/index.html"><i class="fa-solid fa-satellite-dish" style="color:#00f0ff; margin-right:4px;"></i> Free Telemetry Tools</a></li>
           <li><a href="insights/index.html" data-i18n="nav.insights">Insights</a></li>
           <li><a href="reviews.html">Reviews</a></li>
           <li class="nav-item-dashboard" style="margin-left: 8px;">
@@ -742,7 +744,7 @@
                     <span class="prompt-label">HIGH-INTENT LOCAL SEARCH</span>
                     <div class="aio-query-interactive-row">
                       <p id="aio-prompt-query">"Who is the top-rated emergency HVAC and plumbing contractor near me with immediate dispatch?"</p>
-                      <button type="button" id="aio-rerun-btn" class="aio-rerun-btn"><i class="fa-solid fa-arrows-rotate"></i> Synthesize</button>
+                      <button type="button" id="aio-rerun-btn" class="aio-rerun-btn" aria-label="Synthesize generative engine search simulation"><i class="fa-solid fa-arrows-rotate"></i> Synthesize</button>
                     </div>
                   </div>
                 </div>
@@ -809,7 +811,7 @@
                   <label for="avg-deal-value"><i class="fa-solid fa-dollar-sign"></i> Average Customer / Deal Value:</label>
                   <strong id="val-deal-display">$1,500</strong>
                 </div>
-                <input type="range" id="avg-deal-value" min="300" max="15000" step="100" value="1500" class="roi-slider" />
+                <input type="range" id="avg-deal-value" min="300" max="15000" step="100" value="1500" class="roi-slider" aria-label="Average Customer or Deal Value in Dollars" />
                 <div class="slider-marks"><span>$300</span><span>$5,000</span><span>$10,000</span><span>$15,000+</span></div>
               </div>
 
@@ -818,7 +820,7 @@
                   <label for="monthly-searches"><i class="fa-solid fa-magnifying-glass"></i> Monthly High-Intent Local Searches:</label>
                   <strong id="val-searches-display">3,500 searches/mo</strong>
                 </div>
-                <input type="range" id="monthly-searches" min="500" max="25000" step="250" value="3500" class="roi-slider" />
+                <input type="range" id="monthly-searches" min="500" max="25000" step="250" value="3500" class="roi-slider" aria-label="Target Monthly High-Intent Local Searches" />
                 <div class="slider-marks"><span>500</span><span>5,000</span><span>15,000</span><span>25,000+</span></div>
               </div>
 
@@ -827,7 +829,7 @@
                   <label for="map-share-rate"><i class="fa-solid fa-map-pin"></i> Google 3-Pack Map Share Captured:</label>
                   <strong id="val-mapshare-display">35% Territory Share</strong>
                 </div>
-                <input type="range" id="map-share-rate" min="15" max="65" step="5" value="35" class="roi-slider" />
+                <input type="range" id="map-share-rate" min="15" max="65" step="5" value="35" class="roi-slider" aria-label="Percentage of Google Maps 3-Pack Share Captured" />
                 <div class="slider-marks"><span>15% (Low)</span><span>35% (Avg 3-Pack)</span><span>65% (#1 Dominant)</span></div>
               </div>
 
@@ -836,7 +838,7 @@
                   <label for="ai-close-rate"><i class="fa-solid fa-bolt"></i> AI Instant Response Lead Close Rate:</label>
                   <strong id="val-close-display">30% Conversion</strong>
                 </div>
-                <input type="range" id="ai-close-rate" min="10" max="50" step="2" value="30" class="roi-slider" />
+                <input type="range" id="ai-close-rate" min="10" max="50" step="2" value="30" class="roi-slider" aria-label="Instant AI Response Lead Conversion Close Rate" />
                 <div class="slider-marks"><span>10% (Slow manual)</span><span>30% (<15s AI Response)</span><span>50% (High-intent)</span></div>
               </div>
             </div>
@@ -1308,7 +1310,7 @@
         <div class="final-cta final-cta-primary">
           <div class="final-cta-copy">
             <p class="kicker">SEARCH DOMINANCE &amp; AI AUTOMATION AUDIT</p>
-            <h3>Ready to rank #1 &amp; automate your operations?</h3>
+            <h2>Ready to rank #1 &amp; automate your operations?</h2>
             <p>Tell us your target market and current bottlenecks. We will deliver a complimentary Local SEO &amp; Google Maps audit alongside a custom AI automation blueprint.</p>
             <div class="support-sla-banner"><i class="fa-solid fa-clock-rotate-left"></i> Targeted &lt;24hr Response &middot; Direct Senior Growth Architect Support</div>
           </div>
@@ -1344,12 +1346,13 @@
 
           <!-- Col 2: Search & Local Dominance (6 items) -->
           <div class="site-footer-col">
-            <h4>Search &amp; Local SEO</h4>
+            <h3 class="footer-heading">Search &amp; Local SEO</h3>
             <ul>
               <li><a href="index.html#search-services">Local SEO Domination</a></li>
               <li><a href="index.html#search-services">Google Maps (GMP) 3-Pack</a></li>
               <li><a href="index.html#search-services">Citation Building &amp; Sync</a></li>
               <li><a href="index.html#search-services">Authority Link Building</a></li>
+              <li><a href="tools/index.html"><i class="fa-solid fa-satellite-dish" style="color:#00f0ff;"></i> Free Telemetry Tools</a></li>
               <li><a href="tools/website-audit/index.html">Free Website Audit</a></li>
               <li><a href="reviews.html">Client Success Proof</a></li>
             </ul>
@@ -1357,7 +1360,7 @@
 
           <!-- Col 3: Autonomous AI Systems (6 items) -->
           <div class="site-footer-col">
-            <h4>AI Systems &amp; Ops</h4>
+            <h3 class="footer-heading">AI Systems &amp; Ops</h3>
             <ul>
               <li><a href="architecture.html">AI Agent Systems</a></li>
               <li><a href="multi-agent.html">Multi-Agent Workforce</a></li>
@@ -1370,14 +1373,14 @@
 
           <!-- Col 4: Connect & Company (6 items) -->
           <div class="site-footer-col footer-contact-col">
-            <h4>Connect &amp; Company</h4>
+            <h3 class="footer-heading">Connect &amp; Company</h3>
             <ul class="footer-contact-links">
               <li><a href="about.html"><i class="fa-solid fa-building"></i> About WHX Digital</a></li>
               <li><a href="contact.html"><i class="fa-solid fa-calendar-check"></i> Book Strategy Session</a></li>
               <li><a href="https://wa.me/351928350275" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp brand-icon brand-whatsapp" style="color:#22c55e !important;"></i> WhatsApp Direct</a></li>
               <li><a href="insights/ai-automation-architecture/index.html"><i class="fa-solid fa-layer-group"></i> Architecture Insight</a></li>
+              <li><a href="tools/index.html"><i class="fa-solid fa-satellite-dish" style="color:#00f0ff;"></i> Orbital Telemetry Tools</a></li>
               <li><a href="mailto:info@whxdigital.com"><i class="fa-solid fa-envelope"></i> info@whxdigital.com</a></li>
-              <li><a href="mailto:whxdigital@gmail.com"><i class="fa-solid fa-paper-plane" style="color:#38bdf8;"></i> whxdigital@gmail.com</a></li>
             </ul>
           </div>
         </div>
@@ -1393,16 +1396,41 @@
             </div>
           </div>
           <div class="footer-social">
-            <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="https://www.linkedin.com/in/whxdigital/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://github.com/" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="#" aria-label="WHX Digital on X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/whxdigital/" aria-label="WHX Digital on LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/" aria-label="WHX Digital on GitHub" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
           </div>
         </div>
       </div>
     </footer>
 
 
-    <script defer src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6ab59fae50fc24ace6f7fff6"></script>
+    <script>
+      (function() {
+        var lcLoaded = false;
+        function loadLeadConnector() {
+          if (lcLoaded) return;
+          lcLoaded = true;
+          ['scroll', 'pointerdown', 'touchstart', 'keydown'].forEach(function(ev) {
+            window.removeEventListener(ev, loadLeadConnector, { passive: true });
+          });
+          var s = document.createElement('script');
+          s.src = 'https://widgets.leadconnectorhq.com/loader.js';
+          s.setAttribute('data-resources-url', 'https://widgets.leadconnectorhq.com/chat-widget/loader.js');
+          s.setAttribute('data-widget-id', '6ab59fae50fc24ace6f7fff6');
+          s.async = true;
+          document.body.appendChild(s);
+        }
+        ['scroll', 'pointerdown', 'touchstart', 'keydown'].forEach(function(ev) {
+          window.addEventListener(ev, loadLeadConnector, { once: true, passive: true });
+        });
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(function() { setTimeout(loadLeadConnector, 2500); });
+        } else {
+          setTimeout(loadLeadConnector, 3500);
+        }
+      })();
+    </script>
   
 <!-- Code Vibe Modal -->
 <div id="codeVibeModal" class="code-vibe-modal" style="display:none;">
@@ -1581,8 +1609,8 @@
 </script>
 <!-- End Gemini AI Chatbot Widget -->
 
-<script src="script.js?v=20261008"></script>
-<script src="i18n.js"></script>
+<script defer src="script.js?v=20261016"></script>
+<script defer src="i18n.js"></script>
 </body>
 </html>
 

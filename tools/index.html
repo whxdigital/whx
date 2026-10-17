@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WHX Orbital Telemetry Suite | Global DNS Propagation, RDAP &amp; AI GEO Engine</title>
+  <meta name="description" content="Free enterprise-grade Starlink-inspired DNS propagation radar, 6-in-1 RDAP domain &amp; email spoofing analyzer, and Local SEO AI citability auditor. 100% free, real-time telemetry." />
+  <link rel="canonical" href="https://whxdigital.com/tools/" />
+  
+  <!-- Open Graph / Social Metadata -->
+  <meta property="og:title" content="WHX Orbital Telemetry Suite | Global DNS, RDAP &amp; AI GEO Command Center" />
+  <meta property="og:description" content="Concurrently inspect 24 global resolver nodes, audit email spoofing vulnerabilities (SPF/DMARC), and generate LocalBusiness schema for ChatGPT Search &amp; Google Maps 3-Pack." />
+  <meta property="og:url" content="https://whxdigital.com/tools/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://whxdigital.com/whx-logo.png" />
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="WHX Orbital Telemetry Suite | Global DNS, RDAP &amp; AI GEO Command Center" />
+  <meta name="twitter:description" content="Concurrently inspect 24 global resolver nodes, audit email spoofing vulnerabilities (SPF/DMARC), and generate LocalBusiness schema." />
+  <meta name="twitter:image" content="https://whxdigital.com/whx-logo.png" />
+
+  <!-- Structured Data: WebApplication & FAQPage JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://whxdigital.com/tools/#webapp",
+        "name": "WHX Orbital Telemetry Suite",
+        "url": "https://whxdigital.com/tools/",
+        "applicationCategory": "NetworkingApplication, SEOApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "description": "Starlink-inspired Global DNS propagation radar, 6-in-1 RDAP domain & email spoofing analyzer, and Local SEO AI Citability (GEO) auditor.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "WHX Digital",
+          "url": "https://whxdigital.com/",
+          "logo": "https://whxdigital.com/whx-logo.png"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://whxdigital.com/tools/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is DNS propagation and why does it drift globally?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "When you update DNS records (such as A, AAAA, CNAME, or MX), recursive resolvers worldwide cache records according to their Time-To-Live (TTL). Global DNS propagation drift occurs because ISPs and Anycast resolver nodes across different geographic continents refresh their cache at varying intervals."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the WHX Email Deliverability & Spoofing Shield calculate security grades?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "WHX inspects DNS TXT records for SPF (v=spf1) and DMARC (v=DMARC1 at _dmarc.domain). A domain receives an A+ grade only when SPF is strictly configured (~all or -all) and DMARC enforces a quarantine or reject policy (p=reject or p=quarantine) with active reporting."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is Generative Engine Optimization (GEO) and AI Citability?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Generative Engine Optimization (GEO) prepares business entities for indexing and citation by large language models including ChatGPT Search, Perplexity AI, Claude, and Google AI Overviews using structured JSON-LD schema, entity consistency, and factual knowledge graphs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the Starlink-style resolver radar measure real ping latency?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "WHX Orbital Telemetry leverages DNS-over-HTTPS (DoH) with high-resolution performance.now() timestamps to measure round-trip milliseconds (ms) between the client and edge Anycast nodes with EDNS client subnet routing."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" /></noscript>
+
+  <!-- Telemetry HUD & A11y Stylesheets -->
+  <link rel="stylesheet" href="orbital-telemetry.css?v=20261016" />
+  <link rel="stylesheet" href="../a11y-patch.css?v=20261016" />
+</head>
+
+<body class="orbital-telemetry-body">
+  <div class="orbital-grid-bg" aria-hidden="true"></div>
+  <div class="orbital-radar-vignette" aria-hidden="true"></div>
+
+  <div class="hud-container">
+    
+    <!-- TOP STATUS HUD BAR -->
+    <header class="hud-top-bar" role="banner">
+      <div class="hud-brand-wrap">
+        <span class="hud-satellite-beacon" aria-hidden="true"></span>
+        <div class="hud-brand-title">WHX ORBITAL // <span>TELEMETRY COMMAND</span></div>
+      </div>
+      
+      <div class="hud-sys-metrics" aria-label="System status readouts">
+        <div class="hud-metric-item">
+          <i class="fa-solid fa-clock" style="color:var(--hud-cyan);"></i>
+          <span>MISSION CLOCK:</span>
+          <strong id="hudMissionClock">--:--:-- UTC</strong>
+        </div>
+        <div class="hud-metric-item">
+          <i class="fa-solid fa-satellite" style="color:var(--nominal-emerald);"></i>
+          <span>GLOBAL NODES:</span>
+          <strong>24 ACTIVE ARRAYS</strong>
+        </div>
+        <div class="hud-metric-item">
+          <i class="fa-solid fa-shield-halved" style="color:var(--nominal-emerald);"></i>
+          <span>STATUS:</span>
+          <strong style="color:var(--nominal-emerald);">NOMINAL</strong>
+        </div>
+      </div>
+
+      <a href="../index.html" class="hud-back-btn" aria-label="Return to WHX Digital Homepage">
+        <i class="fa-solid fa-chevron-left"></i> RETURN TO WHX CORE
+      </a>
+    </header>
+
+    <!-- MAIN TARGET INPUT HUD & ORBITAL SWEEP CONTROL -->
+    <section class="hud-mission-panel" aria-labelledby="mission-title">
+      <div class="hud-mission-header">
+        <div class="hud-kicker">
+          <i class="fa-solid fa-crosshairs"></i> GLOBAL INFRASTRUCTURE &amp; SEARCH TELEMETRY
+        </div>
+        <h1 id="mission-title">Starlink-Grade DNS Radar &amp; AI Citability Engine</h1>
+        <p>Inspect real-time global DNS propagation across 24 Anycast nodes, audit email spoofing vulnerabilities (SPF / DMARC), and verify Local SEO entity schema for Google Maps 3-Pack and ChatGPT Search.</p>
+      </div>
+
+      <div class="hud-controls-grid">
+        <div class="hud-input-group">
+          <label for="hudDomainInput">TARGET HOSTNAME / APEX DOMAIN</label>
+          <input type="text" id="hudDomainInput" class="hud-input" placeholder="e.g. whxdigital.com or spacex.com" value="whxdigital.com" aria-label="Target domain name for telemetry sweep" />
+        </div>
+
+        <div class="hud-input-group">
+          <label for="hudRecordSelect">RECORD TYPE</label>
+          <select id="hudRecordSelect" class="hud-select" aria-label="DNS record type to query">
+            <option value="A" selected>A (IPv4 Address)</option>
+            <option value="AAAA">AAAA (IPv6 Address)</option>
+            <option value="CNAME">CNAME (Alias)</option>
+            <option value="MX">MX (Mail Exchanger)</option>
+            <option value="TXT">TXT (SPF / DMARC / Verification)</option>
+            <option value="NS">NS (Authoritative Nameservers)</option>
+            <option value="SOA">SOA (Start of Authority)</option>
+            <option value="CAA">CAA (Certificate Authority Auth)</option>
+            <option value="PTR">PTR (Reverse DNS)</option>
+            <option value="SRV">SRV (Service Record)</option>
+          </select>
+        </div>
+
+        <div class="hud-input-group">
+          <label for="hudExpectedInput">EXPECTED VALUE / TARGET IP (OPTIONAL)</label>
+          <input type="text" id="hudExpectedInput" class="hud-input" placeholder="e.g. 76.76.21.21 or v=spf1" aria-label="Expected record value filter" />
+        </div>
+
+        <button type="button" id="hudSweepBtn" class="hud-btn-primary" aria-label="Engage Global Orbital Telemetry Sweep">
+          <i class="fa-solid fa-satellite-dish"></i> ENGAGE ORBITAL SWEEP
+        </button>
+      </div>
+
+      <!-- Presets and Live Telemetry Loop -->
+      <div class="hud-sub-controls">
+        <div class="hud-presets-wrap">
+          <span class="hud-preset-label"><i class="fa-solid fa-bolt"></i> QUICK TARGETS:</span>
+          <button type="button" class="hud-preset-tag" data-domain="whxdigital.com">whxdigital.com</button>
+          <button type="button" class="hud-preset-tag" data-domain="spacex.com">spacex.com</button>
+          <button type="button" class="hud-preset-tag" data-domain="x.ai">x.ai</button>
+          <button type="button" class="hud-preset-tag" data-domain="starlink.com">starlink.com</button>
+          <button type="button" class="hud-preset-tag" data-domain="stripe.com">stripe.com</button>
+        </div>
+
+        <div class="hud-toggle-wrap">
+          <label class="hud-toggle-label" for="hudLoopToggle">
+            <i class="fa-solid fa-arrows-rotate"></i> Live Telemetry Loop (15s Auto-Sweep)
+          </label>
+          <label class="hud-switch">
+            <input type="checkbox" id="hudLoopToggle" aria-label="Toggle 15-second automatic refresh telemetry loop" />
+            <span class="hud-slider"></span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- DYNAMIC CRITICAL ANOMALY ALERT CONTAINER (Module 4) -->
+    <div id="anomalyAlertContainer" role="region" aria-live="polite" aria-label="Critical Infrastructure Anomaly Alerts"></div>
+
+    <!-- ACTIONS & STATS STRIP -->
+    <section class="hud-actions-strip" aria-label="Telemetry Actions and Global Summary">
+      <div class="hud-quick-actions">
+        <button type="button" id="hudCopyLinkBtn" class="hud-action-btn" aria-label="Copy shareable live telemetry link">
+          <i class="fa-solid fa-link"></i> COPY TELEMETRY LINK
+        </button>
+        <button type="button" id="hudDownloadReportBtn" class="hud-action-btn" aria-label="Download or print mission report">
+          <i class="fa-solid fa-file-pdf"></i> PRINT MISSION REPORT (PDF)
+        </button>
+      </div>
+
+      <div class="hud-summary-pills">
+        <div class="hud-pill nominal">
+          <span>CONSENSUS:</span>
+          <strong id="statConsensus">100%</strong>
+        </div>
+        <div class="hud-pill">
+          <span>MEAN PING:</span>
+          <strong id="statMeanPing">28 ms</strong>
+        </div>
+        <div class="hud-pill">
+          <span>ONLINE NODES:</span>
+          <strong id="statOnlineNodes">24/24</strong>
+        </div>
+        <div class="hud-pill">
+          <span>DOMINANT RECORD:</span>
+          <strong id="statResolvedRecord">--</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPACEX HUD TAB SELECTOR -->
+    <nav class="hud-tabs-deck" role="tablist" aria-label="Orbital Telemetry Modules">
+      <button type="button" class="hud-tab-btn is-active" data-tab="tab-dns" role="tab" aria-selected="true" aria-controls="tab-dns">
+        <i class="fa-solid fa-satellite-dish"></i> [01 // GLOBAL DNS NODE RADAR]
+      </button>
+      <button type="button" class="hud-tab-btn" data-tab="tab-intel" role="tab" aria-selected="false" aria-controls="tab-intel">
+        <i class="fa-solid fa-shield-halved"></i> [02 // 6-IN-1 DEEP DOMAIN INTEL]
+      </button>
+      <button type="button" class="hud-tab-btn" data-tab="tab-geo" role="tab" aria-selected="false" aria-controls="tab-geo">
+        <i class="fa-solid fa-brain"></i> [03 // AI CITABILITY (GEO) &amp; SCHEMA]
+      </button>
+      <button type="button" class="hud-tab-btn" data-tab="tab-anomalies" role="tab" aria-selected="false" aria-controls="tab-anomalies">
+        <i class="fa-solid fa-triangle-exclamation"></i> [04 // ANOMALY DEFENSE HOOK]
+      </button>
+    </nav>
+
+    <!-- TAB 1: GLOBAL DNS PROPAGATION & STARLINK-STYLE NODE RADAR -->
+    <div id="tab-dns" class="hud-tab-pane is-active" role="tabpanel" aria-labelledby="tab-dns-btn">
+      <div class="radar-display-deck">
+        
+        <!-- Vector World Map Radar Screen -->
+        <div class="radar-map-card">
+          <div class="radar-map-card-header">
+            <span class="radar-map-card-title">
+              <i class="fa-solid fa-earth-americas"></i> 24-NODE GLOBAL CONCURRENT PROPAGATION MATRIX
+            </span>
+            <span class="hud-preset-label">CLICK ANY NODE TO INSPECT</span>
+          </div>
+
+          <div class="radar-sweep-beam-container" id="hudSvgMapContainer">
+            <div class="radar-sweep-line" aria-hidden="true"></div>
+            
+            <!-- Pure GPU-Accelerated SVG Map -->
+            <svg class="world-map-svg" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet" aria-label="Interactive Global Resolver Map">
+              <!-- Grid Equator & Meridians -->
+              <line x1="0" y1="250" x2="1000" y2="250" class="map-grid-line" />
+              <line x1="500" y1="0" x2="500" y2="500" class="map-grid-line" />
+              <line x1="250" y1="0" x2="250" y2="500" class="map-grid-line" />
+              <line x1="750" y1="0" x2="750" y2="500" class="map-grid-line" />
+
+              <!-- Stylized World Continents (Low-poly GPU vector paths) -->
+              <!-- North America -->
+              <path class="map-land" d="M120 70 L250 60 L310 90 L330 140 L280 180 L250 220 L210 240 L180 200 L140 170 L110 120 Z" />
+              <!-- South America -->
+              <path class="map-land" d="M280 260 L360 270 L380 340 L340 430 L310 440 L290 350 Z" />
+              <!-- Europe -->
+              <path class="map-land" d="M460 70 L550 60 L570 120 L530 160 L470 160 L450 110 Z" />
+              <!-- Africa -->
+              <path class="map-land" d="M470 180 L570 180 L600 240 L580 340 L530 380 L480 310 L460 230 Z" />
+              <!-- Asia -->
+              <path class="map-land" d="M580 60 L850 60 L880 140 L840 220 L760 250 L680 220 L610 170 Z" />
+              <!-- Australia -->
+              <path class="map-land" d="M780 300 L870 310 L880 370 L810 390 L770 340 Z" />
+
+              <!-- Active Satellite Beams Group -->
+              <g id="hudMapBeamsGroup" aria-hidden="true"></g>
+
+              <!-- Node Pins Group -->
+              <g id="hudMapNodesGroup"></g>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Radial Consensus Gauge Card -->
+        <div class="radar-gauge-card">
+          <div class="radar-map-card-title">
+            <i class="fa-solid fa-gauge-high"></i> GLOBAL PROPAGATION CONSENSUS
+          </div>
+
+          <div class="radial-gauge-container">
+            <svg class="radial-svg" viewBox="0 0 160 160" aria-hidden="true">
+              <circle class="radial-track" cx="80" cy="80" r="70" />
+              <circle class="radial-fill" id="hudRadialFill" cx="80" cy="80" r="70" />
+            </svg>
+            <div class="radial-value-center">
+              <span class="radial-percentage" id="hudRadialPct">100%</span>
+              <span class="radial-caption">GLOBAL CONSENSUS</span>
+            </div>
+          </div>
+
+          <div class="gauge-stats-list">
+            <div class="gauge-stat-row">
+              <span>Resolving Protocol:</span>
+              <strong>DNS-over-HTTPS (RFC 8484)</strong>
+            </div>
+            <div class="gauge-stat-row">
+              <span>Subnet Geolocation:</span>
+              <strong>EDNS Client Subnet Active</strong>
+            </div>
+            <div class="gauge-stat-row">
+              <span>Anycast Latency:</span>
+              <strong id="gaugeLatencyVal">28 ms (Nominal)</strong>
+            </div>
+            <div class="gauge-stat-row">
+              <span>Cache Expiry:</span>
+              <strong id="gaugeCacheVal">TTL Enforced</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 24-Node Telemetry Results Table -->
+      <div class="telemetry-table-card">
+        <div class="table-filter-bar">
+          <div class="radar-map-card-title">
+            <i class="fa-solid fa-list-check"></i> 24 REGIONAL RESOLVER READOUTS
+          </div>
+          <input type="text" id="hudTableFilter" class="table-filter-input" placeholder="Filter by city, provider, status..." aria-label="Filter resolver table" />
+        </div>
+
+        <div class="telemetry-table-responsive">
+          <table class="telemetry-table">
+            <thead>
+              <tr>
+                <th scope="col">Status</th>
+                <th scope="col">Location &amp; Subnet</th>
+                <th scope="col">Resolver Provider</th>
+                <th scope="col">Resolved Record</th>
+                <th scope="col">TTL</th>
+                <th scope="col">Latency (ms)</th>
+              </tr>
+            </thead>
+            <tbody id="hudNodesTableBody">
+              <!-- Dynamically populated by orbital-telemetry.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: 6-IN-1 DEEP DOMAIN & SECURITY ANALYZER -->
+    <div id="tab-intel" class="hud-tab-pane" role="tabpanel" aria-labelledby="tab-intel-btn">
+      <div class="domain-intel-grid">
+        
+        <!-- 1. WHOIS & Domain Age -->
+        <article class="intel-card">
+          <div class="intel-card-header">
+            <span class="intel-card-title"><i class="fa-solid fa-id-card"></i> 01 / WHOIS &amp; DOMAIN AGE</span>
+            <span class="node-status-badge nominal"><i class="fa-solid fa-check"></i> RDAP VERIFIED</span>
+          </div>
+          <div class="intel-key-value-list">
+            <div class="intel-kv-row">
+              <span>Exact Domain Age:</span>
+              <strong id="whoisAgeText">Loading...</strong>
+            </div>
+            <div class="intel-kv-row">
+              <span>First Registered:</span>
+              <strong id="whoisCreated">Loading...</strong>
+            </div>
+            <div class="intel-kv-row">
+              <span>Registry Expiry:</span>
+              <strong id="whoisExpires">Loading...</strong>
+            </div>
+            <div class="intel-kv-row">
+              <span>IANA Registrar:</span>
+              <strong id="whoisRegistrar">Loading...</strong>
+            </div>
+            <div class="intel-kv-row">
+              <span>Domain Lock Status:</span>
+              <strong id="whoisStatus">Loading...</strong>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. Email Deliverability & Spoofing Shield (SPF/DMARC/MX) -->
+        <article class="intel-card">
+          <div class="intel-card-header">
+            <span class="intel-card-title"><i class="fa-solid fa-shield-halved"></i> 02 / EMAIL SECURITY SHIELD</span>
+            <span class="intel-score-badge grade-a" id="emailSecurityGrade">A+</span>
+          </div>
+          <div class="intel-key-value-list">
+            <div class="intel-kv-row">
+              <span>SPF Authentication:</span>
+              <strong id="spfStatusText">Inspecting...</strong>
+            </div>
+            <div class="intel-kv-row">
+              <span>DMARC Enforcement:</span>
+              <strong id="dmarcStatusText">Inspecting...</strong>
+            </div>
+            <div class="intel-kv-row">
+              <span>MX Mail Routing:</span>
+              <strong id="mxStatusText">Inspecting...</strong>
+            </div>
+            <div class="intel-kv-row">
+              <span>Phishing Vulnerability:</span>
+              <strong style="color:var(--nominal-emerald);">Low (Protected)</strong>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. 12-TLD Instant Brand Availability Matrix -->
+        <article class="intel-card">
+          <div class="intel-card-header">
+            <span class="intel-card-title"><i class="fa-solid fa-network-wired"></i> 03 / 12-TLD BRAND MATRIX</span>
+            <span class="hud-preset-label">NXDOMAIN AUDIT</span>
+          </div>
+          <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:8px;">Check availability of your brand root name across top global extensions:</p>
+          <div class="tld-matrix-grid" id="tldMatrixGrid">
+            <!-- Dynamically populated -->
+          </div>
+        </article>
+
+        <!-- 4. Nameserver & SOA Zone Authority -->
+        <article class="intel-card">
+          <div class="intel-card-header">
+            <span class="intel-card-title"><i class="fa-solid fa-server"></i> 04 / NS &amp; SOA REDUNDANCY</span>
+            <span class="node-status-badge nominal"><i class="fa-solid fa-check"></i> ACTIVE</span>
+          </div>
+          <div class="intel-key-value-list">
+            <div class="intel-kv-row">
+              <span>Nameserver Fleet:</span>
+              <strong id="nsStatusText">Checking...</strong>
+            </div>
+            <div class="intel-kv-row">
+              <span>SOA Zone Serial:</span>
+              <strong id="soaStatusText">Checking...</strong>
+            </div>
+            <div class="intel-kv-row">
+              <span>CAA SSL Lock:</span>
+              <strong id="caaStatusText">Checking...</strong>
+            </div>
+            <div class="intel-kv-row">
+              <span>Dual-Stack IPv6:</span>
+              <strong id="ipv6StatusText">Checking...</strong>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- TAB 3: LOCAL SEO, SCHEMA & AI CITABILITY (GEO) AUDITOR -->
+    <div id="tab-geo" class="hud-tab-pane" role="tabpanel" aria-labelledby="tab-geo-btn">
+      <div class="geo-auditor-layout">
+        
+        <!-- Interactive Schema Generator Form -->
+        <div class="geo-form-card">
+          <div class="radar-map-card-title" style="margin-bottom:8px;">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> 1-CLICK LOCALBUSINESS JSON-LD SCHEMA GENERATOR
+          </div>
+          <p style="font-size:0.84rem; color:var(--text-muted);">
+            Generate Google Maps 3-Pack and ChatGPT Search compliant entity schema instantly:
+          </p>
+
+          <div class="geo-form-grid">
+            <div class="hud-input-group">
+              <label for="schemaBizName">BUSINESS NAME</label>
+              <input type="text" id="schemaBizName" class="hud-input" value="WHX Digital Enterprise" aria-label="Business Name" />
+            </div>
+
+            <div class="hud-input-group">
+              <label for="schemaCategory">BUSINESS CATEGORY</label>
+              <select id="schemaCategory" class="hud-select" aria-label="Business Category">
+                <option value="ProfessionalService" selected>Professional Services / Agency</option>
+                <option value="HVACBusiness">HVAC / Heating &amp; Cooling</option>
+                <option value="Plumber">Plumbing Contractor</option>
+                <option value="Dentist">Dental Clinic / Dentist</option>
+                <option value="LegalService">Law Firm / Attorney</option>
+                <option value="RoofingContractor">Roofing Contractor</option>
+                <option value="RealEstateAgent">Real Estate Agency</option>
+                <option value="MedicalBusiness">Medical Practice</option>
+                <option value="Restaurant">Restaurant / Food Service</option>
+              </select>
+            </div>
+
+            <div class="hud-input-group">
+              <label for="schemaCity">METRO CITY</label>
+              <input type="text" id="schemaCity" class="hud-input" value="New York" aria-label="Target Metro City" />
+            </div>
+
+            <div class="hud-input-group">
+              <label for="schemaPhone">DIRECT PHONE / NAP</label>
+              <input type="text" id="schemaPhone" class="hud-input" value="+1 (555) 019-2831" aria-label="Phone Number" />
+            </div>
+
+            <div class="hud-input-group" style="grid-column: 1 / -1;">
+              <label for="schemaUrl">WEBSITE URL</label>
+              <input type="text" id="schemaUrl" class="hud-input" value="https://whxdigital.com" aria-label="Website Canonical URL" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Generated JSON-LD Code Output -->
+        <div class="schema-output-card">
+          <div class="schema-output-header">
+            <span class="radar-map-card-title"><i class="fa-solid fa-code"></i> VALIDATED JSON-LD SCHEMA MARKUP</span>
+            <button type="button" id="copySchemaBtn" class="hud-action-btn" aria-label="Copy generated JSON-LD Schema to clipboard">
+              <i class="fa-regular fa-copy"></i> COPY SCHEMA
+            </button>
+          </div>
+          <pre class="schema-code-block" id="schemaCodeOutput"><code>Loading schema...</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: ANOMALY DEFENSE HOOK -->
+    <div id="tab-anomalies" class="hud-tab-pane" role="tabpanel" aria-labelledby="tab-anomalies-btn">
+      <div class="radar-map-card" style="padding:28px;">
+        <div class="radar-map-card-title" style="font-size:1.1rem; margin-bottom:12px;">
+          <i class="fa-solid fa-shield-virus"></i> AUTOMATIC WHX AI AGENT INCIDENT REMEDIATION
+        </div>
+        <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom:20px;">
+          Whenever our orbital scanner identifies critical drift—such as missing DMARC/SPF spoofing protection, DNS routing desynchronization, unencrypted CAA certificate authority, or missing Local Entity schema—our systems engineering team remediates the vulnerability directly.
+        </p>
+
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:16px;">
+          <div style="background:var(--bg-carbon-elevated); border:1px solid var(--border-razor-metallic); border-radius:8px; padding:18px;">
+            <strong style="color:var(--critical-red); display:flex; align-items:center; gap:8px;">
+              <i class="fa-solid fa-envelope-open-text"></i> DMARC &amp; SPF Hardening
+            </strong>
+            <p style="font-size:0.82rem; color:var(--text-muted); margin-top:6px;">Stop outbound domain spoofing, ensure 100% inbox placement on Google Workspace and Microsoft 365, and prevent email blacklisting.</p>
+          </div>
+
+          <div style="background:var(--bg-carbon-elevated); border:1px solid var(--border-razor-metallic); border-radius:8px; padding:18px;">
+            <strong style="color:var(--drift-amber); display:flex; align-items:center; gap:8px;">
+              <i class="fa-solid fa-location-dot"></i> Google Maps 3-Pack Supremacy
+            </strong>
+            <p style="font-size:0.82rem; color:var(--text-muted); margin-top:6px;">Deploy 100% NAP-consistent citations, local business schema, and geo-grid radius expansion to capture the top 3 map positions.</p>
+          </div>
+
+          <div style="background:var(--bg-carbon-elevated); border:1px solid var(--border-razor-metallic); border-radius:8px; padding:18px;">
+            <strong style="color:var(--hud-cyan); display:flex; align-items:center; gap:8px;">
+              <i class="fa-solid fa-robot"></i> 24/7 Autonomous AI Agents
+            </strong>
+            <p style="font-size:0.82rem; color:var(--text-muted); margin-top:6px;">Integrate automated CRM workflows, voice agents, and lead qualification engines so every inbound search click converts in seconds.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:24px; text-align:center;">
+          <a href="https://wa.me/351928350275?text=Hello%20WHX%20Engineering%2C%20I%20would%20like%20to%20schedule%20a%20priority%20infrastructure%20and%20search%20audit." target="_blank" rel="noopener noreferrer" class="hud-btn-primary" style="display:inline-flex;">
+            <i class="fa-brands fa-whatsapp" style="font-size:1.1rem;"></i> SCHEDULE STRATEGY AUDIT WITH WHX PRINCIPAL ARCHITECTS
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- RICH SEO COPY & COMPREHENSIVE FAQS (PageSpeed & Search Indexing Standard) -->
+    <section class="hud-seo-content-deck" aria-labelledby="seo-title">
+      <h2 id="seo-title">Enterprise DNS Propagation &amp; Generative Engine Intelligence</h2>
+      <p style="color:var(--text-muted); max-width:960px;">
+        WHX Orbital Telemetry delivers aerospace-grade observability for mission-critical web properties. By querying Anycast resolver nodes with EDNS client subnet routing, our tools provide authentic geographic propagation data without the caching distortions of legacy web tools.
+      </p>
+
+      <div class="hud-seo-grid">
+        <div class="hud-seo-col">
+          <h3>Why Real-Time DNS Observability Matters</h3>
+          <p>
+            When migrating servers, updating IP addresses, or provisioning SSL certificates, stale DNS records cause downtime and severed customer journeys. Real-time observability ensures all 6 continents have aligned before you decommission legacy nodes.
+          </p>
+        </div>
+
+        <div class="hud-seo-col">
+          <h3>The 2026 Email Security Standard</h3>
+          <p>
+            Google, Yahoo, and Microsoft enforce strict DMARC policies. Domains without SPF alignment and active DMARC enforcement face immediate rate-limiting and junk folder routing. Our 6-in-1 analyzer ensures your email reputation remains untouchable.
+          </p>
+        </div>
+
+        <div class="hud-seo-col">
+          <h3>Generative Engine Optimization (GEO)</h3>
+          <p>
+            Search is transitioning from 10 blue links to conversational answers in ChatGPT Search, Perplexity AI, and Google AI Overviews. Structured JSON-LD schema establishes your business entity in the LLM knowledge graph, ensuring citations and top authority placement.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Accordion -->
+      <h3 style="color:var(--text-pure); margin-top:30px; font-size:1.2rem;">Frequently Answered Telemetry Questions</h3>
+      <div class="hud-faq-list">
+        
+        <div class="hud-faq-item">
+          <button type="button" class="hud-faq-question">
+            <span>What causes global DNS propagation delays?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="hud-faq-answer">
+            <p>DNS propagation is governed by the Time-To-Live (TTL) values configured in your authoritative zone file. When you alter an A or CNAME record, ISP recursive resolvers continue serving the cached record until the TTL timer expires. Lowering your TTL to 300 seconds before a migration minimizes this propagation window.</p>
+          </div>
+        </div>
+
+        <div class="hud-faq-item">
+          <button type="button" class="hud-faq-question">
+            <span>How does WHX detect email spoofing risks?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="hud-faq-answer">
+            <p>We query the authoritative TXT records of your apex domain and the _dmarc subdomain. If your DMARC policy is set to p=none or is completely missing, unauthorized servers can send emails forged with your @yourdomain.com address. WHX grades this as Grade C or lower and provides remediation guidance.</p>
+          </div>
+        </div>
+
+        <div class="hud-faq-item">
+          <button type="button" class="hud-faq-question">
+            <span>How does LocalBusiness Schema help Google Maps 3-Pack rankings?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="hud-faq-answer">
+            <p>Search engines crawl your website to verify your Name, Address, and Phone number (NAP). Embedding a structured Schema.org LocalBusiness JSON-LD markup provides unambiguous entity verification to the Google Maps ranking algorithm, elevating your profile into the high-converting 3-pack.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Telemetry Engine Scripts (0ms TBT defer) -->
+  <script defer src="orbital-telemetry.js?v=20261016"></script>
+</body>
+</html>
