@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   /* WHX Digital design tokens */
   --bg-main: #f8f7fc;
   --bg-surface: #ffffff;
@@ -21174,41 +21174,74 @@ body {
   background: rgba(0, 0, 0, 0.06) !important;
 }
 
-/* Nav Dashboard CTA Button — Blended with Header */
+/* Nav Dashboard CTA Button — Refined Modern SaaS Pill */
 .site-header .nav-dashboard-btn {
   display: inline-flex !important;
   align-items: center !important;
-  gap: 6px !important;
-  background: rgba(0, 0, 0, 0.05) !important;
+  gap: 8px !important;
+  background: rgba(255, 255, 255, 0.92) !important;
   color: #0f172a !important;
-  font-size: 0.84rem !important;
+  font-family: var(--font-body, 'Inter', -apple-system, sans-serif) !important;
+  font-size: 0.82rem !important;
   font-weight: 600 !important;
-  padding: 6px 14px !important;
+  letter-spacing: -0.01em !important;
+  padding: 5px 14px 5px 6px !important;
   border-radius: 9999px !important;
   text-decoration: none !important;
-  border: 1px solid rgba(0, 0, 0, 0.09) !important;
-  transition: all 0.2s ease !important;
-  box-shadow: none !important;
+  border: 1px solid rgba(124, 58, 237, 0.22) !important;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04) !important;
+  transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1) !important;
   white-space: nowrap !important;
+  cursor: pointer !important;
+}
+
+.site-header .nav-dashboard-btn span:not(.nav-client-icon) {
+  color: #0f172a !important;
+  font-weight: 700 !important;
 }
 
 .site-header .nav-dashboard-btn:hover {
-  background: rgba(0, 0, 0, 0.1) !important;
-  border-color: rgba(0, 0, 0, 0.16) !important;
-  color: #000000 !important;
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%) !important;
+  border-color: #7c3aed !important;
+  color: #ffffff !important;
   transform: translateY(-1px) !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.35), 0 0 0 1px rgba(124, 58, 237, 0.25) !important;
 }
 
-.site-header .nav-dashboard-btn i {
-  font-size: 0.72rem !important;
-  color: #64748b !important;
-  transition: transform 0.2s ease, color 0.2s ease !important;
+.site-header .nav-dashboard-btn:hover span:not(.nav-client-icon) {
+  color: #ffffff !important;
 }
 
-.site-header .nav-dashboard-btn:hover i {
-  color: #0f172a !important;
-  transform: translateX(2px) !important;
+/* Single professional icon badge */
+.site-header .nav-dashboard-btn .nav-client-icon,
+.site-header .nav-dashboard-btn > i:first-child {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 22px !important;
+  height: 22px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%) !important;
+  color: #ffffff !important;
+  font-size: 0.70rem !important;
+  box-shadow: 0 2px 6px rgba(124, 58, 237, 0.35) !important;
+  transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+}
+
+.site-header .nav-dashboard-btn:hover .nav-client-icon,
+.site-header .nav-dashboard-btn:hover > i:first-child {
+  background: rgba(255, 255, 255, 0.24) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18) !important;
+  transform: scale(1.08) !important;
+}
+
+/* Eliminate clumsy redundant secondary arrows/icons */
+.site-header .nav-dashboard-btn .fa-arrow-right,
+.site-header .nav-dashboard-btn i:last-child:not(:first-child) {
+  display: none !important;
 }
 
 /* Language Switcher Styling */

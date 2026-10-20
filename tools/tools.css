@@ -1,0 +1,805 @@
+/* ==========================================================================
+   WHX DIGITAL // FREE DNS & DOMAIN TOOLS SUITE
+   Pixel-accurate to modern DNS tools benchmark (whatsmydns-inspired)
+   Clean, fast, authoritative, zero-bloat
+   ========================================================================== */
+
+:root {
+  --tools-bg: #f8fafc;
+  --tools-card-bg: #ffffff;
+  --tools-border: #cbd5e1;
+  --tools-border-light: #e2e8f0;
+  --tools-text-dark: #0f172a;
+  --tools-text-body: #1e293b;
+  --tools-text-muted: #64748b;
+  --tools-text-light: #94a3b8;
+  --tools-blue: #0284c7;
+  --tools-blue-hover: #0369a1;
+  --tools-blue-light: #e0f2fe;
+  --tools-pill-active-border: #2563eb;
+  --tools-pill-active-color: #2563eb;
+  --tools-success: #16a34a;
+  --tools-success-bg: #dcfce7;
+  --tools-danger: #dc2626;
+  --tools-danger-bg: #fee2e2;
+  --tools-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --tools-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+body.tools-page {
+  background-color: var(--tools-bg);
+  color: var(--tools-text-body);
+  font-family: var(--tools-font);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Site header integration — Consistent with main site floating pill */
+.tools-page .site-header .nav-dashboard-btn {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid rgba(124, 58, 237, 0.3) !important;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.12), 0 1px 3px rgba(0, 0, 0, 0.06) !important;
+}
+
+.tools-page .site-header .nav-dashboard-btn span:not(.nav-client-icon) {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+.tools-page .site-header .nav-dashboard-btn:hover {
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%) !important;
+  color: #ffffff !important;
+  border-color: #7c3aed !important;
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.4) !important;
+}
+
+.tools-page .site-header .nav-dashboard-btn:hover span:not(.nav-client-icon) {
+  color: #ffffff !important;
+}
+
+/* Main Container — Generous clearance below floating navbar */
+.tools-container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 155px 20px 80px;
+}
+
+@media (max-width: 768px) {
+  .tools-container {
+    padding: 125px 16px 60px;
+  }
+}
+
+/* Breadcrumbs (Screenshot Style) */
+.tool-breadcrumbs {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tool-breadcrumbs a {
+  color: #0284c7;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.15s ease;
+}
+
+.tool-breadcrumbs a:hover {
+  color: #0369a1;
+  text-decoration: underline;
+}
+
+.tool-breadcrumbs .crumb-sep {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  user-select: none;
+}
+
+.tool-breadcrumbs .crumb-current {
+  color: #475569;
+  font-weight: 500;
+}
+
+/* Main Title (Screenshot Style) */
+.tool-page-heading {
+  font-size: 2.15rem;
+  font-weight: 700;
+  color: var(--tools-text-dark);
+  letter-spacing: -0.025em;
+  margin: 0 0 20px 0;
+  line-height: 1.25;
+}
+
+/* Search Box Container */
+.tool-search-row {
+  margin-bottom: 14px;
+}
+
+.tool-search-form {
+  display: flex;
+  align-items: stretch;
+  max-width: 440px;
+  gap: 0;
+  background: #ffffff;
+}
+
+.tool-search-input-wrap {
+  position: relative;
+  flex: 1;
+}
+
+.tool-search-input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 42px;
+  padding: 8px 14px;
+  font-size: 0.98rem;
+  font-family: var(--tools-font);
+  color: var(--tools-text-dark);
+  background: #ffffff;
+  border: 1px solid var(--tools-border);
+  border-right: none;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tool-search-input:focus {
+  border-color: #3b82f6;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.tool-search-btn {
+  height: 42px;
+  padding: 0 18px;
+  background: #f8fafc;
+  border: 1px solid var(--tools-border);
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  font-family: var(--tools-font);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #334155;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.tool-search-btn:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+.tool-search-btn:active {
+  background: #e2e8f0;
+}
+
+/* Sub-Tool Navigation Pills (Screenshot Style) */
+.tool-pills-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.tool-pill-button {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-family: var(--tools-font);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  line-height: 1.25;
+  outline: none;
+  user-select: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.tool-pill-button:hover {
+  border-color: #94a3b8;
+  color: #0f172a;
+  background: #f8fafc;
+}
+
+/* Selected Pill - Exactly matching screenshot blue rounded border */
+.tool-pill-button.is-active {
+  border-color: #2563eb;
+  color: #2563eb;
+  background: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 0 0 1px #2563eb;
+}
+
+/* ==========================================================================
+   RESULTS CARD (Screenshot Style)
+   ========================================================================== */
+.tool-result-container {
+  background: #ffffff;
+  border: 1px solid var(--tools-border-light);
+  border-radius: 6px;
+  padding: 30px 32px 24px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+  position: relative;
+  min-height: 180px;
+}
+
+/* Card Header Statement */
+.result-statement-text {
+  font-size: 1.05rem;
+  color: #334155;
+  margin-bottom: 14px;
+}
+
+.result-statement-text strong {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Big Highlight Date (Screenshot Style: "Tuesday 9th of September 2036") */
+.result-date-primary {
+  font-size: 1.32rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+/* Breakdown String (Screenshot Style: "9 years, 10 months and 20 days") */
+.result-breakdown-primary {
+  font-size: 1.05rem;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.result-breakdown-primary strong {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Days Alternative (Screenshot Style: "or 3612 days") */
+.result-days-sub {
+  font-size: 0.95rem;
+  color: #475569;
+  margin-bottom: 24px;
+}
+
+.result-days-sub strong {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Bottom API Link (Screenshot Style) */
+.tool-api-link-wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.tool-api-trigger {
+  background: transparent;
+  border: none;
+  font-family: var(--tools-font-mono);
+  font-size: 0.82rem;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tool-api-trigger:hover {
+  color: #0284c7;
+  background: #f1f5f9;
+}
+
+/* ==========================================================================
+   TAB PANE VARIATIONS
+   ========================================================================== */
+
+/* Data Table (for WHOIS, Registrar, Owner, DNS) */
+.clean-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.92rem;
+}
+
+.clean-data-table th,
+.clean-data-table td {
+  padding: 10px 14px;
+  text-align: left;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.clean-data-table th {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: #f8fafc;
+}
+
+.clean-data-table td strong {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.clean-data-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Badge tags */
+.data-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--tools-font-mono);
+}
+
+.data-badge-success {
+  background: var(--tools-success-bg);
+  color: var(--tools-success);
+}
+
+.data-badge-danger {
+  background: var(--tools-danger-bg);
+  color: var(--tools-danger);
+}
+
+.data-badge-neutral {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.data-badge-blue {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+/* Availability Matrix Grid */
+.avail-matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 18px;
+  margin: 22px 0;
+}
+
+@media (max-width: 680px) {
+  .avail-matrix-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+.avail-domain-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 13px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  background: #ffffff;
+  transition: all 0.18s ease;
+  min-width: 0;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+}
+
+.avail-domain-card:hover {
+  border-color: #93c5fd;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+  transform: translateY(-1px);
+}
+
+.avail-domain-left {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.avail-domain-name {
+  font-family: var(--tools-font);
+  font-weight: 600;
+  font-size: 0.93rem;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.avail-domain-name .avail-tld {
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.avail-domain-right {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.avail-status-tag {
+  font-family: var(--tools-font);
+  font-size: 0.80rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+.avail-status-checking {
+  background: #f8fafc;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+}
+
+.avail-status-taken {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.avail-status-free {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+/* DNSSEC details box */
+.dnssec-details-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+
+.dnssec-meta-row {
+  display: flex;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.dnssec-meta-label {
+  width: 140px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.dnssec-meta-value {
+  flex: 1;
+  color: #0f172a;
+  word-break: break-all;
+  font-family: var(--tools-font-mono);
+  font-size: 0.85rem;
+}
+
+/* DNS Records Filter & Table */
+.dns-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.dns-type-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.1s ease;
+}
+
+.dns-type-btn:hover {
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
+.dns-type-btn.is-active {
+  background: #0284c7;
+  border-color: #0284c7;
+  color: #ffffff;
+}
+
+/* Clean WHOIS Raw Text (Exact User Screenshot Style) */
+.whois-raw-output {
+  background: #ffffff;
+  color: #1e293b;
+  font-family: var(--tools-font-mono);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  white-space: pre;
+  overflow-x: auto;
+  padding: 4px 0 16px 0;
+  margin: 0;
+  border: none;
+}
+
+/* Code Snippet / Raw box */
+.code-box-clean {
+  background: #0f172a;
+  color: #f8fafc;
+  border-radius: 6px;
+  padding: 16px;
+  font-family: var(--tools-font-mono);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  max-height: 380px;
+  margin: 14px 0;
+}
+
+/* Loading Overlay */
+.tool-loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 0;
+  color: #64748b;
+  gap: 12px;
+  font-size: 0.95rem;
+}
+
+.tool-loading-spinner {
+  font-size: 1.75rem;
+  color: #0284c7;
+}
+
+/* ==========================================================================
+   API MODAL DRAWER
+   ========================================================================== */
+.api-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.api-modal-backdrop.is-open {
+  display: flex;
+}
+
+.api-modal-dialog {
+  background: #ffffff;
+  border-radius: 10px;
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.api-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+
+.api-modal-header h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.api-modal-close {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.api-modal-close:hover {
+  color: #0f172a;
+}
+
+.api-modal-body {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.api-snippet-block {
+  margin-bottom: 20px;
+}
+
+.api-snippet-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.api-copy-btn {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 0.76rem;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.api-copy-btn:hover {
+  background: #0284c7;
+  border-color: #0284c7;
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   SUPPORTING SECTIONS (FAQs, Tool Info, WHX Callout)
+   ========================================================================== */
+.tool-info-section {
+  margin-top: 48px;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 36px;
+}
+
+.tool-info-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 16px 0;
+}
+
+.tool-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 36px;
+}
+
+.tool-info-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.tool-info-card h4 {
+  margin: 0 0 8px 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tool-info-card p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* WHX Callout Banner */
+.tool-cta-banner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  border-radius: 10px;
+  padding: 28px 32px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.tool-cta-content h4 {
+  margin: 0 0 6px 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.tool-cta-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.tool-cta-action-btn {
+  background: #7c3aed;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 22px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.tool-cta-action-btn:hover {
+  background: #6d28d9;
+  transform: translateY(-1px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .tools-container {
+    padding: 24px 16px 60px;
+  }
+  .tool-page-heading {
+    font-size: 1.7rem;
+  }
+  .tool-search-form {
+    max-width: 100%;
+  }
+  .tool-result-container {
+    padding: 22px 18px 18px;
+  }
+  .result-date-primary {
+    font-size: 1.18rem;
+  }
+  .result-breakdown-primary {
+    font-size: 0.95rem;
+  }
+  .tool-cta-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
