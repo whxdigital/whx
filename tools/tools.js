@@ -1251,6 +1251,9 @@ console.log(data);`;
     // Pill Tab Click Handlers
     document.querySelectorAll('.tool-pill-button').forEach(btn => {
       btn.addEventListener('click', function(e) {
+        if (this.tagName === 'A' || this.getAttribute('href') || !this.dataset.tab) {
+          return; // Allow standard link navigation (e.g. GEO Score Checker)
+        }
         e.preventDefault();
         const tab = this.dataset.tab;
         setActiveTab(tab);

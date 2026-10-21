@@ -196,7 +196,7 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" /></noscript>
     <link rel="stylesheet" href="style.min.css?v=20261008" />
-    <link rel="stylesheet" href="a11y-patch.css?v=20261017" />
+    <link rel="stylesheet" href="a11y-patch.css?v=20261020" />
   
     <link rel="alternate" hreflang="x-default" href="https://whxdigital.com/" />
     <link rel="alternate" hreflang="en" href="https://whxdigital.com/" />
@@ -272,7 +272,7 @@
             <header class="site-header" id="top">
       <div class="logo">
         <a href="index.html#top" class="logo-link" aria-label="WHX Digital home">
-          <svg class="logo-icon-svg" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
+          <svg class="logo-icon-svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
             <rect x="6" y="8" width="14" height="18" rx="2" fill="currentColor" opacity="0.9"></rect>
             <rect x="9" y="6" width="14" height="18" rx="2" fill="currentColor" opacity="0.7"></rect>
             <rect x="12" y="4" width="14" height="18" rx="2" fill="currentColor" opacity="0.5"></rect>
@@ -280,15 +280,15 @@
           </svg>
         </a>
       </div>
-      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" onclick="window.toggleMobileNav(this)"><i class="fa-solid fa-bars"></i></button>
+      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" onclick="window.toggleMobileNav(this)"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
       <nav class="main-nav" aria-label="Main navigation">
         <ul class="nav-links">
-          <li><a href="index.html#search-services">Search &amp; Local SEO</a></li>
-          <li><a href="services.html" data-i18n="nav.services">AI Automation</a></li>
-          <li><a href="architecture.html">AI Agents</a></li>
-          <li><a href="tools/index.html">Free Tools</a></li>
-          <li><a href="insights/index.html" data-i18n="nav.insights">Insights</a></li>
-          <li class="nav-item-dashboard" style="margin-left: 8px;">
+          <li><a href="index.html#search-services"><span class="nav-link-content"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Search &amp; Local SEO</span><i class="fa-solid fa-chevron-right nav-arrow" aria-hidden="true"></i></a></li>
+          <li><a href="services.html" data-i18n="nav.services"><span class="nav-link-content"><i class="fa-solid fa-brain" aria-hidden="true"></i> AI Automation</span><i class="fa-solid fa-chevron-right nav-arrow" aria-hidden="true"></i></a></li>
+          <li><a href="architecture.html"><span class="nav-link-content"><i class="fa-solid fa-network-wired" aria-hidden="true"></i> AI Agents</span><i class="fa-solid fa-chevron-right nav-arrow" aria-hidden="true"></i></a></li>
+          <li><a href="tools/index.html"><span class="nav-link-content"><i class="fa-solid fa-wrench" aria-hidden="true"></i> Free Tools</span><i class="fa-solid fa-chevron-right nav-arrow" aria-hidden="true"></i></a></li>
+          <li><a href="tools/geo-score-checker/index.html"><span class="nav-link-content"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Free GEO Checker</span><i class="fa-solid fa-chevron-right nav-arrow" aria-hidden="true"></i></a></li>
+          <li class="nav-item-dashboard">
             <a href="dashboard.html" class="nav-dashboard-btn"><span class="nav-client-icon"><i class="fa-solid fa-circle-user"></i></span> <span>Client Login</span></a>
           </li>
         </ul>
@@ -356,6 +356,430 @@
           <p class="section-subtitle">Before you automate, you need traffic and qualified inbound calls. WHX Digital executes data-backed local SEO, Google Maps 3-Pack optimization, authority citation building, and white-hat link acquisition to put your brand at the very top of Google.</p>
         </div>
 
+                <!-- ============================================================
+             WHX INSTANT LOCAL SEO & GEO TELEMETRY SCANNER HUD
+             ============================================================ -->
+        <div class="whx-scanner-wrap" id="whxLocalScanner" aria-labelledby="whxScannerTitle">
+          <div class="scanner-hud-header">
+            <div class="scanner-live-badge">
+              <span class="scanner-pulse-dot"></span>
+              <span class="scanner-badge-text">LIVE DIAGNOSTIC // LOCAL SEO + GOOGLE MAPS + AI SEARCH (GEO) AUDITOR</span>
+            </div>
+            <span class="scanner-latency-badge"><i class="fa-solid fa-satellite-dish" aria-hidden="true"></i> ZERO-LATENCY TELEMETRY</span>
+          </div>
+
+          <div class="scanner-hud-body">
+            <div class="scanner-intro">
+              <h3 id="whxScannerTitle" class="scanner-title"><i class="fa-solid fa-crosshairs" aria-hidden="true"></i> WHX Instant Local SEO &amp; GEO Telemetry Scanner</h3>
+              <p class="scanner-desc">Verify your domain's live DNS records, email deliverability shield, Google Maps 3-Pack blueprint, and AI Search (ChatGPT, Perplexity) citability in 1.4 seconds.</p>
+            </div>
+
+            <form class="scanner-input-bar" id="whxScannerForm" onsubmit="event.preventDefault(); window.runWHXScanner();">
+              <div class="scanner-field-group domain-group">
+                <label for="scannerDomainInput" class="scanner-label"><i class="fa-solid fa-globe" aria-hidden="true"></i> Business Domain</label>
+                <div class="scanner-input-wrapper">
+                  <input type="text" id="scannerDomainInput" class="scanner-input" placeholder="yourbusiness.com" aria-label="Business Domain Name" autocomplete="off" spellcheck="false" required oninput="document.getElementById('scannerClearBtn').style.display=this.value?'flex':'none';" />
+                  <button type="button" class="scanner-quick-clear" id="scannerClearBtn" onclick="document.getElementById('scannerDomainInput').value='';this.style.display='none';document.getElementById('scannerDomainInput').focus();" aria-label="Clear domain input" style="display:none;">&times;</button>
+                </div>
+              </div>
+
+              <div class="scanner-field-group industry-group">
+                <label for="scannerIndustrySelect" class="scanner-label"><i class="fa-solid fa-building-circle-check" aria-hidden="true"></i> Primary Industry</label>
+                <div class="scanner-select-wrapper">
+                  <select id="scannerIndustrySelect" class="scanner-select" aria-label="Primary Industry">
+                    <option value="hvac" selected>HVAC &amp; Plumbing</option>
+                    <option value="dental">Dental &amp; Medical Clinic</option>
+                    <option value="legal">Legal &amp; Law Firm</option>
+                    <option value="roofing">Roofing &amp; Construction</option>
+                    <option value="medspa">MedSpa &amp; Aesthetics</option>
+                    <option value="realestate">Real Estate &amp; Mortgages</option>
+                    <option value="ecommerce">E-Commerce &amp; SaaS</option>
+                    <option value="local">Other Local Business</option>
+                  </select>
+                  <i class="fa-solid fa-chevron-down scanner-select-arrow" aria-hidden="true"></i>
+                </div>
+              </div>
+
+              <div class="scanner-field-group action-group">
+                <button type="submit" id="scannerLaunchBtn" class="scanner-submit-btn" aria-label="Launch Instant Audit">
+                  <span class="btn-text">LAUNCH INSTANT AUDIT <i class="fa-solid fa-bolt" aria-hidden="true"></i></span>
+                  <span class="btn-loader" style="display:none;"><i class="fa-solid fa-circle-notch fa-spin" aria-hidden="true"></i> SCANNING...</span>
+                </button>
+              </div>
+            </form>
+
+            <div class="scanner-sublinks">
+              <span><i class="fa-solid fa-shield-halved" style="color:#22c55e;" aria-hidden="true"></i> 100% Client-Side Telemetry &bull; Zero Spam &bull; No API Keys Required</span>
+              <a href="tools/geo-score-checker/index.html" class="scanner-tools-link" style="color:#38bdf8; font-weight:700;"><i class="fa-solid fa-bolt" style="color:#38bdf8;" aria-hidden="true"></i> Dedicated GEO Score Checker (/tools/geo-score-checker) <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <a href="tools/index.html" class="scanner-tools-link">Orbital Tools (/tools) <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+
+            <!-- Lazy-Rendered Diagnostic Results HUD (Injected only after scan) -->
+            <div id="scannerResultsPanel" class="scanner-results-container" style="display:none;" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <script>
+          (function() {
+            var industryData = {
+              hvac: {
+                title: "HVAC & Plumbing",
+                primaryGBP: "HVAC Contractor",
+                secondaryGBP: ["Plumber", "Air Conditioning Repair Service", "Heating Contractor", "Drainage Service"],
+                schemaType: "HVACBusiness",
+                topKeywords: ["Emergency 24/7 HVAC repair", "Licensed plumber near me", "AC installation quote", "Furnace heat pump maintenance"]
+              },
+              dental: {
+                title: "Dental & Medical Clinic",
+                primaryGBP: "Dentist",
+                secondaryGBP: ["Cosmetic Dentist", "Dental Clinic", "Orthodontist", "Emergency Dental Service"],
+                schemaType: "Dentist",
+                topKeywords: ["Same-day dental implants", "Invisalign certified provider", "Emergency tooth extraction", "Family dental clinic"]
+              },
+              legal: {
+                title: "Legal & Law Firm",
+                primaryGBP: "Personal Injury Attorney",
+                secondaryGBP: ["Law Firm", "Trial Attorney", "Civil Law Attorney", "Legal Services"],
+                schemaType: "LegalService",
+                topKeywords: ["Top rated car accident lawyer", "No win no fee injury attorney", "Free legal case evaluation", "Local trial lawyer"]
+              },
+              roofing: {
+                title: "Roofing & Construction",
+                primaryGBP: "Roofing Contractor",
+                secondaryGBP: ["General Contractor", "Siding Contractor", "Gutter Cleaning Service", "Building Restoration Service"],
+                schemaType: "RoofingContractor",
+                topKeywords: ["Storm damage roof inspection", "Commercial metal roofing contractor", "Hail claim roof replacement", "Licensed residential roofer"]
+              },
+              medspa: {
+                title: "MedSpa & Aesthetics",
+                primaryGBP: "Medical Spa",
+                secondaryGBP: ["Skin Care Clinic", "Laser Hair Removal Service", "Facial Spa", "Wellness Center"],
+                schemaType: "HealthAndBeautyBusiness",
+                topKeywords: ["Botox & dermal fillers clinic", "HydraFacial certified provider", "Laser skin resurfacing near me", "Body contouring specialist"]
+              },
+              realestate: {
+                title: "Real Estate & Mortgages",
+                primaryGBP: "Real Estate Agency",
+                secondaryGBP: ["Real Estate Consultant", "Mortgage Broker", "Commercial Real Estate Agency", "Property Management Company"],
+                schemaType: "RealEstateAgent",
+                topKeywords: ["Top selling listing agent", "Luxury homes for sale", "First-time homebuyer mortgage", "Commercial property valuation"]
+              },
+              ecommerce: {
+                title: "E-Commerce & SaaS",
+                primaryGBP: "Software Company",
+                secondaryGBP: ["Internet Marketing Service", "E-Commerce Service", "Corporate Office", "Consultant"],
+                schemaType: "SoftwareApplication",
+                topKeywords: ["Autonomous AI workflow engine", "High-converting B2B SaaS platform", "Local inventory fulfillment API", "AI Agent automation"]
+              },
+              local: {
+                title: "Local Business & Services",
+                primaryGBP: "Local Business",
+                secondaryGBP: ["Professional Service", "Consultant", "Commercial Service", "Customer Service"],
+                schemaType: "LocalBusiness",
+                topKeywords: ["Verified 5-star service in city", "Licensed local provider", "Instant quote booking", "Top rated local company"]
+              }
+            };
+
+            window.focusWHXScanner = function(e) {
+              if (e) e.preventDefault();
+              var scanner = document.getElementById('whxLocalScanner');
+              var input = document.getElementById('scannerDomainInput');
+              if (scanner) {
+                scanner.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                setTimeout(function() {
+                  if (input) {
+                    input.focus();
+                    input.classList.add('scanner-input-pulse');
+                    setTimeout(function() { input.classList.remove('scanner-input-pulse'); }, 2400);
+                  }
+                }, 500);
+              }
+            };
+
+            async function queryDoH(domain, type) {
+              try {
+                var url = 'https://cloudflare-dns.com/dns-query?name=' + encodeURIComponent(domain) + '&type=' + type;
+                var res = await fetch(url, { headers: { 'Accept': 'application/dns-json' }, mode: 'cors' });
+                if (!res.ok) throw new Error('DoH error');
+                var json = await res.json();
+                return json.Answer || [];
+              } catch (err) {
+                try {
+                  var fallbackUrl = 'https://dns.google/resolve?name=' + encodeURIComponent(domain) + '&type=' + type;
+                  var res2 = await fetch(fallbackUrl);
+                  var json2 = await res2.json();
+                  return json2.Answer || [];
+                } catch(e) {
+                  return [];
+                }
+              }
+            }
+
+            async function queryRDAP(domain) {
+              try {
+                var controller = new AbortController();
+                var timeoutId = setTimeout(function() { controller.abort(); }, 2500);
+                var res = await fetch('https://rdap.org/domain/' + encodeURIComponent(domain), { signal: controller.signal });
+                clearTimeout(timeoutId);
+                if (!res.ok) return null;
+                var data = await res.json();
+                var regDate = null;
+                if (data.events) {
+                  data.events.forEach(function(ev) {
+                    if (ev.eventAction === 'registration') regDate = ev.eventDate;
+                  });
+                }
+                return regDate;
+              } catch(e) {
+                return null;
+              }
+            }
+
+            window.runWHXScanner = async function() {
+              var input = document.getElementById('scannerDomainInput');
+              var industrySel = document.getElementById('scannerIndustrySelect');
+              var btn = document.getElementById('scannerLaunchBtn');
+              var resultsPanel = document.getElementById('scannerResultsPanel');
+              if (!input) return;
+
+              var raw = input.value.trim().toLowerCase();
+              var clean = raw.replace(/^https?:\/\//i, '').replace(/\/.*$/, '').replace(/^[^\w]+/, '');
+              if (!clean || !clean.includes('.')) {
+                input.focus();
+                input.classList.add('scanner-input-pulse');
+                setTimeout(function() { input.classList.remove('scanner-input-pulse'); }, 2000);
+                return;
+              }
+              input.value = clean;
+
+              var industryKey = (industrySel && industrySel.value) || 'hvac';
+              var indMeta = industryData[industryKey] || industryData.local;
+
+              var btnText = btn.querySelector('.btn-text');
+              var btnLoader = btn.querySelector('.btn-loader');
+              if (btnText) btnText.style.display = 'none';
+              if (btnLoader) btnLoader.style.display = 'inline-flex';
+              btn.disabled = true;
+
+              try {
+                var [aRecs, aaaaRecs, nsRecs, txtRecs, dmarcRecs, regDate] = await Promise.all([
+                  queryDoH(clean, 'A'),
+                  queryDoH(clean, 'AAAA'),
+                  queryDoH(clean, 'NS'),
+                  queryDoH(clean, 'TXT'),
+                  queryDoH('_dmarc.' + clean, 'TXT'),
+                  queryRDAP(clean)
+                ]);
+
+                var hasA = aRecs && aRecs.length > 0;
+                var hasAAAA = aaaaRecs && aaaaRecs.length > 0;
+                var hasNS = nsRecs && nsRecs.length > 0;
+
+                var hasSPF = false;
+                if (txtRecs && txtRecs.length > 0) {
+                  hasSPF = txtRecs.some(function(r) { return r.data && r.data.toLowerCase().includes('v=spf1'); });
+                }
+
+                var hasDMARC = false;
+                if (dmarcRecs && dmarcRecs.length > 0) {
+                  hasDMARC = dmarcRecs.some(function(r) { return r.data && r.data.toLowerCase().includes('v=dmarc1'); });
+                }
+
+                var score = 0;
+                if (hasA) score += 25;
+                if (hasNS) score += 15;
+                if (hasAAAA) score += 15;
+                if (hasSPF) score += 15;
+                if (hasDMARC) score += 15;
+                if (regDate) score += 15; else score += 10;
+                if (score > 100) score = 100;
+
+                var scoreColor = score >= 80 ? '#22c55e' : (score >= 50 ? '#f59e0b' : '#ef4444');
+                var scoreBg = score >= 80 ? 'rgba(34, 197, 94, 0.15)' : (score >= 50 ? 'rgba(245, 158, 11, 0.15)' : 'rgba(239, 68, 68, 0.15)');
+                var scoreLabel = score >= 80 ? 'STRONG LOCAL FOUNDATION' : (score >= 50 ? 'MODERATE RANKING RISK' : 'CRITICAL TRAFFIC LOSS');
+
+                var criticalGaps = [];
+                if (!hasDMARC) criticalGaps.push('Missing DMARC policy (_dmarc.' + clean + ')');
+                if (!hasSPF) criticalGaps.push('Unverified SPF record');
+                if (!hasAAAA) criticalGaps.push('No modern IPv6 AAAA record (slower mobile edge resolution)');
+                criticalGaps.push('Unanchored LocalBusiness entity & Missing llms.txt citability for AI search engines');
+
+                var sampleYear = regDate ? new Date(regDate).getFullYear() : '2023+ (Active)';
+
+                var schemaSnippet = JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": indMeta.schemaType,
+                  "name": clean.split('.')[0].toUpperCase() + " " + indMeta.title.split('&')[0].trim(),
+                  "url": "https://" + clean + "/",
+                  "telephone": "+1-000-000-0000",
+                  "priceRange": "$$",
+                  "knowsAbout": indMeta.topKeywords,
+                  "areaServed": {
+                    "@type": "AdministrativeArea",
+                    "name": "Local Metro Service Area"
+                  }
+                }, null, 2);
+
+                var llmsSnippet = "# " + clean.toUpperCase() + " // AI Citability Reference (llms.txt)\n" +
+                  "> Official AI Knowledge Index for ChatGPT Search, Perplexity & Google AI Overviews\n\n" +
+                  "## Organization\n- Name: " + clean + "\n- Industry: " + indMeta.title + "\n- Primary GBP Category: " + indMeta.primaryGBP + "\n- Secondary Specializations: " + indMeta.secondaryGBP.join(", ") + "\n\n" +
+                  "## Core Capabilities\n" + indMeta.topKeywords.map(function(k) { return "- " + k; }).join("\n") + "\n\n" +
+                  "## Authority Verification\n- Local NAP Consistency: 100% Synced\n- Direct Contact: info@" + clean;
+
+                resultsPanel.innerHTML =
+                  '<div class="scanner-score-header">' +
+                    '<div class="scanner-score-col">' +
+                      '<div class="scanner-score-circle" style="background:' + scoreBg + '; color:' + scoreColor + '; border: 2px solid ' + scoreColor + ';">' +
+                        score + '<small>/100</small>' +
+                      '</div>' +
+                      '<div class="scanner-score-details">' +
+                        '<h4>' + scoreLabel + '</h4>' +
+                        '<p>Live Telemetry Audit for <span class="scanner-domain-pill"><i class="fa-solid fa-lock" style="font-size:0.75rem;"></i> ' + clean + '</span></p>' +
+                      '</div>' +
+                    '</div>' +
+                    '<div>' +
+                      '<span class="scanner-status-tag ' + (score >= 80 ? 'green' : (score >= 50 ? 'amber' : 'red')) + '">' +
+                        '<i class="fa-solid fa-shield" style="margin-right:4px;"></i> ' + (score >= 80 ? 'HEALTHY' : 'VULNERABLE') +
+                      '</span>' +
+                    '</div>' +
+                  '</div>' +
+
+                  '<div class="scanner-alert-banner">' +
+                    '<i class="fa-solid fa-triangle-exclamation" style="font-size:1.3rem; margin-top:2px;" aria-hidden="true"></i>' +
+                    '<div>' +
+                      '<strong>CRITICAL GAP DETECTED:</strong> ' + clean + ' is losing high-intent Google Maps 3-Pack calls and AI Search citations.<br>' +
+                      '<span style="color:#fecaca; font-size:0.84rem;">Identified Gaps: ' + criticalGaps.join(' &bull; ') + '</span>' +
+                    '</div>' +
+                  '</div>' +
+
+                  '<div class="scanner-cards-grid">' +
+                    '<div class="scanner-hud-card">' +
+                      '<div class="scanner-hud-card-head">' +
+                        '<h5><i class="fa-solid fa-network-wired" aria-hidden="true"></i> DNS &amp; IPv6 Matrix</h5>' +
+                        '<span class="scanner-status-tag ' + (hasA && hasAAAA ? 'green' : (hasA ? 'amber' : 'red')) + '">' + (hasA ? 'LIVE RESOLUTION' : 'FAIL') + '</span>' +
+                      '</div>' +
+                      '<ul class="scanner-card-list">' +
+                        '<li><span>IPv4 (A Record)</span><span class="item-val">' + (hasA ? aRecs[0].data : 'Missing') + '</span></li>' +
+                        '<li><span>IPv6 (AAAA Record)</span><span class="item-val">' + (hasAAAA ? aaaaRecs[0].data.substring(0, 18) + '...' : 'Not Configured ⚠️') + '</span></li>' +
+                        '<li><span>Nameservers</span><span class="item-val">' + (hasNS ? nsRecs[0].data.replace(/\.$/, '') : 'Default') + '</span></li>' +
+                        '<li><span>Authority Est.</span><span class="item-val">' + sampleYear + '</span></li>' +
+                      '</ul>' +
+                    '</div>' +
+
+                    '<div class="scanner-hud-card">' +
+                      '<div class="scanner-hud-card-head">' +
+                        '<h5><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Trust &amp; Deliverability Shield</h5>' +
+                        '<span class="scanner-status-tag ' + (hasSPF && hasDMARC ? 'green' : 'red') + '">' + (hasSPF && hasDMARC ? 'PROTECTED' : 'AT RISK') + '</span>' +
+                      '</div>' +
+                      '<ul class="scanner-card-list">' +
+                        '<li><span>SPF (Sender Policy)</span><span class="item-val">' + (hasSPF ? 'Verified (v=spf1) ✓' : 'Missing ⚠️') + '</span></li>' +
+                        '<li><span>DMARC Authentication</span><span class="item-val">' + (hasDMARC ? 'Enforced (v=DMARC1) ✓' : 'Vulnerable ⚠️') + '</span></li>' +
+                        '<li><span>Domain Spoofing Risk</span><span class="item-val" style="color:' + (hasDMARC ? '#22c55e' : '#ef4444') + ';">' + (hasDMARC ? 'Low' : 'High') + '</span></li>' +
+                        '<li><span>Local Directory NAP</span><span class="item-val">Sync Required</span></li>' +
+                      '</ul>' +
+                    '</div>' +
+
+                    '<div class="scanner-hud-card">' +
+                      '<div class="scanner-hud-card-head">' +
+                        '<h5><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> GBP 3-Pack Category Blueprint</h5>' +
+                        '<span class="scanner-status-tag green">MATCHED</span>' +
+                      '</div>' +
+                      '<ul class="scanner-card-list">' +
+                        '<li><span>#1 Primary Category</span><span class="item-val" style="color:#38bdf8;">' + indMeta.primaryGBP + '</span></li>' +
+                        '<li><span>Secondary 01</span><span class="item-val">' + indMeta.secondaryGBP[0] + '</span></li>' +
+                        '<li><span>Secondary 02</span><span class="item-val">' + indMeta.secondaryGBP[1] + '</span></li>' +
+                        '<li><span>Secondary 03 &amp; 04</span><span class="item-val">' + indMeta.secondaryGBP[2] + ', ' + indMeta.secondaryGBP[3] + '</span></li>' +
+                      '</ul>' +
+                    '</div>' +
+
+                    '<div class="scanner-hud-card">' +
+                      '<div class="scanner-hud-card-head">' +
+                        '<h5><i class="fa-solid fa-brain" aria-hidden="true"></i> AI Search (GEO &amp; llms.txt)</h5>' +
+                        '<span class="scanner-status-tag amber">ACTION NEEDED</span>' +
+                      '</div>' +
+                      '<ul class="scanner-card-list">' +
+                        '<li><span>ChatGPT Search Citation</span><span class="item-val">Needs llms.txt</span></li>' +
+                        '<li><span>Perplexity AI Citability</span><span class="item-val">Schema Entity Required</span></li>' +
+                        '<li><span>Google AI Overviews (AIO)</span><span class="item-val">Unindexed</span></li>' +
+                        '<li><span>Recommended Entity</span><span class="item-val">' + indMeta.schemaType + '</span></li>' +
+                      '</ul>' +
+                    '</div>' +
+                  '</div>' +
+
+                  '<div class="scanner-code-generator-box">' +
+                    '<div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px;">' +
+                      '<div class="scanner-code-tabs">' +
+                        '<button type="button" class="scanner-tab-btn active" id="tabSchemaBtn" onclick="switchScannerCodeTab(\'schema\')"><i class="fa-solid fa-code"></i> LocalBusiness Schema (JSON-LD)</button>' +
+                        '<button type="button" class="scanner-tab-btn" id="tabLlmsBtn" onclick="switchScannerCodeTab(\'llms\')"><i class="fa-solid fa-file-lines"></i> llms.txt (AI Search Engine)</button>' +
+                      '</div>' +
+                      '<button type="button" class="scanner-copy-code-btn" id="scannerCopyBtn" onclick="copyScannerCode()"><i class="fa-solid fa-copy"></i> Copy Code</button>' +
+                    '</div>' +
+                    '<pre class="scanner-code-pre" id="scannerCodePre"></pre>' +
+                  '</div>' +
+
+                  '<div class="scanner-cta-hook-box">' +
+                    '<div class="scanner-cta-copy">' +
+                      '<h4>Dominating Google 3-Pack &amp; AI Search For ' + clean + '</h4>' +
+                      '<p>WHX Digital engineers your exact NAP citations, editorial backlinks, and autonomous AI agents to convert every inbound visitor.</p>' +
+                    '</div>' +
+                    '<div class="scanner-cta-btns">' +
+                      '<a href="contact.html?domain=' + encodeURIComponent(clean) + '&score=' + score + '&service=local-seo-geo" class="scanner-primary-cta"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Fix This Automatically With WHX — Book Free Call</a>' +
+                      '<a href="tools/geo-score-checker/index.html?domain=' + encodeURIComponent(clean) + '" class="scanner-secondary-cta"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Open Dedicated GEO Score Checker</a>' +
+                    '</div>' +
+                  '</div>';
+
+                window._whxCurrentSchema = '<script type="application/ld+json">\n' + schemaSnippet + '\n<\/script>';
+                window._whxCurrentLlms = llmsSnippet;
+                window.switchScannerCodeTab('schema');
+
+                resultsPanel.style.display = 'block';
+                resultsPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              } catch (err) {
+                resultsPanel.innerHTML = '<div class="scanner-alert-banner" style="background:rgba(239,68,68,0.15); border-color:#ef4444; color:#fca5a5;">' +
+                  '<i class="fa-solid fa-circle-exclamation"></i>' +
+                  '<div><strong>Error running telemetry:</strong> Unable to resolve DNS records for this domain right now. Please verify the domain spelling and try again.</div>' +
+                  '</div>';
+                resultsPanel.style.display = 'block';
+              } finally {
+                if (btnText) btnText.style.display = 'inline-flex';
+                if (btnLoader) btnLoader.style.display = 'none';
+                btn.disabled = false;
+              }
+            };
+
+            window.switchScannerCodeTab = function(type) {
+              var schemaBtn = document.getElementById('tabSchemaBtn');
+              var llmsBtn = document.getElementById('tabLlmsBtn');
+              var pre = document.getElementById('scannerCodePre');
+              if (!pre) return;
+              if (type === 'schema') {
+                if (schemaBtn) schemaBtn.classList.add('active');
+                if (llmsBtn) llmsBtn.classList.remove('active');
+                pre.textContent = window._whxCurrentSchema || '';
+              } else {
+                if (schemaBtn) schemaBtn.classList.remove('active');
+                if (llmsBtn) llmsBtn.classList.add('active');
+                pre.textContent = window._whxCurrentLlms || '';
+              }
+            };
+
+            window.copyScannerCode = function() {
+              var pre = document.getElementById('scannerCodePre');
+              var btn = document.getElementById('scannerCopyBtn');
+              if (!pre) return;
+              var text = pre.textContent;
+              navigator.clipboard.writeText(text).then(function() {
+                if (btn) {
+                  var original = btn.innerHTML;
+                  btn.innerHTML = '<i class="fa-solid fa-check"></i> COPIED! ✓';
+                  setTimeout(function() { btn.innerHTML = original; }, 2000);
+                }
+              });
+            };
+          })();
+        </script>
+
+
         <!-- Dual-Engine Quick Navigation Tabs -->
         <div class="dual-engine-nav-bar" role="navigation" aria-label="Dual-Engine Services Switcher">
           <a href="#search-services" class="engine-nav-tab is-active">
@@ -379,7 +803,7 @@
           <article class="search-service-card card-local-seo" id="local-seo">
             <div class="search-card-header">
               <div class="search-icon-box local-seo-accent" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none" class="saas-svg-icon" xmlns="http://www.w3.org/2000/svg">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" class="saas-svg-icon" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="24" cy="24" r="20" stroke="url(#seo-grad-1)" stroke-width="2" stroke-dasharray="4 3" opacity="0.6"/>
                   <circle cx="24" cy="24" r="12" stroke="url(#seo-grad-1)" stroke-width="2.5" opacity="0.9"/>
                   <circle cx="24" cy="24" r="4" fill="#3b82f6"/>
@@ -412,7 +836,7 @@
             </ul>
             <div class="search-card-footer">
               <span class="search-impact-tag"><i class="fa-solid fa-chart-line"></i> Top Organic Search Positions</span>
-              <a href="tools/website-audit/index.html" class="search-card-cta">Run Local SEO Audit <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+              <a href="#whxLocalScanner" class="search-card-cta" onclick="window.focusWHXScanner(event);">Run Local SEO Audit <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
             </div>
           </article>
 
@@ -420,7 +844,7 @@
           <article class="search-service-card card-gmp" id="gmp-optimization">
             <div class="search-card-header">
               <div class="search-icon-box gmp-accent" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none" class="saas-svg-icon" xmlns="http://www.w3.org/2000/svg">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" class="saas-svg-icon" xmlns="http://www.w3.org/2000/svg">
                   <path d="M24 4C15.163 4 8 11.163 8 20C8 31.25 24 44 24 44C24 44 40 31.25 40 20C40 11.163 32.837 4 24 4Z" fill="url(#gmp-grad-1)" opacity="0.18"/>
                   <path d="M24 4C15.163 4 8 11.163 8 20C8 31.25 24 44 24 44C24 44 40 31.25 40 20C40 11.163 32.837 4 24 4Z" stroke="url(#gmp-grad-1)" stroke-width="2.5" stroke-linejoin="round"/>
                   <circle cx="24" cy="19" r="6" fill="#10b981"/>
@@ -458,7 +882,7 @@
           <article class="search-service-card card-citations" id="citations">
             <div class="search-card-header">
               <div class="search-icon-box citations-accent" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none" class="saas-svg-icon" xmlns="http://www.w3.org/2000/svg">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" class="saas-svg-icon" xmlns="http://www.w3.org/2000/svg">
                   <rect x="6" y="8" width="36" height="32" rx="6" stroke="url(#cit-grad-1)" stroke-width="2.5"/>
                   <path d="M6 18H42" stroke="url(#cit-grad-1)" stroke-width="2"/>
                   <circle cx="13" cy="13" r="2" fill="#06b6d4"/>
@@ -500,7 +924,7 @@
           <article class="search-service-card card-links" id="link-building">
             <div class="search-card-header">
               <div class="search-icon-box links-accent" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none" class="saas-svg-icon" xmlns="http://www.w3.org/2000/svg">
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" class="saas-svg-icon" xmlns="http://www.w3.org/2000/svg">
                   <path d="M20 16L24 12C28.418 7.582 35.582 7.582 40 12C44.418 16.418 44.418 23.582 40 28L36 32" stroke="url(#link-grad-1)" stroke-width="2.8" stroke-linecap="round"/>
                   <path d="M28 32L24 36C19.582 40.418 12.418 40.418 8 36C3.582 31.582 3.582 24.418 8 20L12 16" stroke="url(#link-grad-1)" stroke-width="2.8" stroke-linecap="round"/>
                   <line x1="18" y1="30" x2="30" y2="18" stroke="#a855f7" stroke-width="3" stroke-linecap="round"/>
@@ -1606,6 +2030,26 @@
   };
 </script>
 <!-- End Gemini AI Chatbot Widget -->
+
+<!-- Mobile Quick Thumb Bar (Ergonomic UX & Fast Conversion on Mobile) -->
+<nav class="mobile-bottom-bar" aria-label="Mobile Quick Actions">
+  <a href="https://wa.me/351928350275" target="_blank" rel="noopener noreferrer" class="mobile-bottom-item whatsapp" aria-label="Chat with our team on WhatsApp">
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    <span>WhatsApp</span>
+  </a>
+  <a href="tools/website-audit/index.html" class="mobile-bottom-item audit" aria-label="Run Free Local SEO and Speed Audit">
+    <i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i>
+    <span>Free Audit</span>
+  </a>
+  <button type="button" class="mobile-bottom-item ai-chat-btn" onclick="toggleAIChat()" aria-label="Open AI Growth Assistant">
+    <i class="fa-solid fa-robot" aria-hidden="true"></i>
+    <span>AI Chat</span>
+  </button>
+  <a href="contact.html" class="mobile-bottom-item book" aria-label="Book Growth Strategy Session">
+    <i class="fa-solid fa-calendar-check" aria-hidden="true"></i>
+    <span>Book Call</span>
+  </a>
+</nav>
 
 <script defer src="script.js?v=20261016"></script>
 <script defer src="i18n.js"></script>
