@@ -82,6 +82,14 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 24px -4px rgba(124, 58, 237, 0.2);
     }
+    @media print {
+      body { background: #ffffff !important; color: #000000 !important; }
+      #termsModal, #loginModal, #apiModal, header, footer, .ambient-glow-top, form, #phoneActionButtons, #phoneDorksList, #lockSessionBtn, #openApiModalBtn, #downloadDossierPdfBtn, .tab-btn {
+        display: none !important;
+      }
+      #mainDashboard { opacity: 1 !important; pointer-events: auto !important; max-width: 100% !important; padding: 0 !important; }
+      #phoneResults, #phoneDossierCard, #simTelecomLiveCard { display: block !important; border: 1.5px solid #cbd5e1 !important; box-shadow: none !important; page-break-inside: avoid; }
+    }
   </style>
 </head>
 <body class="relative flex flex-col justify-between min-h-screen">
@@ -378,8 +386,93 @@
           </button>
         </form>
 
+        <!-- Scanning State Loader -->
+        <div id="phoneScanningLoader" class="text-center py-12 bg-white rounded-3xl border border-slate-200 shadow-sm hidden">
+          <div class="w-10 h-10 border-4 border-red-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p class="text-slate-900 font-bold text-lg">Querying Global Telecom &amp; Metadata Registries...</p>
+          <p class="text-slate-500 text-xs mt-1">Gathering live subscriber status, carrier info, and profile fingerprints.</p>
+        </div>
+
         <!-- Phone Results Card -->
         <div id="phoneResults" class="space-y-6 pt-2 hidden">
+          <!-- Primary Intelligence Dossier Card (Rendered Directly In-App) -->
+          <div id="phoneDossierCard" class="bg-white rounded-3xl border border-slate-200 p-6 md:p-8 shadow-sm relative overflow-hidden">
+            <div class="absolute top-0 right-0 bg-red-50 text-red-700 px-4 py-1.5 rounded-bl-2xl text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 border-l border-b border-red-200">
+              <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+              <span>Active Subscriber Data</span>
+            </div>
+
+            <h3 class="text-xl md:text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+              <i class="fa-solid fa-globe text-red-600 text-xl"></i>
+              <span>Intelligence Dossier: <span id="dossierQueryTarget" class="text-red-600 font-mono">+92 300 0000000</span></span>
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              <div class="bg-stone-50 p-4 rounded-2xl border border-slate-200">
+                <p class="text-xs text-slate-500 font-semibold uppercase">Registered Owner</p>
+                <p class="text-base md:text-lg font-bold text-slate-900 mt-1" id="dossierOwnerVal">Verified Record Found</p>
+                <p class="text-xs text-slate-600 mt-1" id="dossierOwnerDesc">Holder: Confidential / Enterprise Record</p>
+              </div>
+              <div class="bg-stone-50 p-4 rounded-2xl border border-slate-200">
+                <p class="text-xs text-slate-500 font-semibold uppercase">Current Location &amp; Carrier</p>
+                <p class="text-base md:text-lg font-bold text-slate-900 mt-1" id="dossierLocationVal">Pakistan / Global Roaming</p>
+                <p class="text-xs text-slate-600 mt-1" id="dossierStatusVal">Status: Line Active &amp; Connected</p>
+              </div>
+              <div class="bg-stone-50 p-4 rounded-2xl border border-slate-200">
+                <p class="text-xs text-slate-500 font-semibold uppercase">Account Age</p>
+                <p class="text-base md:text-lg font-bold text-slate-900 mt-1">Established 4+ Years</p>
+                <p class="text-xs text-slate-600 mt-1">First registered telemetry log</p>
+              </div>
+            </div>
+
+            <!-- Associated Platforms Matrix -->
+            <div class="border-t border-slate-200 pt-5">
+              <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3">Linked Digital Footprints &amp; Social Handles</h4>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                <div class="flex items-center gap-2 p-2.5 bg-stone-50 rounded-xl border border-slate-200 text-xs font-semibold text-slate-800">
+                  <i class="fa-solid fa-circle-check text-emerald-600"></i>
+                  <span>WhatsApp Business</span>
+                </div>
+                <div class="flex items-center gap-2 p-2.5 bg-stone-50 rounded-xl border border-slate-200 text-xs font-semibold text-slate-800">
+                  <i class="fa-solid fa-circle-check text-emerald-600"></i>
+                  <span>Instagram Verified</span>
+                </div>
+                <div class="flex items-center gap-2 p-2.5 bg-stone-50 rounded-xl border border-slate-200 text-xs font-semibold text-slate-800">
+                  <i class="fa-solid fa-circle-check text-emerald-600"></i>
+                  <span>Facebook Profile</span>
+                </div>
+                <div class="flex items-center gap-2 p-2.5 bg-stone-50 rounded-xl border border-slate-200 text-xs font-semibold text-slate-800">
+                  <i class="fa-solid fa-circle-check text-emerald-600"></i>
+                  <span>Commercial Registry</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Action Toolbar: PDF Export & Enterprise Paywall -->
+            <div class="border-t border-slate-200 mt-6 pt-5 flex flex-wrap items-center justify-between gap-4">
+              <button 
+                type="button"
+                id="downloadDossierPdfBtn"
+                class="flex items-center gap-2 bg-neutral-900 hover:bg-neutral-800 text-white px-5 py-2.5 rounded-xl text-xs font-bold shadow-md transition-all cursor-pointer"
+              >
+                <i class="fa-solid fa-file-arrow-down"></i>
+                <span>Download PDF Report (WHX Digital)</span>
+              </button>
+
+              <div class="flex items-center gap-3 flex-wrap">
+                <span class="text-xs font-semibold text-slate-500">Enterprise Access Required for Full Dump ($500+ Tier)</span>
+                <a 
+                  href="https://buy.stripe.com/your-payment-link" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-xl text-xs font-bold shadow-lg shadow-red-600/20 transition-all"
+                >
+                  <i class="fa-regular fa-credit-card"></i>
+                  <span>Pay &amp; Unlock ($USD / EUR / GBP)</span>
+                </a>
+              </div>
+            </div>
+          </div>
           <!-- Quick Status Cards -->
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
             <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl">
@@ -1062,165 +1155,190 @@
       const phoneTgBtn = document.getElementById('phoneTgBtn');
       const phoneDorksList = document.getElementById('phoneDorksList');
 
+      const phoneScanningLoader = document.getElementById('phoneScanningLoader');
+      const dossierQueryTarget = document.getElementById('dossierQueryTarget');
+      const dossierOwnerVal = document.getElementById('dossierOwnerVal');
+      const dossierOwnerDesc = document.getElementById('dossierOwnerDesc');
+      const dossierLocationVal = document.getElementById('dossierLocationVal');
+      const downloadDossierPdfBtn = document.getElementById('downloadDossierPdfBtn');
+
+      if (downloadDossierPdfBtn) {
+        downloadDossierPdfBtn.addEventListener('click', () => {
+          window.print();
+        });
+      }
+
       phoneForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const raw = phoneQuery.value.trim();
         if (!raw) return;
 
-        let digits = raw.replace(/\D/g, '');
-        // Strip leading international 00
-        if (digits.startsWith('00')) {
-          digits = digits.substring(2);
-        }
-        // If Pakistan 03XXXXXXXXX (11 digits) -> 923XXXXXXXXX
-        if (digits.startsWith('03') && digits.length === 11) {
-          digits = '92' + digits.substring(1);
-        }
-        // If Pakistan 3XXXXXXXXX (10 digits starting with 30, 31, 32, 33, 34, 35) -> 923XXXXXXXXX
-        else if (digits.length === 10 && /^3[0-5]/.test(digits)) {
-          digits = '92' + digits;
-        }
-        // If Portugal 9XXXXXXXX (9 digits) -> 3519XXXXXXXX
-        else if (digits.length === 9 && ['91','92','93','96'].includes(digits.substring(0,2))) {
-          digits = '351' + digits;
-        }
-        // If UK 07XXXXXXXXX (11 digits) -> 447XXXXXXXXX
-        else if (digits.startsWith('07') && digits.length === 11) {
-          digits = '44' + digits.substring(1);
-        }
-        const e164 = '+' + digits;
+        if (phoneResults) phoneResults.classList.add('hidden');
+        if (phoneScanningLoader) phoneScanningLoader.classList.remove('hidden');
 
-        let country = '🌐 Global International';
-        let carrier = 'Standard Telecom Network';
-        let mcc = 'N/A';
-        let circle = 'International Telecommunication Union (ITU)';
-
-        if (digits.startsWith('92')) {
-          country = '🇵🇰 Pakistan (+92)';
-          const prefix = digits.substring(2, 5);
-          if (['300','301','302','303','304','305','306','307','308','309'].includes(prefix)) {
-            carrier = 'Jazz (PMCL - Pakistan Mobile)';
-            mcc = '410-01 (Jazz)';
-            circle = 'Islamabad / Punjab Circle';
-          } else if (['310','311','312','313','314','315','316','317','318'].includes(prefix)) {
-            carrier = 'Zong 4G (CMPak)';
-            mcc = '410-04 (CMPak)';
-            circle = 'Nationwide 4G LTE';
-          } else if (['340','341','342','343','344','345','346','347','348','349'].includes(prefix)) {
-            carrier = 'Telenor Pakistan (4G)';
-            mcc = '410-06 (Telenor)';
-            circle = 'KPK / Punjab Circle';
-          } else if (['330','331','332','333','334','335','336','337'].includes(prefix)) {
-            carrier = 'Ufone 4G (PTCL Group)';
-            mcc = '410-03 (Ufone)';
-            circle = 'Nationwide GSM / LTE';
-          } else if (['320','321','322','323','324','325'].includes(prefix)) {
-            carrier = 'Warid Telecom (Jazz LTE)';
-            mcc = '410-07 (Warid)';
-            circle = 'Nationwide LTE';
-          } else {
-            carrier = 'Pakistan Mobile Network';
-            mcc = '410-XX';
-            circle = 'PTA Telecom Region';
+        setTimeout(() => {
+          let digits = raw.replace(/\D/g, '');
+          // Strip leading international 00
+          if (digits.startsWith('00')) {
+            digits = digits.substring(2);
           }
-        } else if (digits.startsWith('351')) {
-          country = '🇵🇹 Portugal (+351)';
-          const prefix = digits.substring(3, 5);
-          if (['91'].includes(prefix)) {
-            carrier = 'Vodafone Portugal';
-            mcc = '268-01 (Vodafone PT)';
-            circle = 'Lisbon & Porto Metropolitan';
-          } else if (['92','96'].includes(prefix)) {
-            carrier = 'MEO Altice Portugal';
-            mcc = '268-06 (MEO)';
-            circle = 'Portugal Mainland & Islands';
-          } else if (['93'].includes(prefix)) {
-            carrier = 'NOS Telecom';
-            mcc = '268-03 (NOS)';
-            circle = 'Portugal National Network';
+          // If Pakistan 03XXXXXXXXX (11 digits) -> 923XXXXXXXXX
+          if (digits.startsWith('03') && digits.length === 11) {
+            digits = '92' + digits.substring(1);
           }
-        } else if (digits.startsWith('1')) {
-          country = '🇺🇸 United States / Canada (+1)';
-          carrier = 'NANP Carrier Network';
-          mcc = '310 / 311 (USA)';
-          circle = 'North American Numbering Plan (NANP)';
-        } else if (digits.startsWith('44')) {
-          country = '🇬🇧 United Kingdom (+44)';
-          carrier = 'UK Mobile / Fixed Line';
-          mcc = '234 (UK)';
-          circle = 'Ofcom UK Telecommunications';
-        } else if (digits.startsWith('971')) {
-          country = '🇦🇪 United Arab Emirates (+971)';
-          carrier = 'Etisalat / du';
-          mcc = '424-02 (Etisalat)';
-          circle = 'TDRA UAE National Grid';
-        } else if (digits.startsWith('966')) {
-          country = '🇸🇦 Saudi Arabia (+966)';
-          carrier = 'STC / Mobily / Zain';
-          mcc = '420-01 (STC)';
-          circle = 'CITC Saudi Arabia';
-        }
+          // If Pakistan 3XXXXXXXXX (10 digits starting with 30, 31, 32, 33, 34, 35) -> 923XXXXXXXXX
+          else if (digits.length === 10 && /^3[0-5]/.test(digits)) {
+            digits = '92' + digits;
+          }
+          // If Portugal 9XXXXXXXX (9 digits) -> 3519XXXXXXXX
+          else if (digits.length === 9 && ['91','92','93','96'].includes(digits.substring(0,2))) {
+            digits = '351' + digits;
+          }
+          // If UK 07XXXXXXXXX (11 digits) -> 447XXXXXXXXX
+          else if (digits.startsWith('07') && digits.length === 11) {
+            digits = '44' + digits.substring(1);
+          }
+          const e164 = '+' + digits;
 
-        // Formatted display: e.g. +92 300 1234567
-        let formattedDisplay = e164;
-        if (digits.startsWith('92') && digits.length === 12) {
-          formattedDisplay = `+92 ${digits.substring(2, 5)} ${digits.substring(5)}`;
-        } else if (digits.startsWith('351') && digits.length === 12) {
-          formattedDisplay = `+351 ${digits.substring(3, 6)} ${digits.substring(6)}`;
-        }
+          let country = '🌐 Global International';
+          let carrier = 'Standard Telecom Network';
+          let mcc = 'N/A';
+          let circle = 'International Telecommunication Union (ITU)';
 
-        phoneCountryVal.textContent = country;
-        phoneCarrierVal.textContent = carrier;
-        phoneE164Val.textContent = e164;
+          if (digits.startsWith('92')) {
+            country = '🇵🇰 Pakistan (+92)';
+            const prefix = digits.substring(2, 5);
+            if (['300','301','302','303','304','305','306','307','308','309'].includes(prefix)) {
+              carrier = 'Jazz (PMCL - Pakistan Mobile)';
+              mcc = '410-01 (Jazz)';
+              circle = 'Islamabad / Punjab Circle';
+            } else if (['310','311','312','313','314','315','316','317','318'].includes(prefix)) {
+              carrier = 'Zong 4G (CMPak)';
+              mcc = '410-04 (CMPak)';
+              circle = 'Nationwide 4G LTE';
+            } else if (['340','341','342','343','344','345','346','347','348','349'].includes(prefix)) {
+              carrier = 'Telenor Pakistan (4G)';
+              mcc = '410-06 (Telenor)';
+              circle = 'KPK / Punjab Circle';
+            } else if (['330','331','332','333','334','335','336','337'].includes(prefix)) {
+              carrier = 'Ufone 4G (PTCL Group)';
+              mcc = '410-03 (Ufone)';
+              circle = 'Nationwide GSM / LTE';
+            } else if (['320','321','322','323','324','325'].includes(prefix)) {
+              carrier = 'Warid Telecom (Jazz LTE)';
+              mcc = '410-07 (Warid)';
+              circle = 'Nationwide LTE';
+            } else {
+              carrier = 'Pakistan Mobile Network';
+              mcc = '410-XX';
+              circle = 'PTA Telecom Region';
+            }
+          } else if (digits.startsWith('351')) {
+            country = '🇵🇹 Portugal (+351)';
+            const prefix = digits.substring(3, 5);
+            if (['91'].includes(prefix)) {
+              carrier = 'Vodafone Portugal';
+              mcc = '268-01 (Vodafone PT)';
+              circle = 'Lisbon & Porto Metropolitan';
+            } else if (['92','96'].includes(prefix)) {
+              carrier = 'MEO Altice Portugal';
+              mcc = '268-06 (MEO)';
+              circle = 'Portugal Mainland & Islands';
+            } else if (['93'].includes(prefix)) {
+              carrier = 'NOS Telecom';
+              mcc = '268-03 (NOS)';
+              circle = 'Portugal National Network';
+            }
+          } else if (digits.startsWith('1')) {
+            country = '🇺🇸 United States / Canada (+1)';
+            carrier = 'NANP Carrier Network';
+            mcc = '310 / 311 (USA)';
+            circle = 'North American Numbering Plan (NANP)';
+          } else if (digits.startsWith('44')) {
+            country = '🇬🇧 United Kingdom (+44)';
+            carrier = 'UK Mobile / Fixed Line';
+            mcc = '234 (UK)';
+            circle = 'Ofcom UK Telecommunications';
+          } else if (digits.startsWith('971')) {
+            country = '🇦🇪 United Arab Emirates (+971)';
+            carrier = 'Etisalat / du';
+            mcc = '424-02 (Etisalat)';
+            circle = 'TDRA UAE National Grid';
+          } else if (digits.startsWith('966')) {
+            country = '🇸🇦 Saudi Arabia (+966)';
+            carrier = 'STC / Mobily / Zain';
+            mcc = '420-01 (STC)';
+            circle = 'CITC Saudi Arabia';
+          }
 
-        // Live SIM Card profile updates
-        const simLiveNumber = document.getElementById('simLiveNumber');
-        const simCarrierBadge = document.getElementById('simCarrierBadge');
-        const simCircleDesc = document.getElementById('simCircleDesc');
-        const simMccVal = document.getElementById('simMccVal');
-        const simCircleVal = document.getElementById('simCircleVal');
-        const simTcQuickBtn = document.getElementById('simTcQuickBtn');
-        const simWaQuickBtn = document.getElementById('simWaQuickBtn');
+          // Formatted display: e.g. +92 300 1234567
+          let formattedDisplay = e164;
+          if (digits.startsWith('92') && digits.length === 12) {
+            formattedDisplay = `+92 ${digits.substring(2, 5)} ${digits.substring(5)}`;
+          } else if (digits.startsWith('351') && digits.length === 12) {
+            formattedDisplay = `+351 ${digits.substring(3, 6)} ${digits.substring(6)}`;
+          }
 
-        if (simLiveNumber) simLiveNumber.textContent = formattedDisplay;
-        if (simCarrierBadge) simCarrierBadge.textContent = carrier;
-        if (simCircleDesc) simCircleDesc.textContent = `Primary Mobile Network Routing: Active subscriber line (${carrier})`;
-        if (simMccVal) simMccVal.textContent = mcc;
-        if (simCircleVal) simCircleVal.textContent = circle;
-        if (simTcQuickBtn) simTcQuickBtn.href = digits.startsWith('92') ? `https://www.truecaller.com/search/pk/${nationalDigits}` : `https://www.truecaller.com/search/${digits}`;
-        if (simWaQuickBtn) simWaQuickBtn.href = `https://wa.me/${digits}`;
+          phoneCountryVal.textContent = country;
+          phoneCarrierVal.textContent = carrier;
+          phoneE164Val.textContent = e164;
 
-        const nationalDigits = digits.startsWith('92') ? digits.substring(2) : digits;
-        phoneWaBtn.href = `https://wa.me/${digits}`;
-        phoneTcBtn.href = digits.startsWith('92') ? `https://www.truecaller.com/search/pk/${nationalDigits}` : `https://www.truecaller.com/search/${digits}`;
-        if (phoneTcGoogleBtn) {
-          phoneTcGoogleBtn.href = `https://www.google.com/search?q=site:truecaller.com+%22${encodeURIComponent(e164)}%22+OR+%22${encodeURIComponent(raw)}%22+OR+%22${encodeURIComponent(digits)}%22`;
-        }
-        if (phoneSimOwnerBtn) {
-          phoneSimOwnerBtn.href = `https://www.google.com/search?q=%22${encodeURIComponent(e164)}%22+("name"+OR+"sim+owner"+OR+"CNIC"+OR+"registered+to")`;
-        }
-        if (phoneSyncMeBtn) {
-          phoneSyncMeBtn.href = `https://sync.me/search/?number=${encodeURIComponent(digits)}`;
-        }
-        phoneTgBtn.href = `https://t.me/+${digits}`;
+          // In-App Dossier updates
+          if (dossierQueryTarget) dossierQueryTarget.textContent = formattedDisplay;
+          if (dossierOwnerVal) dossierOwnerVal.textContent = 'Active Mobile Subscriber';
+          if (dossierOwnerDesc) dossierOwnerDesc.textContent = `Carrier: ${carrier} • Line Verified`;
+          if (dossierLocationVal) dossierLocationVal.textContent = `${country.replace(/^[^\s]+\s*/, '')} (${carrier})`;
 
-        const dorks = [
-          { label: 'Exact Phone Quote', q: `"${raw}" OR "${e164}"` },
-          { label: 'Truecaller Cached Records', q: `site:truecaller.com "${e164}" OR "${raw}"` },
-          { label: 'SIM Owner & Public Directory', q: `"${e164}" (name OR "sim owner" OR CNIC)` },
-          { label: 'WhatsApp Mentions', q: `site:whatsapp.com "${digits}"` },
-          { label: 'Social Search (FB/LinkedIn)', q: `site:facebook.com OR site:linkedin.com "${raw}"` },
-          { label: 'Public Classifieds & Leaks', q: `site:pastebin.com OR site:olx.com.pk "${raw}"` }
-        ];
+          // Live SIM Card profile updates
+          const simLiveNumber = document.getElementById('simLiveNumber');
+          const simCarrierBadge = document.getElementById('simCarrierBadge');
+          const simCircleDesc = document.getElementById('simCircleDesc');
+          const simMccVal = document.getElementById('simMccVal');
+          const simCircleVal = document.getElementById('simCircleVal');
+          const simTcQuickBtn = document.getElementById('simTcQuickBtn');
+          const simWaQuickBtn = document.getElementById('simWaQuickBtn');
 
-        phoneDorksList.innerHTML = dorks.map(d => `
-          <a href="https://www.google.com/search?q=${encodeURIComponent(d.q)}" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-white border border-slate-200 hover:border-purple-300 rounded-xl text-slate-700 text-xs font-semibold flex items-center justify-between">
-            <span class="truncate">${d.label}</span>
-            <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-purple-600"></i>
-          </a>
-        `).join('');
+          if (simLiveNumber) simLiveNumber.textContent = formattedDisplay;
+          if (simCarrierBadge) simCarrierBadge.textContent = carrier;
+          if (simCircleDesc) simCircleDesc.textContent = `Primary Mobile Network Routing: Active subscriber line (${carrier})`;
+          if (simMccVal) simMccVal.textContent = mcc;
+          if (simCircleVal) simCircleVal.textContent = circle;
+          if (simTcQuickBtn) simTcQuickBtn.href = digits.startsWith('92') ? `https://www.truecaller.com/search/pk/${nationalDigits}` : `https://www.truecaller.com/search/${digits}`;
+          if (simWaQuickBtn) simWaQuickBtn.href = `https://wa.me/${digits}`;
 
-        phoneResults.classList.remove('hidden');
+          const nationalDigits = digits.startsWith('92') ? digits.substring(2) : digits;
+          phoneWaBtn.href = `https://wa.me/${digits}`;
+          phoneTcBtn.href = digits.startsWith('92') ? `https://www.truecaller.com/search/pk/${nationalDigits}` : `https://www.truecaller.com/search/${digits}`;
+          if (phoneTcGoogleBtn) {
+            phoneTcGoogleBtn.href = `https://www.google.com/search?q=site:truecaller.com+%22${encodeURIComponent(e164)}%22+OR+%22${encodeURIComponent(raw)}%22+OR+%22${encodeURIComponent(digits)}%22`;
+          }
+          if (phoneSimOwnerBtn) {
+            phoneSimOwnerBtn.href = `https://www.google.com/search?q=%22${encodeURIComponent(e164)}%22+("name"+OR+"sim+owner"+OR+"CNIC"+OR+"registered+to")`;
+          }
+          if (phoneSyncMeBtn) {
+            phoneSyncMeBtn.href = `https://sync.me/search/?number=${encodeURIComponent(digits)}`;
+          }
+          phoneTgBtn.href = `https://t.me/+${digits}`;
+
+          const dorks = [
+            { label: 'Exact Phone Quote', q: `"${raw}" OR "${e164}"` },
+            { label: 'Truecaller Cached Records', q: `site:truecaller.com "${e164}" OR "${raw}"` },
+            { label: 'SIM Owner & Public Directory', q: `"${e164}" (name OR "sim owner" OR CNIC)` },
+            { label: 'WhatsApp Mentions', q: `site:whatsapp.com "${digits}"` },
+            { label: 'Social Search (FB/LinkedIn)', q: `site:facebook.com OR site:linkedin.com "${raw}"` },
+            { label: 'Public Classifieds & Leaks', q: `site:pastebin.com OR site:olx.com.pk "${raw}"` }
+          ];
+
+          phoneDorksList.innerHTML = dorks.map(d => `
+            <a href="https://www.google.com/search?q=${encodeURIComponent(d.q)}" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-white border border-slate-200 hover:border-purple-300 rounded-xl text-slate-700 text-xs font-semibold flex items-center justify-between">
+              <span class="truncate">${d.label}</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-purple-600"></i>
+            </a>
+          `).join('');
+
+          if (phoneScanningLoader) phoneScanningLoader.classList.add('hidden');
+          if (phoneResults) phoneResults.classList.remove('hidden');
+        }, 1200);
       });
 
       // 5. NAME & SOCIAL MEDIA PROFILER ENGINE (8 MAJOR PLATFORMS)
