@@ -499,28 +499,19 @@
           <div style="position: absolute; top: -60px; right: -60px; width: 240px; height: 240px; background: radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none;" aria-hidden="true"></div>
           
           <style>
-            .osint-card-grid {
-              display: grid;
-              grid-template-columns: 1fr;
-              gap: 32px;
-              align-items: center;
+            .osint-clean-wrap {
               position: relative;
               z-index: 1;
-            }
-            @media (min-width: 1024px) {
-              .osint-card-grid {
-                grid-template-columns: 1.15fr 0.85fr;
-                gap: 40px;
-              }
+              max-width: 900px;
             }
             .osint-badge-card {
               background: #ffffff;
               border: 1.5px solid #e2e8f0;
               border-radius: 14px;
-              padding: 12px 14px;
+              padding: 14px 18px;
               display: flex;
               align-items: center;
-              gap: 12px;
+              gap: 14px;
               box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
               transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
             }
@@ -529,144 +520,64 @@
               border-color: #7c3aed;
               box-shadow: 0 6px 16px -2px rgba(124, 58, 237, 0.12);
             }
-            .osint-terminal-preview {
-              background: #0b0f19;
-              border: 1.5px solid rgba(124, 58, 237, 0.35);
-              border-radius: 20px;
-              overflow: hidden;
-              box-shadow: 0 20px 45px -12px rgba(15, 23, 42, 0.28), 0 0 35px -8px rgba(124, 58, 237, 0.25);
-              font-family: 'JetBrains Mono', monospace;
-              position: relative;
-            }
           </style>
 
-          <div class="osint-card-grid">
-            <!-- Left Column: Typography, Modules & CTA -->
-            <div>
-              <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(124, 58, 237, 0.08); border: 1px solid rgba(124, 58, 237, 0.25); border-radius: 9999px; padding: 5px 14px; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: #7c3aed; margin-bottom: 14px; letter-spacing: 0.04em;">
-                <span style="width: 6px; height: 6px; border-radius: 50%; background: #7c3aed; box-shadow: 0 0 8px #7c3aed;"></span>
-                <span>EDUCATIONAL TELEMETRY &bull; RESTRICTED RESEARCH NODE</span>
-              </div>
-              
-              <h2 style="font-family: 'Space Grotesk', -apple-system, sans-serif; font-size: 2.1rem; font-weight: 800; color: #0f172a; line-height: 1.25; margin-bottom: 12px; letter-spacing: -0.02em;">
-                Educational OSINT &amp; <span style="background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Digital Footprint</span>
-              </h2>
-              
-              <p style="color: #475569; font-size: 0.96rem; line-height: 1.65; max-width: 640px; margin-bottom: 24px; font-weight: 500;">
-                Defensive security research and digital surface analysis workbench. Test phone WhatsApp verification, map 8-platform social footprints (Instagram, Snapchat, TikTok, X, GitHub), validate MX DNS routing, and inspect client-side image EXIF metadata in real time.
-              </p>
+          <div class="osint-clean-wrap">
+            <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(124, 58, 237, 0.08); border: 1px solid rgba(124, 58, 237, 0.25); border-radius: 9999px; padding: 5px 14px; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 700; color: #7c3aed; margin-bottom: 14px; letter-spacing: 0.04em;">
+              <span style="width: 6px; height: 6px; border-radius: 50%; background: #7c3aed; box-shadow: 0 0 8px #7c3aed;"></span>
+              <span>EDUCATIONAL TELEMETRY &bull; RESTRICTED RESEARCH NODE</span>
+            </div>
+            
+            <h2 style="font-family: 'Space Grotesk', -apple-system, sans-serif; font-size: 2.1rem; font-weight: 800; color: #0f172a; line-height: 1.25; margin-bottom: 12px; letter-spacing: -0.02em;">
+              Educational OSINT &amp; <span style="background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Digital Footprint</span>
+            </h2>
+            
+            <p style="color: #475569; font-size: 0.98rem; line-height: 1.65; max-width: 760px; margin-bottom: 26px; font-weight: 500;">
+              Defensive security research and digital surface analysis workbench. Test phone WhatsApp verification, map 8-platform social footprints (Instagram, Snapchat, TikTok, X, GitHub), validate MX DNS routing, and inspect client-side image EXIF metadata in real time.
+            </p>
 
-              <!-- 4 Module Badges (2x2 Grid) -->
-              <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 26px; max-width: 580px;">
-                <div class="osint-badge-card">
-                  <span style="font-size: 1.25rem;">📱</span>
-                  <div>
-                    <div style="font-size: 0.82rem; font-weight: 700; color: #0f172a;">Phone Lookup</div>
-                    <div style="font-size: 0.70rem; color: #10b981; font-weight: 600;">E.164 &amp; wa.me</div>
-                  </div>
-                </div>
-                <div class="osint-badge-card">
-                  <span style="font-size: 1.25rem;">👤</span>
-                  <div>
-                    <div style="font-size: 0.82rem; font-weight: 700; color: #0f172a;">Username Trace</div>
-                    <div style="font-size: 0.70rem; color: #7c3aed; font-weight: 600;">8 Major Platforms</div>
-                  </div>
-                </div>
-                <div class="osint-badge-card">
-                  <span style="font-size: 1.25rem;">✉️</span>
-                  <div>
-                    <div style="font-size: 0.82rem; font-weight: 700; color: #0f172a;">Email Footprint</div>
-                    <div style="font-size: 0.70rem; color: #3b82f6; font-weight: 600;">Google DoH MX</div>
-                  </div>
-                </div>
-                <div class="osint-badge-card">
-                  <span style="font-size: 1.25rem;">🔍</span>
-                  <div>
-                    <div style="font-size: 0.82rem; font-weight: 700; color: #0f172a;">EXIF Forensics</div>
-                    <div style="font-size: 0.70rem; color: #06b6d4; font-weight: 600;">Local Binary Scan</div>
-                  </div>
+            <!-- 4 Module Badges -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 28px; max-width: 840px;">
+              <div class="osint-badge-card">
+                <span style="font-size: 1.35rem;">📱</span>
+                <div>
+                  <div style="font-size: 0.86rem; font-weight: 700; color: #0f172a;">Phone Lookup</div>
+                  <div style="font-size: 0.72rem; color: #10b981; font-weight: 600;">E.164 &amp; wa.me</div>
                 </div>
               </div>
-
-              <!-- CTA Row -->
-              <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
-                <a href="tools/osint-hub/index.html" class="button" style="background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%); color: #ffffff; border: none; padding: 13px 26px; border-radius: 12px; font-weight: 700; font-size: 0.92rem; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 8px 24px rgba(124, 58, 237, 0.35); text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease;">
-                  <i class="fa-solid fa-terminal" aria-hidden="true"></i>
-                  <span>Launch Digital Footprint</span>
-                  <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
-                </a>
-                <span style="font-size: 0.76rem; color: #475569; font-family: 'JetBrains Mono', monospace; font-weight: 600;">
-                  <i class="fa-solid fa-lock" style="color:#7c3aed; margin-right:4px;" aria-hidden="true"></i> Requires Admin &amp; 18+ Ethics Agreement
-                </span>
+              <div class="osint-badge-card">
+                <span style="font-size: 1.35rem;">👤</span>
+                <div>
+                  <div style="font-size: 0.86rem; font-weight: 700; color: #0f172a;">Username Trace</div>
+                  <div style="font-size: 0.72rem; color: #7c3aed; font-weight: 600;">8 Major Platforms</div>
+                </div>
+              </div>
+              <div class="osint-badge-card">
+                <span style="font-size: 1.35rem;">✉️</span>
+                <div>
+                  <div style="font-size: 0.86rem; font-weight: 700; color: #0f172a;">Email Footprint</div>
+                  <div style="font-size: 0.72rem; color: #3b82f6; font-weight: 600;">Google DoH MX</div>
+                </div>
+              </div>
+              <div class="osint-badge-card">
+                <span style="font-size: 1.35rem;">🔍</span>
+                <div>
+                  <div style="font-size: 0.86rem; font-weight: 700; color: #0f172a;">EXIF Forensics</div>
+                  <div style="font-size: 0.72rem; color: #06b6d4; font-weight: 600;">Local Binary Scan</div>
+                </div>
               </div>
             </div>
 
-            <!-- Right Column: High-Tech Telemetry Preview Terminal (Fills the space seamlessly) -->
-            <div class="osint-terminal-preview">
-              <!-- Window Chrome Bar -->
-              <div style="background: #1e293b; padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
-                <div style="display: flex; align-items: center; gap: 6px;">
-                  <span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444; display: inline-block;"></span>
-                  <span style="width: 10px; height: 10px; border-radius: 50%; background: #f59e0b; display: inline-block;"></span>
-                  <span style="width: 10px; height: 10px; border-radius: 50%; background: #10b981; display: inline-block;"></span>
-                  <span style="margin-left: 8px; font-size: 0.68rem; color: #94a3b8; font-weight: 600;">whx-osint://node-telemetry.live</span>
-                </div>
-                <div style="display: flex; align-items: center; gap: 6px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 9999px; padding: 2px 8px; font-size: 0.62rem; color: #34d399; font-weight: 700;">
-                  <span style="width: 5px; height: 5px; border-radius: 50%; background: #10b981; box-shadow: 0 0 6px #10b981;"></span>
-                  <span>LIVE NODE</span>
-                </div>
-              </div>
-
-              <!-- Terminal Body -->
-              <div style="padding: 18px 20px; font-size: 0.74rem; color: #cbd5e1; line-height: 1.7;">
-                <div style="color: #a78bfa; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
-                  <span style="color: #34d399;">$</span>
-                  <span>whx-recon --stream live-telemetry</span>
-                </div>
-
-                <!-- Live Dossier Mini-Card -->
-                <div style="background: rgba(30, 41, 59, 0.6); border: 1px solid rgba(124, 58, 237, 0.25); border-radius: 12px; padding: 12px 14px; margin-bottom: 12px;">
-                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font-size: 0.68rem;">
-                    <span style="color: #94a3b8;">TARGET IDENTIFIER:</span>
-                    <span style="color: #38bdf8; font-weight: 700;">+92 300 &bull;&bull;&bull;&bull;&bull;&bull;&bull;</span>
-                  </div>
-                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font-size: 0.68rem;">
-                    <span style="color: #94a3b8;">CELLULAR ROUTING:</span>
-                    <span style="color: #34d399; font-weight: 700;">Jazz 4G LTE (MCC 410-01)</span>
-                  </div>
-                  <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.68rem;">
-                    <span style="color: #94a3b8;">TELEMETRY CIRCLE:</span>
-                    <span style="color: #e2e8f0;">Islamabad / Punjab Circle</span>
-                  </div>
-                </div>
-
-                <!-- Footprint Matrix Preview -->
-                <div style="font-size: 0.68rem; color: #94a3b8; margin-bottom: 6px; font-weight: 600;">LINKED PROFILE SURFACE:</div>
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-bottom: 14px; font-size: 0.68rem;">
-                  <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25); color: #34d399; padding: 4px 8px; border-radius: 6px; display: flex; align-items: center; gap: 5px;">
-                    <i class="fa-solid fa-check" style="font-size: 8px;"></i>
-                    <span>WhatsApp Verified</span>
-                  </div>
-                  <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.25); color: #60a5fa; padding: 4px 8px; border-radius: 6px; display: flex; align-items: center; gap: 5px;">
-                    <i class="fa-solid fa-check" style="font-size: 8px;"></i>
-                    <span>Truecaller Indexed</span>
-                  </div>
-                  <div style="background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.25); color: #c084fc; padding: 4px 8px; border-radius: 6px; display: flex; align-items: center; gap: 5px;">
-                    <i class="fa-solid fa-check" style="font-size: 8px;"></i>
-                    <span>8 Social Networks</span>
-                  </div>
-                  <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.25); color: #fbbf24; padding: 4px 8px; border-radius: 6px; display: flex; align-items: center; gap: 5px;">
-                    <i class="fa-solid fa-check" style="font-size: 8px;"></i>
-                    <span>SIM / CNIC Footprint</span>
-                  </div>
-                </div>
-
-                <!-- Terminal Bottom Status -->
-                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 0.64rem; color: #64748b; padding-top: 8px;">
-                  <span><i class="fa-solid fa-shield-halved" style="color: #7c3aed; margin-right: 4px;"></i> Client-Side Sandbox</span>
-                  <span style="color: #34d399; font-weight: 700;">Zero Data Retention</span>
-                </div>
-              </div>
+            <!-- CTA Row -->
+            <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+              <a href="tools/osint-hub/index.html" class="button" style="background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%); color: #ffffff; border: none; padding: 14px 28px; border-radius: 12px; font-weight: 700; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 8px 24px rgba(124, 58, 237, 0.35); text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease;">
+                <i class="fa-solid fa-terminal" aria-hidden="true"></i>
+                <span>Launch Digital Footprint</span>
+                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+              </a>
+              <span style="font-size: 0.78rem; color: #475569; font-family: 'JetBrains Mono', monospace; font-weight: 600;">
+                <i class="fa-solid fa-lock" style="color:#7c3aed; margin-right:5px;" aria-hidden="true"></i> Requires Admin Clearance &amp; 18+ Ethics Agreement
+              </span>
             </div>
           </div>
         </div>
