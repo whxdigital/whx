@@ -369,7 +369,7 @@
         </div>
         <div class="text-left">
           <div class="text-[10px] text-slate-500 font-mono font-bold tracking-wider">02. IDENTITY</div>
-          <div class="font-bold text-slate-200">Name &amp; Social Trace</div>
+          <div class="font-bold text-slate-200">Username &amp; Social Trace</div>
         </div>
       </button>
 
@@ -643,12 +643,12 @@
           <div class="flex items-center justify-between mb-1.5 flex-wrap gap-2">
             <h2 class="text-xl font-bold text-white font-display flex items-center gap-2">
               <i class="fa-solid fa-user-tag text-cyan-400"></i>
-              <span>Name, Username &amp; Social Footprint Tracing</span>
+              <span>Username &amp; Social Footprint Tracing</span>
             </h2>
             <span class="text-xs font-mono text-cyan-300 bg-cyan-950 px-2.5 py-1 rounded-full border border-cyan-500/40 font-bold">10 Major Social Platforms</span>
           </div>
           <p class="text-slate-300 text-xs leading-relaxed">
-            Enter a full name (e.g. <strong>Waseem Haider</strong>) or username to cross-reference Instagram, Snapchat, TikTok, Facebook, X, GitHub, Telegram, Reddit, LinkedIn, and YouTube footprints.
+            Enter an exact username handle (e.g. <strong>ShawWinston</strong> or <strong>waseemhaider</strong>) to cross-reference Instagram, Snapchat, TikTok, Facebook, X, GitHub, Telegram, Reddit, LinkedIn, and YouTube footprints. (Usernames must not contain spaces; spaced inputs return No Data Found).
           </p>
         </div>
 
@@ -658,7 +658,7 @@
             <input 
               type="text" 
               id="targetUser"
-              placeholder="e.g. Waseem Haider or waseemhaider or target_alias" 
+              placeholder="e.g. ShawWinston or waseemhaider or target_alias (no spaces)" 
               required
               class="cyber-input w-full rounded-xl pl-11 pr-4 py-3 text-sm font-mono focus:ring-1 focus:ring-cyan-400"
             />
@@ -668,6 +668,26 @@
             <span>Trace Profiles</span>
           </button>
         </form>
+
+        <!-- No Data Found / Space in Username Card -->
+        <div id="userNotFoundCard" class="cyber-subcard rounded-2xl p-6 border-rose-500/40 bg-rose-950/30 text-center space-y-3 hidden">
+          <div class="w-12 h-12 rounded-2xl bg-rose-950/80 border border-rose-500/40 text-rose-400 mx-auto flex items-center justify-center text-xl shadow-[0_0_15px_rgba(244,63,94,0.3)]">
+            <i class="fa-solid fa-circle-xmark"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-white font-display">No Data Found / Invalid Username Format</h3>
+            <p class="text-xs text-rose-300 font-mono mt-1" id="userNotFoundQuery">Query: "Shaw Winston"</p>
+            <p class="text-xs text-slate-300 mt-2 max-w-md mx-auto leading-relaxed">
+              No profile data found. Usernames cannot contain spaces on any online platform (Instagram, GitHub, X, TikTok, Telegram, etc.). A valid username must be a continuous handle.
+            </p>
+          </div>
+          <div class="pt-2">
+            <button type="button" id="useSuggestedHandleBtn" class="px-4 py-2 bg-cyan-950/80 hover:bg-cyan-900 border border-cyan-500/40 text-cyan-300 rounded-xl text-xs font-mono font-bold transition-all inline-flex items-center gap-1.5 shadow-sm cursor-pointer">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+              <span>Auto-fix &amp; Search: <span id="suggestedBtnText" class="text-white"></span></span>
+            </button>
+          </div>
+        </div>
 
         <div id="userResults" class="space-y-6 pt-2 hidden">
           <!-- Live GitHub Developer Profile Card (if found) -->
@@ -1632,10 +1652,14 @@
         }, 350);
       });
 
-      // 5. NAME & SOCIAL MEDIA PROFILER ENGINE (10 MAJOR PLATFORMS)
+      // 5. USERNAME & SOCIAL MEDIA PROFILER ENGINE (10 MAJOR PLATFORMS)
       const userForm = document.getElementById('userForm');
       const targetUser = document.getElementById('targetUser');
       const userResults = document.getElementById('userResults');
+      const userNotFoundCard = document.getElementById('userNotFoundCard');
+      const userNotFoundQuery = document.getElementById('userNotFoundQuery');
+      const suggestedBtnText = document.getElementById('suggestedBtnText');
+      const useSuggestedHandleBtn = document.getElementById('useSuggestedHandleBtn');
       const githubLiveCard = document.getElementById('githubLiveCard');
       const ghAvatar = document.getElementById('ghAvatar');
       const ghName = document.getElementById('ghName');
@@ -1652,16 +1676,39 @@
       const googleResultsCount = document.getElementById('googleResultsCount');
       const userDorksList = document.getElementById('userDorksList');
 
+      if (useSuggestedHandleBtn) {
+        useSuggestedHandleBtn.addEventListener('click', () => {
+          const query = targetUser.value.trim();
+          targetUser.value = query.replace(/\s+/g, '');
+          userForm.dispatchEvent(new Event('submit', { cancelable: true }));
+        });
+      }
+
       userForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const query = targetUser.value.trim();
+        const rawQuery = targetUser.value;
+        const query = rawQuery.trim();
         if (!query) return;
+
+        // Space in username check: if query has spaces (e.g. "Shaw Winston"), DO NOT show results!
+        if (/\s/.test(query)) {
+          if (userResults) userResults.classList.add('hidden');
+          if (userNotFoundCard) {
+            userNotFoundCard.classList.remove('hidden');
+            if (userNotFoundQuery) userNotFoundQuery.textContent = `Input: "${query}"`;
+            const suggested = query.replace(/\s+/g, '');
+            if (suggestedBtnText) suggestedBtnText.textContent = suggested;
+          }
+          return;
+        }
+
+        // Valid username without spaces (e.g. "ShawWinston") -> show results
+        if (userNotFoundCard) userNotFoundCard.classList.add('hidden');
+        userResults.classList.remove('hidden');
 
         const cleanUser = query.toLowerCase().replace(/[^a-z0-9_.-]/g, '');
         const encodedQuery = encodeURIComponent(query);
         const cleanedUser = query.trim().replace('@', '');
-
-        userResults.classList.remove('hidden');
 
         // 1. Live GitHub Public API Query
         try {
