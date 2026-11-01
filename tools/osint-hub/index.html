@@ -347,26 +347,21 @@
     
     <!-- Header Block with Watermark & Badge -->
     <header class="flex flex-col md:flex-row justify-between items-start md:items-center bg-white border border-slate-200 rounded-2xl p-6 md:p-8 mb-8 gap-6 shadow-sm relative overflow-hidden">
-      <!-- Animated Cyber Tactical Reticle & Constellation Network (Zero Blur, Crisp Vector) -->
-      <div class="absolute -right-10 sm:right-0 top-1/2 -translate-y-1/2 w-[340px] sm:w-[440px] md:w-[520px] h-[220px] pointer-events-none select-none z-0 opacity-85 sm:opacity-95">
+      <!-- Animated Cyber Tactical Reticle & Constellation Network (Zero Blur, Crisp Vector, Non-Overlapping) -->
+      <div class="absolute right-0 top-1/2 -translate-y-1/2 w-[260px] sm:w-[320px] md:w-[380px] lg:w-[420px] h-[220px] pointer-events-none select-none z-0 opacity-80 sm:opacity-95 [mask-image:linear-gradient(to_right,transparent_0%,black_15%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_15%)]">
         <svg class="w-full h-full" viewBox="0 0 520 220" fill="none" xmlns="http://www.w3.org/2000/svg">
           
           <!-- ==============================================
-               1. CONSTELLATION NODE MESH (LEFT SIDE)
+               1. CONSTELLATION NODE MESH (RIGHT-ALIGNED COMPACT CLUSTER)
                ============================================== -->
           <g stroke-linecap="round" stroke-linejoin="round">
             <!-- Base Network Connecting Lines -->
-            <line x1="30" y1="45" x2="95" y2="28" stroke="#7c3aed" stroke-width="1" stroke-opacity="0.35" />
-            <line x1="30" y1="45" x2="55" y2="115" stroke="#7c3aed" stroke-width="1" stroke-opacity="0.35" />
             <line x1="95" y1="28" x2="135" y2="88" stroke="#7c3aed" stroke-width="1" stroke-opacity="0.3" />
             <line x1="95" y1="28" x2="185" y2="52" stroke="#7c3aed" stroke-width="1" stroke-opacity="0.35" />
-            <line x1="55" y1="115" x2="25" y2="175" stroke="#7c3aed" stroke-width="1" stroke-opacity="0.3" />
-            <line x1="55" y1="115" x2="135" y2="88" stroke="#7c3aed" stroke-width="1" stroke-opacity="0.35" />
-            <line x1="25" y1="175" x2="105" y2="185" stroke="#7c3aed" stroke-width="1" stroke-opacity="0.3" />
             <line x1="105" y1="185" x2="135" y2="88" stroke="#7c3aed" stroke-width="1" stroke-opacity="0.25" />
+            <line x1="105" y1="185" x2="175" y2="180" stroke="#7c3aed" stroke-width="1" stroke-opacity="0.3" />
             <line x1="135" y1="88" x2="185" y2="52" stroke="#7c3aed" stroke-width="1" stroke-opacity="0.35" />
             <line x1="135" y1="88" x2="205" y2="135" stroke="#7c3aed" stroke-width="1" stroke-opacity="0.3" />
-            <line x1="105" y1="185" x2="175" y2="180" stroke="#7c3aed" stroke-width="1" stroke-opacity="0.3" />
             <line x1="185" y1="52" x2="255" y2="42" stroke="#7c3aed" stroke-width="1" stroke-opacity="0.35" />
             <line x1="185" y1="52" x2="205" y2="135" stroke="#7c3aed" stroke-width="1" stroke-opacity="0.3" />
             <line x1="205" y1="135" x2="175" y2="180" stroke="#7c3aed" stroke-width="1" stroke-opacity="0.3" />
@@ -383,11 +378,10 @@
             <line x1="315" y1="148" x2="390" y2="110" stroke="#7c3aed" stroke-width="1" stroke-opacity="0.25" stroke-dasharray="3 3" />
 
             <!-- Animated Live Data Flow Streams (Moving dashes) -->
-            <line x1="30" y1="45" x2="95" y2="28" class="cyber-flow-line" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.75" />
             <line x1="95" y1="28" x2="185" y2="52" class="cyber-flow-line" stroke="#7c3aed" stroke-width="1.5" stroke-opacity="0.8" />
             <line x1="185" y1="52" x2="255" y2="42" class="cyber-flow-line" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.75" />
             <line x1="255" y1="42" x2="315" y2="75" class="cyber-flow-line" stroke="#7c3aed" stroke-width="1.5" stroke-opacity="0.85" />
-            <line x1="55" y1="115" x2="135" y2="88" class="cyber-flow-line" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.75" />
+            <line x1="105" y1="185" x2="135" y2="88" class="cyber-flow-line" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.75" />
             <line x1="135" y1="88" x2="205" y2="135" class="cyber-flow-line" stroke="#7c3aed" stroke-width="1.5" stroke-opacity="0.7" />
             <line x1="205" y1="135" x2="275" y2="108" class="cyber-flow-line" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.8" />
             <line x1="275" y1="108" x2="310" y2="110" class="cyber-flow-line" stroke="#10b981" stroke-width="1.8" stroke-opacity="0.9" />
@@ -395,10 +389,7 @@
 
           <!-- Constellation Node Vertices -->
           <g>
-            <circle cx="30" cy="45" r="2.5" fill="#7c3aed" />
             <circle cx="95" cy="28" r="3" fill="#10b981" />
-            <circle cx="55" cy="115" r="2.5" fill="#7c3aed" />
-            <circle cx="25" cy="175" r="2.5" fill="#64748b" />
             <circle cx="105" cy="185" r="3" fill="#7c3aed" />
             <circle cx="135" cy="88" r="3.5" fill="#10b981" />
             <circle cx="185" cy="52" r="3.5" fill="#7c3aed" />
@@ -529,7 +520,7 @@
         </svg>
       </div>
 
-      <div class="relative z-10 max-w-3xl">
+      <div class="relative z-10 max-w-md lg:max-w-xl pr-4">
         <div class="flex items-center space-x-2 text-xs font-mono text-purple-700 font-bold mb-2">
           <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_#10b981]"></span>
           <span class="bg-purple-50 text-purple-700 px-2.5 py-0.5 rounded-full border border-purple-200">WHX DIGITAL RECON // TELEMETRY SUITE</span>
@@ -538,7 +529,7 @@
           <i class="fa-solid fa-shield-halved text-emerald-600 text-2xl"></i>
           <span>Educational OSINT &amp; <span class="text-purple-600">Digital Footprint</span></span>
         </h1>
-        <p class="text-slate-600 text-xs md:text-sm mt-1.5 leading-relaxed">
+        <p class="text-slate-600 text-xs md:text-sm mt-1.5 leading-relaxed max-w-md lg:max-w-lg">
           Defensive cyber research workbench: Real-time telecom routing, verified breach check &amp; password leak status, multi-platform identity mapping, and client-side binary EXIF forensics.
         </p>
       </div>
