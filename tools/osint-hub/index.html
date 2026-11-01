@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,7 +18,6 @@
   
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
@@ -27,13 +26,13 @@
             display: ['Space Grotesk', 'sans-serif'],
           },
           colors: {
-            cyber: {
-              black: '#07090e',
-              navy: '#0b1120',
-              card: '#0d1222',
-              border: '#7c3aed',
-              cyan: '#06b6d4',
-              glow: '#38bdf8'
+            brand: {
+              purple: '#7c3aed',
+              emerald: '#10b981',
+              dark: '#0f172a',
+              card: '#ffffff',
+              border: '#e2e8f0',
+              bg: '#f8fafc'
             }
           }
         }
@@ -47,19 +46,19 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     body {
-      background-color: #07090e !important;
-      color: #e2e8f0 !important;
+      background-color: #f8fafc !important;
+      color: #1e293b !important;
       font-family: 'Inter', -apple-system, sans-serif !important;
       margin: 0;
       padding: 0;
       min-height: 100vh;
       overflow-x: hidden;
       background-image: 
-        radial-gradient(rgba(124, 58, 237, 0.15) 1px, transparent 1px),
-        linear-gradient(to right, rgba(124, 58, 237, 0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(16, 185, 129, 0.04) 1px, transparent 1px);
-      background-size: 32px 32px, 32px 32px, 32px 32px;
-      background-position: 0 0, 16px 16px, 16px 16px;
+        radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.07), transparent 45%),
+        radial-gradient(circle at 100% 100%, rgba(16, 185, 129, 0.05), transparent 35%),
+        linear-gradient(to right, rgba(226, 232, 240, 0.5) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(226, 232, 240, 0.5) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
     }
     .ambient-glow-top {
       position: absolute;
@@ -67,47 +66,47 @@
       left: 50%;
       transform: translateX(-50%);
       width: 1200px;
-      height: 540px;
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, rgba(124, 58, 237, 0.22) 45%, rgba(11, 17, 32, 0.08) 75%, transparent 85%);
-      filter: blur(85px);
+      height: 440px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, rgba(16, 185, 129, 0.06) 50%, transparent 75%);
+      filter: blur(75px);
       pointer-events: none;
       z-index: 0;
     }
     .cyber-card {
-      background: rgba(13, 18, 34, 0.94) !important;
-      backdrop-filter: blur(16px) !important;
-      border: 1px solid rgba(124, 58, 237, 0.24) !important;
-      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.85), 0 0 30px -5px rgba(124, 58, 237, 0.15) !important;
+      background: #ffffff !important;
+      border: 1px solid #e2e8f0 !important;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05) !important;
     }
     .cyber-subcard {
-      background: rgba(18, 24, 44, 0.82) !important;
-      border: 1px solid rgba(124, 58, 237, 0.18) !important;
+      background: #ffffff !important;
+      border: 1px solid #e2e8f0 !important;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03) !important;
       transition: all 0.2s ease;
     }
     .cyber-subcard:hover {
-      border-color: rgba(16, 185, 129, 0.6) !important;
-      box-shadow: 0 0 18px -2px rgba(16, 185, 129, 0.25) !important;
+      border-color: #cbd5e1 !important;
+      box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.06) !important;
     }
     .cyber-input {
-      background: #07090e !important;
-      border: 1px solid rgba(124, 58, 237, 0.28) !important;
-      color: #38bdf8 !important;
+      background: #ffffff !important;
+      border: 1px solid #cbd5e1 !important;
+      color: #0f172a !important;
     }
     .cyber-input:focus {
       border-color: #10b981 !important;
-      box-shadow: 0 0 15px rgba(16, 185, 129, 0.35) !important;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15) !important;
       outline: none !important;
     }
     .custom-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
-    .custom-scroll::-webkit-scrollbar-track { background: #07090e; }
-    .custom-scroll::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
+    .custom-scroll::-webkit-scrollbar-track { background: #f1f5f9; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
     .custom-scroll::-webkit-scrollbar-thumb:hover { background: #10b981; }
     .action-btn-hover {
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .action-btn-hover:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 20px -2px rgba(16, 185, 129, 0.45);
+      box-shadow: 0 4px 12px -2px rgba(16, 185, 129, 0.25);
     }
     @media print {
       body { background: #ffffff !important; color: #000000 !important; }
@@ -116,12 +115,12 @@
     }
   </style>
 </head>
-<body class="selection:bg-emerald-500/30 selection:text-emerald-200 relative antialiased min-h-screen flex flex-col justify-between">
+<body class="selection:bg-emerald-500/20 selection:text-emerald-900 relative antialiased min-h-screen flex flex-col justify-between">
   
   <div class="ambient-glow-top"></div>
 
   <!-- Top Executive Site Header (Clean Signature WHX Green Logo Only) -->
-  <header class="relative z-20 border-b border-slate-800/80 bg-[#07090e]/90 backdrop-blur-md sticky top-0 px-4 py-3.5 shadow-lg">
+  <header class="relative z-20 border-b border-slate-200 bg-white/95 backdrop-blur-md sticky top-0 px-4 py-3.5 shadow-sm">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
       <div class="flex items-center">
         <a href="../../index.html" class="inline-flex items-center text-decoration-none group" aria-label="WHX Digital Home">
@@ -135,13 +134,13 @@
       </div>
 
       <div class="flex items-center space-x-3 text-xs">
-        <a href="../../index.html" class="text-slate-300 hover:text-emerald-400 transition-colors font-medium flex items-center gap-1.5 py-1 px-2.5 rounded-lg hover:bg-slate-800/60">
+        <a href="../../index.html" class="text-slate-600 hover:text-slate-900 transition-colors font-medium flex items-center gap-1.5 py-1 px-2.5 rounded-lg hover:bg-slate-100">
           <i class="fa-solid fa-arrow-left text-[11px]"></i>
           <span>Return Home</span>
         </a>
-        <span class="text-slate-700">|</span>
-        <div class="font-mono text-emerald-400/90 text-xs hidden md:flex items-center gap-1.5 bg-emerald-950/40 px-3 py-1 rounded-lg border border-emerald-500/20">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span class="text-slate-300">|</span>
+        <div class="font-mono text-emerald-700 text-xs hidden md:flex items-center gap-1.5 bg-emerald-50 px-3 py-1 rounded-lg border border-emerald-200 font-semibold">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
           <span id="utcClock">UTC: --:--:--</span>
         </div>
       </div>
@@ -151,24 +150,24 @@
   <!-- ==========================================================
        MODAL 1: ETHICAL COMPLIANCE AGREEMENT GATE (18+ OSINT)
        ========================================================== -->
-  <div id="termsModal" class="fixed inset-0 bg-[#07090e]/90 backdrop-blur-md flex items-center justify-center z-50 p-4 transition-all duration-300 hidden">
-    <div class="cyber-card rounded-2xl max-w-xl w-full p-6 sm:p-8 space-y-5 text-slate-100 animate-in fade-in zoom-in-95">
-      <div class="flex items-start justify-between border-b border-cyan-500/20 pb-4">
+  <div id="termsModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-all duration-300 hidden">
+    <div class="cyber-card rounded-2xl max-w-xl w-full p-6 sm:p-8 space-y-5 text-slate-800 animate-in fade-in zoom-in-95">
+      <div class="flex items-start justify-between border-b border-slate-200 pb-4">
         <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 rounded-xl bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 flex items-center justify-center text-lg shadow-[0_0_12px_rgba(6,182,212,0.3)]">
+          <div class="w-10 h-10 rounded-xl bg-purple-50 border border-purple-200 text-purple-600 flex items-center justify-center text-lg shadow-sm">
             <i class="fa-solid fa-user-shield"></i>
           </div>
           <div>
-            <h3 class="text-lg font-bold text-white font-display">Security &amp; Ethics Clearance</h3>
-            <p class="text-xs text-cyan-400/80 font-mono">WHX-OSINT-LEGAL // SECTION 18-A</p>
+            <h3 class="text-lg font-bold text-slate-900 font-display">Security &amp; Ethics Clearance</h3>
+            <p class="text-xs text-purple-600 font-mono">WHX-OSINT-LEGAL // SECTION 18-A</p>
           </div>
         </div>
-        <span class="text-[10px] font-mono bg-cyan-950 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded uppercase">Restricted</span>
+        <span class="text-[10px] font-mono bg-slate-100 text-slate-700 border border-slate-200 px-2 py-0.5 rounded uppercase font-semibold">Restricted</span>
       </div>
 
-      <div class="text-xs text-slate-300 space-y-3 leading-relaxed max-h-60 overflow-y-auto pr-2 custom-scroll border border-cyan-900/40 p-4 rounded-xl bg-[#07090e]">
-        <p class="font-semibold text-white">This defensive workbench is strictly authorized for cybersecurity audits, research, and self-footprint diagnostics:</p>
-        <ul class="list-disc pl-5 space-y-2 text-slate-300">
+      <div class="text-xs text-slate-600 space-y-3 leading-relaxed max-h-60 overflow-y-auto pr-2 custom-scroll border border-slate-200 p-4 rounded-xl bg-slate-50">
+        <p class="font-semibold text-slate-900">This defensive workbench is strictly authorized for cybersecurity audits, research, and self-footprint diagnostics:</p>
+        <ul class="list-disc pl-5 space-y-2 text-slate-600">
           <li><strong>Lawful Research Only:</strong> You will not use this platform for stalking, harassment, doxxing, or unauthorized electronic intrusion.</li>
           <li><strong>Sanctioned Public Resolvers:</strong> Live subscriber lookups query open telecom registries, DNS records, public Truecaller indexes, and official platform APIs. Illicit leaked citizen tracking databases are strictly prohibited.</li>
           <li><strong>Client-Side Processing:</strong> Image EXIF forensics run 100% locally in your browser memory (ArrayBuffer) without remote server exfiltration.</li>
@@ -176,15 +175,15 @@
         </ul>
       </div>
 
-      <div class="pt-2 border-t border-cyan-500/20">
+      <div class="pt-2 border-t border-slate-200">
         <label class="flex items-center space-x-3 cursor-pointer select-none">
-          <input type="checkbox" id="modalCheck" class="w-4 h-4 rounded text-cyan-500 focus:ring-cyan-500 border-cyan-500/40 bg-[#07090e]" />
-          <span class="text-xs text-slate-200">I am 18+ years of age and certify that I am conducting authorized security research under ethical guidelines.</span>
+          <input type="checkbox" id="modalCheck" class="w-4 h-4 rounded text-purple-600 focus:ring-purple-500 border-slate-300" />
+          <span class="text-xs text-slate-700">I am 18+ years of age and certify that I am conducting authorized security research under ethical guidelines.</span>
         </label>
       </div>
 
       <div class="flex justify-end gap-3 pt-2">
-        <button id="okBtn" disabled class="w-full sm:w-auto bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-7 py-2.5 rounded-xl text-xs font-bold transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(6,182,212,0.35)] cursor-pointer">
+        <button id="okBtn" disabled class="w-full sm:w-auto bg-purple-600 hover:bg-purple-700 text-white px-7 py-2.5 rounded-xl text-xs font-bold transition-all disabled:opacity-40 disabled:cursor-not-allowed shadow-md cursor-pointer">
           <i class="fa-solid fa-lock-open mr-1.5"></i>
           <span>Confirm &amp; Proceed</span>
         </button>
@@ -195,26 +194,26 @@
   <!-- ==========================================================
        MODAL 2: OPERATOR CREDENTIALS ACCESS (Admin Clearance)
        ========================================================== -->
-  <div id="loginModal" class="fixed inset-0 bg-[#07090e]/92 backdrop-blur-md flex items-center justify-center z-50 p-4 transition-all duration-300 hidden">
-    <div class="cyber-card rounded-2xl max-w-md w-full p-6 sm:p-8 space-y-6 text-slate-100 animate-in fade-in zoom-in-95">
+  <div id="loginModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-all duration-300 hidden">
+    <div class="cyber-card rounded-2xl max-w-md w-full p-6 sm:p-8 space-y-6 text-slate-800 animate-in fade-in zoom-in-95">
       <div class="text-center space-y-2">
-        <div class="w-14 h-14 rounded-2xl bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 mx-auto flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(6,182,212,0.35)]">
+        <div class="w-14 h-14 rounded-2xl bg-purple-50 border border-purple-200 text-purple-600 mx-auto flex items-center justify-center text-2xl shadow-sm">
           <i class="fa-solid fa-fingerprint"></i>
         </div>
-        <h3 class="text-xl font-extrabold text-white font-display">Administrator Clearance</h3>
-        <p class="text-xs text-slate-400">Enter operator authentication credentials to access the OSINT HUD suite.</p>
+        <h3 class="text-xl font-extrabold text-slate-900 font-display">Administrator Clearance</h3>
+        <p class="text-xs text-slate-500">Enter operator authentication credentials to access the OSINT suite.</p>
       </div>
 
       <form id="loginForm" class="space-y-4">
         <div>
-          <label class="block text-xs font-mono text-cyan-400 font-semibold mb-1 uppercase tracking-wider">Operator Identity</label>
+          <label class="block text-xs font-mono text-slate-700 font-semibold mb-1 uppercase tracking-wider">Operator Identity</label>
           <div class="relative">
-            <i class="fa-solid fa-user absolute left-3.5 top-3 text-cyan-500/60 text-xs"></i>
+            <i class="fa-solid fa-user absolute left-3.5 top-3 text-slate-400 text-xs"></i>
             <input 
               type="text" 
               id="usernameInput" 
               required
-              class="cyber-input w-full rounded-xl pl-10 pr-3 py-2.5 text-xs focus:ring-1 focus:ring-cyan-400 font-mono"
+              class="cyber-input w-full rounded-xl pl-10 pr-3 py-2.5 text-xs font-mono"
               placeholder="Operator ID..."
               autocomplete="username"
             />
@@ -222,32 +221,32 @@
         </div>
 
         <div>
-          <label class="block text-xs font-mono text-cyan-400 font-semibold mb-1 uppercase tracking-wider">Access PIN / Password</label>
+          <label class="block text-xs font-mono text-slate-700 font-semibold mb-1 uppercase tracking-wider">Access PIN / Password</label>
           <div class="relative">
-            <i class="fa-solid fa-key absolute left-3.5 top-3 text-cyan-500/60 text-xs"></i>
+            <i class="fa-solid fa-key absolute left-3.5 top-3 text-slate-400 text-xs"></i>
             <input 
               type="password" 
               id="passwordInput" 
               required
-              class="cyber-input w-full rounded-xl pl-10 pr-3 py-2.5 text-xs focus:ring-1 focus:ring-cyan-400 font-mono"
+              class="cyber-input w-full rounded-xl pl-10 pr-3 py-2.5 text-xs font-mono"
               placeholder="••••"
               autocomplete="current-password"
             />
           </div>
         </div>
 
-        <div id="loginErrorMsg" class="text-rose-400 text-xs bg-rose-950/50 border border-rose-500/40 p-2.5 rounded-lg flex items-center gap-2 hidden">
-          <i class="fa-solid fa-circle-exclamation text-rose-400"></i>
+        <div id="loginErrorMsg" class="text-rose-600 text-xs bg-rose-50 border border-rose-200 p-2.5 rounded-lg flex items-center gap-2 hidden">
+          <i class="fa-solid fa-circle-exclamation text-rose-500"></i>
           <span>Access Denied: Invalid operator identity or password.</span>
         </div>
 
-        <button type="submit" class="w-full bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white py-3 rounded-xl text-xs font-bold transition-all shadow-[0_0_18px_rgba(6,182,212,0.35)] flex items-center justify-center gap-2 cursor-pointer">
+        <button type="submit" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-xl text-xs font-bold transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer">
           <i class="fa-solid fa-right-to-bracket"></i>
           <span>Authenticate Operator</span>
         </button>
       </form>
 
-      <div class="pt-2 text-center border-t border-cyan-500/20 text-[11px] text-slate-500 font-mono">
+      <div class="pt-2 text-center border-t border-slate-200 text-[11px] text-slate-500 font-mono">
         WHX Digital Automated Access Control &bull; TLS 1.3
       </div>
     </div>
@@ -256,27 +255,27 @@
   <!-- ==========================================================
        MODAL 3: GOOGLE CUSTOM SEARCH API CONFIGURATION
        ========================================================= -->
-  <div id="apiModal" class="fixed inset-0 bg-[#07090e]/90 backdrop-blur-md flex items-center justify-center z-50 p-4 transition-all duration-300 hidden">
-    <div class="cyber-card rounded-2xl max-w-lg w-full p-6 sm:p-8 space-y-5 text-slate-100">
-      <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+  <div id="apiModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-all duration-300 hidden">
+    <div class="cyber-card rounded-2xl max-w-lg w-full p-6 sm:p-8 space-y-5 text-slate-800">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3">
         <div class="flex items-center space-x-2.5">
-          <div class="w-8 h-8 rounded-lg bg-cyan-950 border border-cyan-500/40 text-cyan-400 flex items-center justify-center text-sm shadow-[0_0_10px_rgba(6,182,212,0.3)]">
+          <div class="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center text-sm shadow-sm">
             <i class="fa-brands fa-google"></i>
           </div>
-          <h3 class="text-base font-bold text-white font-display">Live Google API Configuration</h3>
+          <h3 class="text-base font-bold text-slate-900 font-display">Live Google API Configuration</h3>
         </div>
-        <button id="closeApiModalBtn" class="text-slate-400 hover:text-white transition-colors cursor-pointer text-sm">
+        <button id="closeApiModalBtn" class="text-slate-400 hover:text-slate-600 transition-colors cursor-pointer text-sm">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
 
-      <p class="text-xs text-slate-300 leading-relaxed">
-        Connect your personal Google Custom Search JSON API credentials to execute in-page searches directly without leaving the dashboard. Your credentials remain stored solely in your browser's <code class="bg-cyan-950 px-1 py-0.5 rounded text-cyan-400 font-mono">localStorage</code>.
+      <p class="text-xs text-slate-600 leading-relaxed">
+        Connect your personal Google Custom Search JSON API credentials to execute in-page searches directly without leaving the dashboard. Your credentials remain stored solely in your browser's <code class="bg-slate-100 px-1 py-0.5 rounded text-purple-700 font-mono">localStorage</code>.
       </p>
 
       <form id="apiSettingsForm" class="space-y-4">
         <div>
-          <label class="block text-xs font-mono text-cyan-400 mb-1">Google Custom Search API Key</label>
+          <label class="block text-xs font-mono text-slate-700 mb-1">Google Custom Search API Key</label>
           <input 
             type="password" 
             id="googleApiKeyInput" 
@@ -286,7 +285,7 @@
         </div>
 
         <div>
-          <label class="block text-xs font-mono text-cyan-400 mb-1">Search Engine ID (CX)</label>
+          <label class="block text-xs font-mono text-slate-700 mb-1">Search Engine ID (CX)</label>
           <input 
             type="text" 
             id="googleCxInput" 
@@ -296,10 +295,10 @@
         </div>
 
         <div class="flex items-center justify-between pt-2">
-          <button type="button" id="clearApiBtn" class="text-xs text-rose-400 hover:text-rose-300 font-mono">
+          <button type="button" id="clearApiBtn" class="text-xs text-rose-600 hover:text-rose-700 font-mono">
             Clear Keys
           </button>
-          <button type="submit" class="bg-cyan-600 hover:bg-cyan-500 text-white px-5 py-2 rounded-xl text-xs font-bold transition-all shadow-md">
+          <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2 rounded-xl text-xs font-bold transition-all shadow-md">
             Save Credentials
           </button>
         </div>
@@ -308,94 +307,94 @@
   </div>
 
   <!-- ==========================================================
-       MAIN OSINT RESEARCH DASHBOARD (CYBER SECURITY HUD THEME)
+       MAIN OSINT RESEARCH DASHBOARD
        ========================================================== -->
   <main id="mainDashboard" class="relative z-10 max-w-6xl mx-auto px-4 py-8 md:py-10 w-full opacity-20 pointer-events-none transition-opacity duration-300">
     
-    <!-- Header Block with Cyber Reticle & Hologram Badge -->
-    <header class="flex flex-col md:flex-row justify-between items-start md:items-center bg-[#0d1222] border border-cyan-500/30 rounded-2xl p-6 md:p-8 mb-8 gap-6 shadow-[0_0_35px_rgba(6,182,212,0.18)] relative overflow-hidden">
-      <!-- Cyber Reticle Watermark in background -->
-      <div class="absolute -right-8 -bottom-8 w-44 h-44 rounded-full border border-cyan-500/15 pointer-events-none flex items-center justify-center opacity-60">
-        <div class="w-32 h-32 rounded-full border border-dashed border-cyan-400/20 flex items-center justify-center animate-spin" style="animation-duration: 25s;">
-          <div class="w-16 h-16 rounded-full border border-cyan-400/30"></div>
+    <!-- Header Block with Watermark & Badge -->
+    <header class="flex flex-col md:flex-row justify-between items-start md:items-center bg-white border border-slate-200 rounded-2xl p-6 md:p-8 mb-8 gap-6 shadow-sm relative overflow-hidden">
+      <!-- Watermark in background -->
+      <div class="absolute -right-8 -bottom-8 w-44 h-44 rounded-full border border-purple-200/50 pointer-events-none flex items-center justify-center opacity-40">
+        <div class="w-32 h-32 rounded-full border border-dashed border-purple-300/40 flex items-center justify-center animate-spin" style="animation-duration: 25s;">
+          <div class="w-16 h-16 rounded-full border border-purple-200"></div>
         </div>
       </div>
 
       <div class="relative z-10">
-        <div class="flex items-center space-x-2 text-xs font-mono text-cyan-400 font-bold mb-2">
-          <span class="h-2 w-2 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_#06b6d4]"></span>
-          <span>WHX DIGITAL RECON // CYBER TELEMETRY SUITE</span>
+        <div class="flex items-center space-x-2 text-xs font-mono text-purple-700 font-bold mb-2">
+          <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_#10b981]"></span>
+          <span class="bg-purple-50 text-purple-700 px-2.5 py-0.5 rounded-full border border-purple-200">WHX DIGITAL RECON // TELEMETRY SUITE</span>
         </div>
-        <h1 class="text-2xl md:text-3xl font-extrabold text-white font-display tracking-tight flex items-center gap-3">
-          <i class="fa-solid fa-shield-halved text-cyan-400 text-2xl"></i>
-          <span>Educational OSINT &amp; <span class="text-cyan-400">Digital Footprint</span></span>
+        <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 font-display tracking-tight flex items-center gap-3">
+          <i class="fa-solid fa-shield-halved text-emerald-600 text-2xl"></i>
+          <span>Educational OSINT &amp; <span class="text-purple-600">Digital Footprint</span></span>
         </h1>
-        <p class="text-slate-300 text-xs md:text-sm mt-1.5 max-w-2xl leading-relaxed">
+        <p class="text-slate-600 text-xs md:text-sm mt-1.5 max-w-2xl leading-relaxed">
           Defensive cyber research workbench: Real-time telecom routing, verified breach check &amp; password leak status, multi-platform identity mapping, and client-side binary EXIF forensics.
         </p>
       </div>
       
       <div class="flex items-center gap-3 flex-wrap relative z-10">
-        <button id="openApiModalBtn" class="text-xs font-mono bg-cyan-950/60 text-cyan-400 border border-cyan-500/40 px-3 py-2 rounded-xl hover:bg-cyan-900/60 transition-all flex items-center gap-1.5 cursor-pointer font-semibold shadow-sm" title="Configure Live Google API">
-          <i class="fa-brands fa-google text-[11px]"></i>
+        <button id="openApiModalBtn" class="text-xs font-mono bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 px-3 py-2 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer font-semibold shadow-sm" title="Configure Live Google API">
+          <i class="fa-brands fa-google text-[11px] text-blue-600"></i>
           <span>Live Google API</span>
         </button>
-        <span id="sessionAliasBadge" class="inline-flex items-center gap-1.5 text-xs font-mono bg-cyan-950/60 text-cyan-300 border border-cyan-500/40 px-3.5 py-2 rounded-xl font-bold shadow-[0_0_12px_rgba(6,182,212,0.2)]">
-          <i class="fa-solid fa-user-shield text-cyan-400"></i>
+        <span id="sessionAliasBadge" class="inline-flex items-center gap-1.5 text-xs font-mono bg-emerald-50 text-emerald-800 border border-emerald-200 px-3.5 py-2 rounded-xl font-bold shadow-sm">
+          <i class="fa-solid fa-user-shield text-emerald-600"></i>
           <span id="sessionAliasText">admin</span>
         </span>
-        <button id="lockSessionBtn" class="text-xs font-mono bg-rose-950/60 text-rose-300 border border-rose-500/40 px-3 py-2 rounded-xl hover:bg-rose-900/60 transition-all flex items-center gap-1.5 cursor-pointer font-semibold">
+        <button id="lockSessionBtn" class="text-xs font-mono bg-rose-50 text-rose-700 border border-rose-200 px-3 py-2 rounded-xl hover:bg-rose-100 transition-all flex items-center gap-1.5 cursor-pointer font-semibold">
           <i class="fa-solid fa-lock text-[10px]"></i>
           <span>Lock Session</span>
         </button>
       </div>
     </header>
 
-    <!-- 4 Module Navigation Tabs (Deep Cyber HUD Style) -->
+    <!-- 4 Module Navigation Tabs (Clean WHX Theme Style) -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8" id="tabBar">
-      <button data-tab="phone" class="tab-btn flex items-center space-x-3 p-4 rounded-2xl border text-sm font-semibold transition-all border-cyan-400 bg-cyan-950/60 text-cyan-300 shadow-[0_0_20px_rgba(6,182,212,0.35)] cursor-pointer">
-        <div class="w-9 h-9 rounded-xl bg-cyan-950 border border-cyan-500/40 text-cyan-400 flex items-center justify-center text-base font-bold shadow-[0_0_10px_rgba(6,182,212,0.3)]">
+      <button data-tab="phone" class="tab-btn flex items-center space-x-3 p-4 rounded-2xl border-2 text-sm font-semibold transition-all border-purple-600 bg-white text-purple-700 shadow-md cursor-pointer">
+        <div class="w-9 h-9 rounded-xl bg-purple-50 border border-purple-200 text-purple-600 flex items-center justify-center text-base font-bold shadow-sm">
           <i class="fa-solid fa-phone"></i>
         </div>
         <div class="text-left">
-          <div class="text-[10px] text-cyan-400 font-mono font-bold tracking-wider">01. TELECOM</div>
-          <div class="font-bold text-white">Phone &amp; WhatsApp</div>
+          <div class="text-[10px] text-purple-600 font-mono font-bold tracking-wider">01. TELECOM</div>
+          <div class="font-bold text-slate-900">Phone &amp; WhatsApp</div>
         </div>
       </button>
 
-      <button data-tab="username" class="tab-btn flex items-center space-x-3 p-4 rounded-2xl border text-sm font-semibold transition-all bg-[#0d1222] border-slate-800 text-slate-400 hover:border-cyan-500/40 hover:text-slate-200 cursor-pointer">
-        <div class="w-9 h-9 rounded-xl bg-[#07090e] text-slate-400 flex items-center justify-center text-base font-bold">
+      <button data-tab="username" class="tab-btn flex items-center space-x-3 p-4 rounded-2xl border text-sm font-semibold transition-all bg-white border-slate-200 text-slate-500 hover:border-purple-300 hover:text-slate-900 shadow-sm cursor-pointer">
+        <div class="w-9 h-9 rounded-xl bg-slate-50 text-slate-500 flex items-center justify-center text-base font-bold">
           <i class="fa-solid fa-user-tag"></i>
         </div>
         <div class="text-left">
-          <div class="text-[10px] text-slate-500 font-mono font-bold tracking-wider">02. IDENTITY</div>
-          <div class="font-bold text-slate-200">Username &amp; Social Trace</div>
+          <div class="text-[10px] text-slate-400 font-mono font-bold tracking-wider">02. IDENTITY</div>
+          <div class="font-bold text-slate-700">Username &amp; Social Trace</div>
         </div>
       </button>
 
-      <button data-tab="email" class="tab-btn flex items-center space-x-3 p-4 rounded-2xl border text-sm font-semibold transition-all bg-[#0d1222] border-slate-800 text-slate-400 hover:border-cyan-500/40 hover:text-slate-200 cursor-pointer">
-        <div class="w-9 h-9 rounded-xl bg-[#07090e] text-slate-400 flex items-center justify-center text-base font-bold">
+      <button data-tab="email" class="tab-btn flex items-center space-x-3 p-4 rounded-2xl border text-sm font-semibold transition-all bg-white border-slate-200 text-slate-500 hover:border-purple-300 hover:text-slate-900 shadow-sm cursor-pointer">
+        <div class="w-9 h-9 rounded-xl bg-slate-50 text-slate-500 flex items-center justify-center text-base font-bold">
           <i class="fa-solid fa-shield-virus"></i>
         </div>
         <div class="text-left">
-          <div class="text-[10px] text-slate-500 font-mono font-bold tracking-wider">03. BREACH &amp; PASSWORDS</div>
-          <div class="font-bold text-slate-200">Email &amp; Leak Radar</div>
+          <div class="text-[10px] text-slate-400 font-mono font-bold tracking-wider">03. BREACH &amp; PASSWORDS</div>
+          <div class="font-bold text-slate-700">Email &amp; Leak Radar</div>
         </div>
       </button>
 
-      <button data-tab="image" class="tab-btn flex items-center space-x-3 p-4 rounded-2xl border text-sm font-semibold transition-all bg-[#0d1222] border-slate-800 text-slate-400 hover:border-cyan-500/40 hover:text-slate-200 cursor-pointer">
-        <div class="w-9 h-9 rounded-xl bg-[#07090e] text-slate-400 flex items-center justify-center text-base font-bold">
+      <button data-tab="image" class="tab-btn flex items-center space-x-3 p-4 rounded-2xl border text-sm font-semibold transition-all bg-white border-slate-200 text-slate-500 hover:border-purple-300 hover:text-slate-900 shadow-sm cursor-pointer">
+        <div class="w-9 h-9 rounded-xl bg-slate-50 text-slate-500 flex items-center justify-center text-base font-bold">
           <i class="fa-solid fa-camera-retro"></i>
         </div>
         <div class="text-left">
-          <div class="text-[10px] text-slate-500 font-mono font-bold tracking-wider">04. FORENSICS</div>
-          <div class="font-bold text-slate-200">EXIF &amp; Reverse Scan</div>
+          <div class="text-[10px] text-slate-400 font-mono font-bold tracking-wider">04. FORENSICS</div>
+          <div class="font-bold text-slate-700">EXIF &amp; Reverse Scan</div>
         </div>
       </button>
     </div>
 
     <!-- Active Panel Content Container -->
-    <div class="bg-[#0d1222]/90 border border-cyan-500/30 rounded-3xl p-6 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_30px_rgba(6,182,212,0.15)] relative overflow-hidden text-slate-100">
+    <div class="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 shadow-sm relative overflow-hidden text-slate-800">
       
       <!-- ========================================================
            TAB 1: PHONE & WHATSAPP LOOKUP (REAL-TIME RESOLVERS)
@@ -403,128 +402,128 @@
       <div id="panel-phone" class="tab-panel space-y-6">
         <div>
           <div class="flex items-center justify-between mb-1.5 flex-wrap gap-2">
-            <h2 class="text-xl font-bold text-white font-display flex items-center gap-2">
-              <i class="fa-solid fa-phone text-cyan-400"></i>
+            <h2 class="text-xl font-bold text-slate-900 font-display flex items-center gap-2">
+              <i class="fa-solid fa-phone text-emerald-600"></i>
               <span>Phone Number, Carrier &amp; WhatsApp Intelligence</span>
             </h2>
-            <span class="text-xs font-mono text-cyan-300 bg-cyan-950 px-2.5 py-1 rounded-full border border-cyan-500/40 font-bold">ITU E.164 + Worldwide Live Resolvers</span>
+            <span class="text-xs font-mono text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 font-bold">ITU E.164 + Worldwide Live Resolvers</span>
           </div>
-          <p class="text-slate-300 text-xs leading-relaxed">
+          <p class="text-slate-600 text-xs leading-relaxed">
             Worldwide Telecom Intelligence: Enter any international or local phone number (e.g. +1234567890). Anyone worldwide can search their real data. The system scans live global telecom allocations, official WhatsApp status, and exact matching public web records across search engines and caller directories. Only 100% genuine data matching the number is displayed — no fake, mock, or simulated data.
           </p>
         </div>
 
         <form id="phoneForm" class="flex flex-col sm:flex-row gap-3">
           <div class="relative flex-1">
-            <i class="fa-solid fa-hashtag absolute left-4 top-3.5 text-cyan-400"></i>
+            <i class="fa-solid fa-hashtag absolute left-4 top-3.5 text-slate-400"></i>
             <input 
               type="text" 
               id="phoneQuery"
               placeholder="e.g. +1234567890" 
               required
-              class="cyber-input w-full rounded-xl pl-11 pr-4 py-3 text-sm font-mono focus:ring-1 focus:ring-cyan-400"
+              class="cyber-input w-full rounded-xl pl-11 pr-4 py-3 text-sm font-mono"
             />
           </div>
-          <button type="submit" id="phoneBtn" class="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-7 py-3 rounded-xl text-sm font-bold transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] flex items-center justify-center gap-2 cursor-pointer">
+          <button type="submit" id="phoneBtn" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-7 py-3 rounded-xl text-sm font-bold transition-all shadow-[0_4px_14px_rgba(16,185,129,0.35)] flex items-center justify-center gap-2 cursor-pointer">
             <i class="fa-solid fa-satellite"></i>
             <span>Analyze Number</span>
           </button>
         </form>
 
         <!-- Scanning State Loader -->
-        <div id="phoneScanningLoader" class="text-center py-12 cyber-subcard rounded-3xl border border-cyan-500/30 hidden">
-          <div class="w-10 h-10 border-4 border-cyan-400 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p class="text-white font-bold text-lg font-display">Querying Global Telecom &amp; Carrier Registries...</p>
-          <p class="text-cyan-400/80 text-xs mt-1 font-mono">Resolving ITU prefix, PTA network routing, and caller directories.</p>
+        <div id="phoneScanningLoader" class="text-center py-12 bg-slate-50 rounded-3xl border border-slate-200 hidden">
+          <div class="w-10 h-10 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p class="text-slate-900 font-bold text-lg font-display">Querying Global Telecom &amp; Carrier Registries...</p>
+          <p class="text-slate-500 text-xs mt-1 font-mono">Resolving ITU prefix, PTA network routing, and caller directories.</p>
         </div>
 
         <!-- Phone Results Card -->
         <div id="phoneResults" class="space-y-6 pt-2 hidden">
           
           <!-- Regulatory / Compliance Notice Badge -->
-          <div class="p-3.5 bg-cyan-950/40 border border-cyan-500/30 rounded-xl flex items-start gap-3 text-xs text-slate-300">
-            <i class="fa-solid fa-shield-halved text-cyan-400 mt-0.5 text-sm"></i>
+          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl flex items-start gap-3 text-xs text-slate-600">
+            <i class="fa-solid fa-shield-halved text-emerald-600 mt-0.5 text-sm"></i>
             <div>
-              <strong class="text-cyan-300">Authorized Telecom OSINT Notice:</strong> Illicit citizen databases (stolen CNIC / NADRA address dumps) are strictly unlawful. WHX Digital OSINT resolves genuine ITU telecom routing, active carrier prefixes, and provides verified 1-click launchers for live public caller identity directories (Truecaller, WhatsApp, Sync.me, and Google cached records).
+              <strong class="text-slate-900">Authorized Telecom OSINT Notice:</strong> Illicit citizen databases (stolen CNIC / NADRA address dumps) are strictly unlawful. WHX Digital OSINT resolves genuine ITU telecom routing, active carrier prefixes, and provides verified 1-click launchers for live public caller identity directories (Truecaller, WhatsApp, Sync.me, and Google cached records).
             </div>
           </div>
 
           <!-- Quick Status Cards -->
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
-            <div class="cyber-subcard p-4 rounded-2xl">
-              <div class="text-[11px] font-mono text-cyan-400 mb-1 flex items-center gap-1.5 font-semibold">
-                <i class="fa-solid fa-flag"></i>
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl shadow-sm">
+              <div class="text-[11px] font-mono text-slate-500 mb-1 flex items-center gap-1.5 font-semibold">
+                <i class="fa-solid fa-flag text-emerald-600"></i>
                 <span>COUNTRY / REGION</span>
               </div>
-              <div class="text-sm font-bold text-white flex items-center gap-2" id="phoneCountryVal">
+              <div class="text-sm font-bold text-slate-900 flex items-center gap-2" id="phoneCountryVal">
                 <span>🇵🇰 Pakistan (+92)</span>
               </div>
             </div>
 
-            <div class="cyber-subcard p-4 rounded-2xl">
-              <div class="text-[11px] font-mono text-cyan-400 mb-1 flex items-center gap-1.5 font-semibold">
-                <i class="fa-solid fa-tower-broadcast"></i>
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl shadow-sm">
+              <div class="text-[11px] font-mono text-slate-500 mb-1 flex items-center gap-1.5 font-semibold">
+                <i class="fa-solid fa-tower-broadcast text-purple-600"></i>
                 <span>ALLOCATED CARRIER</span>
               </div>
-              <div class="text-sm font-bold text-white" id="phoneCarrierVal">Jazz (PMCL)</div>
+              <div class="text-sm font-bold text-slate-900" id="phoneCarrierVal">Jazz (PMCL)</div>
             </div>
 
-            <div class="cyber-subcard p-4 rounded-2xl">
-              <div class="text-[11px] font-mono text-cyan-400 mb-1 flex items-center gap-1.5 font-semibold">
-                <i class="fa-solid fa-hashtag"></i>
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl shadow-sm">
+              <div class="text-[11px] font-mono text-slate-500 mb-1 flex items-center gap-1.5 font-semibold">
+                <i class="fa-solid fa-hashtag text-blue-600"></i>
                 <span>E.164 STANDARD</span>
               </div>
-              <div class="text-sm font-mono font-bold text-cyan-300" id="phoneE164Val">+923001234567</div>
+              <div class="text-sm font-mono font-bold text-purple-700" id="phoneE164Val">+923001234567</div>
             </div>
 
-            <div class="cyber-subcard p-4 rounded-2xl">
-              <div class="text-[11px] font-mono text-cyan-400 mb-1 flex items-center gap-1.5 font-semibold">
-                <i class="fa-solid fa-signal"></i>
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl shadow-sm">
+              <div class="text-[11px] font-mono text-slate-500 mb-1 flex items-center gap-1.5 font-semibold">
+                <i class="fa-solid fa-signal text-teal-600"></i>
                 <span>TOWER &amp; ROAMING SIGNAL</span>
               </div>
-              <div class="text-sm font-bold text-slate-300 flex items-center gap-1.5" id="phoneWaStatusVal">
-                <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+              <div class="text-sm font-bold text-slate-700 flex items-center gap-1.5" id="phoneWaStatusVal">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
                 <span>Dynamic / Not Publicly Trackable</span>
               </div>
             </div>
           </div>
 
           <!-- Live SIM & Telecom Intelligence Profile Card -->
-          <div id="simTelecomLiveCard" class="bg-gradient-to-r from-cyan-950/60 via-[#0a1636] to-[#0d1222] border border-cyan-500/40 rounded-2xl p-5 shadow-[0_0_25px_rgba(6,182,212,0.15)] space-y-4">
-            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3 flex-wrap gap-2">
-              <span class="text-xs font-mono text-cyan-300 font-bold uppercase flex items-center gap-2">
-                <i class="fa-solid fa-sim-card text-cyan-400 text-base"></i>
+          <div id="simTelecomLiveCard" class="bg-white border border-emerald-200 rounded-2xl p-5 shadow-sm space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3 flex-wrap gap-2">
+              <span class="text-xs font-mono text-emerald-800 font-bold uppercase flex items-center gap-2">
+                <i class="fa-solid fa-sim-card text-emerald-600 text-base"></i>
                 <span>Verified Cellular Prefix &amp; Telecom Series Allocation</span>
               </span>
-              <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 border border-cyan-500/40 px-2 py-0.5 rounded font-bold">PTA / ITU-T Allocated Series</span>
+              <span class="text-[11px] font-mono text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded font-bold">PTA / ITU-T Allocated Series</span>
             </div>
 
             <div class="flex flex-col md:flex-row items-start md:items-center gap-5">
-              <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-cyan-600 to-blue-600 flex items-center justify-center text-white text-2xl shadow-[0_0_20px_rgba(6,182,212,0.4)] font-bold">
+              <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-600 flex items-center justify-center text-white text-2xl shadow-sm font-bold">
                 <i class="fa-solid fa-phone"></i>
               </div>
 
               <div class="space-y-1 flex-1">
                 <div class="flex items-center gap-2.5 flex-wrap">
-                  <h3 id="simLiveNumber" class="text-lg font-bold text-white font-mono">+92 300 0000000</h3>
-                  <span id="simCarrierBadge" class="text-xs font-mono text-cyan-300 bg-cyan-950 border border-cyan-500/40 px-2.5 py-0.5 rounded-full font-bold">Jazz PMCL</span>
-                  <span class="text-[11px] font-mono text-amber-300 bg-amber-950/80 border border-amber-500/40 px-2.5 py-0.5 rounded-full font-bold">Subject to MNP Porting</span>
+                  <h3 id="simLiveNumber" class="text-lg font-bold text-slate-900 font-mono">+92 300 0000000</h3>
+                  <span id="simCarrierBadge" class="text-xs font-mono text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full font-bold">Jazz PMCL</span>
+                  <span class="text-[11px] font-mono text-amber-800 bg-amber-50 border border-amber-200 px-2.5 py-0.5 rounded-full font-bold">Subject to MNP Porting</span>
                 </div>
-                <p id="simCircleDesc" class="text-xs text-slate-300">PTA Original Block: Real-time cell tower signal and roaming location require direct telecommunication HLR access.</p>
-                <div class="flex flex-wrap gap-4 text-xs font-mono text-slate-400 pt-1">
-                  <span><i class="fa-solid fa-network-wired text-cyan-400 mr-1"></i> MNC/MCC: <strong id="simMccVal" class="text-white">410-01</strong></span>
-                  <span><i class="fa-solid fa-location-dot text-rose-400 mr-1"></i> Series Region: <strong id="simCircleVal" class="text-white">Pakistan National Series (May be Roaming)</strong></span>
-                  <span><i class="fa-solid fa-tower-cell text-blue-400 mr-1"></i> Portability: <strong class="text-white">May be ported to another network</strong></span>
+                <p id="simCircleDesc" class="text-xs text-slate-600">PTA Original Block: Real-time cell tower signal and roaming location require direct telecommunication HLR access.</p>
+                <div class="flex flex-wrap gap-4 text-xs font-mono text-slate-500 pt-1">
+                  <span><i class="fa-solid fa-network-wired text-purple-600 mr-1"></i> MNC/MCC: <strong id="simMccVal" class="text-slate-900">410-01</strong></span>
+                  <span><i class="fa-solid fa-location-dot text-rose-500 mr-1"></i> Series Region: <strong id="simCircleVal" class="text-slate-900">Pakistan National Series (May be Roaming)</strong></span>
+                  <span><i class="fa-solid fa-tower-cell text-blue-500 mr-1"></i> Portability: <strong class="text-slate-900">May be ported to another network</strong></span>
                 </div>
               </div>
 
               <div class="flex flex-col gap-2 self-stretch md:self-auto min-w-[210px]">
-                <a id="simTcQuickBtn" href="#" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(59,130,246,0.35)]">
+                <a id="simTcQuickBtn" href="#" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm">
                   <i class="fa-solid fa-address-book"></i>
                   <span>View Truecaller Name</span>
                   <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
                 </a>
-                <a id="simWaQuickBtn" href="#" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-[0_0_15px_rgba(16,185,129,0.35)]">
+                <a id="simWaQuickBtn" href="#" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 shadow-sm">
                   <i class="fa-brands fa-whatsapp"></i>
                   <span>Open WhatsApp Profile</span>
                   <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
@@ -533,102 +532,102 @@
             </div>
 
             <!-- Roaming & Location Transparency Notice -->
-            <div class="p-3 bg-cyan-950/40 border border-cyan-500/20 rounded-xl text-xs text-slate-300 flex items-start gap-2.5">
-              <i class="fa-solid fa-circle-info text-cyan-400 mt-0.5 text-sm"></i>
+            <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-600 flex items-start gap-2.5">
+              <i class="fa-solid fa-circle-info text-emerald-600 mt-0.5 text-sm"></i>
               <div>
-                <strong class="text-white">Real Telemetry &amp; Roaming Notice:</strong>
+                <strong class="text-slate-900">Real Telemetry &amp; Roaming Notice:</strong>
                 Public OSINT cannot ping live cellular BTS towers or track physical GPS locations. If this SIM is roaming abroad (outside Pakistan) or powered off, it will not register on local Pakistani towers. The data above reflects official ITU/PTA series allocations and links to live crowdsourced directories.
               </div>
             </div>
           </div>
 
           <!-- Truecaller & SIM Ownership Identity Resolution Hub -->
-          <div class="cyber-subcard rounded-2xl p-5 space-y-4">
-            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3 flex-wrap gap-2">
-              <span class="text-xs font-mono text-cyan-400 font-bold uppercase flex items-center gap-2">
-                <i class="fa-solid fa-id-card-clip text-base"></i>
+          <div class="bg-white border border-slate-200 rounded-2xl p-5 space-y-4 shadow-sm">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3 flex-wrap gap-2">
+              <span class="text-xs font-mono text-slate-800 font-bold uppercase flex items-center gap-2">
+                <i class="fa-solid fa-id-card-clip text-purple-600 text-base"></i>
                 <span>Direct Caller Identity Resolvers &amp; Public Records</span>
               </span>
-              <span class="text-[11px] text-slate-400 font-mono">100% Real Live Directory Lookups</span>
+              <span class="text-[11px] text-slate-500 font-mono">100% Real Live Directory Lookups</span>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3" id="phoneActionButtons">
               <!-- Truecaller Direct Profile -->
-              <a id="phoneTcBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-[#0a1636] border border-blue-500/30 rounded-xl text-slate-100 text-xs font-bold hover:border-blue-400">
+              <a id="phoneTcBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-bold hover:border-blue-400 hover:shadow-md shadow-sm transition-all">
                 <div class="flex items-center gap-2.5">
-                  <i class="fa-solid fa-address-book text-blue-400 text-lg"></i>
+                  <i class="fa-solid fa-address-book text-blue-500 text-lg"></i>
                   <div>
-                    <div class="text-white">Truecaller Live Search</div>
-                    <div class="text-[10px] text-blue-400 font-normal">Official caller identity</div>
+                    <div class="text-slate-900 font-bold">Truecaller Live Search</div>
+                    <div class="text-[10px] text-slate-500 font-normal">Official caller identity</div>
                   </div>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-blue-400"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-blue-500"></i>
               </a>
 
               <!-- Google Truecaller Index Search (No Login Required) -->
-              <a id="phoneTcGoogleBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-[#0a1636] border border-cyan-500/30 rounded-xl text-slate-100 text-xs font-bold hover:border-cyan-400">
+              <a id="phoneTcGoogleBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-bold hover:border-purple-400 hover:shadow-md shadow-sm transition-all">
                 <div class="flex items-center gap-2.5">
-                  <i class="fa-brands fa-google text-cyan-400 text-lg"></i>
+                  <i class="fa-brands fa-google text-purple-600 text-lg"></i>
                   <div>
-                    <div class="text-white">Truecaller Google Cache</div>
-                    <div class="text-[10px] text-cyan-400 font-normal">Extracts name without login</div>
+                    <div class="text-slate-900 font-bold">Truecaller Google Cache</div>
+                    <div class="text-[10px] text-slate-500 font-normal">Extracts name without login</div>
                   </div>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-cyan-400"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-purple-600"></i>
               </a>
 
               <!-- WhatsApp Profile & Display Name -->
-              <a id="phoneWaBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-[#0a1636] border border-emerald-500/30 rounded-xl text-slate-100 text-xs font-bold hover:border-emerald-400">
+              <a id="phoneWaBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-bold hover:border-emerald-400 hover:shadow-md shadow-sm transition-all">
                 <div class="flex items-center gap-2.5">
-                  <i class="fa-brands fa-whatsapp text-emerald-400 text-lg"></i>
+                  <i class="fa-brands fa-whatsapp text-emerald-500 text-lg"></i>
                   <div>
-                    <div class="text-white">WhatsApp Profile &amp; Bio</div>
-                    <div class="text-[10px] text-emerald-400 font-normal">wa.me photo &amp; about bio</div>
+                    <div class="text-slate-900 font-bold">WhatsApp Profile &amp; Bio</div>
+                    <div class="text-[10px] text-slate-500 font-normal">wa.me photo &amp; about bio</div>
                   </div>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-emerald-400"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-emerald-500"></i>
               </a>
 
               <!-- Public Web & Classifieds Footprint -->
-              <a id="phoneSimOwnerBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-[#0a1636] border border-amber-500/30 rounded-xl text-slate-100 text-xs font-bold hover:border-amber-400">
+              <a id="phoneSimOwnerBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-bold hover:border-amber-400 hover:shadow-md shadow-sm transition-all">
                 <div class="flex items-center gap-2.5">
-                  <i class="fa-solid fa-globe text-amber-400 text-lg"></i>
+                  <i class="fa-solid fa-globe text-amber-500 text-lg"></i>
                   <div>
-                    <div class="text-white">Web &amp; Classifieds Search</div>
-                    <div class="text-[10px] text-amber-400 font-normal">Matches real number formats</div>
+                    <div class="text-slate-900 font-bold">Web &amp; Classifieds Search</div>
+                    <div class="text-[10px] text-slate-500 font-normal">Matches real number formats</div>
                   </div>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-amber-400"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-amber-500"></i>
               </a>
 
               <!-- Sync.me Universal Caller Registry -->
-              <a id="phoneSyncMeBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-[#0a1636] border border-indigo-500/30 rounded-xl text-slate-100 text-xs font-bold hover:border-indigo-400">
+              <a id="phoneSyncMeBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-bold hover:border-indigo-400 hover:shadow-md shadow-sm transition-all">
                 <div class="flex items-center gap-2.5">
-                  <i class="fa-solid fa-user-check text-indigo-400 text-lg"></i>
+                  <i class="fa-solid fa-user-check text-indigo-500 text-lg"></i>
                   <div>
-                    <div class="text-white">Sync.me Caller ID</div>
-                    <div class="text-[10px] text-indigo-400 font-normal">Global name directory</div>
+                    <div class="text-slate-900 font-bold">Sync.me Caller ID</div>
+                    <div class="text-[10px] text-slate-500 font-normal">Global name directory</div>
                   </div>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-indigo-400"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-indigo-500"></i>
               </a>
 
               <!-- Telegram Profile Check -->
-              <a id="phoneTgBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-[#0a1636] border border-sky-500/30 rounded-xl text-slate-100 text-xs font-bold hover:border-sky-400">
+              <a id="phoneTgBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-white border border-slate-200 rounded-xl text-slate-800 text-xs font-bold hover:border-sky-400 hover:shadow-md shadow-sm transition-all">
                 <div class="flex items-center gap-2.5">
-                  <i class="fa-brands fa-telegram text-sky-400 text-lg"></i>
+                  <i class="fa-brands fa-telegram text-sky-500 text-lg"></i>
                   <div>
-                    <div class="text-white">Telegram Account Check</div>
-                    <div class="text-[10px] text-sky-400 font-normal">t.me direct contact &amp; bio</div>
+                    <div class="text-slate-900 font-bold">Telegram Account Check</div>
+                    <div class="text-[10px] text-slate-500 font-normal">t.me direct contact &amp; bio</div>
                   </div>
                 </div>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-sky-400"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-sky-500"></i>
               </a>
             </div>
 
             <!-- Deep Google Dorks for Phone -->
-            <div class="pt-3 border-t border-cyan-500/20">
-              <div class="text-xs font-mono text-cyan-400 font-bold uppercase mb-2">Automated Google Intelligence Queries (Dorks):</div>
+            <div class="pt-3 border-t border-slate-200">
+              <div class="text-xs font-mono text-slate-700 font-bold uppercase mb-2">Automated Google Intelligence Queries (Dorks):</div>
               <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2" id="phoneDorksList"></div>
             </div>
           </div>
@@ -641,79 +640,79 @@
       <div id="panel-username" class="tab-panel space-y-6 hidden">
         <div>
           <div class="flex items-center justify-between mb-1.5 flex-wrap gap-2">
-            <h2 class="text-xl font-bold text-white font-display flex items-center gap-2">
-              <i class="fa-solid fa-user-tag text-cyan-400"></i>
+            <h2 class="text-xl font-bold text-slate-900 font-display flex items-center gap-2">
+              <i class="fa-solid fa-user-tag text-purple-600"></i>
               <span>Username &amp; Social Footprint Tracing</span>
             </h2>
-            <span class="text-xs font-mono text-cyan-300 bg-cyan-950 px-2.5 py-1 rounded-full border border-cyan-500/40 font-bold">10 Major Social Platforms</span>
+            <span class="text-xs font-mono text-purple-700 bg-purple-50 px-2.5 py-1 rounded-full border border-purple-200 font-bold">10 Major Social Platforms</span>
           </div>
-          <p class="text-slate-300 text-xs leading-relaxed">
+          <p class="text-slate-600 text-xs leading-relaxed">
             Enter an exact username handle (e.g. <strong>username</strong>) to cross-reference Instagram, Snapchat, TikTok, Facebook, X, GitHub, Telegram, Reddit, LinkedIn, and YouTube footprints. (Usernames must not contain spaces; spaced inputs return No Data Found).
           </p>
         </div>
 
         <form id="userForm" class="flex flex-col sm:flex-row gap-3">
           <div class="relative flex-1">
-            <i class="fa-solid fa-id-badge absolute left-4 top-3.5 text-cyan-400"></i>
+            <i class="fa-solid fa-id-badge absolute left-4 top-3.5 text-slate-400"></i>
             <input 
               type="text" 
               id="targetUser"
               placeholder="e.g. username" 
               required
-              class="cyber-input w-full rounded-xl pl-11 pr-4 py-3 text-sm font-mono focus:ring-1 focus:ring-cyan-400"
+              class="cyber-input w-full rounded-xl pl-11 pr-4 py-3 text-sm font-mono"
             />
           </div>
-          <button type="submit" id="userBtn" class="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-7 py-3 rounded-xl text-sm font-bold transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] flex items-center justify-center gap-2 cursor-pointer">
+          <button type="submit" id="userBtn" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white px-7 py-3 rounded-xl text-sm font-bold transition-all shadow-[0_4px_14px_rgba(124,58,237,0.35)] flex items-center justify-center gap-2 cursor-pointer">
             <i class="fa-solid fa-magnifying-glass-chart"></i>
             <span>Trace Profiles</span>
           </button>
         </form>
 
         <!-- No Data Found / Space in Username Card -->
-        <div id="userNotFoundCard" class="cyber-subcard rounded-2xl p-6 border-rose-500/40 bg-rose-950/30 text-center space-y-3 hidden">
-          <div class="w-12 h-12 rounded-2xl bg-rose-950/80 border border-rose-500/40 text-rose-400 mx-auto flex items-center justify-center text-xl shadow-[0_0_15px_rgba(244,63,94,0.3)]">
+        <div id="userNotFoundCard" class="bg-rose-50 border border-rose-200 rounded-2xl p-6 text-center space-y-3 hidden">
+          <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 mx-auto flex items-center justify-center text-xl shadow-sm">
             <i class="fa-solid fa-circle-xmark"></i>
           </div>
           <div>
-            <h3 class="text-base font-bold text-white font-display">No Data Found / Invalid Username Format</h3>
-            <p class="text-xs text-rose-300 font-mono mt-1" id="userNotFoundQuery">Query: "Shaw Winston"</p>
-            <p class="text-xs text-slate-300 mt-2 max-w-md mx-auto leading-relaxed">
+            <h3 class="text-base font-bold text-slate-900 font-display">No Data Found / Invalid Username Format</h3>
+            <p class="text-xs text-rose-700 font-mono mt-1" id="userNotFoundQuery">Query: "Shaw Winston"</p>
+            <p class="text-xs text-slate-600 mt-2 max-w-md mx-auto leading-relaxed">
               No profile data found. Usernames cannot contain spaces on any online platform (Instagram, GitHub, X, TikTok, Telegram, etc.). A valid username must be a continuous handle.
             </p>
           </div>
           <div class="pt-2">
-            <button type="button" id="useSuggestedHandleBtn" class="px-4 py-2 bg-cyan-950/80 hover:bg-cyan-900 border border-cyan-500/40 text-cyan-300 rounded-xl text-xs font-mono font-bold transition-all inline-flex items-center gap-1.5 shadow-sm cursor-pointer">
-              <i class="fa-solid fa-wand-magic-sparkles"></i>
-              <span>Auto-fix &amp; Search: <span id="suggestedBtnText" class="text-white"></span></span>
+            <button type="button" id="useSuggestedHandleBtn" class="px-4 py-2 bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 hover:text-purple-700 rounded-xl text-xs font-mono font-bold transition-all inline-flex items-center gap-1.5 shadow-sm cursor-pointer">
+              <i class="fa-solid fa-wand-magic-sparkles text-purple-600"></i>
+              <span>Auto-fix &amp; Search: <span id="suggestedBtnText" class="text-purple-700"></span></span>
             </button>
           </div>
         </div>
 
         <div id="userResults" class="space-y-6 pt-2 hidden">
           <!-- Live GitHub Developer Profile Card (if found) -->
-          <div id="githubLiveCard" class="bg-gradient-to-r from-cyan-950/70 via-[#0a1636] to-[#0d1222] border border-cyan-500/40 rounded-2xl p-5 hidden shadow-[0_0_25px_rgba(6,182,212,0.15)]">
-            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3 mb-4">
-              <span class="text-xs font-mono text-cyan-300 font-bold uppercase flex items-center gap-2">
-                <i class="fa-brands fa-github text-base text-white"></i>
+          <div id="githubLiveCard" class="bg-purple-50/50 border border-purple-200 rounded-2xl p-5 hidden shadow-sm">
+            <div class="flex items-center justify-between border-b border-purple-200 pb-3 mb-4">
+              <span class="text-xs font-mono text-purple-900 font-bold uppercase flex items-center gap-2">
+                <i class="fa-brands fa-github text-base text-slate-900"></i>
                 <span>Live GitHub Developer Identity Verified</span>
               </span>
-              <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950 border border-emerald-500/40 px-2 py-0.5 rounded font-bold">API Verified</span>
+              <span class="text-[11px] font-mono text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded font-bold">API Verified</span>
             </div>
             <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-              <img id="ghAvatar" src="" alt="Avatar" class="w-16 h-16 rounded-2xl border-2 border-cyan-400/50 shadow-[0_0_15px_rgba(6,182,212,0.3)]" />
+              <img id="ghAvatar" src="" alt="Avatar" class="w-16 h-16 rounded-2xl border-2 border-purple-300 shadow-sm" />
               <div class="space-y-1 flex-1">
                 <div class="flex items-center gap-2">
-                  <h3 id="ghName" class="text-lg font-bold text-white">User Name</h3>
-                  <span id="ghLogin" class="text-xs font-mono text-cyan-400 font-semibold">@login</span>
+                  <h3 id="ghName" class="text-lg font-bold text-slate-900">User Name</h3>
+                  <span id="ghLogin" class="text-xs font-mono text-purple-700 font-semibold">@login</span>
                 </div>
-                <p id="ghBio" class="text-xs text-slate-300 line-clamp-2">Bio</p>
-                <div class="flex flex-wrap gap-4 text-xs font-mono text-slate-400 pt-1">
-                  <span><i class="fa-solid fa-code-branch text-cyan-400 mr-1"></i> Public Repos: <strong id="ghRepos" class="text-white">0</strong></span>
-                  <span><i class="fa-solid fa-users text-blue-400 mr-1"></i> Followers: <strong id="ghFollowers" class="text-white">0</strong></span>
-                  <span><i class="fa-solid fa-location-dot text-rose-400 mr-1"></i> <span id="ghLocation" class="text-white">Global</span></span>
+                <p id="ghBio" class="text-xs text-slate-600 line-clamp-2">Bio</p>
+                <div class="flex flex-wrap gap-4 text-xs font-mono text-slate-500 pt-1">
+                  <span><i class="fa-solid fa-code-branch text-purple-600 mr-1"></i> Public Repos: <strong id="ghRepos" class="text-slate-900">0</strong></span>
+                  <span><i class="fa-solid fa-users text-blue-600 mr-1"></i> Followers: <strong id="ghFollowers" class="text-slate-900">0</strong></span>
+                  <span><i class="fa-solid fa-location-dot text-rose-500 mr-1"></i> <span id="ghLocation" class="text-slate-900">Global</span></span>
                 </div>
               </div>
-              <a id="ghProfileLink" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 self-stretch sm:self-auto justify-center shadow-md">
+              <a id="ghProfileLink" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 self-stretch sm:self-auto justify-center shadow-sm">
                 <span>View Full GitHub Profile</span>
                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
               </a>
@@ -723,42 +722,42 @@
           <!-- All Major Social Platforms Grid -->
           <div>
             <div class="flex items-center justify-between mb-3">
-              <h3 class="text-xs font-mono text-cyan-400 font-bold uppercase flex items-center gap-2">
-                <i class="fa-solid fa-share-nodes"></i>
+              <h3 class="text-xs font-mono text-slate-800 font-bold uppercase flex items-center gap-2">
+                <i class="fa-solid fa-share-nodes text-purple-600"></i>
                 <span>Cross-Platform Profile Verification Grid (10 Major Services)</span>
               </h3>
-              <span class="text-[11px] text-slate-400 font-mono">Direct Launchers &bull; In-App Querying</span>
+              <span class="text-[11px] text-slate-500 font-mono">Direct Launchers &bull; In-App Querying</span>
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3" id="socialCardsGrid"></div>
           </div>
 
           <!-- Live Multi-Engine Search Quick Grid -->
-          <div class="cyber-subcard rounded-2xl p-5 space-y-4">
-            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
-              <span class="text-xs font-mono text-cyan-400 font-bold uppercase flex items-center gap-2">
-                <i class="fa-solid fa-magnifying-glass"></i>
+          <div class="bg-white border border-slate-200 rounded-2xl p-5 space-y-4 shadow-sm">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+              <span class="text-xs font-mono text-slate-800 font-bold uppercase flex items-center gap-2">
+                <i class="fa-solid fa-magnifying-glass text-purple-600"></i>
                 <span>Multi-Search Engine Cross-Index</span>
               </span>
-              <span class="text-[11px] text-slate-400 font-mono">Search exact quote across engines</span>
+              <span class="text-[11px] text-slate-500 font-mono">Search exact quote across engines</span>
             </div>
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="userEngineGrid"></div>
           </div>
 
           <!-- In-Page Google Live Results (if API key active) -->
-          <div id="userGoogleLiveContainer" class="cyber-subcard rounded-2xl p-5 hidden space-y-3">
-            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-2.5">
-              <span class="text-xs font-mono text-cyan-400 font-bold flex items-center gap-2">
-                <i class="fa-brands fa-google"></i>
+          <div id="userGoogleLiveContainer" class="bg-white border border-slate-200 rounded-2xl p-5 hidden space-y-3 shadow-sm">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-2.5">
+              <span class="text-xs font-mono text-slate-800 font-bold flex items-center gap-2">
+                <i class="fa-brands fa-google text-purple-600"></i>
                 <span>Live Google Custom Search Results (In-Page)</span>
               </span>
-              <span id="googleResultsCount" class="text-[11px] text-slate-400 font-mono">0 results</span>
+              <span id="googleResultsCount" class="text-[11px] text-slate-500 font-mono">0 results</span>
             </div>
             <div id="userGoogleItems" class="space-y-3 pt-1"></div>
           </div>
 
           <!-- Deep Google Dorks for Identity -->
-          <div class="cyber-subcard rounded-2xl p-5 space-y-3">
-            <div class="text-xs font-mono text-cyan-400 font-bold uppercase">Advanced Investigation Dorks (Google Web Scans):</div>
+          <div class="bg-white border border-slate-200 rounded-2xl p-5 space-y-3 shadow-sm">
+            <div class="text-xs font-mono text-slate-700 font-bold uppercase">Advanced Investigation Dorks (Google Web Scans):</div>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5" id="userDorksList"></div>
           </div>
         </div>
@@ -770,29 +769,29 @@
       <div id="panel-email" class="tab-panel space-y-6 hidden">
         <div>
           <div class="flex items-center justify-between mb-1.5 flex-wrap gap-2">
-            <h2 class="text-xl font-bold text-white font-display flex items-center gap-2">
-              <i class="fa-solid fa-shield-virus text-cyan-400"></i>
+            <h2 class="text-xl font-bold text-slate-900 font-display flex items-center gap-2">
+              <i class="fa-solid fa-shield-virus text-rose-600"></i>
               <span>Email Breach, Compromised Password &amp; Account Footprint</span>
             </h2>
-            <span class="text-xs font-mono text-cyan-300 bg-cyan-950 px-2.5 py-1 rounded-full border border-cyan-500/40 font-bold">HaveIBeenPwned &bull; DeHashed &bull; Gravatar MD5</span>
+            <span class="text-xs font-mono text-rose-700 bg-rose-50 px-2.5 py-1 rounded-full border border-rose-200 font-bold">HaveIBeenPwned &bull; DeHashed &bull; Gravatar MD5</span>
           </div>
-          <p class="text-slate-300 text-xs leading-relaxed">
+          <p class="text-slate-600 text-xs leading-relaxed">
             Analyze target email for compromised database breaches, exposed passwords in combo lists, registered cross-platform footprint, Gravatar avatar profile, and live DNS MX/SPF/DMARC routing.
           </p>
         </div>
 
         <form id="emailForm" class="flex flex-col sm:flex-row gap-3">
           <div class="relative flex-1">
-            <i class="fa-solid fa-at absolute left-4 top-3.5 text-cyan-400"></i>
+            <i class="fa-solid fa-at absolute left-4 top-3.5 text-slate-400"></i>
             <input 
               type="email" 
               id="emailQuery"
               placeholder="e.g. email@example.com" 
               required
-              class="cyber-input w-full rounded-xl pl-11 pr-4 py-3 text-sm font-mono focus:ring-1 focus:ring-cyan-400"
+              class="cyber-input w-full rounded-xl pl-11 pr-4 py-3 text-sm font-mono"
             />
           </div>
-          <button type="submit" id="emailBtn" class="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white px-7 py-3 rounded-xl text-sm font-bold transition-all shadow-[0_0_20px_rgba(6,182,212,0.4)] flex items-center justify-center gap-2 cursor-pointer">
+          <button type="submit" id="emailBtn" class="bg-gradient-to-r from-rose-600 to-purple-600 hover:from-rose-700 hover:to-purple-700 text-white px-7 py-3 rounded-xl text-sm font-bold transition-all shadow-[0_4px_14px_rgba(244,63,94,0.35)] flex items-center justify-center gap-2 cursor-pointer">
             <i class="fa-solid fa-radar"></i>
             <span>Inspect Breaches &amp; Footprint</span>
           </button>
@@ -801,107 +800,107 @@
         <div id="emailResults" class="space-y-6 pt-2 hidden">
           
           <!-- Primary Breach & Password Compromise Dashboard -->
-          <div class="bg-gradient-to-r from-rose-950/40 via-[#130d2a] to-[#0d1222] border border-rose-500/40 rounded-2xl p-5 shadow-[0_0_30px_rgba(244,63,94,0.15)] space-y-4">
-            <div class="flex items-center justify-between border-b border-rose-500/20 pb-3 flex-wrap gap-2">
-              <span class="text-xs font-mono text-rose-300 font-bold uppercase flex items-center gap-2">
-                <i class="fa-solid fa-triangle-exclamation text-rose-400 text-base"></i>
+          <div class="bg-rose-50/50 border border-rose-200 rounded-2xl p-5 shadow-sm space-y-4">
+            <div class="flex items-center justify-between border-b border-rose-200 pb-3 flex-wrap gap-2">
+              <span class="text-xs font-mono text-rose-900 font-bold uppercase flex items-center gap-2">
+                <i class="fa-solid fa-triangle-exclamation text-rose-600 text-base"></i>
                 <span>Breached Accounts &amp; Leaked Passwords Telemetry</span>
               </span>
-              <span id="targetEmailBadge" class="text-xs font-mono text-rose-300 bg-rose-950 border border-rose-500/40 px-2.5 py-0.5 rounded-full font-bold">target@example.com</span>
+              <span id="targetEmailBadge" class="text-xs font-mono text-rose-800 bg-rose-100 border border-rose-200 px-2.5 py-0.5 rounded-full font-bold">target@example.com</span>
             </div>
 
-            <p class="text-xs text-slate-300 leading-relaxed">
+            <p class="text-xs text-slate-600 leading-relaxed">
               Checks whether this email has been involved in major database leaks (e.g., Adobe, LinkedIn, Canva, Zynga, Collections #1-5), whether plaintext passwords/hashes are listed on DeHashed or BreachDirectory, and whether your Google Password Manager flags it.
             </p>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
               <!-- HaveIBeenPwned Checker -->
-              <a id="emailHibpBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-4 bg-[#0d1530] border border-rose-500/30 hover:border-rose-400 rounded-xl flex flex-col justify-between gap-3 text-decoration-none">
+              <a id="emailHibpBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-4 bg-white border border-slate-200 hover:border-rose-300 rounded-xl flex flex-col justify-between gap-3 shadow-sm hover:shadow-md transition-all text-decoration-none">
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-database text-rose-400 text-lg"></i>
-                    <span class="text-xs font-bold text-white">HaveIBeenPwned</span>
+                    <i class="fa-solid fa-database text-rose-600 text-lg"></i>
+                    <span class="text-xs font-bold text-slate-900">HaveIBeenPwned</span>
                   </div>
-                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-rose-400"></i>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-rose-500"></i>
                 </div>
                 <div>
-                  <div class="text-[11px] text-slate-300">Live Breach Exposure</div>
-                  <div class="text-[10px] text-rose-400 font-mono mt-0.5">Click to check leaked databases</div>
+                  <div class="text-[11px] text-slate-600 font-medium">Live Breach Exposure</div>
+                  <div class="text-[10px] text-rose-600 font-mono mt-0.5">Click to check leaked databases</div>
                 </div>
               </a>
 
               <!-- DeHashed Leaked Credential Index -->
-              <a id="emailDehashedBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-4 bg-[#0d1530] border border-purple-500/30 hover:border-purple-400 rounded-xl flex flex-col justify-between gap-3 text-decoration-none">
+              <a id="emailDehashedBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-4 bg-white border border-slate-200 hover:border-purple-300 rounded-xl flex flex-col justify-between gap-3 shadow-sm hover:shadow-md transition-all text-decoration-none">
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-key text-purple-400 text-lg"></i>
-                    <span class="text-xs font-bold text-white">DeHashed Index</span>
+                    <i class="fa-solid fa-key text-purple-600 text-lg"></i>
+                    <span class="text-xs font-bold text-slate-900">DeHashed Index</span>
                   </div>
-                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-purple-400"></i>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-purple-500"></i>
                 </div>
                 <div>
-                  <div class="text-[11px] text-slate-300">Leaked Passwords &amp; Hashes</div>
-                  <div class="text-[10px] text-purple-400 font-mono mt-0.5">Queries combo leak index</div>
+                  <div class="text-[11px] text-slate-600 font-medium">Leaked Passwords &amp; Hashes</div>
+                  <div class="text-[10px] text-purple-600 font-mono mt-0.5">Queries combo leak index</div>
                 </div>
               </a>
 
               <!-- Google Password Checkup -->
-              <a id="googlePasswordCheckupBtn" href="https://passwords.google.com/checkup" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-4 bg-[#0d1530] border border-cyan-500/30 hover:border-cyan-400 rounded-xl flex flex-col justify-between gap-3 text-decoration-none">
+              <a id="googlePasswordCheckupBtn" href="https://passwords.google.com/checkup" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-4 bg-white border border-slate-200 hover:border-blue-300 rounded-xl flex flex-col justify-between gap-3 shadow-sm hover:shadow-md transition-all text-decoration-none">
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-2">
-                    <i class="fa-brands fa-google text-cyan-400 text-lg"></i>
-                    <span class="text-xs font-bold text-white">Google Password Checkup</span>
+                    <i class="fa-brands fa-google text-blue-600 text-lg"></i>
+                    <span class="text-xs font-bold text-slate-900">Google Password Checkup</span>
                   </div>
-                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-cyan-400"></i>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-blue-500"></i>
                 </div>
                 <div>
-                  <div class="text-[11px] text-slate-300">Compromised Passwords</div>
-                  <div class="text-[10px] text-cyan-400 font-mono mt-0.5">Google security manager</div>
+                  <div class="text-[11px] text-slate-600 font-medium">Compromised Passwords</div>
+                  <div class="text-[10px] text-blue-600 font-mono mt-0.5">Google security manager</div>
                 </div>
               </a>
 
               <!-- BreachDirectory & IntelX -->
-              <a id="breachDirBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-4 bg-[#0d1530] border border-amber-500/30 hover:border-amber-400 rounded-xl flex flex-col justify-between gap-3 text-decoration-none">
+              <a id="breachDirBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-4 bg-white border border-slate-200 hover:border-amber-300 rounded-xl flex flex-col justify-between gap-3 shadow-sm hover:shadow-md transition-all text-decoration-none">
                 <div class="flex items-center justify-between">
                   <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-folder-open text-amber-400 text-lg"></i>
-                    <span class="text-xs font-bold text-white">BreachDirectory &amp; IntelX</span>
+                    <i class="fa-solid fa-folder-open text-amber-600 text-lg"></i>
+                    <span class="text-xs font-bold text-slate-900">BreachDirectory &amp; IntelX</span>
                   </div>
-                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-amber-400"></i>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-amber-500"></i>
                 </div>
                 <div>
-                  <div class="text-[11px] text-slate-300">Exposed Data Records</div>
-                  <div class="text-[10px] text-amber-400 font-mono mt-0.5">Full breach inventory search</div>
+                  <div class="text-[11px] text-slate-600 font-medium">Exposed Data Records</div>
+                  <div class="text-[10px] text-amber-600 font-mono mt-0.5">Full breach inventory search</div>
                 </div>
               </a>
             </div>
           </div>
 
           <!-- Registered Accounts Footprint & Gravatar Real-Time Identity -->
-          <div class="cyber-subcard rounded-2xl p-5 space-y-4">
-            <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3 flex-wrap gap-2">
-              <span class="text-xs font-mono text-cyan-400 font-bold uppercase flex items-center gap-2">
-                <i class="fa-solid fa-address-card text-base"></i>
+          <div class="bg-white border border-slate-200 rounded-2xl p-5 space-y-4 shadow-sm">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3 flex-wrap gap-2">
+              <span class="text-xs font-mono text-slate-800 font-bold uppercase flex items-center gap-2">
+                <i class="fa-solid fa-address-card text-purple-600 text-base"></i>
                 <span>Cross-Platform Registered Account Footprint &amp; Gravatar Profile</span>
               </span>
-              <span class="text-[11px] text-slate-400 font-mono">Detects where this email is used online</span>
+              <span class="text-[11px] text-slate-500 font-mono">Detects where this email is used online</span>
             </div>
 
             <!-- Gravatar Live Identity Check -->
-            <div class="p-4 bg-[#08112e] border border-cyan-500/30 rounded-xl flex flex-col sm:flex-row items-center gap-4">
+            <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl flex flex-col sm:flex-row items-center gap-4">
               <div class="relative">
-                <img id="gravatarImg" src="" alt="Gravatar" class="w-16 h-16 rounded-2xl border-2 border-cyan-400/40 object-cover shadow-[0_0_15px_rgba(6,182,212,0.3)] bg-[#07090e]" />
-                <span id="gravatarStatusDot" class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-slate-600 border-2 border-[#08112e]"></span>
+                <img id="gravatarImg" src="" alt="Gravatar" class="w-16 h-16 rounded-2xl border-2 border-slate-200 object-cover shadow-sm bg-white" />
+                <span id="gravatarStatusDot" class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-slate-400 border-2 border-white"></span>
               </div>
               <div class="flex-1 space-y-1 text-center sm:text-left">
                 <div class="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
-                  <h4 class="text-sm font-bold text-white">Gravatar &amp; WordPress Global Identity</h4>
-                  <span id="gravatarStatusBadge" class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-800 text-slate-300">Calculating MD5...</span>
+                  <h4 class="text-sm font-bold text-slate-900">Gravatar &amp; WordPress Global Identity</h4>
+                  <span id="gravatarStatusBadge" class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-200 text-slate-700">Calculating MD5...</span>
                 </div>
-                <p id="gravatarDesc" class="text-xs text-slate-300">Hashing email to query public avatar, name, and linked profiles.</p>
-                <div class="text-[11px] font-mono text-cyan-400/90" id="gravatarMd5Hash">MD5: ...</div>
+                <p id="gravatarDesc" class="text-xs text-slate-600">Hashing email to query public avatar, name, and linked profiles.</p>
+                <div class="text-[11px] font-mono text-purple-700 font-semibold" id="gravatarMd5Hash">MD5: ...</div>
               </div>
-              <a id="gravatarProfileLink" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-cyan-600 hover:bg-cyan-500 text-white rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shadow-md">
+              <a id="gravatarProfileLink" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 shadow-sm">
                 <span>Open Gravatar Profile</span>
                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
               </a>
@@ -909,31 +908,31 @@
 
             <!-- Where Has This Email Been Used? Launchers -->
             <div>
-              <div class="text-xs font-mono text-cyan-400 font-bold uppercase mb-2">Account Registration &amp; Recovery Presence Tests:</div>
+              <div class="text-xs font-mono text-slate-700 font-bold uppercase mb-2">Account Registration &amp; Recovery Presence Tests:</div>
               <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2.5">
-                <a id="emailGoogleRec" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-[#0a1636] border border-cyan-500/25 rounded-xl text-xs text-slate-200 font-semibold flex items-center justify-between">
-                  <div class="flex items-center gap-1.5"><i class="fa-brands fa-google text-cyan-400"></i><span>Google</span></div>
-                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-cyan-400"></i>
+                <a id="emailGoogleRec" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-white border border-slate-200 hover:border-purple-300 rounded-xl text-xs text-slate-800 font-semibold flex items-center justify-between shadow-sm hover:shadow-md transition-all">
+                  <div class="flex items-center gap-1.5"><i class="fa-brands fa-google text-blue-500"></i><span>Google</span></div>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-400"></i>
                 </a>
-                <a id="emailGhSearch" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-[#0a1636] border border-cyan-500/25 rounded-xl text-xs text-slate-200 font-semibold flex items-center justify-between">
-                  <div class="flex items-center gap-1.5"><i class="fa-brands fa-github text-white"></i><span>GitHub</span></div>
-                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-cyan-400"></i>
+                <a id="emailGhSearch" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-white border border-slate-200 hover:border-purple-300 rounded-xl text-xs text-slate-800 font-semibold flex items-center justify-between shadow-sm hover:shadow-md transition-all">
+                  <div class="flex items-center gap-1.5"><i class="fa-brands fa-github text-slate-900"></i><span>GitHub</span></div>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-400"></i>
                 </a>
-                <a id="emailTwitterRec" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-[#0a1636] border border-cyan-500/25 rounded-xl text-xs text-slate-200 font-semibold flex items-center justify-between">
-                  <div class="flex items-center gap-1.5"><i class="fa-brands fa-x-twitter text-slate-300"></i><span>X (Twitter)</span></div>
-                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-cyan-400"></i>
+                <a id="emailTwitterRec" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-white border border-slate-200 hover:border-purple-300 rounded-xl text-xs text-slate-800 font-semibold flex items-center justify-between shadow-sm hover:shadow-md transition-all">
+                  <div class="flex items-center gap-1.5"><i class="fa-brands fa-x-twitter text-slate-900"></i><span>X (Twitter)</span></div>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-400"></i>
                 </a>
-                <a id="emailLinkedInRec" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-[#0a1636] border border-cyan-500/25 rounded-xl text-xs text-slate-200 font-semibold flex items-center justify-between">
-                  <div class="flex items-center gap-1.5"><i class="fa-brands fa-linkedin text-blue-400"></i><span>LinkedIn</span></div>
-                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-cyan-400"></i>
+                <a id="emailLinkedInRec" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-white border border-slate-200 hover:border-purple-300 rounded-xl text-xs text-slate-800 font-semibold flex items-center justify-between shadow-sm hover:shadow-md transition-all">
+                  <div class="flex items-center gap-1.5"><i class="fa-brands fa-linkedin text-blue-600"></i><span>LinkedIn</span></div>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-400"></i>
                 </a>
-                <a id="emailSpotifyRec" href="https://www.spotify.com/password-reset/" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-[#0a1636] border border-cyan-500/25 rounded-xl text-xs text-slate-200 font-semibold flex items-center justify-between">
-                  <div class="flex items-center gap-1.5"><i class="fa-brands fa-spotify text-emerald-400"></i><span>Spotify</span></div>
-                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-cyan-400"></i>
+                <a id="emailSpotifyRec" href="https://www.spotify.com/password-reset/" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-white border border-slate-200 hover:border-purple-300 rounded-xl text-xs text-slate-800 font-semibold flex items-center justify-between shadow-sm hover:shadow-md transition-all">
+                  <div class="flex items-center gap-1.5"><i class="fa-brands fa-spotify text-emerald-500"></i><span>Spotify</span></div>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-400"></i>
                 </a>
-                <a id="emailMicrosoftRec" href="https://account.live.com/password/reset" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-[#0a1636] border border-cyan-500/25 rounded-xl text-xs text-slate-200 font-semibold flex items-center justify-between">
-                  <div class="flex items-center gap-1.5"><i class="fa-brands fa-microsoft text-cyan-400"></i><span>Microsoft</span></div>
-                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-cyan-400"></i>
+                <a id="emailMicrosoftRec" href="https://account.live.com/password/reset" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-white border border-slate-200 hover:border-purple-300 rounded-xl text-xs text-slate-800 font-semibold flex items-center justify-between shadow-sm hover:shadow-md transition-all">
+                  <div class="flex items-center gap-1.5"><i class="fa-brands fa-microsoft text-blue-500"></i><span>Microsoft</span></div>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-slate-400"></i>
                 </a>
               </div>
             </div>
@@ -941,58 +940,58 @@
 
           <!-- MX Diagnostics & Google DoH Live DNS -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div class="cyber-subcard p-4 rounded-2xl">
-              <div class="text-[11px] font-mono text-cyan-400 mb-1 flex items-center gap-1.5 font-semibold">
-                <i class="fa-solid fa-server"></i>
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl shadow-sm">
+              <div class="text-[11px] font-mono text-slate-500 mb-1 flex items-center gap-1.5 font-semibold">
+                <i class="fa-solid fa-server text-purple-600"></i>
                 <span>MAIL PROVIDER / HOST</span>
               </div>
-              <div class="text-sm font-bold text-white" id="emailProviderVal">Google Workspace</div>
+              <div class="text-sm font-bold text-slate-900" id="emailProviderVal">Google Workspace</div>
             </div>
 
-            <div class="cyber-subcard p-4 rounded-2xl">
-              <div class="text-[11px] font-mono text-cyan-400 mb-1 flex items-center gap-1.5 font-semibold">
-                <i class="fa-solid fa-shield-virus"></i>
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl shadow-sm">
+              <div class="text-[11px] font-mono text-slate-500 mb-1 flex items-center gap-1.5 font-semibold">
+                <i class="fa-solid fa-shield-virus text-emerald-600"></i>
                 <span>DISPOSABLE / BURNER</span>
               </div>
-              <div class="text-sm font-bold text-emerald-400 flex items-center gap-1.5" id="emailDisposableVal">
-                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <div class="text-sm font-bold text-emerald-700 flex items-center gap-1.5" id="emailDisposableVal">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
                 <span>Legitimate Corporate Domain</span>
               </div>
             </div>
 
-            <div class="cyber-subcard p-4 rounded-2xl">
-              <div class="text-[11px] font-mono text-rose-400 mb-1 flex items-center gap-1.5 font-semibold">
-                <i class="fa-solid fa-database"></i>
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl shadow-sm">
+              <div class="text-[11px] font-mono text-slate-500 mb-1 flex items-center gap-1.5 font-semibold">
+                <i class="fa-solid fa-database text-rose-600"></i>
                 <span>PUBLIC COMBO LEAKS</span>
               </div>
-              <div class="text-sm font-bold text-rose-300" id="emailBreachVal">Active Query Checked</div>
+              <div class="text-sm font-bold text-rose-700" id="emailBreachVal">Active Query Checked</div>
             </div>
           </div>
 
           <!-- Raw Live MX DNS Output -->
-          <div class="bg-[#07090e] border border-cyan-500/30 rounded-2xl p-4 font-mono text-xs">
-            <div class="text-cyan-400 mb-2 font-bold uppercase flex items-center justify-between">
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 font-mono text-xs shadow-inner">
+            <div class="text-slate-300 mb-2 font-bold uppercase flex items-center justify-between">
               <span>Google DoH (DNS over HTTPS) MX Response:</span>
               <span class="text-emerald-400 font-normal">200 OK</span>
             </div>
-            <pre id="emailDnsRaw" class="text-slate-300 overflow-x-auto whitespace-pre-wrap leading-relaxed max-h-48 custom-scroll"></pre>
+            <pre id="emailDnsRaw" class="text-emerald-400 overflow-x-auto whitespace-pre-wrap leading-relaxed max-h-48 custom-scroll"></pre>
           </div>
 
           <!-- Advanced Email Google Dorks -->
-          <div class="cyber-subcard rounded-2xl p-5 space-y-3">
-            <div class="text-xs font-mono text-cyan-400 font-bold uppercase">Automated Pastebin &amp; Breach Dorks:</div>
+          <div class="bg-white border border-slate-200 rounded-2xl p-5 space-y-3 shadow-sm">
+            <div class="text-xs font-mono text-slate-700 font-bold uppercase">Automated Pastebin &amp; Breach Dorks:</div>
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-              <a id="emailPastebinDork" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-3 bg-[#0a1636] border border-cyan-500/25 rounded-xl text-slate-200 text-xs font-semibold flex items-center justify-between">
+              <a id="emailPastebinDork" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-3 bg-slate-50 border border-slate-200 hover:border-purple-300 hover:bg-white rounded-xl text-slate-800 text-xs font-semibold flex items-center justify-between shadow-sm transition-all">
                 <span>Pastebin &amp; Text Leaks</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-cyan-400"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-purple-600"></i>
               </a>
-              <a id="emailPasswordLeakDork" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-3 bg-[#0a1636] border border-rose-500/30 rounded-xl text-rose-300 text-xs font-semibold flex items-center justify-between">
+              <a id="emailPasswordLeakDork" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-3 bg-slate-50 border border-slate-200 hover:border-rose-300 hover:bg-white rounded-xl text-rose-700 text-xs font-semibold flex items-center justify-between shadow-sm transition-all">
                 <span>Password Combo Leaks Dork</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-rose-400"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-rose-600"></i>
               </a>
-              <a id="emailMentionsDork" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-3 bg-[#0a1636] border border-cyan-500/25 rounded-xl text-slate-200 text-xs font-semibold flex items-center justify-between">
+              <a id="emailMentionsDork" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-3 bg-slate-50 border border-slate-200 hover:border-purple-300 hover:bg-white rounded-xl text-slate-800 text-xs font-semibold flex items-center justify-between shadow-sm transition-all">
                 <span>Public Web &amp; Doc Mentions</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-cyan-400"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-purple-600"></i>
               </a>
             </div>
           </div>
@@ -1006,63 +1005,63 @@
       <div id="panel-image" class="tab-panel space-y-6 hidden">
         <div>
           <div class="flex items-center justify-between mb-1.5 flex-wrap gap-2">
-            <h2 class="text-xl font-bold text-white font-display flex items-center gap-2">
-              <i class="fa-solid fa-camera-retro text-cyan-400"></i>
+            <h2 class="text-xl font-bold text-slate-900 font-display flex items-center gap-2">
+              <i class="fa-solid fa-camera-retro text-purple-600"></i>
               <span>Client-Side Binary EXIF Metadata &amp; Reverse Image Forensics</span>
             </h2>
-            <span class="text-xs font-mono text-cyan-300 bg-cyan-950 px-2.5 py-1 rounded-full border border-cyan-500/40 font-bold">100% Private Browser ArrayBuffer</span>
+            <span class="text-xs font-mono text-purple-700 bg-purple-50 px-2.5 py-1 rounded-full border border-purple-200 font-bold">100% Private Browser ArrayBuffer</span>
           </div>
-          <p class="text-slate-300 text-xs leading-relaxed">
+          <p class="text-slate-600 text-xs leading-relaxed">
             Inspect raw binary EXIF headers (Camera model, software, GPS coordinates, timestamp) without uploading images to any remote server. Zero data retention.
           </p>
         </div>
 
-        <div class="border-2 border-dashed border-cyan-500/30 hover:border-cyan-400 rounded-3xl p-8 text-center cursor-pointer transition-all bg-[#04091a]/80" id="dropZone">
+        <div class="border-2 border-dashed border-slate-300 hover:border-purple-500 rounded-3xl p-8 text-center cursor-pointer transition-all bg-white hover:bg-slate-50 shadow-sm" id="dropZone">
           <input type="file" id="imageInput" accept="image/jpeg,image/png,image/webp,image/tiff" class="hidden" />
-          <i class="fa-solid fa-cloud-arrow-up text-4xl text-cyan-400 mb-3"></i>
-          <h3 class="text-base font-bold text-white">Drop an image here or click to browse</h3>
-          <p class="text-slate-400 text-xs mt-1">Supports JPEG, TIFF, PNG with embedded EXIF headers</p>
+          <i class="fa-solid fa-cloud-arrow-up text-4xl text-purple-600 mb-3"></i>
+          <h3 class="text-base font-bold text-slate-900">Drop an image here or click to browse</h3>
+          <p class="text-slate-500 text-xs mt-1">Supports JPEG, TIFF, PNG with embedded EXIF headers</p>
         </div>
 
         <div id="imageResults" class="space-y-6 pt-2 hidden">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
             <!-- Image Preview Box -->
-            <div class="cyber-subcard rounded-2xl p-4 flex flex-col items-center justify-center space-y-3">
-              <img id="imagePreview" src="" alt="Forensics Preview" class="max-h-64 rounded-xl border border-cyan-500/30 object-contain shadow-[0_0_20px_rgba(6,182,212,0.2)]" />
-              <div id="imageBasicInfo" class="text-xs font-mono text-slate-300 text-center space-y-0.5"></div>
+            <div class="bg-white border border-slate-200 rounded-2xl p-4 flex flex-col items-center justify-center space-y-3 shadow-sm">
+              <img id="imagePreview" src="" alt="Forensics Preview" class="max-h-64 rounded-xl border border-slate-200 object-contain shadow-sm" />
+              <div id="imageBasicInfo" class="text-xs font-mono text-slate-600 text-center space-y-0.5"></div>
             </div>
 
             <!-- EXIF Data Breakdown -->
-            <div class="md:col-span-2 cyber-subcard rounded-2xl p-5 space-y-4">
-              <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
-                <span class="text-xs font-mono text-cyan-400 font-bold uppercase flex items-center gap-2">
-                  <i class="fa-solid fa-microchip"></i>
+            <div class="md:col-span-2 bg-white border border-slate-200 rounded-2xl p-5 space-y-4 shadow-sm">
+              <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                <span class="text-xs font-mono text-slate-800 font-bold uppercase flex items-center gap-2">
+                  <i class="fa-solid fa-microchip text-purple-600"></i>
                   <span>Binary EXIF Header Telemetry</span>
                 </span>
-                <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950 border border-emerald-500/40 px-2 py-0.5 rounded font-bold">Parsed Locally</span>
+                <span class="text-[11px] font-mono text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded font-bold">Parsed Locally</span>
               </div>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="exifDataGrid">
-                <div class="p-3.5 bg-[#08112e] border border-cyan-500/25 rounded-xl">
-                  <div class="text-[10px] font-mono text-cyan-400 uppercase font-semibold">Camera Model</div>
-                  <div class="text-xs font-bold text-white mt-1" id="exifCamera">Not detected</div>
+                <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl">
+                  <div class="text-[10px] font-mono text-slate-500 uppercase font-semibold">Camera Model</div>
+                  <div class="text-xs font-bold text-slate-900 mt-1" id="exifCamera">Not detected</div>
                 </div>
 
-                <div class="p-3.5 bg-[#08112e] border border-cyan-500/25 rounded-xl">
-                  <div class="text-[10px] font-mono text-cyan-400 uppercase font-semibold">Date &amp; Time Original</div>
-                  <div class="text-xs font-bold text-white mt-1" id="exifDateTime">Not detected</div>
+                <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl">
+                  <div class="text-[10px] font-mono text-slate-500 uppercase font-semibold">Date &amp; Time Original</div>
+                  <div class="text-xs font-bold text-slate-900 mt-1" id="exifDateTime">Not detected</div>
                 </div>
 
-                <div class="p-3.5 bg-[#08112e] border border-cyan-500/25 rounded-xl">
-                  <div class="text-[10px] font-mono text-cyan-400 uppercase font-semibold">Software / Firmware</div>
-                  <div class="text-xs font-bold text-white mt-1" id="exifSoftware">Not detected</div>
+                <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl">
+                  <div class="text-[10px] font-mono text-slate-500 uppercase font-semibold">Software / Firmware</div>
+                  <div class="text-xs font-bold text-slate-900 mt-1" id="exifSoftware">Not detected</div>
                 </div>
 
-                <div class="p-3.5 bg-[#08112e] border border-cyan-500/25 rounded-xl">
-                  <div class="text-[10px] font-mono text-cyan-400 uppercase font-semibold">GPS Geo-Coordinates</div>
-                  <div class="text-xs font-bold text-cyan-300 mt-1 flex items-center justify-between" id="exifGpsBox">
+                <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl">
+                  <div class="text-[10px] font-mono text-slate-500 uppercase font-semibold">GPS Geo-Coordinates</div>
+                  <div class="text-xs font-bold text-purple-700 mt-1 flex items-center justify-between" id="exifGpsBox">
                     <span id="exifGps">No GPS tags found</span>
-                    <a id="exifMapLink" href="#" target="_blank" rel="noopener noreferrer" class="hidden text-[10px] bg-cyan-950 text-cyan-300 px-2 py-0.5 rounded border border-cyan-500/40 hover:bg-cyan-900">
+                    <a id="exifMapLink" href="#" target="_blank" rel="noopener noreferrer" class="hidden text-[10px] bg-purple-50 text-purple-700 px-2 py-0.5 rounded border border-purple-200 hover:bg-purple-100 font-bold">
                       View on Map <i class="fa-solid fa-location-arrow text-[9px]"></i>
                     </a>
                   </div>
@@ -1070,19 +1069,19 @@
               </div>
 
               <!-- Reverse Search Multi-Engines -->
-              <div class="pt-2 border-t border-cyan-500/20">
-                <div class="text-xs font-mono text-cyan-400 font-bold uppercase mb-2">Reverse Image Search Launchers:</div>
+              <div class="pt-2 border-t border-slate-200">
+                <div class="text-xs font-mono text-slate-700 font-bold uppercase mb-2">Reverse Image Search Launchers:</div>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                  <a href="https://images.google.com/" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-[#0a1636] border border-cyan-500/25 hover:border-cyan-400 rounded-xl text-slate-200 text-xs font-semibold flex items-center justify-center gap-1.5">
-                    <i class="fa-brands fa-google text-cyan-400"></i>
+                  <a href="https://images.google.com/" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-white border border-slate-200 hover:border-purple-300 rounded-xl text-slate-800 text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm hover:shadow-md transition-all">
+                    <i class="fa-brands fa-google text-blue-500"></i>
                     <span>Google Lens</span>
                   </a>
-                  <a href="https://yandex.com/images/" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-[#0a1636] border border-cyan-500/25 hover:border-rose-400 rounded-xl text-slate-200 text-xs font-semibold flex items-center justify-center gap-1.5">
-                    <i class="fa-brands fa-yandex text-rose-400"></i>
+                  <a href="https://yandex.com/images/" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-white border border-slate-200 hover:border-rose-400 rounded-xl text-slate-800 text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm hover:shadow-md transition-all">
+                    <i class="fa-brands fa-yandex text-rose-500"></i>
                     <span>Yandex Visual</span>
                   </a>
-                  <a href="https://tineye.com/" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-[#0a1636] border border-cyan-500/25 hover:border-cyan-400 rounded-xl text-slate-200 text-xs font-semibold flex items-center justify-center gap-1.5">
-                    <i class="fa-solid fa-magnifying-glass text-cyan-400"></i>
+                  <a href="https://tineye.com/" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-white border border-slate-200 hover:border-purple-400 rounded-xl text-slate-800 text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm hover:shadow-md transition-all">
+                    <i class="fa-solid fa-magnifying-glass text-teal-600"></i>
                     <span>TinEye Reverse</span>
                   </a>
                 </div>
@@ -1097,17 +1096,17 @@
   </main>
 
   <!-- Executive Site Footer Matching WHX Digital -->
-  <footer class="relative z-10 border-t border-slate-800/80 bg-[#07090e] py-6 px-4 mt-12 text-center text-xs text-slate-400 font-mono">
+  <footer class="relative z-10 border-t border-slate-200 bg-white py-6 px-4 mt-12 text-center text-xs text-slate-500 font-mono">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
       <div>
         <span>&copy; 2026 WHX Digital. Educational OSINT &amp; Cyber Threat Intelligence Suite.</span>
       </div>
-      <div class="flex items-center gap-4 text-slate-400">
-        <a href="../../terms.html" class="hover:text-cyan-400 transition-colors">Terms of Use</a>
+      <div class="flex items-center gap-4 text-slate-500">
+        <a href="../../terms.html" class="hover:text-purple-600 transition-colors">Terms of Use</a>
         <span>&bull;</span>
-        <a href="../../privacy.html" class="hover:text-cyan-400 transition-colors">Privacy Policy</a>
+        <a href="../../privacy.html" class="hover:text-purple-600 transition-colors">Privacy Policy</a>
         <span>&bull;</span>
-        <a href="../../security.html" class="hover:text-cyan-400 transition-colors">Security Ethics</a>
+        <a href="../../security.html" class="hover:text-purple-600 transition-colors">Security Ethics</a>
       </div>
     </div>
   </footer>
@@ -1399,7 +1398,7 @@
       // Initial Auth state sync
       syncAuthState();
 
-      // 3. Cyber HUD Tab Switching Logic
+      // 3. Clean SaaS Tab Switching Logic
       const tabButtons = document.querySelectorAll('.tab-btn');
       const tabPanels = document.querySelectorAll('.tab-panel');
 
@@ -1408,27 +1407,33 @@
           const targetTab = btn.getAttribute('data-tab');
 
           tabButtons.forEach(b => {
-            b.classList.remove('border-cyan-400', 'bg-cyan-950/60', 'text-cyan-300', 'shadow-[0_0_20px_rgba(6,182,212,0.35)]');
-            b.classList.add('border-slate-800', 'bg-[#0d1222]', 'text-slate-400');
+            b.className = 'tab-btn flex items-center space-x-3 p-4 rounded-2xl border text-sm font-semibold transition-all bg-white border-slate-200 text-slate-500 hover:border-purple-300 hover:text-slate-900 shadow-sm cursor-pointer';
             const iconBox = b.querySelector('.w-9');
             if (iconBox) {
-              iconBox.className = 'w-9 h-9 rounded-xl bg-[#07090e] text-slate-400 flex items-center justify-center text-base font-bold';
+              iconBox.className = 'w-9 h-9 rounded-xl bg-slate-50 text-slate-500 flex items-center justify-center text-base font-bold';
             }
-            const title = b.querySelector('.text-white');
+            const modNum = b.querySelector('.font-mono');
+            if (modNum) {
+              modNum.className = 'text-[10px] text-slate-400 font-mono font-bold tracking-wider';
+            }
+            const title = b.querySelector('.font-bold:not(.font-mono)');
             if (title) {
-              title.className = 'font-bold text-slate-200';
+              title.className = 'font-bold text-slate-700';
             }
           });
 
-          btn.classList.add('border-cyan-400', 'bg-cyan-950/60', 'text-cyan-300', 'shadow-[0_0_20px_rgba(6,182,212,0.35)]');
-          btn.classList.remove('border-slate-800', 'bg-[#0d1222]', 'text-slate-400');
+          btn.className = 'tab-btn flex items-center space-x-3 p-4 rounded-2xl border-2 text-sm font-semibold transition-all border-purple-600 bg-white text-purple-700 shadow-md cursor-pointer';
           const activeIconBox = btn.querySelector('.w-9');
           if (activeIconBox) {
-            activeIconBox.className = 'w-9 h-9 rounded-xl bg-cyan-950 border border-cyan-500/40 text-cyan-400 flex items-center justify-center text-base font-bold shadow-[0_0_10px_rgba(6,182,212,0.3)]';
+            activeIconBox.className = 'w-9 h-9 rounded-xl bg-purple-50 border border-purple-200 text-purple-600 flex items-center justify-center text-base font-bold shadow-sm';
           }
-          const activeTitle = btn.querySelector('.text-slate-200');
+          const activeModNum = btn.querySelector('.font-mono');
+          if (activeModNum) {
+            activeModNum.className = 'text-[10px] text-purple-600 font-mono font-bold tracking-wider';
+          }
+          const activeTitle = btn.querySelector('.font-bold:not(.font-mono)');
           if (activeTitle) {
-            activeTitle.className = 'font-bold text-white';
+            activeTitle.className = 'font-bold text-slate-900';
           }
 
           tabPanels.forEach(p => p.classList.add('hidden'));
@@ -1637,9 +1642,9 @@
 
             if (phoneDorksList) {
               phoneDorksList.innerHTML = dorks.map(d => `
-                <a href="https://www.google.com/search?q=${encodeURIComponent(d.q)}" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-[#0a1636] border border-cyan-500/25 hover:border-cyan-400 rounded-xl text-slate-200 text-xs font-semibold flex items-center justify-between">
+                <a href="https://www.google.com/search?q=${encodeURIComponent(d.q)}" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-slate-50 border border-slate-200 hover:border-purple-300 hover:bg-white rounded-xl text-slate-800 text-xs font-semibold flex items-center justify-between shadow-sm transition-all">
                   <span class="truncate">${d.label}</span>
-                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-cyan-400"></i>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-purple-600"></i>
                 </a>
               `).join('');
             }
@@ -1752,7 +1757,7 @@
           {
             name: 'TikTok',
             type: 'Videos & Clips',
-            icon: 'fa-brands fa-tiktok text-cyan-300',
+            icon: 'fa-brands fa-tiktok text-slate-900',
             url: `https://www.tiktok.com/@${cleanedUser}`,
             searchUrl: `https://www.google.com/search?q=site:tiktok.com+%22${cleanedUser}%22`,
             desc: `@${cleanedUser}`
@@ -1816,24 +1821,24 @@
         ];
 
         socialCardsGrid.innerHTML = platforms.map(p => `
-          <div class="cyber-subcard p-3.5 rounded-2xl flex flex-col justify-between gap-3 shadow-sm hover:border-cyan-400">
+          <div class="bg-white border border-slate-200 p-3.5 rounded-2xl flex flex-col justify-between gap-3 shadow-sm hover:border-purple-300 hover:shadow-md transition-all">
             <div>
               <div class="flex items-center justify-between mb-1">
                 <div class="flex items-center gap-2">
                   <i class="${p.icon} text-base"></i>
-                  <span class="text-xs font-bold text-white">${p.name}</span>
+                  <span class="text-xs font-bold text-slate-900">${p.name}</span>
                 </div>
-                <span class="text-[9px] font-mono px-1.5 py-0.2 rounded-full bg-cyan-950 text-cyan-300 border border-cyan-500/30">Live</span>
+                <span class="text-[9px] font-mono px-1.5 py-0.2 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-semibold">Live</span>
               </div>
-              <div class="text-[10px] text-cyan-400 font-mono">${p.type}</div>
-              <div class="text-[11px] text-slate-300 font-mono truncate mt-0.5">${p.desc}</div>
+              <div class="text-[10px] text-purple-700 font-mono font-semibold">${p.type}</div>
+              <div class="text-[11px] text-slate-500 font-mono truncate mt-0.5">${p.desc}</div>
             </div>
-            <div class="flex items-center gap-1.5 pt-2 border-t border-cyan-500/20">
-              <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="flex-1 py-1.5 px-2 bg-[#04091a] hover:bg-cyan-950 text-cyan-300 border border-cyan-500/30 rounded-lg text-center text-[11px] font-bold transition-colors flex items-center justify-center gap-1">
+            <div class="flex items-center gap-1.5 pt-2 border-t border-slate-100">
+              <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="flex-1 py-1.5 px-2 bg-slate-50 hover:bg-purple-50 text-slate-700 hover:text-purple-700 border border-slate-200 rounded-lg text-center text-[11px] font-bold transition-colors flex items-center justify-center gap-1">
                 <span>Profile</span>
                 <i class="fa-solid fa-arrow-up-right-from-square text-[8px]"></i>
               </a>
-              <a href="${p.searchUrl}" target="_blank" rel="noopener noreferrer" class="py-1.5 px-2.5 bg-[#04091a] hover:bg-cyan-950 text-slate-400 hover:text-cyan-300 border border-cyan-500/30 rounded-lg text-center text-xs font-bold transition-colors" title="Google Dork">
+              <a href="${p.searchUrl}" target="_blank" rel="noopener noreferrer" class="py-1.5 px-2.5 bg-slate-50 hover:bg-purple-50 text-slate-500 hover:text-purple-700 border border-slate-200 rounded-lg text-center text-xs font-bold transition-colors" title="Google Dork">
                 <i class="fa-solid fa-magnifying-glass"></i>
               </a>
             </div>
@@ -1842,19 +1847,19 @@
 
         // 3. Multi-Engine Launchers
         const multiEngines = [
-          { name: 'Google (Exact)', icon: 'fa-brands fa-google text-cyan-400', url: `https://www.google.com/search?q=%22${encodedQuery}%22` },
-          { name: 'Bing Web', icon: 'fa-brands fa-microsoft text-blue-400', url: `https://www.bing.com/search?q=%22${encodedQuery}%22` },
-          { name: 'DuckDuckGo', icon: 'fa-solid fa-shield-halved text-amber-400', url: `https://duckduckgo.com/?q=%22${encodedQuery}%22` },
-          { name: 'Yandex Global', icon: 'fa-brands fa-yandex text-rose-400', url: `https://yandex.com/search/?text=%22${encodedQuery}%22` },
+          { name: 'Google (Exact)', icon: 'fa-brands fa-google text-blue-500', url: `https://www.google.com/search?q=%22${encodedQuery}%22` },
+          { name: 'Bing Web', icon: 'fa-brands fa-microsoft text-blue-600', url: `https://www.bing.com/search?q=%22${encodedQuery}%22` },
+          { name: 'DuckDuckGo', icon: 'fa-solid fa-shield-halved text-amber-500', url: `https://duckduckgo.com/?q=%22${encodedQuery}%22` },
+          { name: 'Yandex Global', icon: 'fa-brands fa-yandex text-rose-500', url: `https://yandex.com/search/?text=%22${encodedQuery}%22` },
         ];
 
         userEngineGrid.innerHTML = multiEngines.map(e => `
-          <a href="${e.url}" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3 bg-[#0a1636] border border-cyan-500/25 hover:border-cyan-400 rounded-xl text-slate-200 text-xs font-bold">
+          <a href="${e.url}" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3 bg-white border border-slate-200 hover:border-purple-300 hover:shadow-md rounded-xl text-slate-800 text-xs font-bold shadow-sm transition-all">
             <div class="flex items-center gap-2">
               <i class="${e.icon}"></i>
-              <span>${e.name}</span>
+              <span class="text-slate-900">${e.name}</span>
             </div>
-            <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-cyan-400"></i>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-purple-600"></i>
           </a>
         `).join('');
 
@@ -1864,7 +1869,7 @@
         if (apiKey && cx) {
           try {
             userGoogleLiveContainer.classList.remove('hidden');
-            userGoogleItems.innerHTML = '<div class="text-xs text-cyan-400 font-mono"><i class="fa-solid fa-spinner fa-spin mr-1"></i> Querying Google Web Index live...</div>';
+            userGoogleItems.innerHTML = '<div class="text-xs text-purple-600 font-mono"><i class="fa-solid fa-spinner fa-spin mr-1"></i> Querying Google Web Index live...</div>';
             const gUrl = `https://www.googleapis.com/customsearch/v1?key=${encodeURIComponent(apiKey)}&cx=${encodeURIComponent(cx)}&q=${encodedQuery}`;
             const gRes = await fetch(gUrl);
             if (gRes.ok) {
@@ -1872,24 +1877,24 @@
               const items = gData.items || [];
               googleResultsCount.textContent = `${items.length} live results found`;
               if (items.length === 0) {
-                userGoogleItems.innerHTML = '<div class="text-xs text-slate-400 font-mono">No public indexed results returned for this query.</div>';
+                userGoogleItems.innerHTML = '<div class="text-xs text-slate-500 font-mono">No public indexed results returned for this query.</div>';
               } else {
                 userGoogleItems.innerHTML = items.map(item => `
-                  <div class="p-3 bg-[#0a1636] border border-cyan-500/25 rounded-xl space-y-1">
-                    <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-cyan-300 hover:underline flex items-center gap-1.5">
+                  <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+                    <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-purple-700 hover:underline flex items-center gap-1.5">
                       <span>${item.title}</span>
                       <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
                     </a>
-                    <div class="text-[11px] text-emerald-400 font-mono truncate">${item.link}</div>
-                    <p class="text-xs text-slate-300 leading-relaxed">${item.snippet || ''}</p>
+                    <div class="text-[11px] text-emerald-700 font-mono truncate">${item.link}</div>
+                    <p class="text-xs text-slate-600 leading-relaxed">${item.snippet || ''}</p>
                   </div>
                 `).join('');
               }
             } else {
-              userGoogleItems.innerHTML = '<div class="text-xs text-rose-400 font-mono">Google API query quota exceeded or invalid key.</div>';
+              userGoogleItems.innerHTML = '<div class="text-xs text-rose-600 font-mono">Google API query quota exceeded or invalid key.</div>';
             }
           } catch(err) {
-            userGoogleItems.innerHTML = '<div class="text-xs text-rose-400 font-mono">Unable to reach Google API endpoint.</div>';
+            userGoogleItems.innerHTML = '<div class="text-xs text-rose-600 font-mono">Unable to reach Google API endpoint.</div>';
           }
         } else {
           userGoogleLiveContainer.classList.add('hidden');
@@ -1903,9 +1908,9 @@
         ];
 
         userDorksList.innerHTML = userDorks.map(d => `
-          <a href="https://www.google.com/search?q=${encodeURIComponent(d.q)}" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-3 bg-[#0a1636] border border-cyan-500/25 hover:border-cyan-400 rounded-xl text-slate-200 text-xs font-bold flex items-center justify-between">
+          <a href="https://www.google.com/search?q=${encodeURIComponent(d.q)}" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-3 bg-slate-50 border border-slate-200 hover:border-purple-300 hover:bg-white rounded-xl text-slate-800 text-xs font-bold flex items-center justify-between shadow-sm transition-all">
             <span class="truncate">${d.title}</span>
-            <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-cyan-400"></i>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-purple-600"></i>
           </a>
         `).join('');
       });
@@ -1965,24 +1970,24 @@
         const testImg = new Image();
         testImg.onload = () => {
           gravatarStatusBadge.textContent = 'Active Gravatar Found';
-          gravatarStatusBadge.className = 'text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-500/40 font-bold';
-          gravatarStatusDot.className = 'absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[#08112e]';
+          gravatarStatusBadge.className = 'text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold';
+          gravatarStatusDot.className = 'absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white';
           gravatarDesc.textContent = `User has an active public Gravatar profile photo registered to ${email}.`;
         };
         testImg.onerror = () => {
-          gravatarImg.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(userPart)}&background=04091a&color=06b6d4&size=200`;
+          gravatarImg.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(userPart)}&background=f1f5f9&color=7c3aed&size=200`;
           gravatarStatusBadge.textContent = 'No Gravatar Avatar';
-          gravatarStatusBadge.className = 'text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-800 text-slate-400 font-mono';
-          gravatarStatusDot.className = 'absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-slate-600 border-2 border-[#08112e]';
+          gravatarStatusBadge.className = 'text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 font-mono';
+          gravatarStatusDot.className = 'absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-slate-400 border-2 border-white';
           gravatarDesc.textContent = `No public Gravatar image registered for this specific MD5 hash.`;
         };
         testImg.src = gravatarUrl;
 
         // 2. Check disposable domain
         if (disposableDomains.includes(domainPart)) {
-          emailDisposableVal.innerHTML = '<span class="text-rose-400 font-bold flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-rose-500"></span>⚠️ High Risk Disposable Burner</span>';
+          emailDisposableVal.innerHTML = '<span class="text-rose-600 font-bold flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-rose-500"></span>⚠️ High Risk Disposable Burner</span>';
         } else {
-          emailDisposableVal.innerHTML = '<span class="text-emerald-400 font-bold flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400"></span>✓ Legitimate Corporate Domain</span>';
+          emailDisposableVal.innerHTML = '<span class="text-emerald-700 font-bold flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500"></span>✓ Legitimate Corporate Domain</span>';
         }
 
         // 3. Live Google DoH MX Query
@@ -2054,16 +2059,16 @@
 
       dropZone.addEventListener('dragover', (e) => {
         e.preventDefault();
-        dropZone.classList.add('border-cyan-400', 'bg-cyan-950/40');
+        dropZone.classList.add('border-purple-500', 'bg-purple-50/50');
       });
 
       dropZone.addEventListener('dragleave', () => {
-        dropZone.classList.remove('border-cyan-400', 'bg-cyan-950/40');
+        dropZone.classList.remove('border-purple-500', 'bg-purple-50/50');
       });
 
       dropZone.addEventListener('drop', (e) => {
         e.preventDefault();
-        dropZone.classList.remove('border-cyan-400', 'bg-cyan-950/40');
+        dropZone.classList.remove('border-purple-500', 'bg-purple-50/50');
         if (e.dataTransfer.files && e.dataTransfer.files[0]) {
           processImageFile(e.dataTransfer.files[0]);
         }
