@@ -108,22 +108,6 @@
       transform: translateY(-2px);
       box-shadow: 0 4px 12px -2px rgba(16, 185, 129, 0.25);
     }
-    @keyframes radar-sweep {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    .radar-sweep-arm {
-      transform-origin: 120px 120px;
-      animation: radar-sweep 5s linear infinite;
-    }
-    .radar-ring-spin {
-      transform-origin: 120px 120px;
-      animation: radar-sweep 24s linear infinite;
-    }
-    .radar-ring-reverse {
-      transform-origin: 120px 120px;
-      animation: radar-sweep 32s linear infinite reverse;
-    }
     @media print {
       body { background: #ffffff !important; color: #000000 !important; }
       header, footer, #tabBar, form, .no-print { display: none !important; }
@@ -329,97 +313,22 @@
     
     <!-- Header Block with Watermark & Badge -->
     <header class="flex flex-col md:flex-row justify-between items-start md:items-center bg-white border border-slate-200 rounded-2xl p-6 md:p-8 mb-8 gap-6 shadow-sm relative overflow-hidden">
-      <!-- Interactive Cyber Radar & Telemetry Compass Scanner -->
-      <div class="absolute -right-6 md:right-0 top-1/2 -translate-y-1/2 w-52 h-52 sm:w-60 sm:h-60 md:w-64 md:h-64 pointer-events-none flex items-center justify-center select-none z-0">
-        <!-- Ambient radial glow behind the radar -->
-        <div class="absolute inset-4 rounded-full bg-gradient-to-br from-purple-200/50 via-emerald-100/40 to-transparent blur-xl pointer-events-none"></div>
-        
-        <svg class="w-full h-full relative z-0" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <!-- Radar Scanner Sweep Gradient -->
-            <radialGradient id="radarSweep" cx="120" cy="120" r="100" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.25" />
-              <stop offset="65%" stop-color="#10b981" stop-opacity="0.18" />
-              <stop offset="100%" stop-color="#10b981" stop-opacity="0" />
-            </radialGradient>
-            <!-- Conic gradient for sweep arm -->
-            <linearGradient id="sweepLineGrad" x1="120" y1="120" x2="220" y2="120" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#7c3aed" stop-opacity="0.15" />
-              <stop offset="60%" stop-color="#10b981" stop-opacity="0.75" />
-              <stop offset="100%" stop-color="#10b981" stop-opacity="1" />
-            </linearGradient>
-          </defs>
-
-          <!-- Outer boundary ring with cardinal tick marks -->
-          <circle cx="120" cy="120" r="105" stroke="#7c3aed" stroke-width="1.5" stroke-opacity="0.35" stroke-dasharray="2 6" />
-          <circle cx="120" cy="120" r="95" stroke="#7c3aed" stroke-width="1.5" stroke-opacity="0.5" />
-          
-          <!-- Concentric Distance Rings -->
-          <circle cx="120" cy="120" r="70" stroke="#7c3aed" stroke-width="1.2" stroke-opacity="0.4" stroke-dasharray="3 3" />
-          <circle cx="120" cy="120" r="45" stroke="#10b981" stroke-width="1.5" stroke-opacity="0.55" />
-          <circle cx="120" cy="120" r="20" stroke="#7c3aed" stroke-width="1.2" stroke-opacity="0.5" />
-
-          <!-- Crosshairs (Axes) -->
-          <line x1="15" y1="120" x2="225" y2="120" stroke="#7c3aed" stroke-width="1.2" stroke-opacity="0.3" stroke-dasharray="4 4" />
-          <line x1="120" y1="15" x2="120" y2="225" stroke="#7c3aed" stroke-width="1.2" stroke-opacity="0.3" stroke-dasharray="4 4" />
-
-          <!-- Degree Ticks -->
-          <line x1="120" y1="15" x2="120" y2="26" stroke="#7c3aed" stroke-width="2" stroke-opacity="0.75" />
-          <line x1="120" y1="214" x2="120" y2="225" stroke="#7c3aed" stroke-width="2" stroke-opacity="0.75" />
-          <line x1="15" y1="120" x2="26" y2="120" stroke="#7c3aed" stroke-width="2" stroke-opacity="0.75" />
-          <line x1="214" y1="120" x2="225" y2="120" stroke="#7c3aed" stroke-width="2" stroke-opacity="0.75" />
-
-          <!-- Rotating outer dashed telemetry ring (Slow clockwise) -->
-          <g class="radar-ring-spin">
-            <circle cx="120" cy="120" r="85" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="8 12" stroke-opacity="0.6" />
-            <circle cx="120" cy="35" r="3" fill="#7c3aed" />
-            <circle cx="120" cy="205" r="3" fill="#7c3aed" />
-            <circle cx="35" cy="120" r="3" fill="#7c3aed" />
-            <circle cx="205" cy="120" r="3" fill="#7c3aed" />
-          </g>
-
-          <!-- Counter-rotating inner compass markers (Slow counter-clockwise) -->
-          <g class="radar-ring-reverse">
-            <circle cx="120" cy="120" r="58" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4 8" stroke-opacity="0.55" />
-          </g>
-
-          <!-- Rotating Radar Sweep Beam -->
-          <g class="radar-sweep-arm">
-            <!-- Sweep sector / wedge -->
-            <path d="M120 120 L215 120 A95 95 0 0 0 187 53 Z" fill="url(#radarSweep)" />
-            <!-- Bright leading scanner line -->
-            <line x1="120" y1="120" x2="215" y2="120" stroke="url(#sweepLineGrad)" stroke-width="2" stroke-linecap="round" />
-            <circle cx="215" cy="120" r="3.5" fill="#10b981" />
-          </g>
-
-          <!-- Center Core Radar Beacon -->
-          <circle cx="120" cy="120" r="4.5" fill="#7c3aed" />
-          <circle cx="120" cy="120" r="2" fill="#ffffff" />
-
-          <!-- Detected Target Blips (Telemetry Signals) -->
-          <!-- Target 1 (Active Emerald) -->
-          <g transform="translate(165, 85)">
-            <circle cx="0" cy="0" r="3.5" fill="#10b981" />
-            <circle cx="0" cy="0" r="8" stroke="#10b981" stroke-width="1.2" stroke-opacity="0.75" class="animate-ping" style="animation-duration: 2s;" />
-          </g>
-
-          <!-- Target 2 (Secondary Purple) -->
-          <g transform="translate(75, 155)">
-            <circle cx="0" cy="0" r="3" fill="#7c3aed" />
-            <circle cx="0" cy="0" r="6" stroke="#7c3aed" stroke-width="1" stroke-opacity="0.6" class="animate-ping" style="animation-duration: 3s;" />
-          </g>
-
-          <!-- Telemetry Compass Labels (Crisp Micro-Typography) -->
-          <text x="120" y="33" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="700" fill="#7c3aed" fill-opacity="0.9">000°</text>
-          <text x="210" y="123" text-anchor="start" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="700" fill="#7c3aed" fill-opacity="0.9">090°</text>
-          <text x="120" y="213" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="700" fill="#7c3aed" fill-opacity="0.9">180°</text>
-          <text x="30" y="123" text-anchor="end" font-family="'JetBrains Mono', monospace" font-size="7.5" font-weight="700" fill="#7c3aed" fill-opacity="0.9">270°</text>
-
-          <text x="120" y="105" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="6.5" font-weight="700" fill="#10b981" fill-opacity="0.85" letter-spacing="1">SCAN // 360°</text>
-        </svg>
+      <!-- Clean SaaS Geometry Watermark (Concentric Orbit Rings) -->
+      <div class="absolute -right-8 -top-8 sm:-right-4 sm:top-1/2 sm:-translate-y-1/2 w-48 h-48 sm:w-56 sm:h-56 pointer-events-none flex items-center justify-center">
+        <!-- Outer solid circle -->
+        <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-full border-2 border-purple-200/90 flex items-center justify-center">
+          <!-- Middle dashed rotating circle -->
+          <div class="w-36 h-36 sm:w-42 sm:h-42 rounded-full border-2 border-dashed border-purple-300 animate-spin flex items-center justify-center" style="animation-duration: 35s;">
+            <!-- Inner solid circle -->
+            <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-2 border-purple-200/90 flex items-center justify-center">
+              <!-- Center solid ring -->
+              <div class="w-8 h-8 rounded-full border border-purple-300 bg-purple-50/60"></div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="relative z-10">
+      <div class="relative z-10 max-w-3xl">
         <div class="flex items-center space-x-2 text-xs font-mono text-purple-700 font-bold mb-2">
           <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_#10b981]"></span>
           <span class="bg-purple-50 text-purple-700 px-2.5 py-0.5 rounded-full border border-purple-200">WHX DIGITAL RECON // TELEMETRY SUITE</span>
@@ -428,24 +337,9 @@
           <i class="fa-solid fa-shield-halved text-emerald-600 text-2xl"></i>
           <span>Educational OSINT &amp; <span class="text-purple-600">Digital Footprint</span></span>
         </h1>
-        <p class="text-slate-600 text-xs md:text-sm mt-1.5 max-w-2xl leading-relaxed">
+        <p class="text-slate-600 text-xs md:text-sm mt-1.5 leading-relaxed">
           Defensive cyber research workbench: Real-time telecom routing, verified breach check &amp; password leak status, multi-platform identity mapping, and client-side binary EXIF forensics.
         </p>
-      </div>
-      
-      <div class="flex items-center gap-3 flex-wrap relative z-10">
-        <button id="openApiModalBtn" class="text-xs font-mono bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 px-3 py-2 rounded-xl transition-all flex items-center gap-1.5 cursor-pointer font-semibold shadow-sm" title="Configure Live Google API">
-          <i class="fa-brands fa-google text-[11px] text-blue-600"></i>
-          <span>Live Google API</span>
-        </button>
-        <span id="sessionAliasBadge" class="inline-flex items-center gap-1.5 text-xs font-mono bg-emerald-50 text-emerald-800 border border-emerald-200 px-3.5 py-2 rounded-xl font-bold shadow-sm">
-          <i class="fa-solid fa-user-shield text-emerald-600"></i>
-          <span id="sessionAliasText">admin</span>
-        </span>
-        <button id="lockSessionBtn" class="text-xs font-mono bg-rose-50 text-rose-700 border border-rose-200 px-3 py-2 rounded-xl hover:bg-rose-100 transition-all flex items-center gap-1.5 cursor-pointer font-semibold">
-          <i class="fa-solid fa-lock text-[10px]"></i>
-          <span>Lock Session</span>
-        </button>
       </div>
     </header>
 
@@ -1452,10 +1346,12 @@
         }
       });
 
-      lockSessionBtn.addEventListener('click', () => {
-        localStorage.removeItem('whx_osint_auth');
-        syncAuthState();
-      });
+      if (lockSessionBtn) {
+        lockSessionBtn.addEventListener('click', () => {
+          localStorage.removeItem('whx_osint_auth');
+          syncAuthState();
+        });
+      }
 
       // Google API Settings modal
       if (openApiModalBtn) {
