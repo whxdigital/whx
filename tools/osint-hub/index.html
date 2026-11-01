@@ -481,13 +481,13 @@
             </div>
 
             <div class="cyber-subcard p-4 rounded-2xl">
-              <div class="text-[11px] font-mono text-emerald-400 mb-1 flex items-center gap-1.5 font-semibold">
-                <i class="fa-brands fa-whatsapp"></i>
-                <span>WHATSAPP STATUS</span>
+              <div class="text-[11px] font-mono text-cyan-400 mb-1 flex items-center gap-1.5 font-semibold">
+                <i class="fa-solid fa-signal"></i>
+                <span>TOWER &amp; ROAMING SIGNAL</span>
               </div>
-              <div class="text-sm font-bold text-emerald-400 flex items-center gap-1.5" id="phoneWaStatusVal">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                <span>Active wa.me Link</span>
+              <div class="text-sm font-bold text-slate-300 flex items-center gap-1.5" id="phoneWaStatusVal">
+                <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                <span>Dynamic / Not Publicly Trackable</span>
               </div>
             </div>
           </div>
@@ -497,9 +497,9 @@
             <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3 flex-wrap gap-2">
               <span class="text-xs font-mono text-cyan-300 font-bold uppercase flex items-center gap-2">
                 <i class="fa-solid fa-sim-card text-cyan-400 text-base"></i>
-                <span>Verified Cellular SIM &amp; Network Routing Profile</span>
+                <span>Verified Cellular Prefix &amp; Telecom Series Allocation</span>
               </span>
-              <span class="text-[11px] font-mono text-emerald-400 bg-emerald-950/80 border border-emerald-500/40 px-2 py-0.5 rounded font-bold">PTA / ITU Allocated</span>
+              <span class="text-[11px] font-mono text-cyan-300 bg-cyan-950/80 border border-cyan-500/40 px-2 py-0.5 rounded font-bold">PTA / ITU-T Allocated Series</span>
             </div>
 
             <div class="flex flex-col md:flex-row items-start md:items-center gap-5">
@@ -511,13 +511,13 @@
                 <div class="flex items-center gap-2.5 flex-wrap">
                   <h3 id="simLiveNumber" class="text-lg font-bold text-white font-mono">+92 300 0000000</h3>
                   <span id="simCarrierBadge" class="text-xs font-mono text-cyan-300 bg-cyan-950 border border-cyan-500/40 px-2.5 py-0.5 rounded-full font-bold">Jazz PMCL</span>
-                  <span class="text-[11px] font-mono text-blue-300 bg-blue-950 border border-blue-500/40 px-2.5 py-0.5 rounded-full font-bold">Cellular GSM 4G/LTE</span>
+                  <span class="text-[11px] font-mono text-amber-300 bg-amber-950/80 border border-amber-500/40 px-2.5 py-0.5 rounded-full font-bold">Subject to MNP Porting</span>
                 </div>
-                <p id="simCircleDesc" class="text-xs text-slate-300">Primary Mobile Network Routing: Active subscriber line</p>
+                <p id="simCircleDesc" class="text-xs text-slate-300">PTA Original Block: Real-time cell tower signal and roaming location require direct telecommunication HLR access.</p>
                 <div class="flex flex-wrap gap-4 text-xs font-mono text-slate-400 pt-1">
                   <span><i class="fa-solid fa-network-wired text-cyan-400 mr-1"></i> MNC/MCC: <strong id="simMccVal" class="text-white">410-01</strong></span>
-                  <span><i class="fa-solid fa-location-dot text-rose-400 mr-1"></i> Circle: <strong id="simCircleVal" class="text-white">Islamabad / Punjab Circle</strong></span>
-                  <span><i class="fa-solid fa-tower-cell text-blue-400 mr-1"></i> Type: <strong class="text-white">Prepaid/Postpaid GSM</strong></span>
+                  <span><i class="fa-solid fa-location-dot text-rose-400 mr-1"></i> Series Region: <strong id="simCircleVal" class="text-white">Pakistan National Series (May be Roaming)</strong></span>
+                  <span><i class="fa-solid fa-tower-cell text-blue-400 mr-1"></i> Portability: <strong class="text-white">May be ported to another network</strong></span>
                 </div>
               </div>
 
@@ -532,6 +532,15 @@
                   <span>Open WhatsApp Profile</span>
                   <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
                 </a>
+              </div>
+            </div>
+
+            <!-- Roaming & Location Transparency Notice -->
+            <div class="p-3 bg-cyan-950/40 border border-cyan-500/20 rounded-xl text-xs text-slate-300 flex items-start gap-2.5">
+              <i class="fa-solid fa-circle-info text-cyan-400 mt-0.5 text-sm"></i>
+              <div>
+                <strong class="text-white">Real Telemetry &amp; Roaming Notice:</strong>
+                Public OSINT cannot ping live cellular BTS towers or track physical GPS locations. If this SIM is roaming abroad (outside Pakistan) or powered off, it will not register on local Pakistani towers. The data above reflects official ITU/PTA series allocations and links to live crowdsourced directories.
               </div>
             </div>
           </div>
@@ -583,13 +592,13 @@
                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-emerald-400"></i>
               </a>
 
-              <!-- Public SIM Owner & CNIC Dork -->
+              <!-- Public Web & Classifieds Footprint -->
               <a id="phoneSimOwnerBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-[#0a1636] border border-amber-500/30 rounded-xl text-slate-100 text-xs font-bold hover:border-amber-400">
                 <div class="flex items-center gap-2.5">
-                  <i class="fa-solid fa-id-card text-amber-400 text-lg"></i>
+                  <i class="fa-solid fa-globe text-amber-400 text-lg"></i>
                   <div>
-                    <div class="text-white">Public Directory &amp; CNIC Search</div>
-                    <div class="text-[10px] text-amber-400 font-normal">Public records &amp; classifieds</div>
+                    <div class="text-white">Web &amp; Classifieds Search</div>
+                    <div class="text-[10px] text-amber-400 font-normal">Matches real number formats</div>
                   </div>
                 </div>
                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px] text-amber-400"></i>
@@ -1470,29 +1479,29 @@
               country = '🇵🇰 Pakistan (+92)';
               const prefix = digits.substring(2, 5);
               if (['300','301','302','303','304','305','306','307','308','309'].includes(prefix)) {
-                carrier = 'Jazz (PMCL - Pakistan Mobile)';
-                mcc = '410-01 (Jazz)';
-                circle = 'Islamabad / Punjab Circle';
+                carrier = 'Jazz (PMCL - Series 0300 Block)';
+                mcc = '410-01 (Jazz Series)';
+                circle = 'Pakistan National Series (May be Roaming)';
               } else if (['310','311','312','313','314','315','316','317','318'].includes(prefix)) {
-                carrier = 'Zong 4G (CMPak)';
-                mcc = '410-04 (CMPak)';
-                circle = 'Nationwide 4G LTE';
+                carrier = 'Zong 4G (CMPak - Series 031X Block)';
+                mcc = '410-04 (CMPak Series)';
+                circle = 'Pakistan National Series (May be Roaming)';
               } else if (['340','341','342','343','344','345','346','347','348','349'].includes(prefix)) {
-                carrier = 'Telenor Pakistan (4G)';
-                mcc = '410-06 (Telenor)';
-                circle = 'KPK / Punjab Circle';
+                carrier = 'Telenor Pakistan (Series 034X Block)';
+                mcc = '410-06 (Telenor Series)';
+                circle = 'Pakistan National Series (May be Roaming)';
               } else if (['330','331','332','333','334','335','336','337'].includes(prefix)) {
-                carrier = 'Ufone 4G (PTCL Group)';
-                mcc = '410-03 (Ufone)';
-                circle = 'Nationwide GSM / LTE';
+                carrier = 'Ufone 4G (PTCL Group - Series 033X Block)';
+                mcc = '410-03 (Ufone Series)';
+                circle = 'Pakistan National Series (May be Roaming)';
               } else if (['320','321','322','323','324','325'].includes(prefix)) {
-                carrier = 'Warid Telecom (Jazz LTE)';
-                mcc = '410-07 (Warid)';
-                circle = 'Nationwide LTE';
+                carrier = 'Warid Telecom (Jazz Series 032X Block)';
+                mcc = '410-07 (Warid Series)';
+                circle = 'Pakistan National Series (May be Roaming)';
               } else {
                 carrier = 'Pakistan Mobile Network';
                 mcc = '410-XX';
-                circle = 'PTA Telecom Region';
+                circle = 'PTA National Series';
               }
             } else if (digits.startsWith('351')) {
               country = '🇵🇹 Portugal (+351)';
@@ -1532,6 +1541,29 @@
               circle = 'CITC Saudi Arabia';
             }
 
+            // Calculate realistic search formats for real web documents
+            let localFormat = raw;
+            let dashedFormat = raw;
+            let spacedFormat = raw;
+
+            if (digits.startsWith('92') && digits.length === 12) {
+              localFormat = '0' + digits.substring(2);
+              dashedFormat = '0' + digits.substring(2, 5) + '-' + digits.substring(5);
+              spacedFormat = '0' + digits.substring(2, 5) + ' ' + digits.substring(5);
+            } else if (digits.length === 11 && digits.startsWith('03')) {
+              localFormat = digits;
+              dashedFormat = digits.substring(0, 4) + '-' + digits.substring(4);
+              spacedFormat = digits.substring(0, 4) + ' ' + digits.substring(4);
+            } else if (digits.length === 10 && /^3[0-5]/.test(digits)) {
+              localFormat = '0' + digits;
+              dashedFormat = '0' + digits.substring(0, 3) + '-' + digits.substring(3);
+              spacedFormat = '0' + digits.substring(0, 3) + ' ' + digits.substring(3);
+            } else if (digits.length >= 9) {
+              localFormat = digits;
+              dashedFormat = digits.substring(0, 4) + '-' + digits.substring(4);
+              spacedFormat = digits.substring(0, 4) + ' ' + digits.substring(4);
+            }
+
             // Formatted display: e.g. +92 308 8833148
             let formattedDisplay = e164;
             if (digits.startsWith('92') && digits.length === 12) {
@@ -1555,7 +1587,7 @@
 
             if (simLiveNumber) simLiveNumber.textContent = formattedDisplay;
             if (simCarrierBadge) simCarrierBadge.textContent = carrier;
-            if (simCircleDesc) simCircleDesc.textContent = `Primary Mobile Network Routing: Active subscriber line (${carrier})`;
+            if (simCircleDesc) simCircleDesc.textContent = `PTA Series Allocation: Original prefix assignment (${carrier}). Live cellular tower and physical roaming state are not trackable via public OSINT.`;
             if (simMccVal) simMccVal.textContent = mcc;
             if (simCircleVal) simCircleVal.textContent = circle;
 
@@ -1567,10 +1599,10 @@
             if (phoneWaBtn) phoneWaBtn.href = `https://wa.me/${digits}`;
             if (phoneTcBtn) phoneTcBtn.href = tcUrl;
             if (phoneTcGoogleBtn) {
-              phoneTcGoogleBtn.href = `https://www.google.com/search?q=site:truecaller.com+%22${encodeURIComponent(e164)}%22+OR+%22${encodeURIComponent(raw)}%22+OR+%22${encodeURIComponent(digits)}%22`;
+              phoneTcGoogleBtn.href = `https://www.google.com/search?q=site:truecaller.com+"${encodeURIComponent(nationalDigits)}"+OR+site:truecaller.com+"${encodeURIComponent(localFormat)}"`;
             }
             if (phoneSimOwnerBtn) {
-              phoneSimOwnerBtn.href = `https://www.google.com/search?q=%22${encodeURIComponent(e164)}%22+("name"+OR+"sim+owner"+OR+"CNIC"+OR+"registered+to")`;
+              phoneSimOwnerBtn.href = `https://www.google.com/search?q="${encodeURIComponent(localFormat)}"+OR+"${encodeURIComponent(dashedFormat)}"+OR+"${encodeURIComponent(spacedFormat)}"+OR+"${encodeURIComponent(e164)}"`;
             }
             if (phoneSyncMeBtn) {
               phoneSyncMeBtn.href = `https://sync.me/search/?number=${encodeURIComponent(digits)}`;
@@ -1578,12 +1610,12 @@
             if (phoneTgBtn) phoneTgBtn.href = `https://t.me/+${digits}`;
 
             const dorks = [
-              { label: 'Exact Phone Quote (Google Search)', q: `"${raw}" OR "${e164}"` },
-              { label: 'Truecaller Cached Records', q: `site:truecaller.com "${e164}" OR "${raw}"` },
-              { label: 'SIM Owner & CNIC Directory', q: `"${e164}" (name OR "sim owner" OR CNIC)` },
-              { label: 'WhatsApp Mentions & Chats', q: `site:whatsapp.com "${digits}"` },
-              { label: 'Social Search (Facebook / LinkedIn)', q: `site:facebook.com OR site:linkedin.com "${raw}"` },
-              { label: 'Public Classifieds (OLX / Leaks)', q: `site:olx.com.pk OR site:pastebin.com "${raw}"` }
+              { label: 'All Format Web Search (Local & Int\'l)', q: `"${localFormat}" OR "${dashedFormat}" OR "${spacedFormat}"` },
+              { label: 'OLX Pakistan Classifieds & Ads', q: `site:olx.com.pk "${localFormat}" OR "${spacedFormat}"` },
+              { label: 'Facebook Profiles & Marketplace', q: `site:facebook.com "${localFormat}" OR "${spacedFormat}"` },
+              { label: 'WhatsApp Group Mentions & Invites', q: `site:chat.whatsapp.com "${localFormat}" OR "${digits}"` },
+              { label: 'Truecaller Cached Records', q: `site:truecaller.com "${nationalDigits}" OR "${localFormat}"` },
+              { label: 'Business & Contact Listings', q: `"${localFormat}" (contact OR address OR shop OR company)` }
             ];
 
             if (phoneDorksList) {
