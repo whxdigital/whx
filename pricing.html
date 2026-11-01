@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -46,6 +46,84 @@
         }
       ]
     }
+    
+      // Comprehensive 4-Slider Revenue Growth Simulator
+      (function initRoiSimulator() {
+        const dealValueSlider = document.getElementById("avg-deal-value");
+        const monthlySearchesSlider = document.getElementById("monthly-searches");
+        const mapShareSlider = document.getElementById("map-share-rate");
+        const aiCloseSlider = document.getElementById("ai-close-rate");
+
+        const valDealDisplay = document.getElementById("val-deal-display");
+        const valSearchesDisplay = document.getElementById("val-searches-display");
+        const valMapshareDisplay = document.getElementById("val-mapshare-display");
+        const valCloseDisplay = document.getElementById("val-close-display");
+
+        const roiMonthlyRev = document.getElementById("roi-monthly-rev");
+        const roiAnnualRev = document.getElementById("roi-annual-rev");
+        const roiCapturedCalls = document.getElementById("roi-captured-calls");
+        const roiClosedClients = document.getElementById("roi-closed-clients");
+        const roiMultiplier = document.getElementById("roi-multiplier");
+        const roiPresetChips = document.querySelectorAll(".roi-preset-chip");
+
+        const roiPresets = {
+          hvac: { deal: 1500, searches: 3500, mapShare: 35, closeRate: 30 },
+          dental: { deal: 3500, searches: 4500, mapShare: 40, closeRate: 35 },
+          legal: { deal: 5000, searches: 2200, mapShare: 35, closeRate: 25 },
+          roofing: { deal: 9000, searches: 2800, mapShare: 30, closeRate: 28 }
+        };
+
+        const calculateSimulator = () => {
+          if (!dealValueSlider || !monthlySearchesSlider) return;
+
+          const dealValue = parseFloat(dealValueSlider.value) || 1500;
+          const searches = parseFloat(monthlySearchesSlider.value) || 3500;
+          const mapShare = parseFloat(mapShareSlider ? mapShareSlider.value : 35) / 100;
+          const closeRate = parseFloat(aiCloseSlider ? aiCloseSlider.value : 30) / 100;
+
+          if (valDealDisplay) valDealDisplay.textContent = "$" + dealValue.toLocaleString();
+          if (valSearchesDisplay) valSearchesDisplay.textContent = searches.toLocaleString() + " searches/mo";
+          if (valMapshareDisplay) valMapshareDisplay.textContent = Math.round(mapShare * 100) + "% Territory Share";
+          if (valCloseDisplay) valCloseDisplay.textContent = Math.round(closeRate * 100) + "% Conversion";
+
+          const totalCapturedCalls = Math.round(searches * 0.40 * mapShare);
+          const newClosedClients = Math.round(totalCapturedCalls * closeRate);
+          const monthlyRevenue = newClosedClients * dealValue;
+          const annualRevenue = monthlyRevenue * 12;
+
+          const estimatedFee = 3500;
+          const roiMult = (monthlyRevenue / estimatedFee).toFixed(1);
+
+          if (roiMonthlyRev) roiMonthlyRev.textContent = "$" + monthlyRevenue.toLocaleString() + "/mo";
+          if (roiAnnualRev) roiAnnualRev.textContent = "$" + annualRevenue.toLocaleString() + "/yr";
+          if (roiCapturedCalls) roiCapturedCalls.textContent = "+" + totalCapturedCalls.toLocaleString() + " calls/mo";
+          if (roiClosedClients) roiClosedClients.textContent = newClosedClients.toLocaleString() + " clients/mo";
+          if (roiMultiplier) roiMultiplier.textContent = roiMult + "x Net ROI";
+        };
+
+        roiPresetChips.forEach((chip) => {
+          chip.addEventListener("click", () => {
+            roiPresetChips.forEach((c) => c.classList.remove("is-active"));
+            chip.classList.add("is-active");
+            const key = chip.getAttribute("data-roi-preset");
+            const preset = roiPresets[key];
+            if (preset) {
+              if (dealValueSlider) dealValueSlider.value = preset.deal;
+              if (monthlySearchesSlider) monthlySearchesSlider.value = preset.searches;
+              if (mapShareSlider) mapShareSlider.value = preset.mapShare;
+              if (aiCloseSlider) aiCloseSlider.value = preset.closeRate;
+              calculateSimulator();
+            }
+          });
+        });
+
+        if (dealValueSlider) dealValueSlider.addEventListener("input", calculateSimulator);
+        if (monthlySearchesSlider) monthlySearchesSlider.addEventListener("input", calculateSimulator);
+        if (mapShareSlider) mapShareSlider.addEventListener("input", calculateSimulator);
+        if (aiCloseSlider) aiCloseSlider.addEventListener("input", calculateSimulator);
+
+        calculateSimulator();
+      })();
     </script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -53,7 +131,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" /></noscript>
-    <link rel="stylesheet" href="style.min.css?v=20261008" />
+    <link rel="stylesheet" href="style.min.css?v=20261031g" />
+    <link rel="stylesheet" href="a11y-patch.css?v=20261031g" />
 
     <style>
       /* ===================================================================
@@ -938,6 +1017,113 @@
         </div>
       </section>
 
+      <!-- Interactive Local Search & AI Growth ROI Calculator (Full SaaS Standard) -->
+      <section class="roi-simulator-pricing-section" style="max-width:1200px; margin:50px auto 40px; padding:0 20px;">
+        <div style="text-align:center; max-width:760px; margin:0 auto 32px;">
+          <p class="kicker" style="color:#7c3aed; font-weight:800; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase;">REAL-TIME REVENUE MODEL</p>
+          <h2 style="font-family:'Space Grotesk',sans-serif; font-size:clamp(1.8rem,3vw,2.5rem); font-weight:800; color:#0f172a; margin:4px 0 10px;">Model Your Expected Growth &amp; Revenue</h2>
+          <p style="color:#475569; font-size:1rem; line-height:1.6;">Adjust deal value, monthly searches, and Google Maps market share to calculate your compounding annualized return on investment.</p>
+        </div>
+
+        <div class="gmp-interactive-mockup-wrapper roi-calculator-wrapper" id="roi-calculator">
+          <div class="mockup-header-strip">
+            <div class="mockup-title">
+              <span class="mockup-live-radar-icon roi-icon"><i class="fa-solid fa-calculator"></i></span>
+              <strong>WHX GROWTH REVENUE SIMULATOR // LOCAL SEARCH &amp; AI DOMINANCE IMPACT</strong>
+            </div>
+            <div class="mockup-status-tag"><i class="fa-solid fa-chart-line"></i> REAL-TIME COMPOUNDING REVENUE MODEL</div>
+          </div>
+
+          <!-- Industry Quick Presets -->
+          <div class="mockup-presets-bar">
+            <span class="preset-label"><i class="fa-solid fa-sliders"></i> SELECT BUSINESS MODEL:</span>
+            <div class="preset-chips-scroll">
+              <button type="button" class="preset-chip roi-preset-chip is-active" data-roi-preset="hvac"><i class="fa-solid fa-wrench"></i> Emergency Trades ($1,500/job)</button>
+              <button type="button" class="preset-chip roi-preset-chip" data-roi-preset="dental"><i class="fa-solid fa-tooth"></i> Cosmetic Dental ($3,500/case)</button>
+              <button type="button" class="preset-chip roi-preset-chip" data-roi-preset="legal"><i class="fa-solid fa-scale-balanced"></i> Corporate Law ($5,000/retainer)</button>
+              <button type="button" class="preset-chip roi-preset-chip" data-roi-preset="roofing"><i class="fa-solid fa-house-chimney"></i> Luxury Roofing ($9,000/project)</button>
+            </div>
+          </div>
+
+          <div class="mockup-body-grid roi-body-grid">
+            <!-- Left Column: Fine-Tuned Interactive Sliders -->
+            <div class="roi-inputs-col">
+              <div class="roi-input-group">
+                <div class="roi-label-row">
+                  <label for="avg-deal-value"><i class="fa-solid fa-dollar-sign"></i> Average Customer / Deal Value:</label>
+                  <strong id="val-deal-display">$1,500</strong>
+                </div>
+                <input type="range" id="avg-deal-value" min="300" max="15000" step="100" value="1500" class="roi-slider" aria-label="Average Customer or Deal Value in Dollars" />
+                <div class="slider-marks"><span>$300</span><span>$5,000</span><span>$10,000</span><span>$15,000+</span></div>
+              </div>
+
+              <div class="roi-input-group">
+                <div class="roi-label-row">
+                  <label for="monthly-searches"><i class="fa-solid fa-magnifying-glass"></i> Monthly High-Intent Local Searches:</label>
+                  <strong id="val-searches-display">3,500 searches/mo</strong>
+                </div>
+                <input type="range" id="monthly-searches" min="500" max="25000" step="250" value="3500" class="roi-slider" aria-label="Target Monthly High-Intent Local Searches" />
+                <div class="slider-marks"><span>500</span><span>5,000</span><span>15,000</span><span>25,000+</span></div>
+              </div>
+
+              <div class="roi-input-group">
+                <div class="roi-label-row">
+                  <label for="map-share-rate"><i class="fa-solid fa-map-pin"></i> Google 3-Pack Map Share Captured:</label>
+                  <strong id="val-mapshare-display">35% Territory Share</strong>
+                </div>
+                <input type="range" id="map-share-rate" min="15" max="65" step="5" value="35" class="roi-slider" aria-label="Percentage of Google Maps 3-Pack Share Captured" />
+                <div class="slider-marks"><span>15% (Low)</span><span>35% (Avg 3-Pack)</span><span>65% (#1 Dominant)</span></div>
+              </div>
+
+              <div class="roi-input-group">
+                <div class="roi-label-row">
+                  <label for="ai-close-rate"><i class="fa-solid fa-bolt"></i> AI Instant Response Lead Close Rate:</label>
+                  <strong id="val-close-display">30% Conversion</strong>
+                </div>
+                <input type="range" id="ai-close-rate" min="10" max="50" step="2" value="30" class="roi-slider" aria-label="Instant AI Response Lead Conversion Close Rate" />
+                <div class="slider-marks"><span>10% (Slow manual)</span><span>30% (&lt;15s AI Response)</span><span>50% (High-intent)</span></div>
+              </div>
+            </div>
+
+            <!-- Right Column: Real-Time Calculated Revenue Dashboard -->
+            <div class="roi-outputs-col">
+              <div class="roi-output-card">
+                <div class="roi-output-item highlight">
+                  <span><i class="fa-solid fa-coins"></i> Projected New Monthly Revenue:</span>
+                  <strong id="roi-monthly-rev">$64,800/mo</strong>
+                </div>
+                <div class="roi-output-item">
+                  <span><i class="fa-solid fa-arrow-trend-up"></i> Compounding Annualized Growth:</span>
+                  <strong id="roi-annual-rev">$777,600/yr</strong>
+                </div>
+                <div class="roi-output-item">
+                  <span><i class="fa-solid fa-phone-volume"></i> Additional Captured Calls:</span>
+                  <strong id="roi-captured-calls">+490 calls/mo</strong>
+                </div>
+                <div class="roi-output-item">
+                  <span><i class="fa-solid fa-user-check"></i> New Booked Clients:</span>
+                  <strong id="roi-closed-clients">43 clients/mo</strong>
+                </div>
+                <div class="roi-output-item">
+                  <span><i class="fa-solid fa-chart-pie"></i> Estimated ROI Multiple:</span>
+                  <strong id="roi-multiplier">16.8x Net ROI</strong>
+                </div>
+
+                <div class="roi-leakage-prevented-pill">
+                  <i class="fa-solid fa-shield-check"></i>
+                  <span><strong>100% Inbound Lead Retention:</strong> Zero lost calls due to &lt;15s instant AI agent engagement.</span>
+                </div>
+
+                <a href="contact.html" class="roi-action-btn">
+                  <span>Claim Your Territory Dominance Audit</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Second Section: How Engagement Works -->
       <section class="how-it-works-section">
         <div class="how-it-works-inner">
@@ -1181,63 +1367,122 @@
     </main>
 
     <!-- Master Approved Footer -->
-        <footer class="site-footer">
+                                    <footer class="site-footer" id="siteFooter">
+      <!-- Pre-footer CTA teaser strip (Centered) -->
+      <div class="footer-cta-strip" style="text-align:center !important; margin:0 auto 54px !important; max-width:1040px !important; padding:0 20px !important; width:100% !important; box-sizing:border-box !important;">
+        <div class="footer-cta-inner" style="display:flex !important; flex-direction:column !important; align-items:center !important; justify-content:center !important; text-align:center !important; padding:48px 36px !important; border-radius:24px !important; background:linear-gradient(135deg, #0b1120 0%, #0f172a 50%, #1e1b4b 100%) !important; border:1px solid rgba(124, 58, 237, 0.35) !important; box-shadow:0 20px 45px -10px rgba(15, 23, 42, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05) !important; position:relative !important; overflow:hidden !important; width:100% !important; box-sizing:border-box !important;">
+          <!-- Ambient Glow Background -->
+          <div style="position:absolute !important; top:-120px !important; left:50% !important; transform:translateX(-50%) !important; width:450px !important; height:240px !important; background:radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, rgba(124, 58, 237, 0.18) 50%, transparent 70%) !important; filter:blur(40px) !important; pointer-events:none !important;" aria-hidden="true"></div>
+
+          <div class="footer-cta-copy" style="display:flex !important; flex-direction:column !important; align-items:center !important; justify-content:center !important; text-align:center !important; margin:0 auto 28px !important; width:100% !important; max-width:820px !important; position:relative !important; z-index:2 !important;">
+            <div class="footer-live-badge-wrapper" style="display:flex !important; justify-content:center !important; width:100% !important; margin-bottom:16px !important;">
+              <span class="footer-live-badge" style="display:inline-flex !important; align-items:center !important; gap:8px !important; background:rgba(16, 185, 129, 0.14) !important; color:#34d399 !important; border:1px solid rgba(16, 185, 129, 0.35) !important; border-radius:999px !important; padding:6px 16px !important; font-size:0.75rem !important; font-weight:800 !important; letter-spacing:0.08em !important; text-transform:uppercase !important;">
+                <span class="status-pulse-dot" style="width:7px !important; height:7px !important; border-radius:50% !important; background:#10b981 !important; box-shadow:0 0 10px #10b981 !important;"></span>
+                <span>ZERO-LATENCY TELEMETRY</span>
+              </span>
+            </div>
+            <h3 class="footer-cta-title" style="text-align:center !important; margin:0 auto 14px !important; width:100% !important; display:block !important; color:#ffffff !important; font-family:'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important; font-size:2.05rem !important; font-weight:800 !important; line-height:1.3 !important; letter-spacing:-0.025em !important; text-shadow:0 2px 10px rgba(0,0,0,0.3) !important;">Ready to outrank local competitors &amp; automate inbound leads?</h3>
+            <p class="footer-cta-desc" style="text-align:center !important; margin:0 auto !important; width:100% !important; display:block !important; color:#cbd5e1 !important; font-size:1.06rem !important; line-height:1.65 !important; font-weight:400 !important; max-width:680px !important;">Run your instant Google 3-Pack, live DNS, and AI Search (GEO) audit in under 1.4 seconds.</p>
+          </div>
+          <div class="footer-cta-actions" style="display:flex !important; align-items:center !important; justify-content:center !important; gap:16px !important; margin:0 auto !important; width:100% !important; flex-wrap:wrap !important; position:relative !important; z-index:2 !important;">
+            <a href="tools/geo-score-checker/index.html" class="button button-primary footer-btn-primary" style="background:linear-gradient(135deg, #10b981 0%, #059669 100%) !important; color:#ffffff !important; border:none !important; padding:15px 32px !important; border-radius:12px !important; font-weight:700 !important; font-size:0.98rem !important; display:inline-flex !important; align-items:center !important; gap:10px !important; box-shadow:0 8px 24px rgba(16, 185, 129, 0.4) !important; text-decoration:none !important; transition:all 0.2s ease !important;">
+              <i class="fa-solid fa-wand-magic-sparkles" style="color:#ffffff !important; font-size:0.95rem !important;" aria-hidden="true"></i>
+              <span style="color:#ffffff !important; font-weight:700 !important; font-size:0.98rem !important;">Free GEO Checker</span>
+            </a>
+            <a href="contact.html" class="button button-secondary footer-btn-secondary" style="background:rgba(255, 255, 255, 0.08) !important; color:#ffffff !important; border:1.5px solid rgba(255, 255, 255, 0.22) !important; padding:15px 30px !important; border-radius:12px !important; font-weight:700 !important; font-size:0.98rem !important; display:inline-flex !important; align-items:center !important; gap:10px !important; backdrop-filter:blur(8px) !important; box-shadow:0 4px 14px rgba(0, 0, 0, 0.15) !important; text-decoration:none !important; transition:all 0.2s ease !important;">
+              <i class="fa-solid fa-calendar-check" style="color:#38bdf8 !important; font-size:0.95rem !important;" aria-hidden="true"></i>
+              <span style="color:#ffffff !important; font-weight:700 !important; font-size:0.98rem !important;">Book Strategy Session</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
       <div class="site-footer-inner">
-        <div class="site-footer-grid" style="display:grid; grid-template-columns:1.3fr 1fr 1fr 1fr; gap:36px;">
+        <div class="site-footer-grid">
           <!-- Col 1: Brand & Authority -->
           <div class="site-footer-col footer-brand-col">
-            <strong class="footer-name">WHX Digital</strong>
-            <p class="footer-tagline">Dual-engine digital growth: Dominant Local SEO &amp; Google Maps rankings powered by 24/7 AI business automation.</p>
-            <div class="footer-badges" style="display:flex; flex-direction:column; gap:10px; width:100%; max-width:260px;">
-              <span class="footer-badge" style="display:flex; align-items:center; gap:10px; width:100%; box-sizing:border-box; padding:9px 14px; border-radius:8px; background:rgba(124,58,237,0.12); border:1px solid rgba(124,58,237,0.28); color:#c4b5fd; font-size:0.8rem; font-weight:600;"><i class="fa-solid fa-location-dot" style="color:#a78bfa; width:18px; text-align:center;"></i> Google 3-Pack Specialist</span>
-              <span class="footer-badge" style="display:flex; align-items:center; gap:10px; width:100%; box-sizing:border-box; padding:9px 14px; border-radius:8px; background:rgba(124,58,237,0.12); border:1px solid rgba(124,58,237,0.28); color:#c4b5fd; font-size:0.8rem; font-weight:600;"><i class="fa-solid fa-shield-halved" style="color:#a78bfa; width:18px; text-align:center;"></i> Reliable Automation</span>
-              <span class="footer-badge" style="display:flex; align-items:center; gap:10px; width:100%; box-sizing:border-box; padding:9px 14px; border-radius:8px; background:rgba(124,58,237,0.12); border:1px solid rgba(124,58,237,0.28); color:#c4b5fd; font-size:0.8rem; font-weight:600;"><i class="fa-solid fa-hand-paper" style="color:#a78bfa; width:18px; text-align:center;"></i> HITL Guardrails</span>
+            <div class="footer-brand-header">
+              <a href="index.html" class="footer-brand-link" aria-label="WHX Digital Homepage" style="display:inline-flex !important; align-items:center !important; gap:10px !important; text-decoration:none !important;">
+                <svg class="footer-brand-logo-svg" width="34" height="34" viewBox="0 0 32 32" fill="#10b981" style="color:#10b981 !important; fill:#10b981 !important; flex-shrink:0 !important;" aria-hidden="true">
+                  <rect x="6" y="8" width="14" height="18" rx="2" fill="currentColor" opacity="0.9"></rect>
+                  <rect x="9" y="6" width="14" height="18" rx="2" fill="currentColor" opacity="0.7"></rect>
+                  <rect x="12" y="4" width="14" height="18" rx="2" fill="currentColor" opacity="0.5"></rect>
+                  <path d="M19 12 L20 15 L23 15 L20.5 17 L21.5 20 L19 18 L16.5 20 L17.5 17 L15 15 L18 15 Z" fill="currentColor" opacity="0.3"></path>
+                </svg>
+                <span class="footer-name" style="font-family:'Space Grotesk', -apple-system, sans-serif !important; font-size:1.55rem !important; font-weight:900 !important; text-decoration:none !important; display:inline-flex !important; align-items:center !important;"><span class="brand-whx" style="color:#0f172a !important; font-weight:900 !important;">WHX</span><strong class="brand-sub" style="color:#10b981 !important; font-weight:900 !important; margin-left:3px !important;">DIGITAL</strong></span>
+              </a>
+            </div>
+            <p class="footer-tagline" style="color:#1e293b !important; font-size:0.94rem !important; line-height:1.65 !important; font-weight:500 !important;">Dual-engine digital growth: Dominant Local SEO &amp; Google Maps rankings powered by 24/7 autonomous AI business automation.</p>
+            <div class="footer-badges">
+              <div class="footer-badge">
+                <i class="fa-solid fa-location-dot badge-icon badge-icon-purple" aria-hidden="true"></i>
+                <span class="badge-text">Google 3-Pack Specialist</span>
+              </div>
+              <div class="footer-badge">
+                <i class="fa-solid fa-shield-halved badge-icon badge-icon-emerald" aria-hidden="true"></i>
+                <span class="badge-text">100% Reliable Automation</span>
+              </div>
+              <div class="footer-badge">
+                <i class="fa-solid fa-fingerprint badge-icon badge-icon-sky" aria-hidden="true"></i>
+                <span class="badge-text">HITL Guardrails Protected</span>
+              </div>
             </div>
           </div>
 
-          <!-- Col 2: Search & Local Dominance (6 items) -->
+          <!-- Col 2: Search & Local Dominance (7 items with colored icons) -->
           <div class="site-footer-col">
-            <h4>Search &amp; Local SEO</h4>
-            <ul>
-              <li><a href="index.html#search-services">Local SEO Domination</a></li>
-              <li><a href="index.html#search-services">Google Maps (GMP) 3-Pack</a></li>
-              <li><a href="index.html#search-services">Citation Building &amp; Sync</a></li>
-              <li><a href="index.html#search-services">Authority Link Building</a></li>
-              <li><a href="tools/website-audit/index.html">Free Website Audit</a></li>
-              <li><a href="reviews.html">Client Success Proof</a></li>
+            <h3 class="footer-heading">
+              <span class="heading-icon-wrap icon-blue"><i class="fa-solid fa-map-pin" aria-hidden="true"></i></span>
+              <span>Search &amp; Local SEO</span>
+            </h3>
+            <ul class="footer-nav-list">
+              <li><a href="services.html#search-services"><i class="fa-solid fa-magnifying-glass-chart item-icon" style="color:#3b82f6;" aria-hidden="true"></i><span>Local SEO Domination</span></a></li>
+              <li><a href="services.html#live-local-radar"><i class="fa-solid fa-map-location-dot item-icon" style="color:#ef4444;" aria-hidden="true"></i><span>Google Maps 3-Pack Radar</span></a></li>
+              <li><a href="services.html#search-services"><i class="fa-solid fa-arrows-rotate item-icon" style="color:#10b981;" aria-hidden="true"></i><span>Citation Building &amp; Sync</span></a></li>
+              <li><a href="services.html#search-services"><i class="fa-solid fa-link item-icon" style="color:#8b5cf6;" aria-hidden="true"></i><span>Authority Link Building</span></a></li>
+              <li><a href="tools/index.html"><i class="fa-solid fa-gauge-high item-icon" style="color:#f59e0b;" aria-hidden="true"></i><span>Free Telemetry Tools</span></a></li>
+              <li><a href="tools/website-audit/index.html"><i class="fa-solid fa-laptop-code item-icon" style="color:#06b6d4;" aria-hidden="true"></i><span>Free Website Audit</span></a></li>
+              <li><a href="reviews.html"><i class="fa-solid fa-award item-icon" style="color:#eab308;" aria-hidden="true"></i><span>Client Success Proof</span></a></li>
             </ul>
           </div>
 
-          <!-- Col 3: Autonomous AI Systems (6 items) -->
+          <!-- Col 3: Autonomous AI Systems (6 items with colored icons) -->
           <div class="site-footer-col">
-            <h4>AI Systems &amp; Ops</h4>
-            <ul>
-              <li><a href="architecture.html">AI Agent Systems</a></li>
-              <li><a href="multi-agent.html">Multi-Agent Workforce</a></li>
-              <li><a href="ai-crm-automation.html">AI CRM Automation</a></li>
-              <li><a href="n8n-automation.html">n8n Workflow Engines</a></li>
-              <li><a href="voice.html">Real-Time Voice AI</a></li>
-              <li><a href="knowledge.html">RAG Knowledge Systems</a></li>
+            <h3 class="footer-heading">
+              <span class="heading-icon-wrap icon-purple"><i class="fa-solid fa-robot" aria-hidden="true"></i></span>
+              <span>AI Systems &amp; Ops</span>
+            </h3>
+            <ul class="footer-nav-list">
+              <li><a href="architecture.html"><i class="fa-solid fa-network-wired item-icon" style="color:#8b5cf6;" aria-hidden="true"></i><span>AI Agent Architecture</span></a></li>
+              <li><a href="multi-agent.html"><i class="fa-solid fa-users-gear item-icon" style="color:#3b82f6;" aria-hidden="true"></i><span>Multi-Agent Workforce</span></a></li>
+              <li><a href="ai-crm-automation.html"><i class="fa-solid fa-database item-icon" style="color:#10b981;" aria-hidden="true"></i><span>AI CRM Automation</span></a></li>
+              <li><a href="services.html"><i class="fa-solid fa-diagram-project item-icon" style="color:#f97316;" aria-hidden="true"></i><span>Intelligent Workflows</span></a></li>
+              <li><a href="voice.html"><i class="fa-solid fa-microphone-lines item-icon" style="color:#ec4899;" aria-hidden="true"></i><span>Real-Time Voice AI</span></a></li>
+              <li><a href="knowledge.html"><i class="fa-solid fa-brain item-icon" style="color:#a855f7;" aria-hidden="true"></i><span>RAG Knowledge Systems</span></a></li>
             </ul>
           </div>
 
-          <!-- Col 4: Connect & Company (6 items) -->
+          <!-- Col 4: Connect & Support (7 items with colored icons) -->
           <div class="site-footer-col footer-contact-col">
-            <h4>Connect &amp; Company</h4>
-            <ul class="footer-contact-links">
-              <li><a href="about.html"><i class="fa-solid fa-building"></i> About WHX Digital</a></li>
-              <li><a href="contact.html"><i class="fa-solid fa-calendar-check"></i> Book Strategy Session</a></li>
-              <li><a href="https://wa.me/351928350275" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp brand-icon brand-whatsapp" style="color:#22c55e !important;"></i> WhatsApp Direct</a></li>
-              <li><a href="insights/ai-automation-architecture/index.html"><i class="fa-solid fa-layer-group"></i> Architecture Insight</a></li>
-              <li><a href="mailto:info@whxdigital.com"><i class="fa-solid fa-envelope"></i> info@whxdigital.com</a></li>
-              <li><a href="mailto:info@whxdigital.com"><i class="fa-solid fa-paper-plane" style="color:#38bdf8;"></i> info@whxdigital.com</a></li>
+            <h3 class="footer-heading">
+              <span class="heading-icon-wrap icon-emerald"><i class="fa-solid fa-bolt" aria-hidden="true"></i></span>
+              <span>Connect &amp; Support</span>
+            </h3>
+            <ul class="footer-nav-list footer-contact-links">
+              <li><a href="about.html"><i class="fa-solid fa-building item-icon" style="color:#64748b;" aria-hidden="true"></i><span>About WHX Digital</span></a></li>
+              <li><a href="contact.html"><i class="fa-solid fa-calendar-check item-icon" style="color:#f59e0b;" aria-hidden="true"></i><span>Book Strategy Session</span></a></li>
+              <li><a href="https://wa.me/351928350275" target="_blank" rel="noopener noreferrer" class="footer-wa-link"><i class="fa-brands fa-whatsapp item-icon" style="color:#22c55e;" aria-hidden="true"></i><span>WhatsApp Direct Support</span><span class="wa-badge">DIRECT</span></a></li>
+              <li><a href="insights/ai-automation-architecture/index.html"><i class="fa-solid fa-layer-group item-icon" style="color:#8b5cf6;" aria-hidden="true"></i><span>Architecture Insights</span></a></li>
+              <li><a href="tools/geo-score-checker/index.html"><i class="fa-solid fa-gauge-high item-icon" style="color:#06b6d4;" aria-hidden="true"></i><span>Free GEO &amp; AIO Checker</span></a></li>
+              <li><a href="tools/osint-hub/index.html"><i class="fa-solid fa-shield-halved item-icon" style="color:#10b981;" aria-hidden="true"></i><span>Educational OSINT</span></a></li>
+              <li><a href="mailto:info@whxdigital.com" class="footer-email-link"><i class="fa-solid fa-envelope item-icon" style="color:#0284c7;" aria-hidden="true"></i><span>info@whxdigital.com</span></a></li>
             </ul>
           </div>
         </div>
 
         <div class="site-footer-bottom">
           <div class="footer-legal">
-            <span>&copy; 2026 WHX Digital. All rights reserved.</span>
+            <span class="footer-copyright">&copy; 2026 <strong>WHX Digital</strong>. All rights reserved.</span>
             <div class="legal-links">
               <a href="privacy.html">Privacy Policy</a>
               <a href="terms.html">Terms of Service</a>
@@ -1246,15 +1491,15 @@
             </div>
           </div>
           <div class="footer-social">
-            <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-            <a href="https://www.linkedin.com/in/whxdigital/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://github.com/" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="#" aria-label="WHX Digital on X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+            <a href="https://www.linkedin.com/in/whxdigital/" aria-label="WHX Digital on LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+            <a href="https://github.com/" aria-label="WHX Digital on GitHub" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
           </div>
         </div>
       </div>
     </footer>
 
-    <script src="script.js?v=20261008"></script>
+    <script src="script.js?v=20261031g"></script>
 
     <script>
       // Interactive Engagement Filter Selector
@@ -1301,3 +1546,4 @@
     </script>
   </body>
 </html>
+

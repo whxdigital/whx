@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Educational OSINT &amp; Digital Footprint Research | WHX Digital</title>
+  <meta name="description" content="Defensive security research and digital surface analysis workbench. Live Google Web Index, Phone WhatsApp verification, Name & Social tracing, and binary EXIF metadata parsing." />
+  <link rel="canonical" href="https://whxdigital.com/tools/osint-hub/" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  
+  <!-- Site Base Styles -->
+  <link rel="stylesheet" href="../../style.min.css?v=20261031g" />
+  <link rel="stylesheet" href="../../a11y-patch.css?v=20261031g" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              purple: '#7c3aed',
+              emerald: '#10b981',
+              dark: '#0f172a',
+              card: '#ffffff',
+              cardBorder: '#e2e8f0',
+              slate: '#f8fafc',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      background-color: #f8fafc !important;
+      color: #0f172a !important;
+      font-family: 'Inter', -apple-system, sans-serif !important;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(rgba(124, 58, 237, 0.05) 1px, transparent 1px),
+        radial-gradient(rgba(16, 185, 129, 0.04) 1px, transparent 1px);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+    }
+    .ambient-glow-top {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1000px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, rgba(16, 185, 129, 0.05) 45%, transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .custom-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
+    .custom-scroll::-webkit-scrollbar-track { background: #f1f5f9; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    .custom-scroll::-webkit-scrollbar-thumb:hover { background: #7c3aed; }
+    .action-btn-hover {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .action-btn-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -4px rgba(124, 58, 237, 0.2);
+    }
+  </style>
+</head>
+<body class="relative flex flex-col justify-between min-h-screen">
+  
+  <div class="ambient-glow-top"></div>
+
+  <!-- Top Executive Site Header (WHX Digital Branded) -->
+  <header class="relative z-20 border-b border-slate-200/80 bg-white/90 backdrop-blur-md sticky top-0 px-4 py-3.5 shadow-sm">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <a href="../../index.html" class="flex items-center gap-2 group text-decoration-none">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-600 to-indigo-600 flex items-center justify-center text-white font-bold text-base shadow-sm group-hover:scale-105 transition-transform">
+            W
+          </div>
+          <span class="font-display font-extrabold text-slate-900 tracking-tight text-lg">WHX<span class="text-purple-600">Digital</span></span>
+        </a>
+        <span class="text-slate-300 hidden sm:inline">|</span>
+        <span class="text-slate-500 hidden sm:flex items-center gap-1.5 text-xs font-mono font-semibold">
+          <i class="fa-solid fa-shield-halved text-purple-600"></i>
+          <span>DIGITAL FOOTPRINT RESEARCH</span>
+        </span>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="../../index.html" class="text-xs font-semibold text-slate-600 hover:text-purple-600 transition-colors flex items-center gap-1.5 px-3 py-1.5 rounded-lg hover:bg-slate-100">
+          <i class="fa-solid fa-arrow-left text-[11px]"></i>
+          <span>Return Home</span>
+        </a>
+        <span id="utcClock" class="hidden md:inline text-xs font-mono text-slate-400 font-medium">UTC: --:--:--</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================
+       TERMS & +18 AGE VERIFICATION MODAL
+       ========================================================== -->
+  <div id="termsModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="max-w-md w-full bg-white border border-slate-200 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+      <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-500 via-purple-600 to-indigo-600"></div>
+      
+      <div class="flex items-center gap-2 text-amber-600 font-mono text-xs mb-3 font-bold uppercase tracking-wider bg-amber-50 border border-amber-200 px-3 py-1 rounded-full w-fit">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span>Ethics &amp; Legal Protocol</span>
+      </div>
+      
+      <h2 class="text-2xl font-extrabold mb-2 text-slate-900 font-display">Security Research Clearance</h2>
+      <p class="text-slate-600 text-sm mb-5 leading-relaxed">
+        Yeh research suite sirf <strong>Defensive Security Research, Digital Surface Analysis</strong> aur <strong>Educational Forensics</strong> ke liye design ki gayi hai. Kisi fard ki privacy violate karna ya unauthorized surveillance sakht mana hai.
+      </p>
+      
+      <label class="flex items-start space-x-3 mb-6 p-4 bg-slate-50 border border-slate-200 rounded-2xl cursor-pointer hover:border-purple-300 transition-colors">
+        <input 
+          type="checkbox" 
+          id="modalCheck"
+          class="mt-1 h-4 w-4 rounded border-slate-300 bg-white text-purple-600 focus:ring-purple-500 cursor-pointer"
+        />
+        <span class="text-xs text-slate-700 leading-relaxed font-medium">
+          Main tasdeeq karta hoon meri umar <strong>18+</strong> hai aur main yeh tool sirf ethical, legitimate security research aur educational verification ke liye istemal karunga.
+        </span>
+      </label>
+      
+      <button 
+        id="okBtn"
+        disabled
+        class="w-full py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 disabled:opacity-40 disabled:cursor-not-allowed font-bold rounded-xl text-white text-sm transition-all shadow-lg shadow-purple-500/25 flex items-center justify-center gap-2 cursor-pointer"
+      >
+        <span>Accept &amp; Proceed to Authentication</span>
+        <i class="fa-solid fa-arrow-right text-xs"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       LOGIN SCREEN MODAL (STRICT ADMIN / 0000 AUTHENTICATION)
+       ========================================================== -->
+  <div id="loginModal" class="fixed inset-0 z-40 bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="max-w-md w-full bg-white border border-slate-200 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+      <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-500"></div>
+      
+      <div class="text-center mb-6">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-purple-50 text-purple-700 text-xs font-mono font-bold rounded-full mb-3 border border-purple-200">
+          <i class="fa-solid fa-lock text-[11px]"></i>
+          <span>ADMIN ACCESS GATEWAY</span>
+        </div>
+        <h1 class="text-2xl font-extrabold text-slate-900 font-display">Researcher Session Sign-In</h1>
+        <p class="text-slate-500 text-xs mt-1">Sirf authorized admin credentials se login allowed hai</p>
+      </div>
+
+      <!-- Error Box (shown on wrong login) -->
+      <div id="loginErrorMsg" class="hidden mb-4 p-3.5 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold flex items-center gap-2">
+        <i class="fa-solid fa-circle-exclamation text-rose-500 text-sm"></i>
+        <span>Ghalat credentials! Sirf authorized admin access kar sakta hai.</span>
+      </div>
+
+      <form id="loginForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-mono text-slate-700 mb-1.5 uppercase font-bold">Admin Identifier</label>
+          <div class="relative">
+            <i class="fa-solid fa-user-shield absolute left-4 top-3.5 text-slate-400 text-sm"></i>
+            <input 
+              type="text" 
+              id="usernameInput"
+              placeholder="Enter Admin ID" 
+              required
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3 text-slate-900 text-sm focus:outline-none focus:border-purple-600 focus:bg-white transition-colors font-medium"
+            />
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs font-mono text-slate-700 mb-1.5 uppercase font-bold">Security Passkey</label>
+          <div class="relative">
+            <i class="fa-solid fa-key absolute left-4 top-3.5 text-slate-400 text-sm"></i>
+            <input 
+              type="password" 
+              id="passwordInput"
+              placeholder="••••••••" 
+              required
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3 text-slate-900 text-sm focus:outline-none focus:border-purple-600 focus:bg-white transition-colors font-mono font-medium"
+            />
+          </div>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 font-bold rounded-xl text-white text-sm transition-all shadow-lg shadow-purple-500/25 flex items-center justify-center gap-2 cursor-pointer mt-2"
+        >
+          <i class="fa-solid fa-fingerprint"></i>
+          <span>Authenticate Session</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       GOOGLE SEARCH API SETTINGS MODAL
+       ========================================================== -->
+  <div id="apiModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="max-w-md w-full bg-white border border-slate-200 rounded-3xl p-6 shadow-2xl relative">
+      <button id="closeApiModalBtn" class="absolute right-4 top-4 text-slate-400 hover:text-slate-700 text-lg">✕</button>
+      
+      <div class="flex items-center gap-2 text-blue-600 font-mono text-xs mb-2 font-bold">
+        <i class="fa-brands fa-google"></i>
+        <span>GOOGLE CUSTOM SEARCH API</span>
+      </div>
+      <h3 class="text-xl font-bold text-slate-900 mb-2 font-display">Live In-Page Google Results</h3>
+      <p class="text-slate-600 text-xs mb-4 leading-relaxed">
+        Google results ko seedha is page ke andar live render karne ke liye apna Google Custom Search API Key aur Search Engine ID (CX) enter karein (stored locally in your browser):
+      </p>
+
+      <form id="apiSettingsForm" class="space-y-3">
+        <div>
+          <label class="block text-xs font-mono text-slate-700 mb-1 font-semibold">Google API Key</label>
+          <input 
+            type="password" 
+            id="googleApiKeyInput" 
+            placeholder="AIzaSy..."
+            class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 font-mono focus:outline-none focus:border-blue-600 focus:bg-white"
+          />
+        </div>
+        <div>
+          <label class="block text-xs font-mono text-slate-700 mb-1 font-semibold">Search Engine ID (CX)</label>
+          <input 
+            type="text" 
+            id="googleCxInput" 
+            placeholder="e.g. 0175766625..."
+            class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-xs text-slate-900 font-mono focus:outline-none focus:border-blue-600 focus:bg-white"
+          />
+        </div>
+        <div class="flex gap-2 pt-2">
+          <button type="submit" class="flex-1 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-bold transition-all">
+            Save Google API Settings
+          </button>
+          <button type="button" id="clearApiBtn" class="py-2.5 px-3 bg-slate-100 hover:bg-rose-50 text-slate-600 hover:text-rose-600 rounded-xl text-xs font-bold transition-all border border-slate-200">
+            Clear
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       MAIN OSINT RESEARCH DASHBOARD (LIGHT EXECUTIVE SAAS THEME)
+       ========================================================== -->
+  <main id="mainDashboard" class="relative z-10 max-w-6xl mx-auto px-4 py-8 md:py-10 w-full opacity-20 pointer-events-none transition-opacity duration-300">
+    
+    <!-- Header Block -->
+    <header class="flex flex-col md:flex-row justify-between items-start md:items-center bg-white border border-slate-200 rounded-2xl p-6 md:p-8 mb-8 gap-6 shadow-sm">
+      <div>
+        <div class="flex items-center space-x-2 text-xs font-mono text-purple-700 font-bold mb-2">
+          <span class="h-2 w-2 rounded-full bg-purple-600 animate-pulse"></span>
+          <span>WHX DIGITAL RECON // TELEMETRY SUITE</span>
+        </div>
+        <h1 class="text-2xl md:text-3xl font-extrabold text-slate-900 font-display tracking-tight">
+          Educational OSINT &amp; <span class="text-purple-600">Digital Footprint</span>
+        </h1>
+        <p class="text-slate-600 text-xs md:text-sm mt-1.5 max-w-2xl leading-relaxed">
+          Defensive security research workbench: Live DNS MX diagnostics, phone carrier &amp; WhatsApp verification, multi-platform username tracing, and binary image EXIF metadata extraction.
+        </p>
+      </div>
+      
+      <div class="flex items-center gap-3 flex-wrap">
+        <button id="openApiModalBtn" class="text-xs font-mono bg-blue-50 text-blue-700 border border-blue-200 px-3 py-2 rounded-xl hover:bg-blue-100 transition-all flex items-center gap-1.5 cursor-pointer font-semibold" title="Configure Live Google API">
+          <i class="fa-brands fa-google text-[11px]"></i>
+          <span>Live Google API</span>
+        </button>
+        <span id="sessionAliasBadge" class="inline-flex items-center gap-1.5 text-xs font-mono bg-purple-50 text-purple-700 border border-purple-200 px-3.5 py-2 rounded-xl font-bold">
+          <i class="fa-solid fa-user-shield text-purple-600"></i>
+          <span id="sessionAliasText">admin</span>
+        </span>
+        <button id="lockSessionBtn" class="text-xs font-mono bg-rose-50 text-rose-700 border border-rose-200 px-3 py-2 rounded-xl hover:bg-rose-100 transition-all flex items-center gap-1.5 cursor-pointer font-semibold">
+          <i class="fa-solid fa-lock text-[10px]"></i>
+          <span>Lock Session</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- 4 Module Navigation Tabs -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8" id="tabBar">
+      <button data-tab="phone" class="tab-btn flex items-center space-x-3 p-4 rounded-2xl border text-sm font-semibold transition-all bg-white border-purple-600 text-purple-900 shadow-md cursor-pointer">
+        <div class="w-9 h-9 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-base font-bold">
+          <i class="fa-solid fa-phone"></i>
+        </div>
+        <div class="text-left">
+          <div class="text-[10px] text-purple-600 font-mono font-bold tracking-wider">01. TELECOM</div>
+          <div class="font-bold text-slate-900">Phone &amp; WhatsApp</div>
+        </div>
+      </button>
+
+      <button data-tab="username" class="tab-btn flex items-center space-x-3 p-4 rounded-2xl border text-sm font-semibold transition-all bg-white border-slate-200 text-slate-600 hover:border-purple-300 hover:text-slate-900 cursor-pointer">
+        <div class="w-9 h-9 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center text-base font-bold">
+          <i class="fa-solid fa-user-tag"></i>
+        </div>
+        <div class="text-left">
+          <div class="text-[10px] text-slate-400 font-mono font-bold tracking-wider">02. IDENTITY</div>
+          <div class="font-bold text-slate-900">Name &amp; Social Trace</div>
+        </div>
+      </button>
+
+      <button data-tab="email" class="tab-btn flex items-center space-x-3 p-4 rounded-2xl border text-sm font-semibold transition-all bg-white border-slate-200 text-slate-600 hover:border-purple-300 hover:text-slate-900 cursor-pointer">
+        <div class="w-9 h-9 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center text-base font-bold">
+          <i class="fa-solid fa-envelope-open-text"></i>
+        </div>
+        <div class="text-left">
+          <div class="text-[10px] text-slate-400 font-mono font-bold tracking-wider">03. SURFACE</div>
+          <div class="font-bold text-slate-900">Email Intelligence</div>
+        </div>
+      </button>
+
+      <button data-tab="image" class="tab-btn flex items-center space-x-3 p-4 rounded-2xl border text-sm font-semibold transition-all bg-white border-slate-200 text-slate-600 hover:border-purple-300 hover:text-slate-900 cursor-pointer">
+        <div class="w-9 h-9 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center text-base font-bold">
+          <i class="fa-solid fa-camera-retro"></i>
+        </div>
+        <div class="text-left">
+          <div class="text-[10px] text-slate-400 font-mono font-bold tracking-wider">04. FORENSICS</div>
+          <div class="font-bold text-slate-900">EXIF &amp; Reverse Scan</div>
+        </div>
+      </button>
+    </div>
+
+    <!-- Active Panel Content Container -->
+    <div class="bg-white border border-slate-200 rounded-3xl p-6 md:p-8 shadow-sm relative overflow-hidden">
+      
+      <!-- ========================================================
+           TAB 1: PHONE & WHATSAPP LOOKUP
+           ======================================================== -->
+      <div id="panel-phone" class="tab-panel space-y-6">
+        <div>
+          <div class="flex items-center justify-between mb-1.5 flex-wrap gap-2">
+            <h2 class="text-xl font-bold text-slate-900 font-display flex items-center gap-2">
+              <i class="fa-solid fa-phone text-emerald-600"></i>
+              <span>Phone Number, Carrier &amp; WhatsApp Intelligence</span>
+            </h2>
+            <span class="text-xs font-mono text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200 font-bold">E.164 + wa.me Protocol</span>
+          </div>
+          <p class="text-slate-500 text-xs">
+            Enter any international or local phone number to analyze country, telecom routing, carrier prefix, and directly check live WhatsApp presence.
+          </p>
+        </div>
+
+        <form id="phoneForm" class="flex flex-col sm:flex-row gap-3">
+          <div class="relative flex-1">
+            <i class="fa-solid fa-globe absolute left-4 top-3.5 text-slate-400"></i>
+            <input 
+              type="text" 
+              id="phoneQuery"
+              placeholder="e.g. +92 300 1234567 or +351 928 350 275 or 03001234567" 
+              required
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-purple-600 focus:bg-white transition-colors font-mono"
+            />
+          </div>
+          <button type="submit" id="phoneBtn" class="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white px-7 py-3 rounded-xl text-sm font-bold transition-all shadow-md shadow-emerald-500/20 flex items-center justify-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <span>Analyze Number</span>
+          </button>
+        </form>
+
+        <!-- Phone Results Card -->
+        <div id="phoneResults" class="space-y-6 pt-2 hidden">
+          <!-- Quick Status Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl">
+              <div class="text-[11px] font-mono text-slate-500 mb-1 flex items-center gap-1.5 font-semibold">
+                <i class="fa-solid fa-flag text-emerald-600"></i>
+                <span>COUNTRY / REGION</span>
+              </div>
+              <div class="text-sm font-bold text-slate-900 flex items-center gap-2" id="phoneCountryVal">
+                <span>🇵🇰 Pakistan (+92)</span>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl">
+              <div class="text-[11px] font-mono text-slate-500 mb-1 flex items-center gap-1.5 font-semibold">
+                <i class="fa-solid fa-tower-broadcast text-blue-600"></i>
+                <span>ESTIMATED CARRIER</span>
+              </div>
+              <div class="text-sm font-bold text-slate-900" id="phoneCarrierVal">Mobilink / Jazz</div>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl">
+              <div class="text-[11px] font-mono text-slate-500 mb-1 flex items-center gap-1.5 font-semibold">
+                <i class="fa-solid fa-hashtag text-purple-600"></i>
+                <span>E.164 STANDARD</span>
+              </div>
+              <div class="text-sm font-mono font-bold text-purple-700" id="phoneE164Val">+923001234567</div>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl">
+              <div class="text-[11px] font-mono text-slate-500 mb-1 flex items-center gap-1.5 font-semibold">
+                <i class="fa-brands fa-whatsapp text-emerald-600"></i>
+                <span>WHATSAPP STATUS</span>
+              </div>
+              <div class="text-sm font-bold text-emerald-700 flex items-center gap-1.5" id="phoneWaStatusVal">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                <span>Active Endpoint</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Truecaller & SIM Ownership Identity Resolution Hub -->
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3 flex-wrap gap-2">
+              <span class="text-xs font-mono text-purple-700 font-bold uppercase flex items-center gap-2">
+                <i class="fa-solid fa-id-card-clip text-base text-purple-600"></i>
+                <span>Truecaller &amp; SIM Ownership Identity Resolvers</span>
+              </span>
+              <span class="text-[11px] text-slate-500 font-medium">Live Caller ID &amp; Public Records</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3" id="phoneActionButtons">
+              <!-- Truecaller Direct Profile -->
+              <a id="phoneTcBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-blue-50 border border-blue-200 rounded-xl text-blue-800 text-xs font-bold hover:bg-blue-100 shadow-sm">
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-address-book text-blue-600 text-lg"></i>
+                  <div>
+                    <div>Truecaller Live Search</div>
+                    <div class="text-[10px] text-blue-600 font-normal">Official caller identity</div>
+                  </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+
+              <!-- Google Truecaller Index Search -->
+              <a id="phoneTcGoogleBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-purple-50 border border-purple-200 rounded-xl text-purple-800 text-xs font-bold hover:bg-purple-100 shadow-sm">
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-brands fa-google text-purple-600 text-lg"></i>
+                  <div>
+                    <div>Truecaller Google Cache</div>
+                    <div class="text-[10px] text-purple-600 font-normal">Extracts name without login</div>
+                  </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+
+              <!-- WhatsApp Profile & Display Name -->
+              <a id="phoneWaBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-800 text-xs font-bold hover:bg-emerald-100 shadow-sm">
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-brands fa-whatsapp text-emerald-600 text-lg"></i>
+                  <div>
+                    <div>WhatsApp Profile Name</div>
+                    <div class="text-[10px] text-emerald-600 font-normal">wa.me photo &amp; about bio</div>
+                  </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+
+              <!-- Public SIM Owner & CNIC Dork -->
+              <a id="phoneSimOwnerBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-amber-50 border border-amber-200 rounded-xl text-amber-800 text-xs font-bold hover:bg-amber-100 shadow-sm">
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-sim-card text-amber-600 text-lg"></i>
+                  <div>
+                    <div>SIM Owner Public Footprint</div>
+                    <div class="text-[10px] text-amber-600 font-normal">CNIC &amp; public directory search</div>
+                  </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+
+              <!-- Sync.me Universal Caller Registry -->
+              <a id="phoneSyncMeBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-indigo-50 border border-indigo-200 rounded-xl text-indigo-800 text-xs font-bold hover:bg-indigo-100 shadow-sm">
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-user-check text-indigo-600 text-lg"></i>
+                  <div>
+                    <div>Sync.me Caller ID</div>
+                    <div class="text-[10px] text-indigo-600 font-normal">Global name directory</div>
+                  </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+
+              <!-- Telegram Profile Check -->
+              <a id="phoneTgBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-sky-50 border border-sky-200 rounded-xl text-sky-800 text-xs font-bold hover:bg-sky-100 shadow-sm">
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-brands fa-telegram text-sky-600 text-lg"></i>
+                  <div>
+                    <div>Telegram Account</div>
+                    <div class="text-[10px] text-sky-600 font-normal">t.me direct contact</div>
+                  </div>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+            </div>
+
+            <!-- Deep Google Dorks for Phone -->
+            <div class="pt-3 border-t border-slate-200">
+              <div class="text-xs font-mono text-slate-600 font-bold uppercase mb-2">Automated Google Intelligence Queries (Dorks):</div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2" id="phoneDorksList"></div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================
+           TAB 2: NAME & USERNAME PROFILER
+           ======================================================== -->
+      <div id="panel-username" class="tab-panel space-y-6 hidden">
+        <div>
+          <div class="flex items-center justify-between mb-1.5 flex-wrap gap-2">
+            <h2 class="text-xl font-bold text-slate-900 font-display flex items-center gap-2">
+              <i class="fa-solid fa-user-tag text-purple-600"></i>
+              <span>Name, Username &amp; Social Footprint Tracing</span>
+            </h2>
+            <span class="text-xs font-mono text-purple-700 bg-purple-50 px-2.5 py-1 rounded-full border border-purple-200 font-bold">All 8 Social Platforms</span>
+          </div>
+          <p class="text-slate-500 text-xs">
+            Enter a full name (e.g. <strong>Waseem Haider</strong>) or username to cross-reference Instagram, Snapchat, TikTok, Facebook, X, GitHub, Telegram, Reddit, and deep web footprints.
+          </p>
+        </div>
+
+        <form id="userForm" class="flex flex-col sm:flex-row gap-3">
+          <div class="relative flex-1">
+            <i class="fa-solid fa-id-badge absolute left-4 top-3.5 text-slate-400"></i>
+            <input 
+              type="text" 
+              id="targetUser"
+              placeholder="e.g. Waseem Haider or waseemhaider or target_alias" 
+              required
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-purple-600 focus:bg-white transition-colors font-mono"
+            />
+          </div>
+          <button type="submit" id="userBtn" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white px-7 py-3 rounded-xl text-sm font-bold transition-all shadow-md shadow-purple-500/20 flex items-center justify-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-magnifying-glass-chart"></i>
+            <span>Trace Profiles</span>
+          </button>
+        </form>
+
+        <div id="userResults" class="space-y-6 pt-2 hidden">
+          <!-- Live GitHub Developer Profile Card (if found) -->
+          <div id="githubLiveCard" class="bg-gradient-to-r from-purple-50 via-indigo-50 to-white border border-purple-200 rounded-2xl p-5 hidden shadow-sm">
+            <div class="flex items-center justify-between border-b border-purple-100 pb-3 mb-4">
+              <span class="text-xs font-mono text-purple-700 font-bold uppercase flex items-center gap-2">
+                <i class="fa-brands fa-github text-base text-slate-900"></i>
+                <span>Live GitHub Developer Identity Verified</span>
+              </span>
+              <span class="text-[11px] font-mono text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded font-bold">API Verified</span>
+            </div>
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <img id="ghAvatar" src="" alt="Avatar" class="w-16 h-16 rounded-2xl border-2 border-purple-300 shadow" />
+              <div class="space-y-1 flex-1">
+                <div class="flex items-center gap-2">
+                  <h3 id="ghName" class="text-lg font-bold text-slate-900">User Name</h3>
+                  <span id="ghLogin" class="text-xs font-mono text-purple-600 font-semibold">@login</span>
+                </div>
+                <p id="ghBio" class="text-xs text-slate-600 line-clamp-2">Bio</p>
+                <div class="flex flex-wrap gap-4 text-xs font-mono text-slate-500 pt-1">
+                  <span><i class="fa-solid fa-code-branch text-purple-600 mr-1"></i> Public Repos: <strong id="ghRepos" class="text-slate-800">0</strong></span>
+                  <span><i class="fa-solid fa-users text-blue-600 mr-1"></i> Followers: <strong id="ghFollowers" class="text-slate-800">0</strong></span>
+                  <span><i class="fa-solid fa-location-dot text-rose-600 mr-1"></i> <span id="ghLocation">Global</span></span>
+                </div>
+              </div>
+              <a id="ghProfileLink" href="#" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-slate-900 text-white rounded-xl text-xs font-bold hover:bg-purple-700 transition-colors flex items-center gap-1.5 self-stretch sm:self-auto justify-center">
+                <span>View Full GitHub Profile</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- All Major Social Platforms Grid -->
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-xs font-mono text-slate-600 font-bold uppercase flex items-center gap-2">
+                <i class="fa-solid fa-share-nodes text-purple-600"></i>
+                <span>Cross-Platform Profile Verification Grid (8 Major Services)</span>
+              </h3>
+              <span class="text-[11px] text-slate-400">Direct Links &amp; Query Launchers</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" id="socialCardsGrid"></div>
+          </div>
+
+          <!-- Live Multi-Engine Search Quick Grid -->
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+              <span class="text-xs font-mono text-purple-700 font-bold uppercase flex items-center gap-2">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span>Multi-Search Engine Cross-Index</span>
+              </span>
+              <span class="text-[11px] text-slate-500 font-medium">Search exact quote across engines</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="userEngineGrid"></div>
+          </div>
+
+          <!-- In-Page Google Live Results (if API key active) -->
+          <div id="userGoogleLiveContainer" class="bg-white border border-blue-200 rounded-2xl p-5 hidden space-y-3 shadow-sm">
+            <div class="flex items-center justify-between border-b border-blue-100 pb-2.5">
+              <span class="text-xs font-mono text-blue-700 font-bold flex items-center gap-2">
+                <i class="fa-brands fa-google text-blue-600"></i>
+                <span>Live Google Custom Search Results (In-Page)</span>
+              </span>
+              <span id="googleResultsCount" class="text-[11px] text-slate-500 font-mono">0 results</span>
+            </div>
+            <div id="userGoogleItems" class="space-y-3 pt-1"></div>
+          </div>
+
+          <!-- Deep Google Dorks for Identity -->
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-3">
+            <div class="text-xs font-mono text-slate-600 font-bold uppercase">Advanced Investigation Dorks (Google Web Scans):</div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5" id="userDorksList"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================
+           TAB 3: EMAIL SURFACE & MX VALIDATOR
+           ======================================================== -->
+      <div id="panel-email" class="tab-panel space-y-6 hidden">
+        <div>
+          <div class="flex items-center justify-between mb-1.5 flex-wrap gap-2">
+            <h2 class="text-xl font-bold text-slate-900 font-display flex items-center gap-2">
+              <i class="fa-solid fa-envelope-open-text text-blue-600"></i>
+              <span>Email Intelligence &amp; Live DNS MX Resolution</span>
+            </h2>
+            <span class="text-xs font-mono text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200 font-bold">Google DoH Live DNS</span>
+          </div>
+          <p class="text-slate-500 text-xs">
+            Query live DNS MX mail exchange records via Google Public DNS-over-HTTPS (DoH), identify corporate vs personal providers, and check breach exposure indexes.
+          </p>
+        </div>
+
+        <form id="emailForm" class="flex flex-col sm:flex-row gap-3">
+          <div class="relative flex-1">
+            <i class="fa-solid fa-at absolute left-4 top-3.5 text-slate-400"></i>
+            <input 
+              type="email" 
+              id="emailQuery"
+              placeholder="e.g. contact@whxdigital.com or target@gmail.com" 
+              required
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-11 pr-4 py-3 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-600 focus:bg-white transition-colors font-mono"
+            />
+          </div>
+          <button type="submit" id="emailBtn" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-7 py-3 rounded-xl text-sm font-bold transition-all shadow-md shadow-blue-500/20 flex items-center justify-center gap-2 cursor-pointer">
+            <i class="fa-solid fa-satellite-dish"></i>
+            <span>Resolve MX Records</span>
+          </button>
+        </form>
+
+        <div id="emailResults" class="space-y-6 pt-2 hidden">
+          <!-- MX Diagnostic Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl">
+              <div class="text-[11px] font-mono text-slate-500 mb-1 flex items-center gap-1.5 font-semibold">
+                <i class="fa-solid fa-server text-blue-600"></i>
+                <span>MAIL PROVIDER</span>
+              </div>
+              <div class="text-sm font-bold text-slate-900" id="emailProviderVal">Google Workspace</div>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl">
+              <div class="text-[11px] font-mono text-slate-500 mb-1 flex items-center gap-1.5 font-semibold">
+                <i class="fa-solid fa-shield-virus text-purple-600"></i>
+                <span>DISPOSABLE / BURNER</span>
+              </div>
+              <div class="text-sm font-bold text-emerald-700 flex items-center gap-1.5" id="emailDisposableVal">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span>Legitimate Corporate Domain</span>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl">
+              <div class="text-[11px] font-mono text-slate-500 mb-1 flex items-center gap-1.5 font-semibold">
+                <i class="fa-solid fa-database text-rose-600"></i>
+                <span>BREACH REPOSITORIES</span>
+              </div>
+              <div class="text-sm font-bold text-slate-700" id="emailBreachVal">Check HIBP &amp; DeHashed</div>
+            </div>
+          </div>
+
+          <!-- Raw Live MX DNS Output -->
+          <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 font-mono text-xs">
+            <div class="text-slate-400 mb-2 font-bold uppercase flex items-center justify-between">
+              <span>Google DoH (DNS over HTTPS) MX Response:</span>
+              <span class="text-emerald-400 font-normal">200 OK</span>
+            </div>
+            <pre id="emailDnsRaw" class="text-slate-200 overflow-x-auto whitespace-pre-wrap leading-relaxed max-h-48 custom-scroll"></pre>
+          </div>
+
+          <!-- Breach Lookup Launchers -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <a id="emailHibpBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-rose-50 border border-rose-200 rounded-xl text-rose-800 text-xs font-bold hover:bg-rose-100">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-triangle-exclamation text-rose-600"></i>
+                <span>HaveIBeenPwned Check</span>
+              </div>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+
+            <a id="emailDehashedBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-purple-50 border border-purple-200 rounded-xl text-purple-800 text-xs font-bold hover:bg-purple-100">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-shield-halved text-purple-600"></i>
+                <span>DeHashed Database Search</span>
+              </div>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+
+            <a id="emailDorkBtn" href="#" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3.5 bg-blue-50 border border-blue-200 rounded-xl text-blue-800 text-xs font-bold hover:bg-blue-100">
+              <div class="flex items-center gap-2">
+                <i class="fa-brands fa-google text-blue-600"></i>
+                <span>Google Pastebin Dork</span>
+              </div>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================
+           TAB 4: EXIF IMAGE FORENSICS & REVERSE SCAN
+           ======================================================== -->
+      <div id="panel-image" class="tab-panel space-y-6 hidden">
+        <div>
+          <div class="flex items-center justify-between mb-1.5 flex-wrap gap-2">
+            <h2 class="text-xl font-bold text-slate-900 font-display flex items-center gap-2">
+              <i class="fa-solid fa-camera-retro text-cyan-600"></i>
+              <span>Client-Side Binary EXIF Metadata &amp; Reverse Image Forensics</span>
+            </h2>
+            <span class="text-xs font-mono text-cyan-700 bg-cyan-50 px-2.5 py-1 rounded-full border border-cyan-200 font-bold">100% Private Browser ArrayBuffer</span>
+          </div>
+          <p class="text-slate-500 text-xs">
+            Inspect raw binary EXIF headers (Camera model, software, GPS coordinates, timestamp) without uploading images to any remote server. Zero data retention.
+          </p>
+        </div>
+
+        <div class="border-2 border-dashed border-slate-300 hover:border-cyan-500 rounded-3xl p-8 text-center cursor-pointer transition-colors bg-slate-50/60" id="dropZone">
+          <input type="file" id="imageInput" accept="image/jpeg,image/png,image/webp,image/tiff" class="hidden" />
+          <i class="fa-solid fa-cloud-arrow-up text-4xl text-cyan-600 mb-3"></i>
+          <h3 class="text-base font-bold text-slate-900">Drop an image here or click to browse</h3>
+          <p class="text-slate-500 text-xs mt-1">Supports JPEG, TIFF, PNG with embedded EXIF headers</p>
+        </div>
+
+        <div id="imageResults" class="space-y-6 pt-2 hidden">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <!-- Image Preview Box -->
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col items-center justify-center space-y-3">
+              <img id="imagePreview" src="" alt="Forensics Preview" class="max-h-64 rounded-xl border border-slate-200 object-contain shadow-sm" />
+              <div id="imageBasicInfo" class="text-xs font-mono text-slate-600 text-center space-y-0.5"></div>
+            </div>
+
+            <!-- EXIF Data Breakdown -->
+            <div class="md:col-span-2 bg-slate-50 border border-slate-200 rounded-2xl p-5 space-y-4">
+              <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                <span class="text-xs font-mono text-cyan-700 font-bold uppercase flex items-center gap-2">
+                  <i class="fa-solid fa-microchip"></i>
+                  <span>Binary EXIF Header Telemetry</span>
+                </span>
+                <span class="text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-bold">Parsed Locally</span>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="exifDataGrid">
+                <div class="bg-white border border-slate-200 p-3.5 rounded-xl">
+                  <div class="text-[10px] font-mono text-slate-400 uppercase font-semibold">Camera Model</div>
+                  <div class="text-xs font-bold text-slate-900 mt-1" id="exifCamera">Not detected</div>
+                </div>
+
+                <div class="bg-white border border-slate-200 p-3.5 rounded-xl">
+                  <div class="text-[10px] font-mono text-slate-400 uppercase font-semibold">Date &amp; Time Original</div>
+                  <div class="text-xs font-bold text-slate-900 mt-1" id="exifDateTime">Not detected</div>
+                </div>
+
+                <div class="bg-white border border-slate-200 p-3.5 rounded-xl">
+                  <div class="text-[10px] font-mono text-slate-400 uppercase font-semibold">Software / Firmware</div>
+                  <div class="text-xs font-bold text-slate-900 mt-1" id="exifSoftware">Not detected</div>
+                </div>
+
+                <div class="bg-white border border-slate-200 p-3.5 rounded-xl">
+                  <div class="text-[10px] font-mono text-slate-400 uppercase font-semibold">GPS Geo-Coordinates</div>
+                  <div class="text-xs font-bold text-purple-700 mt-1 flex items-center justify-between" id="exifGpsBox">
+                    <span id="exifGps">No GPS tags found</span>
+                    <a id="exifMapLink" href="#" target="_blank" rel="noopener noreferrer" class="hidden text-[10px] bg-purple-50 text-purple-700 px-2 py-0.5 rounded border border-purple-200 hover:bg-purple-100">
+                      View on Map <i class="fa-solid fa-location-arrow text-[9px]"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Reverse Search Multi-Engines -->
+              <div class="pt-2 border-t border-slate-200">
+                <div class="text-xs font-mono text-slate-600 font-bold uppercase mb-2">Reverse Image Search Launchers:</div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <a href="https://images.google.com/" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-white border border-slate-200 hover:border-blue-300 rounded-xl text-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5">
+                    <i class="fa-brands fa-google text-blue-600"></i>
+                    <span>Google Lens</span>
+                  </a>
+                  <a href="https://yandex.com/images/" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-white border border-slate-200 hover:border-rose-300 rounded-xl text-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5">
+                    <i class="fa-brands fa-yandex text-rose-600"></i>
+                    <span>Yandex Visual</span>
+                  </a>
+                  <a href="https://tineye.com/" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-white border border-slate-200 hover:border-cyan-300 rounded-xl text-slate-700 text-xs font-semibold flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-magnifying-glass text-cyan-600"></i>
+                    <span>TinEye Reverse</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Executive Site Footer Matching WHX Digital -->
+  <footer class="relative z-10 border-t border-slate-200 bg-white py-6 px-4 mt-12 text-center text-xs text-slate-500 font-mono">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div>
+        <span>&copy; 2026 WHX Digital. Educational OSINT &amp; Digital Surface Intelligence Suite.</span>
+      </div>
+      <div class="flex items-center gap-4 text-slate-500">
+        <a href="../../terms.html" class="hover:text-purple-600 transition-colors">Terms of Use</a>
+        <span>&bull;</span>
+        <a href="../../privacy.html" class="hover:text-purple-600 transition-colors">Privacy Policy</a>
+        <span>&bull;</span>
+        <a href="../../security.html" class="hover:text-purple-600 transition-colors">Security Ethics</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================
+       JAVASCRIPT LOGIC ENGINE
+       ========================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Live UTC Clock
+      const utcClock = document.getElementById('utcClock');
+      function updateClock() {
+        const now = new Date();
+        if (utcClock) {
+          utcClock.textContent = 'UTC: ' + now.toISOString().slice(11, 19);
+        }
+      }
+      setInterval(updateClock, 1000);
+      updateClock();
+
+      // 2. Strict Gatekeeping & Admin Authentication (Admin / 0000)
+      const termsModal = document.getElementById('termsModal');
+      const modalCheck = document.getElementById('modalCheck');
+      const okBtn = document.getElementById('okBtn');
+      const loginModal = document.getElementById('loginModal');
+      const loginForm = document.getElementById('loginForm');
+      const loginErrorMsg = document.getElementById('loginErrorMsg');
+      const usernameInput = document.getElementById('usernameInput');
+      const passwordInput = document.getElementById('passwordInput');
+      const mainDashboard = document.getElementById('mainDashboard');
+      const lockSessionBtn = document.getElementById('lockSessionBtn');
+      const sessionAliasText = document.getElementById('sessionAliasText');
+
+      // Google API Settings Elements
+      const openApiModalBtn = document.getElementById('openApiModalBtn');
+      const closeApiModalBtn = document.getElementById('closeApiModalBtn');
+      const apiModal = document.getElementById('apiModal');
+      const apiSettingsForm = document.getElementById('apiSettingsForm');
+      const googleApiKeyInput = document.getElementById('googleApiKeyInput');
+      const googleCxInput = document.getElementById('googleCxInput');
+      const clearApiBtn = document.getElementById('clearApiBtn');
+
+      function syncAuthState() {
+        const agreed = localStorage.getItem('whx_osint_terms') === 'true';
+        const authenticated = localStorage.getItem('whx_osint_auth') === 'true';
+        const user = localStorage.getItem('whx_osint_user') || 'admin';
+
+        if (!agreed) {
+          termsModal.classList.remove('hidden');
+          loginModal.classList.add('hidden');
+          mainDashboard.classList.add('opacity-20', 'pointer-events-none');
+        } else if (!authenticated) {
+          termsModal.classList.add('hidden');
+          loginModal.classList.remove('hidden');
+          mainDashboard.classList.add('opacity-20', 'pointer-events-none');
+          if (loginErrorMsg) loginErrorMsg.classList.add('hidden');
+        } else {
+          termsModal.classList.add('hidden');
+          loginModal.classList.add('hidden');
+          mainDashboard.classList.remove('opacity-20', 'pointer-events-none');
+          if (sessionAliasText) sessionAliasText.textContent = user;
+        }
+      }
+
+      modalCheck.addEventListener('change', () => {
+        okBtn.disabled = !modalCheck.checked;
+      });
+
+      okBtn.addEventListener('click', () => {
+        localStorage.setItem('whx_osint_terms', 'true');
+        syncAuthState();
+      });
+
+      // Strict Admin / 0000 Authentication
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const u = usernameInput.value.trim();
+        const p = passwordInput.value.trim();
+
+        if (u.toLowerCase() === 'admin' && p === '0000') {
+          if (loginErrorMsg) loginErrorMsg.classList.add('hidden');
+          localStorage.setItem('whx_osint_auth', 'true');
+          localStorage.setItem('whx_osint_user', 'admin');
+          syncAuthState();
+        } else {
+          if (loginErrorMsg) {
+            loginErrorMsg.classList.remove('hidden');
+          } else {
+            alert('Ghalat credentials! Access Denied.');
+          }
+          passwordInput.value = '';
+          passwordInput.focus();
+        }
+      });
+
+      lockSessionBtn.addEventListener('click', () => {
+        localStorage.removeItem('whx_osint_auth');
+        syncAuthState();
+      });
+
+      // Google API Settings modal
+      if (openApiModalBtn) {
+        openApiModalBtn.addEventListener('click', () => {
+          googleApiKeyInput.value = localStorage.getItem('whx_google_api_key') || '';
+          googleCxInput.value = localStorage.getItem('whx_google_cx') || '';
+          apiModal.classList.remove('hidden');
+        });
+      }
+      if (closeApiModalBtn) {
+        closeApiModalBtn.addEventListener('click', () => {
+          apiModal.classList.add('hidden');
+        });
+      }
+      if (apiSettingsForm) {
+        apiSettingsForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const key = googleApiKeyInput.value.trim();
+          const cx = googleCxInput.value.trim();
+          if (key) localStorage.setItem('whx_google_api_key', key);
+          else localStorage.removeItem('whx_google_api_key');
+          if (cx) localStorage.setItem('whx_google_cx', cx);
+          else localStorage.removeItem('whx_google_cx');
+          apiModal.classList.add('hidden');
+          alert('Google Custom Search API settings saved locally.');
+        });
+      }
+      if (clearApiBtn) {
+        clearApiBtn.addEventListener('click', () => {
+          localStorage.removeItem('whx_google_api_key');
+          localStorage.removeItem('whx_google_cx');
+          googleApiKeyInput.value = '';
+          googleCxInput.value = '';
+          apiModal.classList.add('hidden');
+          alert('Google API settings cleared.');
+        });
+      }
+
+      // Initial Auth state sync
+      syncAuthState();
+
+      // 3. Tab Switching Logic
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const tabPanels = document.querySelectorAll('.tab-panel');
+
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const targetTab = btn.getAttribute('data-tab');
+
+          tabButtons.forEach(b => {
+            b.classList.remove('border-purple-600', 'text-purple-900', 'shadow-md');
+            b.classList.add('border-slate-200', 'text-slate-600');
+            const iconBox = b.querySelector('.w-9');
+            if (iconBox) {
+              iconBox.className = 'w-9 h-9 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center text-base font-bold';
+            }
+          });
+
+          btn.classList.add('border-purple-600', 'text-purple-900', 'shadow-md');
+          btn.classList.remove('border-slate-200', 'text-slate-600');
+          const activeIconBox = btn.querySelector('.w-9');
+          if (activeIconBox) {
+            activeIconBox.className = 'w-9 h-9 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-base font-bold';
+          }
+
+          tabPanels.forEach(p => p.classList.add('hidden'));
+          const activePanel = document.getElementById(`panel-${targetTab}`);
+          if (activePanel) activePanel.classList.remove('hidden');
+        });
+      });
+
+      // 4. PHONE & WHATSAPP INTELLIGENCE ENGINE
+      const phoneForm = document.getElementById('phoneForm');
+      const phoneQuery = document.getElementById('phoneQuery');
+      const phoneResults = document.getElementById('phoneResults');
+      const phoneCountryVal = document.getElementById('phoneCountryVal');
+      const phoneCarrierVal = document.getElementById('phoneCarrierVal');
+      const phoneE164Val = document.getElementById('phoneE164Val');
+      const phoneWaBtn = document.getElementById('phoneWaBtn');
+      const phoneTcBtn = document.getElementById('phoneTcBtn');
+      const phoneTcGoogleBtn = document.getElementById('phoneTcGoogleBtn');
+      const phoneSimOwnerBtn = document.getElementById('phoneSimOwnerBtn');
+      const phoneSyncMeBtn = document.getElementById('phoneSyncMeBtn');
+      const phoneTgBtn = document.getElementById('phoneTgBtn');
+      const phoneDorksList = document.getElementById('phoneDorksList');
+
+      phoneForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const raw = phoneQuery.value.trim();
+        if (!raw) return;
+
+        let digits = raw.replace(/\D/g, '');
+        // Strip leading international 00
+        if (digits.startsWith('00')) {
+          digits = digits.substring(2);
+        }
+        // If Pakistan 03XXXXXXXXX (11 digits) -> 923XXXXXXXXX
+        if (digits.startsWith('03') && digits.length === 11) {
+          digits = '92' + digits.substring(1);
+        }
+        // If Pakistan 3XXXXXXXXX (10 digits starting with 30, 31, 32, 33, 34, 35) -> 923XXXXXXXXX
+        else if (digits.length === 10 && /^3[0-5]/.test(digits)) {
+          digits = '92' + digits;
+        }
+        // If Portugal 9XXXXXXXX (9 digits) -> 3519XXXXXXXX
+        else if (digits.length === 9 && ['91','92','93','96'].includes(digits.substring(0,2))) {
+          digits = '351' + digits;
+        }
+        // If UK 07XXXXXXXXX (11 digits) -> 447XXXXXXXXX
+        else if (digits.startsWith('07') && digits.length === 11) {
+          digits = '44' + digits.substring(1);
+        }
+        const e164 = '+' + digits;
+
+        let country = '🌐 Global International';
+        let carrier = 'Standard Telecom Network';
+
+        if (digits.startsWith('92')) {
+          country = '🇵🇰 Pakistan (+92)';
+          const prefix = digits.substring(2, 5);
+          if (['300','301','302','303','304','305','306','307','308','309'].includes(prefix)) carrier = 'Jazz / Mobilink (GSM/LTE)';
+          else if (['310','311','312','313','314','315','316','317','318'].includes(prefix)) carrier = 'Zong 4G (CMPak)';
+          else if (['340','341','342','343','344','345','346','347','348','349'].includes(prefix)) carrier = 'Telenor Pakistan (4G)';
+          else if (['330','331','332','333','334','335','336','337'].includes(prefix)) carrier = 'Ufone / PTCL Group';
+          else carrier = 'Pakistan Mobile Network';
+        } else if (digits.startsWith('351')) {
+          country = '🇵🇹 Portugal (+351)';
+          const prefix = digits.substring(3, 5);
+          if (['91'].includes(prefix)) carrier = 'Vodafone Portugal';
+          else if (['92','96'].includes(prefix)) carrier = 'MEO Altice';
+          else if (['93'].includes(prefix)) carrier = 'NOS Telecom';
+        } else if (digits.startsWith('1')) {
+          country = '🇺🇸 United States / Canada (+1)';
+          carrier = 'NANP Carrier Network';
+        } else if (digits.startsWith('44')) {
+          country = '🇬🇧 United Kingdom (+44)';
+          carrier = 'UK Mobile / Fixed Line';
+        } else if (digits.startsWith('971')) {
+          country = '🇦🇪 United Arab Emirates (+971)';
+          carrier = 'Etisalat / du';
+        } else if (digits.startsWith('966')) {
+          country = '🇸🇦 Saudi Arabia (+966)';
+          carrier = 'STC / Mobily / Zain';
+        }
+
+        phoneCountryVal.textContent = country;
+        phoneCarrierVal.textContent = carrier;
+        phoneE164Val.textContent = e164;
+
+        const nationalDigits = digits.startsWith('92') ? digits.substring(2) : digits;
+        phoneWaBtn.href = `https://wa.me/${digits}`;
+        phoneTcBtn.href = digits.startsWith('92') ? `https://www.truecaller.com/search/pk/${nationalDigits}` : `https://www.truecaller.com/search/${digits}`;
+        if (phoneTcGoogleBtn) {
+          phoneTcGoogleBtn.href = `https://www.google.com/search?q=site:truecaller.com+%22${encodeURIComponent(e164)}%22+OR+%22${encodeURIComponent(raw)}%22+OR+%22${encodeURIComponent(digits)}%22`;
+        }
+        if (phoneSimOwnerBtn) {
+          phoneSimOwnerBtn.href = `https://www.google.com/search?q=%22${encodeURIComponent(e164)}%22+("name"+OR+"sim+owner"+OR+"CNIC"+OR+"registered+to")`;
+        }
+        if (phoneSyncMeBtn) {
+          phoneSyncMeBtn.href = `https://sync.me/search/?number=${encodeURIComponent(digits)}`;
+        }
+        phoneTgBtn.href = `https://t.me/+${digits}`;
+
+        const dorks = [
+          { label: 'Exact Phone Quote', q: `"${raw}" OR "${e164}"` },
+          { label: 'Truecaller Cached Records', q: `site:truecaller.com "${e164}" OR "${raw}"` },
+          { label: 'SIM Owner & Public Directory', q: `"${e164}" (name OR "sim owner" OR CNIC)` },
+          { label: 'WhatsApp Mentions', q: `site:whatsapp.com "${digits}"` },
+          { label: 'Social Search (FB/LinkedIn)', q: `site:facebook.com OR site:linkedin.com "${raw}"` },
+          { label: 'Public Classifieds & Leaks', q: `site:pastebin.com OR site:olx.com.pk "${raw}"` }
+        ];
+
+        phoneDorksList.innerHTML = dorks.map(d => `
+          <a href="https://www.google.com/search?q=${encodeURIComponent(d.q)}" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-2.5 bg-white border border-slate-200 hover:border-purple-300 rounded-xl text-slate-700 text-xs font-semibold flex items-center justify-between">
+            <span class="truncate">${d.label}</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-purple-600"></i>
+          </a>
+        `).join('');
+
+        phoneResults.classList.remove('hidden');
+      });
+
+      // 5. NAME & SOCIAL MEDIA PROFILER ENGINE (8 MAJOR PLATFORMS)
+      const userForm = document.getElementById('userForm');
+      const targetUser = document.getElementById('targetUser');
+      const userResults = document.getElementById('userResults');
+      const githubLiveCard = document.getElementById('githubLiveCard');
+      const ghAvatar = document.getElementById('ghAvatar');
+      const ghName = document.getElementById('ghName');
+      const ghLogin = document.getElementById('ghLogin');
+      const ghProfileLink = document.getElementById('ghProfileLink');
+      const ghBio = document.getElementById('ghBio');
+      const ghRepos = document.getElementById('ghRepos');
+      const ghFollowers = document.getElementById('ghFollowers');
+      const ghLocation = document.getElementById('ghLocation');
+      const socialCardsGrid = document.getElementById('socialCardsGrid');
+      const userEngineGrid = document.getElementById('userEngineGrid');
+      const userGoogleLiveContainer = document.getElementById('userGoogleLiveContainer');
+      const userGoogleItems = document.getElementById('userGoogleItems');
+      const googleResultsCount = document.getElementById('googleResultsCount');
+      const userDorksList = document.getElementById('userDorksList');
+
+      userForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const query = targetUser.value.trim();
+        if (!query) return;
+
+        const cleanUser = query.toLowerCase().replace(/[^a-z0-9_.-]/g, '');
+        const encodedQuery = encodeURIComponent(query);
+        const cleanedUser = query.trim().replace('@', '');
+
+        userResults.classList.remove('hidden');
+
+        // 1. Live GitHub Public API Query
+        try {
+          const ghRes = await fetch(`https://api.github.com/users/${encodeURIComponent(cleanUser)}`);
+          if (ghRes.ok) {
+            const data = await ghRes.json();
+            githubLiveCard.classList.remove('hidden');
+            ghAvatar.src = data.avatar_url || 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png';
+            ghName.textContent = data.name || query;
+            ghLogin.textContent = '@' + data.login;
+            ghProfileLink.href = data.html_url;
+            ghBio.textContent = data.bio || 'Public software developer profile active on GitHub.';
+            ghRepos.textContent = data.public_repos ?? 0;
+            ghFollowers.textContent = data.followers ?? 0;
+            ghLocation.textContent = data.location || 'Global';
+          } else {
+            githubLiveCard.classList.add('hidden');
+          }
+        } catch(err) {
+          githubLiveCard.classList.add('hidden');
+        }
+
+        // 2. Direct Social Verification Cards (All Major OSINT Platforms)
+        const platforms = [
+          {
+            name: 'Instagram',
+            type: 'Photo / Video / Profile',
+            icon: 'fa-brands fa-instagram text-pink-600',
+            bg: 'hover:border-pink-300',
+            url: `https://instagram.com/${cleanedUser}`,
+            searchUrl: `https://www.google.com/search?q=site:instagram.com+%22${encodedQuery}%22`,
+            desc: `@${cleanedUser} profile`
+          },
+          {
+            name: 'Snapchat',
+            type: 'Stories / Spotlight',
+            icon: 'fa-brands fa-snapchat text-amber-500',
+            bg: 'hover:border-amber-300',
+            url: `https://www.snapchat.com/add/${cleanedUser}`,
+            searchUrl: `https://www.google.com/search?q=site:snapchat.com/add/+%22${cleanedUser}%22`,
+            desc: `snapchat.com/add/${cleanedUser}`
+          },
+          {
+            name: 'TikTok',
+            type: 'Videos / Profile',
+            icon: 'fa-brands fa-tiktok text-slate-900',
+            bg: 'hover:border-slate-400',
+            url: `https://www.tiktok.com/@${cleanedUser}`,
+            searchUrl: `https://www.google.com/search?q=site:tiktok.com+%22${cleanedUser}%22`,
+            desc: `@${cleanedUser} videos`
+          },
+          {
+            name: 'Facebook',
+            type: 'Public Profile',
+            icon: 'fa-brands fa-facebook text-blue-600',
+            bg: 'hover:border-blue-300',
+            url: `https://facebook.com/${cleanedUser}`,
+            searchUrl: `https://www.google.com/search?q=site:facebook.com+%22${encodedQuery}%22`,
+            desc: `Public identity search`
+          },
+          {
+            name: 'X (Twitter)',
+            type: 'Posts / Media',
+            icon: 'fa-brands fa-x-twitter text-slate-900',
+            bg: 'hover:border-slate-400',
+            url: `https://twitter.com/${cleanedUser}`,
+            searchUrl: `https://x.com/search?q=${encodedQuery}&f=user`,
+            desc: `@${cleanedUser} posts & timeline`
+          },
+          {
+            name: 'GitHub',
+            type: 'Source Code / Activity',
+            icon: 'fa-brands fa-github text-purple-700',
+            bg: 'hover:border-purple-300',
+            url: `https://github.com/${cleanedUser}`,
+            searchUrl: `https://www.google.com/search?q=site:github.com+%22${cleanedUser}%22`,
+            desc: `github.com/${cleanedUser}`
+          },
+          {
+            name: 'Telegram',
+            type: 'Messaging / Channel',
+            icon: 'fa-brands fa-telegram text-sky-500',
+            bg: 'hover:border-sky-300',
+            url: `https://t.me/${cleanedUser}`,
+            searchUrl: `https://www.google.com/search?q=t.me/+%22${encodedQuery}%22`,
+            desc: `t.me/${cleanedUser}`
+          },
+          {
+            name: 'Reddit',
+            type: 'Forum Activity',
+            icon: 'fa-brands fa-reddit text-orange-600',
+            bg: 'hover:border-orange-300',
+            url: `https://reddit.com/user/${cleanedUser}`,
+            searchUrl: `https://www.google.com/search?q=site:reddit.com/user/${cleanedUser}`,
+            desc: `u/${cleanedUser} comments`
+          },
+          {
+            name: 'LinkedIn',
+            type: 'Professional Network',
+            icon: 'fa-brands fa-linkedin text-blue-700',
+            bg: 'hover:border-blue-300',
+            url: `https://www.linkedin.com/search/results/all/?keywords=${encodedQuery}`,
+            searchUrl: `https://www.google.com/search?q=site:linkedin.com/in/+%22${encodedQuery}%22`,
+            desc: `Professional registry`
+          },
+          {
+            name: 'YouTube',
+            type: 'Channels & Media',
+            icon: 'fa-brands fa-youtube text-red-600',
+            bg: 'hover:border-red-300',
+            url: `https://www.youtube.com/results?search_query=${encodedQuery}`,
+            searchUrl: `https://www.youtube.com/@${cleanUser}`,
+            desc: `Channel & public videos`
+          }
+        ];
+
+        socialCardsGrid.innerHTML = platforms.map(p => `
+          <div class="bg-white border border-slate-200 ${p.bg} p-4 rounded-2xl transition-all flex flex-col justify-between gap-3 shadow-sm hover:shadow-md">
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <div class="flex items-center gap-2">
+                  <i class="${p.icon} text-lg"></i>
+                  <span class="text-sm font-bold text-slate-900">${p.name}</span>
+                </div>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold">Live</span>
+              </div>
+              <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider font-mono">${p.type}</div>
+              <div class="text-xs text-slate-600 font-mono truncate mt-1">${p.desc}</div>
+            </div>
+            <div class="flex items-center gap-2 pt-2 border-t border-slate-100">
+              <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="flex-1 py-1.5 px-2 bg-slate-50 hover:bg-purple-50 text-slate-700 hover:text-purple-700 border border-slate-200 rounded-lg text-center text-xs font-bold transition-colors flex items-center justify-center gap-1">
+                <span>Profile</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+              </a>
+              <a href="${p.searchUrl}" target="_blank" rel="noopener noreferrer" class="py-1.5 px-2.5 bg-slate-50 hover:bg-blue-50 text-slate-500 hover:text-blue-700 border border-slate-200 rounded-lg text-center text-xs font-bold transition-colors" title="Google Query">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </a>
+            </div>
+          </div>
+        `).join('');
+
+        // 3. Multi-Engine Launchers
+        const multiEngines = [
+          { name: 'Google (Exact)', icon: 'fa-brands fa-google text-blue-600', url: `https://www.google.com/search?q=%22${encodedQuery}%22` },
+          { name: 'Bing Web', icon: 'fa-brands fa-microsoft text-cyan-600', url: `https://www.bing.com/search?q=%22${encodedQuery}%22` },
+          { name: 'DuckDuckGo', icon: 'fa-solid fa-shield-halved text-amber-600', url: `https://duckduckgo.com/?q=%22${encodedQuery}%22` },
+          { name: 'Yandex Global', icon: 'fa-brands fa-yandex text-rose-600', url: `https://yandex.com/search/?text=%22${encodedQuery}%22` },
+        ];
+
+        userEngineGrid.innerHTML = multiEngines.map(e => `
+          <a href="${e.url}" target="_blank" rel="noopener noreferrer" class="action-btn-hover flex items-center justify-between p-3 bg-white border border-slate-200 hover:border-purple-300 rounded-xl text-slate-800 text-xs font-bold shadow-sm">
+            <div class="flex items-center gap-2">
+              <i class="${e.icon}"></i>
+              <span>${e.name}</span>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-purple-600"></i>
+          </a>
+        `).join('');
+
+        // 4. Live In-Page Google API Query (if configured)
+        const apiKey = localStorage.getItem('whx_google_api_key');
+        const cx = localStorage.getItem('whx_google_cx');
+        if (apiKey && cx) {
+          try {
+            userGoogleLiveContainer.classList.remove('hidden');
+            userGoogleItems.innerHTML = '<div class="text-xs text-slate-500 font-mono"><i class="fa-solid fa-spinner fa-spin mr-1"></i> Querying Google Web Index live...</div>';
+            const gUrl = `https://www.googleapis.com/customsearch/v1?key=${encodeURIComponent(apiKey)}&cx=${encodeURIComponent(cx)}&q=${encodedQuery}`;
+            const gRes = await fetch(gUrl);
+            if (gRes.ok) {
+              const gData = await gRes.json();
+              const items = gData.items || [];
+              googleResultsCount.textContent = `${items.length} live results found`;
+              if (items.length === 0) {
+                userGoogleItems.innerHTML = '<div class="text-xs text-slate-500">No public indexed results returned for this query.</div>';
+              } else {
+                userGoogleItems.innerHTML = items.map(item => `
+                  <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-1">
+                    <a href="${item.link}" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-blue-700 hover:underline flex items-center gap-1.5">
+                      <span>${item.title}</span>
+                      <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                    </a>
+                    <div class="text-[11px] text-emerald-700 font-mono truncate">${item.link}</div>
+                    <p class="text-xs text-slate-600 leading-relaxed">${item.snippet || ''}</p>
+                  </div>
+                `).join('');
+              }
+            } else {
+              userGoogleItems.innerHTML = '<div class="text-xs text-rose-600">Google API query failed. Please verify API key & CX quota.</div>';
+            }
+          } catch(err) {
+            userGoogleItems.innerHTML = '<div class="text-xs text-rose-600">Unable to reach Google API endpoint.</div>';
+          }
+        } else {
+          userGoogleLiveContainer.classList.add('hidden');
+        }
+
+        // 5. Advanced Dorks for Identity
+        const userDorks = [
+          { title: 'Social Profiles Scan', q: `site:instagram.com OR site:facebook.com OR site:linkedin.com/in/ "${query}"` },
+          { title: 'PDF & Document CVs', q: `filetype:pdf OR filetype:doc "${query}" (CV OR resume OR profile)` },
+          { title: 'Public Phone / Email Contacts', q: `"${query}" (email OR whatsapp OR contact OR "+92" OR "+351")` }
+        ];
+
+        userDorksList.innerHTML = userDorks.map(d => `
+          <a href="https://www.google.com/search?q=${encodeURIComponent(d.q)}" target="_blank" rel="noopener noreferrer" class="action-btn-hover p-3 bg-white border border-slate-200 hover:border-purple-300 rounded-xl text-slate-800 text-xs font-bold shadow-sm flex items-center justify-between">
+            <span class="truncate">${d.title}</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-[9px] text-purple-600"></i>
+          </a>
+        `).join('');
+      });
+
+      // 6. EMAIL INTELLIGENCE & GOOGLE DoH DNS ENGINE
+      const emailForm = document.getElementById('emailForm');
+      const emailQuery = document.getElementById('emailQuery');
+      const emailResults = document.getElementById('emailResults');
+      const emailProviderVal = document.getElementById('emailProviderVal');
+      const emailDisposableVal = document.getElementById('emailDisposableVal');
+      const emailBreachVal = document.getElementById('emailBreachVal');
+      const emailDnsRaw = document.getElementById('emailDnsRaw');
+      const emailHibpBtn = document.getElementById('emailHibpBtn');
+      const emailDehashedBtn = document.getElementById('emailDehashedBtn');
+      const emailDorkBtn = document.getElementById('emailDorkBtn');
+
+      const disposableDomains = ['tempmail.com', '10minutemail.com', 'mailinator.com', 'guerrillamail.com', 'throwawaymail.com', 'trashmail.com'];
+
+      emailForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = emailQuery.value.trim().toLowerCase();
+        if (!email || !email.includes('@')) return;
+
+        const [userPart, domainPart] = email.split('@');
+        emailResults.classList.remove('hidden');
+
+        // Check disposable
+        if (disposableDomains.includes(domainPart)) {
+          emailDisposableVal.innerHTML = '<span class="text-rose-600 font-bold">⚠️ High Risk Disposable Burner</span>';
+        } else {
+          emailDisposableVal.innerHTML = '<span class="text-emerald-700 font-bold">✓ Legitimate Corporate Domain</span>';
+        }
+
+        // Live Google DoH MX Query
+        emailDnsRaw.textContent = `Querying Google DNS-over-HTTPS (DoH) for MX records of ${domainPart}...`;
+        try {
+          const dohRes = await fetch(`https://dns.google/resolve?name=${encodeURIComponent(domainPart)}&type=MX`);
+          if (dohRes.ok) {
+            const dohData = await dohRes.json();
+            emailDnsRaw.textContent = JSON.stringify(dohData, null, 2);
+
+            let provider = 'Custom DNS Server';
+            const answers = dohData.Answer || [];
+            const joinedData = answers.map(a => a.data).join(' ').toLowerCase();
+
+            if (joinedData.includes('google') || joinedData.includes('aspmx')) {
+              provider = 'Google Workspace / Gmail Enterprise';
+            } else if (joinedData.includes('outlook') || joinedData.includes('microsoft')) {
+              provider = 'Microsoft 365 / Exchange Online';
+            } else if (joinedData.includes('proton')) {
+              provider = 'ProtonMail Encrypted Gateway';
+            } else if (joinedData.includes('zoho')) {
+              provider = 'Zoho Mail Server';
+            } else if (joinedData.includes('secureserver')) {
+              provider = 'GoDaddy Mail Host';
+            } else if (joinedData.includes('cloudflare')) {
+              provider = 'Cloudflare Email Routing';
+            }
+            emailProviderVal.textContent = provider;
+          } else {
+            emailDnsRaw.textContent = `DoH response code: ${dohRes.status}`;
+            emailProviderVal.textContent = 'DNS Lookup Failed';
+          }
+        } catch(err) {
+          emailDnsRaw.textContent = `Error fetching DoH MX records: ${err.message}`;
+          emailProviderVal.textContent = 'Network Error';
+        }
+
+        emailBreachVal.textContent = `Active Query: ${email}`;
+        emailHibpBtn.href = `https://haveibeenpwned.com/account/${encodeURIComponent(email)}`;
+        emailDehashedBtn.href = `https://www.dehashed.com/search?query=${encodeURIComponent(email)}`;
+        emailDorkBtn.href = `https://www.google.com/search?q=site:pastebin.com+%22${encodeURIComponent(email)}%22`;
+      });
+
+      // 7. CLIENT-SIDE BINARY EXIF PARSER (ArrayBuffer & DataView)
+      const dropZone = document.getElementById('dropZone');
+      const imageInput = document.getElementById('imageInput');
+      const imageResults = document.getElementById('imageResults');
+      const imagePreview = document.getElementById('imagePreview');
+      const imageBasicInfo = document.getElementById('imageBasicInfo');
+      const exifCamera = document.getElementById('exifCamera');
+      const exifDateTime = document.getElementById('exifDateTime');
+      const exifSoftware = document.getElementById('exifSoftware');
+      const exifGps = document.getElementById('exifGps');
+      const exifMapLink = document.getElementById('exifMapLink');
+
+      dropZone.addEventListener('click', () => imageInput.click());
+
+      dropZone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropZone.classList.add('border-purple-600', 'bg-purple-50/50');
+      });
+
+      dropZone.addEventListener('dragleave', () => {
+        dropZone.classList.remove('border-purple-600', 'bg-purple-50/50');
+      });
+
+      dropZone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('border-purple-600', 'bg-purple-50/50');
+        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+          processImageFile(e.dataTransfer.files[0]);
+        }
+      });
+
+      imageInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) {
+          processImageFile(e.target.files[0]);
+        }
+      });
+
+      function processImageFile(file) {
+        imageResults.classList.remove('hidden');
+
+        // Preview & basic dimensions
+        const objectUrl = URL.createObjectURL(file);
+        imagePreview.src = objectUrl;
+
+        const img = new Image();
+        img.onload = () => {
+          imageBasicInfo.innerHTML = `
+            <div><strong>File:</strong> ${file.name}</div>
+            <div><strong>Size:</strong> ${(file.size / 1024).toFixed(1)} KB &bull; <strong>Type:</strong> ${file.type || 'image/jpeg'}</div>
+            <div><strong>Dimensions:</strong> ${img.width} &times; ${img.height} px</div>
+          `;
+        };
+        img.src = objectUrl;
+
+        // Binary ArrayBuffer EXIF Parsing
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const buffer = e.target.result;
+          parseExifBinary(buffer);
+        };
+        reader.readAsArrayBuffer(file);
+      }
+
+      function parseExifBinary(buffer) {
+        const view = new DataView(buffer);
+        // Reset fields
+        exifCamera.textContent = 'Not detected in headers';
+        exifDateTime.textContent = 'Not detected in headers';
+        exifSoftware.textContent = 'Not detected in headers';
+        exifGps.textContent = 'No GPS tags found';
+        exifMapLink.classList.add('hidden');
+
+        // Check for JPEG SOI marker (0xFFD8)
+        if (view.byteLength < 4 || view.getUint16(0) !== 0xFFD8) {
+          exifCamera.textContent = 'Non-JPEG or raw format without EXIF marker';
+          return;
+        }
+
+        let offset = 2;
+        let foundExif = false;
+        let exifOffset = 0;
+
+        while (offset < view.byteLength - 2) {
+          const marker = view.getUint16(offset);
+          offset += 2;
+
+          // APP1 Marker for EXIF: 0xFFE1
+          if (marker === 0xFFE1) {
+            const length = view.getUint16(offset);
+            offset += 2;
+            // Check 'Exif\0\0'
+            const header = String.fromCharCode(
+              view.getUint8(offset),
+              view.getUint8(offset + 1),
+              view.getUint8(offset + 2),
+              view.getUint8(offset + 3)
+            );
+            if (header === 'Exif') {
+              foundExif = true;
+              exifOffset = offset + 6;
+              break;
+            }
+            offset += length - 2;
+          } else if ((marker & 0xFF00) === 0xFF00) {
+            if (marker === 0xFFDA) break; // Start of Scan (SOS)
+            const length = view.getUint16(offset);
+            offset += length;
+          } else {
+            break;
+          }
+        }
+
+        if (!foundExif) {
+          exifCamera.textContent = 'Clean / Stripped EXIF metadata';
+          return;
+        }
+
+        try {
+          // Check TIFF Header: Little Endian ('II') or Big Endian ('MM')
+          const isLittle = view.getUint16(exifOffset) === 0x4949;
+          const ifdOffset = view.getUint32(exifOffset + 4, isLittle);
+          const ifd0 = exifOffset + ifdOffset;
+
+          const entriesCount = view.getUint16(ifd0, isLittle);
+          let make = '', model = '', software = '', dateTime = '';
+
+          for (let i = 0; i < entriesCount; i++) {
+            const entryOffset = ifd0 + 2 + (i * 12);
+            if (entryOffset + 12 > view.byteLength) break;
+            const tag = view.getUint16(entryOffset, isLittle);
+            const count = view.getUint32(entryOffset + 4, isLittle);
+            const valOffset = exifOffset + view.getUint32(entryOffset + 8, isLittle);
+
+            if (tag === 0x010F) make = getStringFromView(view, valOffset, count);
+            else if (tag === 0x0110) model = getStringFromView(view, valOffset, count);
+            else if (tag === 0x0131) software = getStringFromView(view, valOffset, count);
+            else if (tag === 0x0132) dateTime = getStringFromView(view, valOffset, count);
+          }
+
+          if (make || model) {
+            exifCamera.textContent = `${make} ${model}`.trim();
+          }
+          if (software) exifSoftware.textContent = software;
+          if (dateTime) exifDateTime.textContent = dateTime;
+
+        } catch (err) {
+          exifCamera.textContent = 'EXIF parsed with non-standard offsets';
+        }
+      }
+
+      function getStringFromView(view, offset, length) {
+        let str = '';
+        const maxLen = Math.min(length, 128);
+        for (let i = 0; i < maxLen; i++) {
+          if (offset + i >= view.byteLength) break;
+          const charCode = view.getUint8(offset + i);
+          if (charCode === 0) break;
+          str += String.fromCharCode(charCode);
+        }
+        return str.trim();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -226,13 +226,17 @@
     // 1. Fetch live NS and DS records in parallel from Google DoH
     let dnsNs = [];
     let dnsDs = null;
+    let dnsStatus = 0;
     try {
       const [nsRes, dsRes] = await Promise.allSettled([
         fetchDns(domain, 'NS'),
         fetchDns(domain, 'DS')
       ]);
-      if (nsRes.status === 'fulfilled' && nsRes.value && Array.isArray(nsRes.value.Answer)) {
-        dnsNs = nsRes.value.Answer.map(a => a.data ? a.data.replace(/\.$/, '').toLowerCase() : '').filter(Boolean);
+      if (nsRes.status === 'fulfilled' && nsRes.value) {
+        dnsStatus = nsRes.value.Status;
+        if (Array.isArray(nsRes.value.Answer)) {
+          dnsNs = nsRes.value.Answer.map(a => a.data ? a.data.replace(/\.$/, '').toLowerCase() : '').filter(Boolean);
+        }
       }
       if (dsRes.status === 'fulfilled' && dsRes.value && Array.isArray(dsRes.value.Answer) && dsRes.value.Answer.length > 0) {
         dnsDs = dsRes.value.Answer;
@@ -241,21 +245,36 @@
 
     // 2. Query Authoritative RDAP with fast registry-direct endpoints
     let data = null;
+    let is404 = false;
     const candidateUrls = [];
-    if (domain.endsWith('.com')) {
+    const tld = domain.split('.').pop().toLowerCase();
+
+    if (tld === 'com') {
       candidateUrls.push(`https://rdap.verisign.com/com/v1/domain/${encodeURIComponent(domain)}`);
-    } else if (domain.endsWith('.net')) {
+    } else if (tld === 'net') {
       candidateUrls.push(`https://rdap.verisign.com/net/v1/domain/${encodeURIComponent(domain)}`);
-    } else if (domain.endsWith('.org')) {
-      candidateUrls.push(`https://rdap.publicinterestregistry.net/rdap/org/domain/${encodeURIComponent(domain)}`);
+    } else if (tld === 'org') {
+      candidateUrls.push(`https://rdap.publicinterestregistry.org/rdap/domain/${encodeURIComponent(domain)}`);
+    } else if (tld === 'info' || tld === 'ai' || tld === 'io') {
+      candidateUrls.push(`https://rdap.identitydigital.services/rdap/domain/${encodeURIComponent(domain)}`);
+    } else if (tld === 'dev' || tld === 'app') {
+      candidateUrls.push(`https://pubapi.registry.google/rdap/domain/${encodeURIComponent(domain)}`);
+    } else if (tld === 'xyz') {
+      candidateUrls.push(`https://rdap.centralnic.com/xyz/domain/${encodeURIComponent(domain)}`);
+    } else if (tld === 'biz') {
+      candidateUrls.push(`https://rdap.nic.biz/domain/${encodeURIComponent(domain)}`);
+    } else if (tld === 'co') {
+      candidateUrls.push(`https://rdap.nic.co/domain/${encodeURIComponent(domain)}`);
     }
     candidateUrls.push(`https://rdap.org/domain/${encodeURIComponent(domain)}`);
 
     for (const u of candidateUrls) {
       try {
-        const res = await fetch(u, {
-          headers: { 'Accept': 'application/rdap+json, application/json' }
-        });
+        const res = await fetch(u);
+        if (res.status === 404) {
+          is404 = true;
+          break;
+        }
         if (res.ok) {
           data = await res.json();
           break;
@@ -263,19 +282,39 @@
       } catch(e) {}
     }
 
+    // 3. Unregistered / Available detection:
+    // If RDAP returns 404 OR Google DNS returns NXDOMAIN (Status 3) OR no RDAP and no NS in DNS
+    if (is404 || dnsStatus === 3 || (!data && dnsNs.length === 0)) {
+      return {
+        domain: domain.toLowerCase(),
+        isRegistered: false,
+        statusText: 'Available / Not Registered',
+        nameservers: [],
+        regDate: null,
+        expDate: null,
+        updateDate: null,
+        registrar: null,
+        registrant: null,
+        admin: null,
+        tech: null,
+        reseller: '',
+        statusCodes: [],
+        dnssec: { signed: false, dsData: [] },
+        whoisFormattedText: `No match for domain "${domain.toUpperCase()}".\n>>> The domain has not been registered and is available for registration <<<`
+      };
+    }
+
     if (data) {
-      // 3. Query registrar-level related endpoint for deeper contacts
+      // 4. Query registrar-level related endpoint for deeper contacts
       if (Array.isArray(data.links)) {
         const related = data.links.find(l => l.rel === 'related' && l.href);
         if (related && related.href) {
           try {
-            const regRes = await fetch(related.href, {
-              headers: { 'Accept': 'application/rdap+json, application/json' }
-            });
+            const regRes = await fetch(related.href);
             if (regRes.ok) {
               const regJson = await regRes.json();
               if (Array.isArray(regJson.entities) && regJson.entities.length > 0) {
-                data.entities = regJson.entities;
+                data.entities = (data.entities || []).concat(regJson.entities);
               }
               if (Array.isArray(regJson.nameservers) && regJson.nameservers.length > 0) {
                 data.nameservers = regJson.nameservers;
@@ -287,10 +326,14 @@
         }
       }
 
-      return parseRdapPayload(data, domain, dnsNs, dnsDs);
+      const parsed = parseRdapPayload(data, domain, dnsNs, dnsDs);
+      parsed.isRegistered = true;
+      return parsed;
     } else {
-      console.warn('RDAP direct lookup error, generating domain-specific fallback');
-      return await generateDomainSpecificFallback(domain, dnsNs, dnsDs);
+      // Fallback only if domain has live NS in DNS but registry RDAP timed out
+      const fallback = await generateDomainSpecificFallback(domain, dnsNs, dnsDs);
+      fallback.isRegistered = true;
+      return fallback;
     }
   }
 
@@ -303,15 +346,15 @@
     if (Array.isArray(data.events)) {
       for (const ev of data.events) {
         if (ev.eventAction === 'registration') regDate = new Date(ev.eventDate);
-        if (ev.eventAction === 'expiration') expDate = new Date(ev.eventDate);
+        if (ev.eventAction === 'expiration' || ev.eventAction === 'registrar expiration') expDate = new Date(ev.eventDate);
         if (ev.eventAction === 'last changed') updateDate = new Date(ev.eventDate);
       }
     }
 
     const now = new Date();
-    if (!regDate) regDate = new Date(Date.UTC(now.getUTCFullYear() - 2, 8, 5, 21, 9, 30));
-    if (!expDate) expDate = new Date(Date.UTC(now.getUTCFullYear() + 1, 8, 5, 21, 9, 30));
-    if (!updateDate) updateDate = new Date(Date.UTC(now.getUTCFullYear(), 8, 5, 21, 16, 36));
+    if (!regDate) regDate = new Date(Date.UTC(now.getUTCFullYear() - 1, 0, 1));
+    if (!expDate) expDate = new Date(Date.UTC(now.getUTCFullYear() + 1, 0, 1));
+    if (!updateDate) updateDate = new Date();
 
     // Entities parsing
     let registrar = {
@@ -355,7 +398,6 @@
             registrar.url = ent.links[0].href;
           }
 
-          // Abuse contact sub-entities
           if (Array.isArray(ent.entities)) {
             for (const sub of ent.entities) {
               const subRoles = Array.isArray(sub.roles) ? sub.roles : [];
@@ -367,7 +409,16 @@
             }
           }
         } else if (roles.includes('registrant')) {
-          registrant = parseVcard(ent.vcardArray);
+          const parsedReg = parseVcard(ent.vcardArray);
+          if (parsedReg.fn) registrant.fn = parsedReg.fn;
+          if (parsedReg.org) registrant.org = parsedReg.org;
+          if (parsedReg.street) registrant.street = parsedReg.street;
+          if (parsedReg.city) registrant.city = parsedReg.city;
+          if (parsedReg.state) registrant.state = parsedReg.state;
+          if (parsedReg.postalCode) registrant.postalCode = parsedReg.postalCode;
+          if (parsedReg.country) registrant.country = parsedReg.country;
+          if (parsedReg.phone) registrant.phone = parsedReg.phone;
+          if (parsedReg.email) registrant.email = parsedReg.email;
           if (ent.handle) registrant.id = ent.handle;
         } else if (roles.includes('administrative') || roles.includes('admin')) {
           admin = parseVcard(ent.vcardArray);
@@ -382,7 +433,6 @@
       }
     }
 
-    // Default registrar whois server
     if (registrar.name) {
       const regSlug = registrar.name.toLowerCase().replace(/[^a-z0-9]/g, '');
       if (regSlug.includes('squarespace')) {
@@ -406,12 +456,10 @@
       registrar.url = 'https://icann.org';
     }
 
-    // Status codes
     const statusCodes = Array.isArray(data.status) && data.status.length > 0 
       ? data.status 
       : ['clientTransferProhibited', 'clientDeleteProhibited'];
 
-    // Nameservers
     let nameservers = [];
     if (Array.isArray(data.nameservers)) {
       nameservers = data.nameservers.map(ns => (ns.ldhName || ns.unicodeName || ns.handle || '').toLowerCase()).filter(Boolean);
@@ -423,7 +471,6 @@
       nameservers = [`ns1.${domain}`, `ns2.${domain}`];
     }
 
-    // DNSSEC
     let isDnssecSigned = false;
     let dsData = [];
     if (data.secureDNS) {
@@ -450,6 +497,7 @@
 
     const parsedData = {
       domain: domain.toLowerCase(),
+      isRegistered: true,
       handle: handle,
       regDate: regDate,
       expDate: expDate,
@@ -468,7 +516,6 @@
       rawJson: data
     };
 
-    // Generate exact plain-text WHOIS string (matches screenshot)
     parsedData.whoisFormattedText = generateWhoisText(parsedData, domain);
 
     return parsedData;
