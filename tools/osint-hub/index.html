@@ -28,10 +28,10 @@
           },
           colors: {
             cyber: {
-              black: '#030712',
-              navy: '#050c1f',
-              card: '#070e24',
-              border: '#0ea5e9',
+              black: '#07090e',
+              navy: '#0b1120',
+              card: '#0d1222',
+              border: '#7c3aed',
               cyan: '#06b6d4',
               glow: '#38bdf8'
             }
@@ -47,7 +47,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     body {
-      background-color: #030712 !important;
+      background-color: #07090e !important;
       color: #e2e8f0 !important;
       font-family: 'Inter', -apple-system, sans-serif !important;
       margin: 0;
@@ -55,9 +55,9 @@
       min-height: 100vh;
       overflow-x: hidden;
       background-image: 
-        radial-gradient(rgba(6, 182, 212, 0.18) 1px, transparent 1px),
-        linear-gradient(to right, rgba(14, 165, 233, 0.05) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
+        radial-gradient(rgba(124, 58, 237, 0.15) 1px, transparent 1px),
+        linear-gradient(to right, rgba(124, 58, 237, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(16, 185, 129, 0.04) 1px, transparent 1px);
       background-size: 32px 32px, 32px 32px, 32px 32px;
       background-position: 0 0, 16px 16px, 16px 16px;
     }
@@ -68,46 +68,46 @@
       transform: translateX(-50%);
       width: 1200px;
       height: 540px;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.24) 0%, rgba(59, 130, 246, 0.16) 35%, rgba(99, 102, 241, 0.06) 65%, transparent 75%);
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.18) 0%, rgba(124, 58, 237, 0.22) 45%, rgba(11, 17, 32, 0.08) 75%, transparent 85%);
       filter: blur(85px);
       pointer-events: none;
       z-index: 0;
     }
     .cyber-card {
-      background: rgba(7, 14, 36, 0.92) !important;
+      background: rgba(13, 18, 34, 0.94) !important;
       backdrop-filter: blur(16px) !important;
-      border: 1px solid rgba(56, 189, 248, 0.24) !important;
-      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.8), 0 0 30px -5px rgba(6, 182, 212, 0.15) !important;
+      border: 1px solid rgba(124, 58, 237, 0.24) !important;
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.85), 0 0 30px -5px rgba(124, 58, 237, 0.15) !important;
     }
     .cyber-subcard {
-      background: rgba(11, 20, 48, 0.78) !important;
-      border: 1px solid rgba(56, 189, 248, 0.18) !important;
+      background: rgba(18, 24, 44, 0.82) !important;
+      border: 1px solid rgba(124, 58, 237, 0.18) !important;
       transition: all 0.2s ease;
     }
     .cyber-subcard:hover {
-      border-color: rgba(6, 182, 212, 0.6) !important;
-      box-shadow: 0 0 18px -2px rgba(6, 182, 212, 0.3) !important;
+      border-color: rgba(16, 185, 129, 0.6) !important;
+      box-shadow: 0 0 18px -2px rgba(16, 185, 129, 0.25) !important;
     }
     .cyber-input {
-      background: #04091a !important;
-      border: 1px solid rgba(56, 189, 248, 0.25) !important;
+      background: #07090e !important;
+      border: 1px solid rgba(124, 58, 237, 0.28) !important;
       color: #38bdf8 !important;
     }
     .cyber-input:focus {
-      border-color: #06b6d4 !important;
-      box-shadow: 0 0 15px rgba(6, 182, 212, 0.4) !important;
+      border-color: #10b981 !important;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.35) !important;
       outline: none !important;
     }
     .custom-scroll::-webkit-scrollbar { width: 6px; height: 6px; }
-    .custom-scroll::-webkit-scrollbar-track { background: #050b1d; }
+    .custom-scroll::-webkit-scrollbar-track { background: #07090e; }
     .custom-scroll::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; }
-    .custom-scroll::-webkit-scrollbar-thumb:hover { background: #06b6d4; }
+    .custom-scroll::-webkit-scrollbar-thumb:hover { background: #10b981; }
     .action-btn-hover {
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .action-btn-hover:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 20px -2px rgba(6, 182, 212, 0.45);
+      box-shadow: 0 0 20px -2px rgba(16, 185, 129, 0.45);
     }
     @media print {
       body { background: #ffffff !important; color: #000000 !important; }
@@ -116,35 +116,32 @@
     }
   </style>
 </head>
-<body class="selection:bg-cyan-500/30 selection:text-cyan-200 relative antialiased min-h-screen flex flex-col justify-between">
+<body class="selection:bg-emerald-500/30 selection:text-emerald-200 relative antialiased min-h-screen flex flex-col justify-between">
   
   <div class="ambient-glow-top"></div>
 
-  <!-- Top Executive Site Header (WHX Digital Cyber HUD Branded) -->
-  <header class="relative z-20 border-b border-cyan-900/40 bg-[#030712]/90 backdrop-blur-md sticky top-0 px-4 py-3.5 shadow-lg">
+  <!-- Top Executive Site Header (Clean Signature WHX Green Logo Only) -->
+  <header class="relative z-20 border-b border-slate-800/80 bg-[#07090e]/90 backdrop-blur-md sticky top-0 px-4 py-3.5 shadow-lg">
     <div class="max-w-6xl mx-auto flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <a href="../../index.html" class="flex items-center gap-2 group text-decoration-none">
-          <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white font-bold text-base shadow-[0_0_15px_rgba(6,182,212,0.4)] group-hover:scale-105 transition-transform">
-            W
-          </div>
-          <div class="flex items-center gap-1.5">
-            <span class="font-display font-extrabold text-base tracking-tight text-white">WHX<span class="text-cyan-400">Digital</span></span>
-          </div>
+      <div class="flex items-center">
+        <a href="../../index.html" class="inline-flex items-center text-decoration-none group" aria-label="WHX Digital Home">
+          <svg class="logo-icon-svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor" style="color: #10b981 !important; display: block; transition: transform 0.2s ease;" aria-hidden="true">
+            <rect x="6" y="8" width="14" height="18" rx="2" fill="currentColor" opacity="0.9"></rect>
+            <rect x="9" y="6" width="14" height="18" rx="2" fill="currentColor" opacity="0.7"></rect>
+            <rect x="12" y="4" width="14" height="18" rx="2" fill="currentColor" opacity="0.5"></rect>
+            <path d="M19 12 L20 15 L23 15 L20.5 17 L21.5 20 L19 18 L16.5 20 L17.5 17 L15 15 L18 15 Z" fill="currentColor" opacity="0.3"></path>
+          </svg>
         </a>
-        <span class="hidden sm:inline-block text-[11px] font-mono text-cyan-400/80 bg-cyan-950/70 px-2.5 py-0.5 rounded-full border border-cyan-500/30">
-          <i class="fa-solid fa-shield-halved text-cyan-400 mr-1"></i>CYBER OSINT &amp; FOOTPRINT LAB
-        </span>
       </div>
 
       <div class="flex items-center space-x-3 text-xs">
-        <a href="../../index.html" class="text-slate-300 hover:text-cyan-400 transition-colors font-medium flex items-center gap-1.5 py-1 px-2.5 rounded-lg hover:bg-cyan-950/50">
+        <a href="../../index.html" class="text-slate-300 hover:text-emerald-400 transition-colors font-medium flex items-center gap-1.5 py-1 px-2.5 rounded-lg hover:bg-slate-800/60">
           <i class="fa-solid fa-arrow-left text-[11px]"></i>
           <span>Return Home</span>
         </a>
         <span class="text-slate-700">|</span>
-        <div class="font-mono text-cyan-400/90 text-xs hidden md:flex items-center gap-1.5 bg-cyan-950/40 px-3 py-1 rounded-lg border border-cyan-500/20">
-          <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+        <div class="font-mono text-emerald-400/90 text-xs hidden md:flex items-center gap-1.5 bg-emerald-950/40 px-3 py-1 rounded-lg border border-emerald-500/20">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
           <span id="utcClock">UTC: --:--:--</span>
         </div>
       </div>
@@ -154,7 +151,7 @@
   <!-- ==========================================================
        MODAL 1: ETHICAL COMPLIANCE AGREEMENT GATE (18+ OSINT)
        ========================================================== -->
-  <div id="termsModal" class="fixed inset-0 bg-[#030712]/90 backdrop-blur-md flex items-center justify-center z-50 p-4 transition-all duration-300 hidden">
+  <div id="termsModal" class="fixed inset-0 bg-[#07090e]/90 backdrop-blur-md flex items-center justify-center z-50 p-4 transition-all duration-300 hidden">
     <div class="cyber-card rounded-2xl max-w-xl w-full p-6 sm:p-8 space-y-5 text-slate-100 animate-in fade-in zoom-in-95">
       <div class="flex items-start justify-between border-b border-cyan-500/20 pb-4">
         <div class="flex items-center space-x-3">
@@ -169,7 +166,7 @@
         <span class="text-[10px] font-mono bg-cyan-950 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded uppercase">Restricted</span>
       </div>
 
-      <div class="text-xs text-slate-300 space-y-3 leading-relaxed max-h-60 overflow-y-auto pr-2 custom-scroll border border-cyan-900/40 p-4 rounded-xl bg-[#040817]">
+      <div class="text-xs text-slate-300 space-y-3 leading-relaxed max-h-60 overflow-y-auto pr-2 custom-scroll border border-cyan-900/40 p-4 rounded-xl bg-[#07090e]">
         <p class="font-semibold text-white">This defensive workbench is strictly authorized for cybersecurity audits, research, and self-footprint diagnostics:</p>
         <ul class="list-disc pl-5 space-y-2 text-slate-300">
           <li><strong>Lawful Research Only:</strong> You will not use this platform for stalking, harassment, doxxing, or unauthorized electronic intrusion.</li>
@@ -181,7 +178,7 @@
 
       <div class="pt-2 border-t border-cyan-500/20">
         <label class="flex items-center space-x-3 cursor-pointer select-none">
-          <input type="checkbox" id="modalCheck" class="w-4 h-4 rounded text-cyan-500 focus:ring-cyan-500 border-cyan-500/40 bg-[#040817]" />
+          <input type="checkbox" id="modalCheck" class="w-4 h-4 rounded text-cyan-500 focus:ring-cyan-500 border-cyan-500/40 bg-[#07090e]" />
           <span class="text-xs text-slate-200">I am 18+ years of age and certify that I am conducting authorized security research under ethical guidelines.</span>
         </label>
       </div>
@@ -198,7 +195,7 @@
   <!-- ==========================================================
        MODAL 2: OPERATOR CREDENTIALS ACCESS (Admin Clearance)
        ========================================================== -->
-  <div id="loginModal" class="fixed inset-0 bg-[#030712]/92 backdrop-blur-md flex items-center justify-center z-50 p-4 transition-all duration-300 hidden">
+  <div id="loginModal" class="fixed inset-0 bg-[#07090e]/92 backdrop-blur-md flex items-center justify-center z-50 p-4 transition-all duration-300 hidden">
     <div class="cyber-card rounded-2xl max-w-md w-full p-6 sm:p-8 space-y-6 text-slate-100 animate-in fade-in zoom-in-95">
       <div class="text-center space-y-2">
         <div class="w-14 h-14 rounded-2xl bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 mx-auto flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(6,182,212,0.35)]">
@@ -259,7 +256,7 @@
   <!-- ==========================================================
        MODAL 3: GOOGLE CUSTOM SEARCH API CONFIGURATION
        ========================================================= -->
-  <div id="apiModal" class="fixed inset-0 bg-[#030712]/90 backdrop-blur-md flex items-center justify-center z-50 p-4 transition-all duration-300 hidden">
+  <div id="apiModal" class="fixed inset-0 bg-[#07090e]/90 backdrop-blur-md flex items-center justify-center z-50 p-4 transition-all duration-300 hidden">
     <div class="cyber-card rounded-2xl max-w-lg w-full p-6 sm:p-8 space-y-5 text-slate-100">
       <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
         <div class="flex items-center space-x-2.5">
@@ -316,7 +313,7 @@
   <main id="mainDashboard" class="relative z-10 max-w-6xl mx-auto px-4 py-8 md:py-10 w-full opacity-20 pointer-events-none transition-opacity duration-300">
     
     <!-- Header Block with Cyber Reticle & Hologram Badge -->
-    <header class="flex flex-col md:flex-row justify-between items-start md:items-center bg-[#070e24] border border-cyan-500/30 rounded-2xl p-6 md:p-8 mb-8 gap-6 shadow-[0_0_35px_rgba(6,182,212,0.18)] relative overflow-hidden">
+    <header class="flex flex-col md:flex-row justify-between items-start md:items-center bg-[#0d1222] border border-cyan-500/30 rounded-2xl p-6 md:p-8 mb-8 gap-6 shadow-[0_0_35px_rgba(6,182,212,0.18)] relative overflow-hidden">
       <!-- Cyber Reticle Watermark in background -->
       <div class="absolute -right-8 -bottom-8 w-44 h-44 rounded-full border border-cyan-500/15 pointer-events-none flex items-center justify-center opacity-60">
         <div class="w-32 h-32 rounded-full border border-dashed border-cyan-400/20 flex items-center justify-center animate-spin" style="animation-duration: 25s;">
@@ -366,8 +363,8 @@
         </div>
       </button>
 
-      <button data-tab="username" class="tab-btn flex items-center space-x-3 p-4 rounded-2xl border text-sm font-semibold transition-all bg-[#070e24] border-slate-800 text-slate-400 hover:border-cyan-500/40 hover:text-slate-200 cursor-pointer">
-        <div class="w-9 h-9 rounded-xl bg-[#040817] text-slate-400 flex items-center justify-center text-base font-bold">
+      <button data-tab="username" class="tab-btn flex items-center space-x-3 p-4 rounded-2xl border text-sm font-semibold transition-all bg-[#0d1222] border-slate-800 text-slate-400 hover:border-cyan-500/40 hover:text-slate-200 cursor-pointer">
+        <div class="w-9 h-9 rounded-xl bg-[#07090e] text-slate-400 flex items-center justify-center text-base font-bold">
           <i class="fa-solid fa-user-tag"></i>
         </div>
         <div class="text-left">
@@ -376,8 +373,8 @@
         </div>
       </button>
 
-      <button data-tab="email" class="tab-btn flex items-center space-x-3 p-4 rounded-2xl border text-sm font-semibold transition-all bg-[#070e24] border-slate-800 text-slate-400 hover:border-cyan-500/40 hover:text-slate-200 cursor-pointer">
-        <div class="w-9 h-9 rounded-xl bg-[#040817] text-slate-400 flex items-center justify-center text-base font-bold">
+      <button data-tab="email" class="tab-btn flex items-center space-x-3 p-4 rounded-2xl border text-sm font-semibold transition-all bg-[#0d1222] border-slate-800 text-slate-400 hover:border-cyan-500/40 hover:text-slate-200 cursor-pointer">
+        <div class="w-9 h-9 rounded-xl bg-[#07090e] text-slate-400 flex items-center justify-center text-base font-bold">
           <i class="fa-solid fa-shield-virus"></i>
         </div>
         <div class="text-left">
@@ -386,8 +383,8 @@
         </div>
       </button>
 
-      <button data-tab="image" class="tab-btn flex items-center space-x-3 p-4 rounded-2xl border text-sm font-semibold transition-all bg-[#070e24] border-slate-800 text-slate-400 hover:border-cyan-500/40 hover:text-slate-200 cursor-pointer">
-        <div class="w-9 h-9 rounded-xl bg-[#040817] text-slate-400 flex items-center justify-center text-base font-bold">
+      <button data-tab="image" class="tab-btn flex items-center space-x-3 p-4 rounded-2xl border text-sm font-semibold transition-all bg-[#0d1222] border-slate-800 text-slate-400 hover:border-cyan-500/40 hover:text-slate-200 cursor-pointer">
+        <div class="w-9 h-9 rounded-xl bg-[#07090e] text-slate-400 flex items-center justify-center text-base font-bold">
           <i class="fa-solid fa-camera-retro"></i>
         </div>
         <div class="text-left">
@@ -398,7 +395,7 @@
     </div>
 
     <!-- Active Panel Content Container -->
-    <div class="bg-[#070e24]/90 border border-cyan-500/30 rounded-3xl p-6 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_30px_rgba(6,182,212,0.15)] relative overflow-hidden text-slate-100">
+    <div class="bg-[#0d1222]/90 border border-cyan-500/30 rounded-3xl p-6 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.8),0_0_30px_rgba(6,182,212,0.15)] relative overflow-hidden text-slate-100">
       
       <!-- ========================================================
            TAB 1: PHONE & WHATSAPP LOOKUP (REAL-TIME RESOLVERS)
@@ -410,20 +407,20 @@
               <i class="fa-solid fa-phone text-cyan-400"></i>
               <span>Phone Number, Carrier &amp; WhatsApp Intelligence</span>
             </h2>
-            <span class="text-xs font-mono text-cyan-300 bg-cyan-950 px-2.5 py-1 rounded-full border border-cyan-500/40 font-bold">ITU E.164 + Live Direct Resolvers</span>
+            <span class="text-xs font-mono text-cyan-300 bg-cyan-950 px-2.5 py-1 rounded-full border border-cyan-500/40 font-bold">ITU E.164 + Worldwide Live Resolvers</span>
           </div>
           <p class="text-slate-300 text-xs leading-relaxed">
-            Enter any international or Pakistani number (e.g. 03088833148 or +923001234567 or +351...) to analyze carrier routing, operator allocation, and open live identity records in Truecaller, WhatsApp, Sync.me, and public directories.
+            Worldwide Telecom Intelligence: Enter any international or local phone # (e.g. # +92..., +1..., +44..., +351...). Anyone worldwide can search their real data. The system scans live global telecom allocations, official WhatsApp status, and exact matching public web records across search engines and caller directories. Only 100% genuine data matching the number is displayed — no fake, mock, or simulated data.
           </p>
         </div>
 
         <form id="phoneForm" class="flex flex-col sm:flex-row gap-3">
           <div class="relative flex-1">
-            <i class="fa-solid fa-globe absolute left-4 top-3.5 text-cyan-400"></i>
+            <i class="fa-solid fa-hashtag absolute left-4 top-3.5 text-cyan-400"></i>
             <input 
               type="text" 
               id="phoneQuery"
-              placeholder="e.g. 03088833148 or +92 300 6939184 or +351 928 350 275" 
+              placeholder="e.g. # (+92 300 6939184 or 03006939184 or +1 202 555 0192 or +44 7911 123456 or +351 928 350 275)" 
               required
               class="cyber-input w-full rounded-xl pl-11 pr-4 py-3 text-sm font-mono focus:ring-1 focus:ring-cyan-400"
             />
@@ -493,7 +490,7 @@
           </div>
 
           <!-- Live SIM & Telecom Intelligence Profile Card -->
-          <div id="simTelecomLiveCard" class="bg-gradient-to-r from-cyan-950/60 via-[#0a1636] to-[#070e24] border border-cyan-500/40 rounded-2xl p-5 shadow-[0_0_25px_rgba(6,182,212,0.15)] space-y-4">
+          <div id="simTelecomLiveCard" class="bg-gradient-to-r from-cyan-950/60 via-[#0a1636] to-[#0d1222] border border-cyan-500/40 rounded-2xl p-5 shadow-[0_0_25px_rgba(6,182,212,0.15)] space-y-4">
             <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3 flex-wrap gap-2">
               <span class="text-xs font-mono text-cyan-300 font-bold uppercase flex items-center gap-2">
                 <i class="fa-solid fa-sim-card text-cyan-400 text-base"></i>
@@ -674,7 +671,7 @@
 
         <div id="userResults" class="space-y-6 pt-2 hidden">
           <!-- Live GitHub Developer Profile Card (if found) -->
-          <div id="githubLiveCard" class="bg-gradient-to-r from-cyan-950/70 via-[#0a1636] to-[#070e24] border border-cyan-500/40 rounded-2xl p-5 hidden shadow-[0_0_25px_rgba(6,182,212,0.15)]">
+          <div id="githubLiveCard" class="bg-gradient-to-r from-cyan-950/70 via-[#0a1636] to-[#0d1222] border border-cyan-500/40 rounded-2xl p-5 hidden shadow-[0_0_25px_rgba(6,182,212,0.15)]">
             <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3 mb-4">
               <span class="text-xs font-mono text-cyan-300 font-bold uppercase flex items-center gap-2">
                 <i class="fa-brands fa-github text-base text-white"></i>
@@ -784,7 +781,7 @@
         <div id="emailResults" class="space-y-6 pt-2 hidden">
           
           <!-- Primary Breach & Password Compromise Dashboard -->
-          <div class="bg-gradient-to-r from-rose-950/40 via-[#130d2a] to-[#070e24] border border-rose-500/40 rounded-2xl p-5 shadow-[0_0_30px_rgba(244,63,94,0.15)] space-y-4">
+          <div class="bg-gradient-to-r from-rose-950/40 via-[#130d2a] to-[#0d1222] border border-rose-500/40 rounded-2xl p-5 shadow-[0_0_30px_rgba(244,63,94,0.15)] space-y-4">
             <div class="flex items-center justify-between border-b border-rose-500/20 pb-3 flex-wrap gap-2">
               <span class="text-xs font-mono text-rose-300 font-bold uppercase flex items-center gap-2">
                 <i class="fa-solid fa-triangle-exclamation text-rose-400 text-base"></i>
@@ -873,7 +870,7 @@
             <!-- Gravatar Live Identity Check -->
             <div class="p-4 bg-[#08112e] border border-cyan-500/30 rounded-xl flex flex-col sm:flex-row items-center gap-4">
               <div class="relative">
-                <img id="gravatarImg" src="" alt="Gravatar" class="w-16 h-16 rounded-2xl border-2 border-cyan-400/40 object-cover shadow-[0_0_15px_rgba(6,182,212,0.3)] bg-[#040817]" />
+                <img id="gravatarImg" src="" alt="Gravatar" class="w-16 h-16 rounded-2xl border-2 border-cyan-400/40 object-cover shadow-[0_0_15px_rgba(6,182,212,0.3)] bg-[#07090e]" />
                 <span id="gravatarStatusDot" class="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-slate-600 border-2 border-[#08112e]"></span>
               </div>
               <div class="flex-1 space-y-1 text-center sm:text-left">
@@ -953,7 +950,7 @@
           </div>
 
           <!-- Raw Live MX DNS Output -->
-          <div class="bg-[#040817] border border-cyan-500/30 rounded-2xl p-4 font-mono text-xs">
+          <div class="bg-[#07090e] border border-cyan-500/30 rounded-2xl p-4 font-mono text-xs">
             <div class="text-cyan-400 mb-2 font-bold uppercase flex items-center justify-between">
               <span>Google DoH (DNS over HTTPS) MX Response:</span>
               <span class="text-emerald-400 font-normal">200 OK</span>
@@ -1080,7 +1077,7 @@
   </main>
 
   <!-- Executive Site Footer Matching WHX Digital -->
-  <footer class="relative z-10 border-t border-cyan-900/40 bg-[#030712] py-6 px-4 mt-12 text-center text-xs text-slate-400 font-mono">
+  <footer class="relative z-10 border-t border-slate-800/80 bg-[#07090e] py-6 px-4 mt-12 text-center text-xs text-slate-400 font-mono">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
       <div>
         <span>&copy; 2026 WHX Digital. Educational OSINT &amp; Cyber Threat Intelligence Suite.</span>
@@ -1392,10 +1389,10 @@
 
           tabButtons.forEach(b => {
             b.classList.remove('border-cyan-400', 'bg-cyan-950/60', 'text-cyan-300', 'shadow-[0_0_20px_rgba(6,182,212,0.35)]');
-            b.classList.add('border-slate-800', 'bg-[#070e24]', 'text-slate-400');
+            b.classList.add('border-slate-800', 'bg-[#0d1222]', 'text-slate-400');
             const iconBox = b.querySelector('.w-9');
             if (iconBox) {
-              iconBox.className = 'w-9 h-9 rounded-xl bg-[#040817] text-slate-400 flex items-center justify-center text-base font-bold';
+              iconBox.className = 'w-9 h-9 rounded-xl bg-[#07090e] text-slate-400 flex items-center justify-center text-base font-bold';
             }
             const title = b.querySelector('.text-white');
             if (title) {
@@ -1404,7 +1401,7 @@
           });
 
           btn.classList.add('border-cyan-400', 'bg-cyan-950/60', 'text-cyan-300', 'shadow-[0_0_20px_rgba(6,182,212,0.35)]');
-          btn.classList.remove('border-slate-800', 'bg-[#070e24]', 'text-slate-400');
+          btn.classList.remove('border-slate-800', 'bg-[#0d1222]', 'text-slate-400');
           const activeIconBox = btn.querySelector('.w-9');
           if (activeIconBox) {
             activeIconBox.className = 'w-9 h-9 rounded-xl bg-cyan-950 border border-cyan-500/40 text-cyan-400 flex items-center justify-center text-base font-bold shadow-[0_0_10px_rgba(6,182,212,0.3)]';
