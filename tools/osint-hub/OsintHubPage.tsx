@@ -229,9 +229,9 @@ export default function OsintHubDashboard() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={
-                activeTab === 'phone' ? "Enter phone with country code (e.g., +92 ... or 0300...)" :
-                activeTab === 'email' ? "Enter target email address..." :
-                activeTab === 'username' ? "Enter target handle/username (e.g. Waseem Haider)..." :
+                activeTab === 'phone' ? "e.g. +1234567890" :
+                activeTab === 'email' ? "e.g. email@example.com" :
+                activeTab === 'username' ? "e.g. username" :
                 "Upload or paste image URL for facial footprint & EXIF..."
               }
               className="w-full py-4 px-4 text-neutral-900 placeholder-neutral-400 focus:outline-none text-sm font-medium"
