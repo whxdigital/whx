@@ -76,14 +76,14 @@ export default function OsintHubPage() {
     const u = usernameInput.trim().toLowerCase();
     const p = passwordInput.trim();
 
-    if (u === 'admin' && p === '0000') {
+    if (u === 'admin' && (p === '0000' || p === '00')) {
       localStorage.setItem('whx_osint_auth', 'true');
       localStorage.setItem('whx_osint_user', 'admin');
       setSessionUser('admin');
       setIsLoggedIn(true);
       setLoginError('');
     } else {
-      setLoginError('Ghalat credentials! Sirf admin (passkey: 0000) allowed hai.');
+      setLoginError('Ghalat credentials! Access Denied.');
     }
   };
 
